@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Actualités | Help'me Process</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --navy:#002C6E;--navy2:#003A8C;--navy3:#001A4A;
+      --orange:#E85D20;--orange2:#FF6D35;
+      --white:#fff;--light:#F5F7FA;--dark:#0F172A;
+      --gray:#6B7280;--border:#E5E7EB;--text:#1F2937;--text2:#374151;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',sans-serif;color:var(--text);background:#fff;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+    /* NAV */
+    nav{position:fixed;inset:0 0 auto;z-index:999;height:72px;display:flex;align-items:center;padding:0 64px;background:#fff;border-bottom:1px solid var(--border);transition:box-shadow .3s}
+    nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.08)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:1280px;margin:0 auto}
+    .nav-logo img{height:42px;display:block}
+    .nav-links{display:flex;align-items:center;gap:8px;list-style:none}
+    .nav-links a{text-decoration:none;color:var(--text2);font-weight:500;font-size:.9rem;padding:8px 16px;border-radius:6px;transition:all .2s}
+    .nav-links a:hover,.nav-links a.active{color:var(--navy);background:var(--light)}
+    .nav-cta{background:var(--orange);color:#fff!important;padding:10px 24px!important;border-radius:50px!important;font-weight:600!important;font-size:.88rem!important}
+    .nav-cta:hover{background:var(--orange2)!important}
+    .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+    .burger span{width:24px;height:2px;background:var(--navy);border-radius:2px}
+    .mob-nav{display:none;position:fixed;inset:72px 0 0;background:#fff;z-index:998;padding:24px;flex-direction:column;gap:4px;border-top:1px solid var(--border)}
+    .mob-nav.open{display:flex}
+    .mob-nav a{font-size:1rem;font-weight:500;color:var(--text2);text-decoration:none;padding:12px 16px;border-radius:8px}
+
+    /* HERO PAGE */
+    .page-hero{
+      padding:140px 64px 80px;
+      background:linear-gradient(135deg,var(--navy3) 0%,var(--navy) 100%);
+      text-align:center;
+    }
+    .page-hero .eyebrow{color:var(--orange2);font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;display:block;margin-bottom:16px}
+    .page-hero h1{font-size:clamp(2rem,4vw,3.2rem);font-weight:900;color:#fff;letter-spacing:-.02em;margin-bottom:16px}
+    .page-hero p{color:rgba(255,255,255,.6);font-size:1rem;max-width:520px;margin:0 auto;line-height:1.75}
+
+    /* FILTERS */
+    .filters{background:#fff;border-bottom:1px solid var(--border);padding:20px 64px;position:sticky;top:72px;z-index:10}
+    .filters-inner{max-width:1280px;margin:0 auto;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    .filter-btn{
+      padding:8px 20px;border-radius:50px;border:1.5px solid var(--border);
+      background:#fff;font-family:'Inter',sans-serif;font-size:.82rem;font-weight:600;
+      color:var(--text2);cursor:pointer;transition:all .2s;
+    }
+    .filter-btn:hover,.filter-btn.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+    .filter-btn.cat-orange{border-color:rgba(232,93,32,.3);color:var(--orange)}
+    .filter-btn.cat-orange:hover,.filter-btn.cat-orange.active{background:var(--orange);color:#fff;border-color:var(--orange)}
+
+    /* GRID */
+    section.news{padding:72px 64px 100px}
+    .news-wrap{max-width:1280px;margin:0 auto}
+    .news-featured{
+      display:grid;grid-template-columns:1.6fr 1fr;gap:28px;
+      margin-bottom:28px;
+    }
+    .art-big{
+      border-radius:20px;overflow:hidden;
+      border:1px solid var(--border);
+      display:flex;flex-direction:column;
+      transition:all .3s;cursor:pointer;
+    }
+    .art-big:hover{box-shadow:0 12px 48px rgba(0,0,0,.1);transform:translateY(-4px)}
+    .art-img{overflow:hidden;height:300px}
+    .art-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+    .art-big:hover .art-img img{transform:scale(1.05)}
+    .art-body{padding:32px;flex:1;display:flex;flex-direction:column}
+    .art-cat{
+      display:inline-block;padding:4px 14px;border-radius:50px;
+      font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+      margin-bottom:14px;
+    }
+    .cat-actu{background:rgba(0,44,110,.1);color:var(--navy)}
+    .cat-presse{background:rgba(232,93,32,.12);color:var(--orange)}
+    .cat-emploi{background:rgba(34,197,94,.12);color:#16A34A}
+    .cat-prix{background:rgba(234,179,8,.12);color:#854D0E}
+    .art-body h2{font-size:1.3rem;font-weight:800;color:var(--navy);line-height:1.3;margin-bottom:10px}
+    .art-body h3{font-size:1.05rem;font-weight:700;color:var(--navy);line-height:1.35;margin-bottom:8px}
+    .art-body p{font-size:.88rem;color:var(--gray);line-height:1.75;flex:1}
+    .art-meta{display:flex;align-items:center;gap:16px;margin-top:20px;padding-top:18px;border-top:1px solid var(--border)}
+    .art-date{font-size:.78rem;color:var(--gray);font-weight:500}
+    .art-lire{
+      margin-left:auto;display:inline-flex;align-items:center;gap:6px;
+      color:var(--orange);font-weight:600;font-size:.8rem;text-decoration:none;transition:gap .2s;
+    }
+    .art-lire:hover{gap:10px}
+
+    /* small articles col */
+    .art-side{display:flex;flex-direction:column;gap:16px}
+    .art-sm{
+      border-radius:16px;overflow:hidden;border:1px solid var(--border);
+      display:flex;gap:0;flex-direction:column;transition:all .3s;cursor:pointer;
+    }
+    .art-sm:hover{box-shadow:0 6px 28px rgba(0,0,0,.08);transform:translateY(-3px)}
+    .art-sm .art-img{height:160px}
+    .art-sm .art-body{padding:20px}
+    .art-sm .art-body h3{font-size:.95rem}
+
+    /* GRID 3 cols */
+    .news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:28px}
+    .art-card{
+      border-radius:16px;overflow:hidden;border:1px solid var(--border);
+      display:flex;flex-direction:column;transition:all .3s;cursor:pointer;
+    }
+    .art-card:hover{box-shadow:0 8px 36px rgba(0,0,0,.09);transform:translateY(-4px)}
+    .art-card .art-img{height:200px}
+    .art-card .art-body{padding:24px;flex:1;display:flex;flex-direction:column}
+    .art-card .art-body h3{font-size:1rem}
+
+    /* NEWSLETTER */
+    .newsletter{
+      background:var(--navy);padding:80px 64px;text-align:center;margin-top:80px;
+    }
+    .newsletter h2{font-size:2rem;font-weight:800;color:#fff;margin-bottom:12px}
+    .newsletter p{color:rgba(255,255,255,.55);margin-bottom:36px}
+    .nl-form{display:flex;gap:12px;max-width:480px;margin:0 auto;flex-wrap:wrap}
+    .nl-input{
+      flex:1;min-width:220px;padding:14px 20px;border-radius:50px;border:none;
+      font-family:'Inter',sans-serif;font-size:.93rem;outline:none;
+    }
+    .nl-btn{
+      padding:14px 28px;border-radius:50px;border:none;background:var(--orange);
+      color:#fff;font-family:'Inter',sans-serif;font-weight:700;font-size:.9rem;cursor:pointer;transition:background .2s;
+    }
+    .nl-btn:hover{background:var(--orange2)}
+
+    /* FOOTER */
+    footer{background:var(--dark);padding:48px 64px 28px}
+    .ft-bottom{max-width:1280px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding-top:20px}
+    .ft-bottom p{font-size:.82rem;color:rgba(255,255,255,.3)}
+    .ft-logo img{height:36px;filter:brightness(0) invert(1);opacity:.5}
+    .ft-links{display:flex;gap:24px}
+    .ft-links a{color:rgba(255,255,255,.4);text-decoration:none;font-size:.82rem;transition:color .2s}
+    .ft-links a:hover{color:#fff}
+
+    /* FADE */
+    .fi{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+    .fi.on{opacity:1;transform:translateY(0)}
+    .fi-d1{transition-delay:.1s}.fi-d2{transition-delay:.2s}.fi-d3{transition-delay:.3s}
+
+    /* RESPONSIVE */
+    @media(max-width:1100px){nav{padding:0 32px}.page-hero,.filters,.news,.newsletter{padding-left:32px;padding-right:32px}}
+    @media(max-width:900px){.news-featured{grid-template-columns:1fr}.news-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:640px){
+      .nav-links{display:none}.burger{display:flex}
+      .page-hero{padding:120px 20px 60px}.filters{padding:16px 20px}
+      .news{padding:48px 20px 80px}.newsletter{padding:56px 20px}
+      .news-grid{grid-template-columns:1fr}
+      footer{padding:40px 20px 20px}
+      .nl-form{flex-direction:column}.nl-input,.nl-btn{width:100%;border-radius:12px}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="logo.jpeg" alt="Help'me Process"/></a>
+    <ul class="nav-links">
+      <li><a href="index.html#about">Qui sommes-nous ?</a></li>
+      <li><a href="index.html#services">Nos solutions</a></li>
+      <li><a href="index.html#pourquoi">Nos différences</a></li>
+      <li><a href="actualites.html" class="active">Actualités</a></li>
+      <li><a href="recrutement.html">Recrutement</a></li>
+      <li><a href="index.html#contact" class="nav-cta">Nous contacter</a></li>
+    </ul>
+    <div class="burger" id="burger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+<div class="mob-nav" id="mobnav">
+  <a href="index.html" onclick="cm()">Accueil</a>
+  <a href="index.html#services" onclick="cm()">Nos solutions</a>
+  <a href="actualites.html" onclick="cm()">Actualités</a>
+  <a href="recrutement.html" onclick="cm()">Recrutement</a>
+  <a href="index.html#contact" onclick="cm()">Nous contacter →</a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <span class="eyebrow">Toute l'actualité</span>
+  <h1>Actualités Help'me Process</h1>
+  <p>Restez informé de nos dernières nouvelles, distinctions, événements et réflexions sur le secteur de la relation client en Guinée et en Afrique.</p>
+</div>
+
+<!-- FILTERS -->
+<div class="filters">
+  <div class="filters-inner">
+    <button class="filter-btn active">Tout</button>
+    <button class="filter-btn">Actualités</button>
+    <button class="filter-btn cat-orange">Presse & Médias</button>
+    <button class="filter-btn">Distinctions</button>
+    <button class="filter-btn">Événements</button>
+    <button class="filter-btn">Secteur BPO</button>
+  </div>
+</div>
+
+<!-- ARTICLES -->
+<section class="news">
+  <div class="news-wrap">
+
+    <!-- FEATURED -->
+    <div class="news-featured">
+      <article class="art-big fi">
+        <div class="art-img"><img src="award.jpeg" alt="Élu Service Client 2023"/></div>
+        <div class="art-body">
+          <span class="art-cat cat-prix">🏆 Distinction</span>
+          <h2>Help'me Process élu Meilleur Service Client de l'Année 2023</h2>
+          <p>Une distinction majeure qui récompense l'engagement sans faille de nos 30 agents et de toute notre équipe au service de l'excellence relationnelle. Ce prix confirme notre positionnement comme référence du call center en Guinée et sur le marché ouest-africain.</p>
+          <div class="art-meta">
+            <span class="art-date">📅 Décembre 2023</span>
+            <a href="#" class="art-lire">Lire l'article <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+        </div>
+      </article>
+
+      <div class="art-side fi fi-d1">
+        <article class="art-sm">
+          <div class="art-img"><img src="training.jpeg" alt="Formation"/></div>
+          <div class="art-body">
+            <span class="art-cat cat-actu">Actualité</span>
+            <h3>Lancement de notre programme de formation continue pour tous nos agents</h3>
+            <div class="art-meta">
+              <span class="art-date">📅 Mars 2024</span>
+              <a href="#" class="art-lire">Lire →</a>
+            </div>
+          </div>
+        </article>
+        <article class="art-sm">
+          <div class="art-img"><img src="open-space.jpeg" alt="Open space"/></div>
+          <div class="art-body">
+            <span class="art-cat cat-presse">Presse</span>
+            <h3>Help'me Process dans les médias guinéens : interview exclusive du co-fondateur</h3>
+            <div class="art-meta">
+              <span class="art-date">📅 Janvier 2024</span>
+              <a href="#" class="art-lire">Lire →</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- GRID -->
+    <div class="news-grid">
+      <article class="art-card fi">
+        <div class="art-img"><img src="manager-coaching.jpeg" alt="Coaching"/></div>
+        <div class="art-body">
+          <span class="art-cat cat-actu">Actualité</span>
+          <h3>Help'me Process recrute : 10 nouveaux postes ouverts à Conakry</h3>
+          <p>Dans le cadre de notre expansion, nous ouvrons de nouvelles opportunités pour des talents guinéens passionnés par la relation client.</p>
+          <div class="art-meta">
+            <span class="art-date">📅 Avril 2024</span>
+            <a href="recrutement.html" class="art-lire">Voir les offres →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="art-card fi fi-d1">
+        <div class="art-img"><img src="director-portrait.jpeg" alt="Co-fondateur"/></div>
+        <div class="art-body">
+          <span class="art-cat cat-presse">Presse & Médias</span>
+          <h3>Interview : « Les call centers, moteur de l'emploi des jeunes en Guinée »</h3>
+          <p>Abdourahamane Cissé s'exprime sur le rôle transformateur des centres d'appels pour la jeunesse guinéenne et l'économie nationale.</p>
+          <div class="art-meta">
+            <span class="art-date">📅 Février 2024</span>
+            <a href="#" class="art-lire">Lire l'article →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="art-card fi fi-d2">
+        <div class="art-img"><img src="team-office.jpeg" alt="Équipe"/></div>
+        <div class="art-body">
+          <span class="art-cat cat-actu">Événement</span>
+          <h3>Help'me Process au Forum Économique de Conakry 2024</h3>
+          <p>Notre équipe a participé au Forum Économique National pour présenter le modèle BPO guinéen et ses opportunités d'investissement.</p>
+          <div class="art-meta">
+            <span class="art-date">📅 Mai 2024</span>
+            <a href="#" class="art-lire">En savoir plus →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="art-card fi">
+        <div class="art-img"><img src="hero-team.jpeg" alt="Équipe agents"/></div>
+        <div class="art-body">
+          <span class="art-cat cat-actu">Actualité</span>
+          <h3>Nouveau partenariat : Help'me Process s'ouvre au marché sénégalais</h3>
+          <p>La signature d'un accord de partenariat stratégique marque notre première expansion officielle hors des frontières guinéennes.</p>
+          <div class="art-meta">
+            <span class="art-date">📅 Juin 2024</span>
+            <a href="#" class="art-lire">Lire l'article →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="art-card fi fi-d1">
+        <div class="art-img"><img src="training2.jpeg" alt="Formation"/></div>
+        <div class="art-body">
+          <span class="art-cat cat-actu">Formation</span>
+          <h3>Certification qualité : nos agents formés aux standards internationaux ISO</h3>
+          <p>Dans notre quête d'excellence, Help'me Process investit dans la certification et la montée en compétences continue de ses équipes.</p>
+          <div class="art-meta">
+            <span class="art-date">📅 Juillet 2024</span>
+            <a href="#" class="art-lire">Lire l'article →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="art-card fi fi-d2">
+        <div class="art-img"><img src="agents-travail.jpeg" alt="Agents"/></div>
+        <div class="art-body">
+          <span class="art-cat cat-presse">Secteur BPO</span>
+          <h3>L'Afrique de l'Ouest, nouvelle terre promise de l'outsourcing mondial ?</h3>
+          <p>Analyse et perspectives sur le développement du secteur BPO en Guinée et dans la sous-région. Help'me Process en première ligne.</p>
+          <div class="art-meta">
+            <span class="art-date">📅 Août 2024</span>
+            <a href="#" class="art-lire">Lire l'article →</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<div class="newsletter">
+  <h2>Restez informé</h2>
+  <p>Inscrivez-vous à notre newsletter pour recevoir nos dernières actualités directement dans votre boîte mail.</p>
+  <div class="nl-form">
+    <input class="nl-input" type="email" placeholder="votre@email.com"/>
+    <button class="nl-btn" onclick="this.textContent='✓ Inscrit !';this.style.background='#16A34A'">S'inscrire</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-bottom">
+    <a href="index.html" class="ft-logo"><img src="logo.jpeg" alt="Help'me Process"/></a>
+    <div class="ft-links">
+      <a href="index.html">Accueil</a>
+      <a href="index.html#services">Solutions</a>
+      <a href="recrutement.html">Recrutement</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+    <p>Help'me Process © 2025 — Conakry, Guinée</p>
+  </div>
+</footer>
+
+<script>
+  const nav=document.getElementById('nav');
+  window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>20));
+  const burger=document.getElementById('burger');
+  const mob=document.getElementById('mobnav');
+  burger.addEventListener('click',()=>mob.classList.toggle('open'));
+  function cm(){mob.classList.remove('open')}
+
+  document.querySelectorAll('.filter-btn').forEach(btn=>{
+    btn.addEventListener('click',function(){
+      document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target)}}),{threshold:.1});
+  document.querySelectorAll('.fi').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

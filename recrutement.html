@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Rejoignez Help'me Process — Offres d'emploi en call center à Conakry, Guinée. Postulez en ligne."/>
+  <title>Recrutement | Help'me Process</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --navy:#002C6E;--navy2:#003A8C;--navy3:#001A4A;
+      --orange:#E85D20;--orange2:#FF6D35;
+      --white:#fff;--light:#F5F7FA;--dark:#0F172A;
+      --gray:#6B7280;--gray2:#9CA3AF;--border:#E5E7EB;
+      --text:#1F2937;--text2:#374151;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',sans-serif;color:var(--text);background:#fff;overflow-x:hidden;line-height:1.6;-webkit-font-smoothing:antialiased}
+
+    /* ── NAV ── */
+    nav{position:fixed;inset:0 0 auto;z-index:999;height:72px;display:flex;align-items:center;padding:0 64px;background:#fff;border-bottom:1px solid var(--border);transition:box-shadow .3s}
+    nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.08)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:1280px;margin:0 auto}
+    .nav-logo img{height:42px;display:block}
+    .nav-links{display:flex;align-items:center;gap:8px;list-style:none}
+    .nav-links a{text-decoration:none;color:var(--text2);font-weight:500;font-size:.9rem;padding:8px 16px;border-radius:6px;transition:all .2s}
+    .nav-links a:hover{color:var(--navy);background:var(--light)}
+    .nav-links a.active{color:var(--navy);font-weight:600}
+    .nav-cta{background:var(--orange);color:#fff !important;padding:10px 24px !important;border-radius:50px !important;font-weight:600 !important;font-size:.88rem !important}
+    .nav-cta:hover{background:var(--orange2) !important;transform:translateY(-1px);box-shadow:0 4px 16px rgba(232,93,32,.35) !important}
+    .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+    .burger span{width:24px;height:2px;background:var(--navy);border-radius:2px;transition:.3s}
+    .mob-nav{display:none;position:fixed;inset:72px 0 0;background:#fff;z-index:998;padding:24px;flex-direction:column;gap:4px;border-top:1px solid var(--border)}
+    .mob-nav.open{display:flex}
+    .mob-nav a{font-size:1rem;font-weight:500;color:var(--text2);text-decoration:none;padding:12px 16px;border-radius:8px;transition:background .2s}
+    .mob-nav a:hover{background:var(--light)}
+
+    /* ── PAGE HERO ── */
+    .page-hero{
+      margin-top:72px;
+      background:linear-gradient(135deg,var(--navy3) 0%,var(--navy) 50%,var(--navy2) 100%);
+      padding:80px 64px 70px;
+      position:relative;overflow:hidden;
+    }
+    .page-hero::before{
+      content:'';position:absolute;inset:0;
+      background:url('open-space.jpeg') center/cover no-repeat;
+      opacity:.12;
+    }
+    .page-hero-inner{max-width:1280px;margin:0 auto;position:relative}
+    .page-hero-badge{
+      display:inline-flex;align-items:center;gap:8px;
+      background:rgba(255,255,255,.1);
+      border:1px solid rgba(255,255,255,.2);
+      color:rgba(255,255,255,.9);
+      font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+      padding:6px 16px;border-radius:50px;margin-bottom:20px;
+    }
+    .page-hero h1{font-size:clamp(2rem,4vw,3rem);font-weight:800;color:#fff;margin-bottom:16px;line-height:1.15}
+    .page-hero h1 span{color:var(--orange2)}
+    .page-hero p{color:rgba(255,255,255,.75);font-size:1.1rem;max-width:560px}
+    .hero-stats{display:flex;gap:40px;margin-top:32px;flex-wrap:wrap}
+    .hero-stat strong{display:block;font-size:1.8rem;font-weight:800;color:#fff}
+    .hero-stat span{font-size:.85rem;color:rgba(255,255,255,.65);font-weight:500}
+
+    /* ── LAYOUT ── */
+    .container{max-width:1280px;margin:0 auto;padding:0 64px}
+    section{padding:80px 0}
+
+    /* ── FILTER BAR ── */
+    .filter-bar{
+      background:#fff;border-bottom:1px solid var(--border);
+      padding:0 64px;
+      position:sticky;top:72px;z-index:90;
+    }
+    .filter-inner{
+      max-width:1280px;margin:0 auto;
+      display:flex;align-items:center;gap:8px;
+      padding:14px 0;overflow-x:auto;scrollbar-width:none;
+    }
+    .filter-inner::-webkit-scrollbar{display:none}
+    .filter-btn{
+      white-space:nowrap;padding:8px 18px;border-radius:50px;
+      border:1.5px solid var(--border);background:#fff;
+      font-family:'Inter',sans-serif;font-size:.85rem;font-weight:500;
+      color:var(--gray);cursor:pointer;transition:all .2s;
+    }
+    .filter-btn:hover{border-color:var(--navy);color:var(--navy)}
+    .filter-btn.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+    .filter-count{
+      margin-left:auto;font-size:.85rem;color:var(--gray);white-space:nowrap;
+      padding-left:16px;border-left:1px solid var(--border);
+    }
+
+    /* ── WHY JOIN ── */
+    .why-join{background:var(--light)}
+    .section-label{font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:12px}
+    .section-title{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;color:var(--navy);line-height:1.2;margin-bottom:16px}
+    .section-sub{font-size:1rem;color:var(--gray);max-width:520px}
+    .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+    .why-card{
+      background:#fff;border-radius:16px;padding:32px 28px;
+      border:1px solid var(--border);
+      transition:transform .3s,box-shadow .3s;
+    }
+    .why-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,44,110,.1)}
+    .why-icon{
+      width:52px;height:52px;border-radius:14px;
+      background:linear-gradient(135deg,var(--navy),var(--navy2));
+      display:flex;align-items:center;justify-content:center;
+      font-size:1.5rem;margin-bottom:20px;
+    }
+    .why-card h3{font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:10px}
+    .why-card p{font-size:.9rem;color:var(--gray);line-height:1.7}
+
+    /* ── JOBS SECTION ── */
+    .jobs-layout{display:grid;grid-template-columns:1fr 360px;gap:40px;align-items:start}
+    .jobs-list{display:flex;flex-direction:column;gap:16px}
+    .job-card{
+      background:#fff;border:1.5px solid var(--border);
+      border-radius:16px;padding:28px 32px;
+      cursor:pointer;transition:all .3s;
+      position:relative;
+    }
+    .job-card:hover,.job-card.open{
+      border-color:var(--navy);
+      box-shadow:0 8px 30px rgba(0,44,110,.1);
+    }
+    .job-card.open{border-color:var(--orange)}
+    .job-header{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+    .job-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+    .tag{
+      font-size:.72rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;
+      padding:4px 10px;border-radius:50px;
+    }
+    .tag-dept{background:#EFF6FF;color:#1D4ED8}
+    .tag-type{background:#F0FDF4;color:#15803D}
+    .tag-loc{background:#FFF7ED;color:#C2410C}
+    .tag-urgent{background:#FEF2F2;color:#B91C1C;animation:pulse 2s infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+    .job-title{font-size:1.15rem;font-weight:700;color:var(--navy);margin-bottom:6px}
+    .job-meta{font-size:.85rem;color:var(--gray);display:flex;flex-wrap:wrap;gap:16px}
+    .job-meta span{display:flex;align-items:center;gap:6px}
+    .job-chevron{
+      font-size:1.2rem;color:var(--gray2);
+      transition:transform .3s;flex-shrink:0;margin-top:2px;
+    }
+    .job-card.open .job-chevron{transform:rotate(180deg);color:var(--orange)}
+    .job-body{
+      max-height:0;overflow:hidden;
+      transition:max-height .4s ease,padding .3s;
+    }
+    .job-card.open .job-body{max-height:600px;padding-top:24px}
+    .job-body-inner{border-top:1px solid var(--border);padding-top:24px}
+    .job-desc{font-size:.9rem;color:var(--text2);line-height:1.8;margin-bottom:20px}
+    .job-reqs{list-style:none;margin-bottom:20px}
+    .job-reqs li{font-size:.88rem;color:var(--text2);padding:6px 0;display:flex;align-items:flex-start;gap:10px}
+    .job-reqs li::before{content:'✓';color:var(--orange);font-weight:700;flex-shrink:0;margin-top:1px}
+    .job-apply-btn{
+      display:inline-block;
+      background:var(--orange);color:#fff;
+      padding:12px 28px;border-radius:50px;
+      font-weight:600;font-size:.9rem;text-decoration:none;border:none;cursor:pointer;
+      font-family:'Inter',sans-serif;transition:all .2s;
+    }
+    .job-apply-btn:hover{background:var(--orange2);transform:translateY(-1px);box-shadow:0 4px 16px rgba(232,93,32,.35)}
+
+    /* ── SIDEBAR ── */
+    .sidebar{position:sticky;top:130px;display:flex;flex-direction:column;gap:20px}
+    .sidebar-card{background:var(--light);border-radius:16px;padding:28px;border:1px solid var(--border)}
+    .sidebar-card h3{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:12px}
+    .sidebar-card p{font-size:.88rem;color:var(--gray);line-height:1.7;margin-bottom:16px}
+    .sidebar-contact{display:flex;flex-direction:column;gap:10px}
+    .sc-item{display:flex;align-items:center;gap:10px;font-size:.88rem;color:var(--text2)}
+    .sc-icon{width:32px;height:32px;border-radius:8px;background:var(--navy);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0}
+    .process-steps{display:flex;flex-direction:column;gap:14px;margin-top:4px}
+    .ps-step{display:flex;align-items:flex-start;gap:12px}
+    .ps-num{
+      width:28px;height:28px;border-radius:50%;
+      background:var(--navy);color:#fff;
+      font-size:.75rem;font-weight:700;
+      display:flex;align-items:center;justify-content:center;flex-shrink:0;
+    }
+    .ps-text strong{display:block;font-size:.88rem;font-weight:600;color:var(--navy)}
+    .ps-text span{font-size:.8rem;color:var(--gray)}
+
+    /* ── CANDIDATURE FORM ── */
+    .form-section{background:var(--light)}
+    .form-wrap{
+      max-width:820px;margin:0 auto;
+      background:#fff;border-radius:24px;
+      padding:56px;
+      box-shadow:0 8px 40px rgba(0,44,110,.08);
+      border:1px solid var(--border);
+    }
+    .form-header{text-align:center;margin-bottom:40px}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .form-full{grid-column:1/-1}
+    .form-group{display:flex;flex-direction:column;gap:8px}
+    .form-group label{font-size:.88rem;font-weight:600;color:var(--text2)}
+    .form-group input,
+    .form-group select,
+    .form-group textarea{
+      padding:12px 16px;border-radius:10px;
+      border:1.5px solid var(--border);
+      font-family:'Inter',sans-serif;font-size:.9rem;color:var(--text);
+      background:#fff;transition:border-color .2s;outline:none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus{border-color:var(--navy)}
+    .form-group textarea{resize:vertical;min-height:140px}
+    .file-drop{
+      border:2px dashed var(--border);border-radius:12px;
+      padding:32px;text-align:center;cursor:pointer;
+      transition:all .2s;position:relative;
+    }
+    .file-drop:hover,.file-drop.drag{border-color:var(--navy);background:#EFF6FF}
+    .file-drop input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+    .file-drop-icon{font-size:2rem;margin-bottom:10px}
+    .file-drop p{font-size:.9rem;color:var(--gray)}
+    .file-drop strong{color:var(--navy)}
+    .file-name{font-size:.82rem;color:var(--orange);font-weight:600;margin-top:8px;display:none}
+    .consent-row{display:flex;align-items:flex-start;gap:12px;padding:20px;background:var(--light);border-radius:12px}
+    .consent-row input[type=checkbox]{width:18px;height:18px;margin-top:3px;accent-color:var(--navy);flex-shrink:0}
+    .consent-row label{font-size:.85rem;color:var(--gray);line-height:1.6}
+    .form-submit{
+      width:100%;padding:16px;
+      background:var(--orange);color:#fff;
+      border:none;border-radius:50px;
+      font-family:'Inter',sans-serif;font-size:1rem;font-weight:700;
+      cursor:pointer;transition:all .2s;letter-spacing:.02em;
+    }
+    .form-submit:hover{background:var(--orange2);transform:translateY(-2px);box-shadow:0 6px 20px rgba(232,93,32,.4)}
+    .success-msg{
+      display:none;text-align:center;padding:40px;
+      background:linear-gradient(135deg,#F0FDF4,#DCFCE7);
+      border-radius:16px;border:1px solid #BBF7D0;
+    }
+    .success-msg h3{color:#15803D;font-size:1.4rem;margin-bottom:10px}
+    .success-msg p{color:#166534;font-size:.95rem}
+
+    /* ── CULTURE ── */
+    .culture-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;margin-top:0}
+    .culture-photos{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .culture-photo{border-radius:16px;overflow:hidden;aspect-ratio:1;background:#eee}
+    .culture-photo img{width:100%;height:100%;object-fit:cover;display:block}
+    .culture-photo.tall{aspect-ratio:.75}
+    .culture-txt .section-sub{max-width:100%;margin-bottom:24px}
+    .perks{display:flex;flex-direction:column;gap:14px;margin-top:20px}
+    .perk{display:flex;align-items:flex-start;gap:14px}
+    .perk-icon{
+      width:40px;height:40px;border-radius:10px;flex-shrink:0;
+      background:linear-gradient(135deg,var(--orange),var(--orange2));
+      display:flex;align-items:center;justify-content:center;font-size:1.1rem;
+    }
+    .perk-txt strong{display:block;font-size:.92rem;font-weight:600;color:var(--navy)}
+    .perk-txt span{font-size:.85rem;color:var(--gray)}
+
+    /* ── FOOTER ── */
+    footer{background:var(--dark);color:rgba(255,255,255,.6);padding:40px 64px;text-align:center}
+    footer a{color:var(--orange2);text-decoration:none}
+    .footer-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    .footer-links{display:flex;gap:24px;flex-wrap:wrap}
+    .footer-links a{font-size:.85rem}
+    .footer-links a:hover{color:#fff}
+
+    /* ── ANIMATIONS ── */
+    .fi{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+    .fi.on{opacity:1;transform:none}
+    .fi.d1{transition-delay:.1s}.fi.d2{transition-delay:.2s}.fi.d3{transition-delay:.3s}
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:1024px){
+      nav,.page-hero,.filter-bar,footer{padding-left:32px;padding-right:32px}
+      .container{padding:0 32px}
+      .jobs-layout{grid-template-columns:1fr}
+      .sidebar{position:static}
+      .why-grid{grid-template-columns:1fr 1fr}
+      .culture-grid{grid-template-columns:1fr}
+      .culture-photos{order:-1}
+    }
+    @media(max-width:768px){
+      nav{padding:0 20px}.nav-links{display:none}.burger{display:flex}
+      .page-hero{padding:60px 20px 50px}
+      .filter-bar{padding:0 20px}
+      .container{padding:0 20px}
+      section{padding:56px 0}
+      .form-wrap{padding:28px 20px}
+      .form-grid{grid-template-columns:1fr}
+      .why-grid{grid-template-columns:1fr}
+      .hero-stats{gap:24px}
+      footer{padding:32px 20px}
+      .footer-inner{flex-direction:column;text-align:center}
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="logo.jpeg" alt="Help'me Process"/>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#about">Qui sommes-nous ?</a></li>
+      <li><a href="index.html#services">Nos solutions</a></li>
+      <li><a href="index.html#pourquoi">Nos différences</a></li>
+      <li><a href="index.html#fondateur">Co-fondateur</a></li>
+      <li><a href="actualites.html">Actualités</a></li>
+      <li><a href="recrutement.html" class="active">Recrutement</a></li>
+      <li><a href="index.html#contact" class="nav-cta">Nous contacter</a></li>
+    </ul>
+    <div class="burger" id="burger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+<div class="mob-nav" id="mobnav">
+  <a href="index.html#about">Qui sommes-nous ?</a>
+  <a href="index.html#services">Nos solutions</a>
+  <a href="actualites.html">Actualités</a>
+  <a href="recrutement.html">Recrutement</a>
+  <a href="index.html#contact">Nous contacter →</a>
+</div>
+
+<!-- ══ PAGE HERO ══ -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-hero-badge">🚀 Nous recrutons actuellement</div>
+    <h1>Rejoignez<br/><span>Help'me Process</span></h1>
+    <p>Construisez votre carrière dans le secteur de la relation client avec une entreprise guinéenne ambitieuse, primée et en pleine expansion.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><strong>+50</strong><span>Collaborateurs</span></div>
+      <div class="hero-stat"><strong>4</strong><span>Postes ouverts</span></div>
+      <div class="hero-stat"><strong>🏆</strong><span>Élu Service Client 2023</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FILTER BAR ══ -->
+<div class="filter-bar">
+  <div class="filter-inner">
+    <button class="filter-btn active" data-filter="all">Tous les postes</button>
+    <button class="filter-btn" data-filter="inbound">Inbound</button>
+    <button class="filter-btn" data-filter="outbound">Outbound</button>
+    <button class="filter-btn" data-filter="supervision">Supervision</button>
+    <button class="filter-btn" data-filter="backoffice">Back Office</button>
+    <button class="filter-btn" data-filter="rh">RH & Formation</button>
+    <span class="filter-count" id="jobCount">4 offres disponibles</span>
+  </div>
+</div>
+
+<!-- ══ POURQUOI NOUS REJOINDRE ══ -->
+<section class="why-join">
+  <div class="container">
+    <div class="fi"><p class="section-label">Notre culture</p></div>
+    <div class="fi d1"><h2 class="section-title">Pourquoi rejoindre Help'me Process ?</h2></div>
+    <div class="fi d2"><p class="section-sub">Un environnement de travail stimulant, des formations continues et des perspectives d'évolution réelles en Guinée et à l'international.</p></div>
+    <div class="why-grid">
+      <div class="why-card fi d1">
+        <div class="why-icon">🎓</div>
+        <h3>Formation continue</h3>
+        <p>Programmes de montée en compétences réguliers, certifications métier et coaching individuel par nos superviseurs seniors.</p>
+      </div>
+      <div class="why-card fi d2">
+        <div class="why-icon">📈</div>
+        <h3>Évolution rapide</h3>
+        <p>Nos meilleurs agents deviennent superviseurs en moins de 18 mois. Nous promouvons en interne avant de recruter à l'externe.</p>
+      </div>
+      <div class="why-card fi d3">
+        <div class="why-icon">🏆</div>
+        <h3>Entreprise primée</h3>
+        <p>Rejoignez un call center reconnu Meilleur Service Client de l'Année 2023 — une référence dans la sous-région ouest-africaine.</p>
+      </div>
+      <div class="why-card fi d1">
+        <div class="why-icon">🌍</div>
+        <h3>Projets internationaux</h3>
+        <p>Travaillez sur des missions pour des clients en France, en Belgique et au Maroc depuis Conakry. Une expérience internationale sans quitter la Guinée.</p>
+      </div>
+      <div class="why-card fi d2">
+        <div class="why-icon">💼</div>
+        <h3>Avantages sociaux</h3>
+        <p>Contrat formalisé, couverture santé, primes de performance mensuelles et transport pris en charge pour les équipes de nuit.</p>
+      </div>
+      <div class="why-card fi d3">
+        <div class="why-icon">🤝</div>
+        <h3>Équipe soudée</h3>
+        <p>Une ambiance bienveillante, des événements d'équipe réguliers et un management de proximité accessible à tous les niveaux.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ OFFRES D'EMPLOI ══ -->
+<section id="offres">
+  <div class="container">
+    <div class="fi"><p class="section-label">Offres d'emploi</p></div>
+    <div class="fi d1"><h2 class="section-title">Postes ouverts</h2></div>
+    <div class="fi d2"><p class="section-sub" style="margin-bottom:48px">Tous les postes sont basés à Conakry, Guinée. Candidature 100% en ligne.</p></div>
+
+    <div class="jobs-layout">
+      <!-- JOBS LIST -->
+      <div class="jobs-list" id="jobsList">
+
+        <!-- JOB 1 -->
+        <div class="job-card" data-dept="inbound" onclick="toggleJob(this)">
+          <div class="job-tags">
+            <span class="tag tag-dept">Inbound</span>
+            <span class="tag tag-type">CDI</span>
+            <span class="tag tag-loc">📍 Conakry</span>
+            <span class="tag tag-urgent">🔥 Urgent</span>
+          </div>
+          <div class="job-header">
+            <div>
+              <div class="job-title">Téléconseiller(e) Service Client — Inbound</div>
+              <div class="job-meta">
+                <span>🕐 Temps plein</span>
+                <span>📅 Démarrage immédiat</span>
+                <span>🎓 Bac minimum</span>
+              </div>
+            </div>
+            <div class="job-chevron">▾</div>
+          </div>
+          <div class="job-body">
+            <div class="job-body-inner">
+              <p class="job-desc">En tant que Téléconseiller(ère) Inbound, vous serez le premier point de contact de nos clients. Vous gérerez les appels entrants, répondrez aux demandes, résoudrez les problèmes et offrirez une expérience client exceptionnelle au quotidien.</p>
+              <ul class="job-reqs">
+                <li>Bonne élocution en français (parlé et écrit)</li>
+                <li>Maîtrise des bases informatiques (navigation web, saisie)</li>
+                <li>Sens de l'écoute, empathie et gestion du stress</li>
+                <li>Bac ou équivalent — une première expérience est un plus</li>
+                <li>Disponible pour des horaires en rotation (matin/après-midi/soir)</li>
+              </ul>
+              <button class="job-apply-btn" onclick="scrollToForm('Téléconseiller(e) Service Client — Inbound');event.stopPropagation()">
+                Postuler à ce poste →
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- JOB 2 -->
+        <div class="job-card" data-dept="outbound" onclick="toggleJob(this)">
+          <div class="job-tags">
+            <span class="tag tag-dept">Outbound</span>
+            <span class="tag tag-type">CDI</span>
+            <span class="tag tag-loc">📍 Conakry</span>
+          </div>
+          <div class="job-header">
+            <div>
+              <div class="job-title">Agent Commercial Outbound (Télévente)</div>
+              <div class="job-meta">
+                <span>🕐 Temps plein</span>
+                <span>📅 Sept. 2026</span>
+                <span>🎓 Bac + expérience commerciale</span>
+              </div>
+            </div>
+            <div class="job-chevron">▾</div>
+          </div>
+          <div class="job-body">
+            <div class="job-body-inner">
+              <p class="job-desc">Vous serez chargé(e) de prospecter, qualifier et convertir des leads par téléphone pour le compte de nos clients. Un rôle dynamique avec un système de primes attractif basé sur vos résultats commerciaux.</p>
+              <ul class="job-reqs">
+                <li>Excellent sens de la persuasion et de la négociation</li>
+                <li>Expérience en vente ou prospection téléphonique (1 an min.)</li>
+                <li>Maîtrise du français; l'anglais est un atout</li>
+                <li>Résistance à l'échec, ténacité et goût du challenge</li>
+                <li>Capacité à atteindre et dépasser des objectifs chiffrés</li>
+              </ul>
+              <button class="job-apply-btn" onclick="scrollToForm('Agent Commercial Outbound (Télévente)');event.stopPropagation()">
+                Postuler à ce poste →
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- JOB 3 -->
+        <div class="job-card" data-dept="supervision" onclick="toggleJob(this)">
+          <div class="job-tags">
+            <span class="tag tag-dept">Supervision</span>
+            <span class="tag tag-type">CDI</span>
+            <span class="tag tag-loc">📍 Conakry</span>
+          </div>
+          <div class="job-header">
+            <div>
+              <div class="job-title">Superviseur(e) d'Équipe Call Center</div>
+              <div class="job-meta">
+                <span>🕐 Temps plein</span>
+                <span>📅 Oct. 2026</span>
+                <span>🎓 Bac+2 min.</span>
+              </div>
+            </div>
+            <div class="job-chevron">▾</div>
+          </div>
+          <div class="job-body">
+            <div class="job-body-inner">
+              <p class="job-desc">Le Superviseur encadre une équipe de 8 à 15 agents, veille au respect des KPIs, anime les briefs quotidiens, écoute les appels et assure la montée en compétences de ses collaborateurs dans un environnement exigeant et stimulant.</p>
+              <ul class="job-reqs">
+                <li>Minimum 2 ans d'expérience en centre d'appels</li>
+                <li>Leadership naturel, autorité bienveillante</li>
+                <li>Maîtrise des indicateurs de performance (DMT, taux de décrochage, NPS)</li>
+                <li>Bonne gestion des conflits et des situations de stress</li>
+                <li>Formation Bac+2 en management, commerce ou équivalent</li>
+              </ul>
+              <button class="job-apply-btn" onclick="scrollToForm('Superviseur(e) d\'Équipe Call Center');event.stopPropagation()">
+                Postuler à ce poste →
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- JOB 4 -->
+        <div class="job-card" data-dept="backoffice" onclick="toggleJob(this)">
+          <div class="job-tags">
+            <span class="tag tag-dept">Back Office</span>
+            <span class="tag tag-type">CDD 6 mois</span>
+            <span class="tag tag-loc">📍 Conakry</span>
+          </div>
+          <div class="job-header">
+            <div>
+              <div class="job-title">Agent Back Office & Traitement de Données</div>
+              <div class="job-meta">
+                <span>🕐 Temps plein</span>
+                <span>📅 Immédiat</span>
+                <span>🎓 Bac+1 min.</span>
+              </div>
+            </div>
+            <div class="job-chevron">▾</div>
+          </div>
+          <div class="job-body">
+            <div class="job-body-inner">
+              <p class="job-desc">Vous assurerez le traitement des dossiers clients, la saisie et la qualification des données, le suivi des réclamations et la communication entre les équipes terrain et nos clients donneurs d'ordre.</p>
+              <ul class="job-reqs">
+                <li>Excellentes compétences rédactionnelles en français</li>
+                <li>Maîtrise de la suite Office (Excel, Word) — niveau intermédiaire minimum</li>
+                <li>Rigueur, organisation et sens du détail</li>
+                <li>Discrétion et respect de la confidentialité des données</li>
+                <li>Capacité à traiter un volume important de dossiers sous délai</li>
+              </ul>
+              <button class="job-apply-btn" onclick="scrollToForm('Agent Back Office & Traitement de Données');event.stopPropagation()">
+                Postuler à ce poste →
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /jobs-list -->
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <div class="sidebar-card">
+          <h3>Notre processus de recrutement</h3>
+          <div class="process-steps">
+            <div class="ps-step">
+              <div class="ps-num">1</div>
+              <div class="ps-text"><strong>Candidature en ligne</strong><span>Remplissez le formulaire ci-dessous</span></div>
+            </div>
+            <div class="ps-step">
+              <div class="ps-num">2</div>
+              <div class="ps-text"><strong>Présélection</strong><span>Notre équipe RH examine votre dossier sous 72h</span></div>
+            </div>
+            <div class="ps-step">
+              <div class="ps-num">3</div>
+              <div class="ps-text"><strong>Test écrit</strong><span>Évaluation des compétences en français et logique</span></div>
+            </div>
+            <div class="ps-step">
+              <div class="ps-num">4</div>
+              <div class="ps-text"><strong>Entretien RH</strong><span>Entretien téléphonique puis en présentiel</span></div>
+            </div>
+            <div class="ps-step">
+              <div class="ps-num">5</div>
+              <div class="ps-text"><strong>Intégration</strong><span>Formation initiale de 5 jours avant prise de poste</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="sidebar-card">
+          <h3>Candidature spontanée ?</h3>
+          <p>Votre profil ne correspond pas exactement à nos offres actuelles ? Envoyez-nous votre candidature spontanée, nous la conservons dans notre vivier.</p>
+          <div class="sidebar-contact">
+            <div class="sc-item"><div class="sc-icon">📧</div>rh@helpmeprocess.com</div>
+            <div class="sc-item"><div class="sc-icon">📱</div>+224 620 00 00 00</div>
+            <div class="sc-item"><div class="sc-icon">🕐</div>Lun–Ven, 8h–17h</div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ══ AMBIANCE / CULTURE PHOTOS ══ -->
+<section class="why-join" style="background:#fff">
+  <div class="container">
+    <div class="culture-grid">
+      <div class="culture-txt fi">
+        <p class="section-label">Vie en entreprise</p>
+        <h2 class="section-title">Un cadre de travail que vous allez aimer</h2>
+        <p class="section-sub">Des bureaux modernes, une équipe jeune et dynamique, et un management qui croit en son personnel.</p>
+        <div class="perks">
+          <div class="perk">
+            <div class="perk-icon">🎯</div>
+            <div class="perk-txt"><strong>Primes sur performance</strong><span>Récompenses mensuelles pour les meilleurs résultats</span></div>
+          </div>
+          <div class="perk">
+            <div class="perk-icon">📚</div>
+            <div class="perk-txt"><strong>Formations certifiantes</strong><span>Accès à des programmes de développement professionnel</span></div>
+          </div>
+          <div class="perk">
+            <div class="perk-icon">🌅</div>
+            <div class="perk-txt"><strong>Horaires flexibles</strong><span>Plusieurs créneaux disponibles selon votre situation</span></div>
+          </div>
+          <div class="perk">
+            <div class="perk-icon">🏥</div>
+            <div class="perk-txt"><strong>Couverture santé</strong><span>Prise en charge médicale pour vous et votre famille</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="culture-photos fi d2">
+        <div class="culture-photo"><img src="open-space.jpeg" alt="Open space Help'me Process"/></div>
+        <div class="culture-photo tall"><img src="manager-coaching.jpeg" alt="Coaching agent"/></div>
+        <div class="culture-photo tall"><img src="hero-team.jpeg" alt="Équipe agents"/></div>
+        <div class="culture-photo"><img src="training.jpeg" alt="Formation" onerror="this.style.display='none'"/></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FORMULAIRE DE CANDIDATURE ══ -->
+<section class="form-section" id="postuler">
+  <div class="container">
+    <div class="form-wrap fi">
+      <div class="form-header">
+        <p class="section-label" style="text-align:center">Postuler en ligne</p>
+        <h2 class="section-title" style="text-align:center;font-size:1.8rem">Envoyez votre candidature</h2>
+        <p style="color:var(--gray);font-size:.9rem;margin-top:8px">Réponse garantie sous 72 heures ouvrées · Candidature 100% en ligne</p>
+      </div>
+
+      <div id="appForm">
+        <form onsubmit="submitForm(event)">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="prenom">Prénom *</label>
+              <input type="text" id="prenom" placeholder="Votre prénom" required/>
+            </div>
+            <div class="form-group">
+              <label for="nom">Nom *</label>
+              <input type="text" id="nom" placeholder="Votre nom de famille" required/>
+            </div>
+            <div class="form-group">
+              <label for="email">Adresse e-mail *</label>
+              <input type="email" id="email" placeholder="vous@exemple.com" required/>
+            </div>
+            <div class="form-group">
+              <label for="phone">Téléphone *</label>
+              <input type="tel" id="phone" placeholder="+224 6XX XX XX XX" required/>
+            </div>
+            <div class="form-group form-full">
+              <label for="poste">Poste visé *</label>
+              <select id="poste" required>
+                <option value="">— Sélectionnez un poste —</option>
+                <option>Téléconseiller(e) Service Client — Inbound</option>
+                <option>Agent Commercial Outbound (Télévente)</option>
+                <option>Superviseur(e) d'Équipe Call Center</option>
+                <option>Agent Back Office & Traitement de Données</option>
+                <option>Candidature Spontanée</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="experience">Années d'expérience</label>
+              <select id="experience">
+                <option value="">— Sélectionnez —</option>
+                <option>Aucune (premier emploi)</option>
+                <option>Moins d'1 an</option>
+                <option>1 à 2 ans</option>
+                <option>3 à 5 ans</option>
+                <option>Plus de 5 ans</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="disponibilite">Disponibilité</label>
+              <select id="disponibilite">
+                <option value="">— Sélectionnez —</option>
+                <option>Immédiate</option>
+                <option>Sous 2 semaines</option>
+                <option>Sous 1 mois</option>
+                <option>Sous 3 mois</option>
+              </select>
+            </div>
+            <div class="form-group form-full">
+              <label for="motivation">Lettre de motivation *</label>
+              <textarea id="motivation" placeholder="Dites-nous pourquoi vous souhaitez rejoindre Help'me Process et ce que vous apportez à notre équipe..." required></textarea>
+            </div>
+            <div class="form-group form-full">
+              <label>CV (PDF ou Word) *</label>
+              <div class="file-drop" id="fileDrop">
+                <input type="file" id="cvFile" accept=".pdf,.doc,.docx" onchange="handleFile(this)" required/>
+                <div class="file-drop-icon">📎</div>
+                <p><strong>Cliquez pour choisir</strong> ou glissez votre CV ici</p>
+                <p style="font-size:.78rem;color:var(--gray2);margin-top:4px">PDF, DOC, DOCX — Max 5 Mo</p>
+                <div class="file-name" id="fileName"></div>
+              </div>
+            </div>
+            <div class="form-full">
+              <div class="consent-row">
+                <input type="checkbox" id="consent" required/>
+                <label for="consent">J'accepte que Help'me Process conserve mes données personnelles pour le traitement de ma candidature. Ces informations ne seront pas partagées avec des tiers et seront supprimées après 12 mois si aucune suite n'est donnée.</label>
+              </div>
+            </div>
+            <div class="form-full" style="margin-top:8px">
+              <button type="submit" class="form-submit">Envoyer ma candidature →</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="success-msg" id="successMsg">
+        <div style="font-size:3rem;margin-bottom:16px">🎉</div>
+        <h3>Candidature envoyée avec succès !</h3>
+        <p>Merci pour votre intérêt, <strong id="candidatName"></strong>.<br/>Notre équipe RH examinera votre dossier et vous contactera sous <strong>72 heures ouvrées</strong>.<br/>Vérifiez aussi vos spams !</p>
+        <p style="margin-top:16px;font-size:.82rem;color:#166534">📧 Une confirmation a été envoyée à votre adresse e-mail.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-inner">
+    <span>© 2025 Help'me Process · Conakry, Guinée · <a href="mailto:contact@helpmeprocess.com">contact@helpmeprocess.com</a></span>
+    <div class="footer-links">
+      <a href="index.html">Accueil</a>
+      <a href="actualites.html">Actualités</a>
+      <a href="recrutement.html">Recrutement</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',scrollY>20)});
+
+  // Burger
+  document.getElementById('burger').addEventListener('click',function(){
+    document.getElementById('mobnav').classList.toggle('open');
+  });
+
+  // Job accordion
+  function toggleJob(card){
+    const isOpen = card.classList.contains('open');
+    document.querySelectorAll('.job-card.open').forEach(c=>{if(c!==card)c.classList.remove('open')});
+    card.classList.toggle('open',!isOpen);
+  }
+
+  // Filter
+  document.querySelectorAll('.filter-btn').forEach(btn=>{
+    btn.addEventListener('click',function(){
+      document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+      this.classList.add('active');
+      const f = this.dataset.filter;
+      const cards = document.querySelectorAll('.job-card');
+      let count = 0;
+      cards.forEach(c=>{
+        const show = f==='all'||c.dataset.dept===f;
+        c.style.display = show?'':'none';
+        if(show) count++;
+      });
+      document.getElementById('jobCount').textContent = count+' offre'+(count>1?'s':'')+' disponible'+(count>1?'s':'');
+    });
+  });
+
+  // Scroll to form & prefill
+  function scrollToForm(poste){
+    document.getElementById('postuler').scrollIntoView({behavior:'smooth',block:'start'});
+    setTimeout(()=>{
+      const sel = document.getElementById('poste');
+      for(let i=0;i<sel.options.length;i++){
+        if(sel.options[i].text===poste){sel.selectedIndex=i;break;}
+      }
+    },600);
+  }
+
+  // File handler
+  function handleFile(input){
+    const fn = document.getElementById('fileName');
+    if(input.files[0]){
+      fn.textContent='📎 '+input.files[0].name;
+      fn.style.display='block';
+      document.getElementById('fileDrop').style.borderColor='var(--navy)';
+    }
+  }
+
+  // Drag & drop visual
+  const drop = document.getElementById('fileDrop');
+  if(drop){
+    drop.addEventListener('dragover',e=>{e.preventDefault();drop.classList.add('drag')});
+    drop.addEventListener('dragleave',()=>drop.classList.remove('drag'));
+    drop.addEventListener('drop',e=>{drop.classList.remove('drag')});
+  }
+
+  // Form submit
+  function submitForm(e){
+    e.preventDefault();
+    const prenom = document.getElementById('prenom').value;
+    const nom = document.getElementById('nom').value;
+    document.getElementById('candidatName').textContent = prenom+' '+nom;
+    document.getElementById('appForm').style.display='none';
+    document.getElementById('successMsg').style.display='block';
+    document.getElementById('successMsg').scrollIntoView({behavior:'smooth',block:'center'});
+  }
+
+  // Intersection observer (fade-in)
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')});
+  },{threshold:.12});
+  document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

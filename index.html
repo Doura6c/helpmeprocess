@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Help'me Process — Centre d'appel professionnel en Guinée. Inbound, Outbound, Back Office pour marchés national et international."/>
+  <title>Help'me Process | Call Center in Guinea</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --navy:#002C6E;
+      --navy2:#003A8C;
+      --navy3:#001A4A;
+      --orange:#E85D20;
+      --orange2:#FF6D35;
+      --white:#fff;
+      --light:#F5F7FA;
+      --dark:#0F172A;
+      --gray:#6B7280;
+      --gray2:#9CA3AF;
+      --border:#E5E7EB;
+      --text:#1F2937;
+      --text2:#374151;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',sans-serif;color:var(--text);background:#fff;overflow-x:hidden;line-height:1.6;-webkit-font-smoothing:antialiased}
+
+    /* ────────────────── NAV ────────────────── */
+    nav{
+      position:fixed;inset:0 0 auto;z-index:999;
+      height:72px;display:flex;align-items:center;
+      padding:0 64px;
+      background:#fff;
+      border-bottom:1px solid var(--border);
+      transition:box-shadow .3s;
+    }
+    nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.08)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:1280px;margin:0 auto}
+    .nav-logo img{height:42px;display:block}
+    .nav-links{display:flex;align-items:center;gap:8px;list-style:none}
+    .nav-links a{
+      text-decoration:none;color:var(--text2);
+      font-weight:500;font-size:.9rem;
+      padding:8px 16px;border-radius:6px;
+      transition:all .2s;
+    }
+    .nav-links a:hover{color:var(--navy);background:var(--light)}
+    .nav-cta{
+      background:var(--orange);color:#fff !important;
+      padding:10px 24px !important;border-radius:50px !important;
+      font-weight:600 !important;font-size:.88rem !important;
+      transition:all .2s !important;
+    }
+    .nav-cta:hover{background:var(--orange2) !important;transform:translateY(-1px);box-shadow:0 4px 16px rgba(232,93,32,.35) !important}
+    .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+    .burger span{width:24px;height:2px;background:var(--navy);border-radius:2px;transition:.3s}
+    .mob-nav{
+      display:none;position:fixed;inset:72px 0 0;
+      background:#fff;z-index:998;padding:24px 24px;
+      flex-direction:column;gap:4px;border-top:1px solid var(--border);
+    }
+    .mob-nav.open{display:flex}
+    .mob-nav a{font-size:1rem;font-weight:500;color:var(--text2);text-decoration:none;padding:12px 16px;border-radius:8px;transition:background .2s}
+    .mob-nav a:hover{background:var(--light)}
+
+    /* ────────────────── HERO ────────────────── */
+    .hero{
+      min-height:100vh;padding-top:72px;
+      position:relative;overflow:hidden;
+      display:flex;align-items:center;
+    }
+    .hero-bg{position:absolute;inset:0;overflow:hidden;}
+    .hero-bg video{
+      position:absolute;inset:0;width:100%;height:100%;
+      object-fit:cover;object-position:center;
+    }
+    .hero-bg::after{
+      content:'';position:absolute;inset:0;
+      background:linear-gradient(115deg,rgba(0,18,60,.93) 0%,rgba(0,35,95,.82) 50%,rgba(0,20,65,.6) 100%);
+    }
+    /* decorative circles */
+    .hero-bg::before{
+      content:'';position:absolute;top:-120px;right:-120px;
+      width:700px;height:700px;border-radius:50%;
+      border:1px solid rgba(255,255,255,.06);
+      z-index:1;pointer-events:none;
+    }
+
+    .hero-content{
+      position:relative;z-index:2;
+      max-width:1280px;margin:0 auto;padding:80px 64px;
+      width:100%;
+      display:grid;grid-template-columns:1fr 420px;gap:48px;align-items:center;
+    }
+    .hero-left{}
+    .hero-right{display:flex;flex-direction:column;gap:16px}
+
+    .hero-tag{
+      display:inline-flex;align-items:center;gap:10px;
+      background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);
+      backdrop-filter:blur(8px);
+      color:#fff;padding:8px 20px;border-radius:50px;
+      font-size:.78rem;font-weight:600;letter-spacing:.06em;
+      text-transform:uppercase;margin-bottom:28px;
+    }
+    .hero-tag .dot{width:7px;height:7px;border-radius:50%;background:#4ADE80;display:inline-block;animation:blink 1.5s infinite}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+
+    .hero h1{
+      font-size:clamp(2.4rem,4.5vw,3.8rem);font-weight:900;
+      color:#fff;line-height:1.1;
+      margin-bottom:12px;
+      letter-spacing:-.03em;
+    }
+    .hero-rotating-wrap{
+      font-size:clamp(2.4rem,4.5vw,3.8rem);font-weight:900;
+      line-height:1.1;letter-spacing:-.03em;
+      margin-bottom:28px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+    }
+    .hero-static{color:#fff}
+    .hero-words{
+      position:relative;height:1.1em;overflow:hidden;
+      display:inline-block;min-width:260px;
+    }
+    .hero-word{
+      position:absolute;top:0;left:0;
+      background:linear-gradient(90deg,var(--orange),#FF8C42);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+      opacity:0;transform:translateY(30px);
+      transition:opacity .5s ease,transform .5s ease;
+      white-space:nowrap;
+    }
+    .hero-word.active{opacity:1;transform:translateY(0)}
+    .hero-word.exit{opacity:0;transform:translateY(-30px)}
+
+    .hero-desc{
+      font-size:1.05rem;color:rgba(255,255,255,.7);
+      max-width:520px;line-height:1.8;margin-bottom:40px;
+      font-weight:400;
+    }
+    .hero-actions{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:48px}
+
+    /* trust bar inside hero */
+    .hero-trust{
+      display:flex;gap:32px;flex-wrap:wrap;
+      padding-top:32px;border-top:1px solid rgba(255,255,255,.12);
+    }
+    .trust-item{display:flex;align-items:center;gap:10px}
+    .trust-val{font-size:1.5rem;font-weight:900;color:#fff;line-height:1}
+    .trust-val sup{font-size:55%;color:var(--orange2)}
+    .trust-lbl{font-size:.75rem;color:rgba(255,255,255,.5);line-height:1.3;max-width:80px}
+
+    /* floating cards right side */
+    .hero-card{
+      background:rgba(255,255,255,.1);
+      border:1px solid rgba(255,255,255,.18);
+      backdrop-filter:blur(16px);
+      border-radius:18px;padding:22px 26px;
+      display:flex;align-items:center;gap:16px;
+      animation:floatCard 6s ease-in-out infinite;
+    }
+    .hero-card:nth-child(2){animation-delay:2s}
+    .hero-card:nth-child(3){animation-delay:4s}
+    @keyframes floatCard{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+    .hcard-ico{
+      width:52px;height:52px;border-radius:14px;flex-shrink:0;
+      background:linear-gradient(135deg,var(--orange),var(--orange2));
+      display:flex;align-items:center;justify-content:center;font-size:24px;
+    }
+    .hcard-num{font-size:1.7rem;font-weight:900;color:#fff;line-height:1}
+    .hcard-num sup{font-size:55%;color:var(--orange2)}
+    .hcard-txt{font-size:.8rem;color:rgba(255,255,255,.65);margin-top:2px;line-height:1.3}
+    .hcard-award{
+      background:linear-gradient(135deg,rgba(232,93,32,.25),rgba(255,140,66,.15));
+      border-color:rgba(232,93,32,.4);
+    }
+    .hcard-award .hcard-ico{background:linear-gradient(135deg,#E8A020,#FFD060)}
+    .btn-orange{
+      background:var(--orange);color:#fff;
+      padding:15px 36px;border-radius:50px;
+      font-weight:700;font-size:.95rem;text-decoration:none;
+      display:inline-flex;align-items:center;gap:8px;
+      transition:all .25s;letter-spacing:.01em;
+    }
+    .btn-orange:hover{background:var(--orange2);transform:translateY(-2px);box-shadow:0 8px 28px rgba(232,93,32,.45)}
+    .btn-ghost{
+      background:rgba(255,255,255,.1);color:#fff;
+      border:1.5px solid rgba(255,255,255,.35);
+      padding:15px 36px;border-radius:50px;
+      font-weight:600;font-size:.95rem;text-decoration:none;
+      display:inline-flex;align-items:center;gap:8px;
+      transition:all .25s;
+      backdrop-filter:blur(4px);
+    }
+    .btn-ghost:hover{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.6)}
+
+    /* hero scroll indicator */
+    .hero-scroll{
+      position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
+      display:flex;flex-direction:column;align-items:center;gap:8px;
+      color:rgba(255,255,255,.45);font-size:.75rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;
+    }
+    .scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,transparent,rgba(255,255,255,.4));animation:scrolldown 2s infinite}
+    @keyframes scrolldown{0%,100%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}}
+
+    /* ────────────────── BAND LOGOS ────────────────── */
+    .band{
+      background:#fff;border-bottom:1px solid var(--border);
+      padding:20px 64px;
+    }
+    .band-inner{
+      max-width:1280px;margin:0 auto;
+      display:flex;align-items:center;gap:48px;flex-wrap:wrap;
+    }
+    .band-label{font-size:.72rem;font-weight:700;color:var(--gray2);text-transform:uppercase;letter-spacing:.1em;white-space:nowrap}
+    .band-items{display:flex;gap:32px;align-items:center;flex-wrap:wrap}
+    .band-item{
+      font-size:.85rem;font-weight:700;color:#9CA3AF;
+      display:flex;align-items:center;gap:8px;
+      letter-spacing:.01em;
+    }
+    .band-dot{width:5px;height:5px;border-radius:50%;background:var(--orange);opacity:.6}
+
+    /* ────────────────── SECTION BASE ────────────────── */
+    section{padding:100px 64px}
+    .wrap{max-width:1280px;margin:0 auto}
+    .eyebrow{
+      font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;
+      color:var(--orange);margin-bottom:14px;display:block;
+    }
+    h2.ttl{
+      font-size:clamp(1.9rem,3.2vw,2.8rem);font-weight:800;
+      color:var(--navy);line-height:1.15;letter-spacing:-.02em;
+      margin-bottom:16px;
+    }
+    .sub{color:var(--gray);font-size:1.02rem;max-width:600px;line-height:1.75}
+    .hd{margin-bottom:72px}
+    .hd.c{text-align:center}.hd.c .sub{margin:0 auto}
+
+    /* ────────────────── AMBITION ────────────────── */
+    .ambition{background:#fff;padding:80px 64px}
+    .amb-inner{
+      max-width:1280px;margin:0 auto;
+      display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;
+    }
+    .amb-left h2{
+      font-size:clamp(1.7rem,3vw,2.4rem);font-weight:800;
+      color:var(--navy);line-height:1.2;letter-spacing:-.02em;margin-bottom:20px;
+    }
+    .amb-left p{color:var(--gray);line-height:1.8;font-size:1rem;margin-bottom:24px}
+    .link-arrow{
+      display:inline-flex;align-items:center;gap:6px;
+      color:var(--orange);font-weight:600;font-size:.9rem;text-decoration:none;
+      transition:gap .2s;
+    }
+    .link-arrow:hover{gap:10px}
+    .amb-right{position:relative}
+    .amb-img{
+      border-radius:20px;overflow:hidden;height:420px;
+    }
+    .amb-img img{width:100%;height:100%;object-fit:cover}
+    .amb-badge{
+      position:absolute;bottom:-20px;right:-20px;
+      background:#fff;border-radius:16px;padding:20px 24px;
+      box-shadow:0 12px 48px rgba(0,0,0,.12);
+      display:flex;align-items:center;gap:16px;min-width:220px;
+    }
+    .badge-ico{
+      width:52px;height:52px;border-radius:14px;
+      background:linear-gradient(135deg,var(--orange),var(--orange2));
+      display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;
+    }
+    .badge-txt strong{display:block;font-weight:800;font-size:1rem;color:var(--navy)}
+    .badge-txt span{font-size:.78rem;color:var(--gray)}
+
+    /* ────────────────── STATS ────────────────── */
+    .stats{background:var(--navy);padding:72px 64px}
+    .stats-grid{
+      max-width:1280px;margin:0 auto;
+      display:grid;grid-template-columns:repeat(4,1fr);
+      gap:0;border-left:1px solid rgba(255,255,255,.1);
+    }
+    .stat-item{
+      padding:0 48px;border-right:1px solid rgba(255,255,255,.1);
+      text-align:center;
+    }
+    .stat-num{
+      font-size:clamp(2.8rem,5vw,4.2rem);font-weight:900;
+      color:#fff;line-height:1;letter-spacing:-.04em;
+      margin-bottom:8px;
+    }
+    .stat-num span{color:var(--orange2);font-size:60%}
+    .stat-lbl{color:rgba(255,255,255,.5);font-size:.85rem;font-weight:500;line-height:1.4}
+
+    /* ────────────────── SERVICES ────────────────── */
+    .services{background:var(--light);padding:100px 64px}
+    .svcs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:-2px}
+    .svc{
+      background:#fff;padding:48px 40px;
+      border:1px solid var(--border);
+      transition:all .3s;position:relative;overflow:hidden;
+    }
+    .svc::before{
+      content:'';position:absolute;top:0;left:0;right:0;height:3px;
+      background:var(--orange);transform:scaleX(0);transform-origin:left;
+      transition:transform .3s;
+    }
+    .svc:hover::before{transform:scaleX(1)}
+    .svc:hover{box-shadow:0 8px 48px rgba(0,0,0,.1);z-index:1}
+    .svc-ico{
+      width:56px;height:56px;border-radius:14px;
+      background:linear-gradient(135deg,var(--navy),var(--navy2));
+      display:flex;align-items:center;justify-content:center;
+      font-size:24px;margin-bottom:24px;
+    }
+    .svc h3{font-size:1.2rem;font-weight:800;color:var(--navy);margin-bottom:12px}
+    .svc>p{color:var(--gray);font-size:.9rem;line-height:1.75;margin-bottom:24px}
+    .svc-list{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:32px}
+    .svc-list li{
+      font-size:.88rem;color:var(--text2);font-weight:500;
+      display:flex;align-items:center;gap:10px;
+    }
+    .svc-list li::before{
+      content:'';width:18px;height:18px;border-radius:50%;
+      background:rgba(232,93,32,.1);flex-shrink:0;
+      display:flex;align-items:center;justify-content:center;
+      background-image:url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.5 5L4 7.5L8.5 2.5' stroke='%23E85D20' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat:no-repeat;background-position:center;background-size:10px;
+    }
+    .svc-lnk{
+      display:inline-flex;align-items:center;gap:6px;
+      color:var(--orange);font-weight:600;font-size:.85rem;
+      text-decoration:none;transition:gap .2s;margin-top:auto;
+    }
+    .svc-lnk:hover{gap:10px}
+
+    /* ────────────────── PRÉSENCE / MAP ────────────────── */
+    .presence{background:#fff;padding:100px 64px}
+    .pres-inner{
+      max-width:1280px;margin:0 auto;
+      display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;
+    }
+    .pres-img{border-radius:20px;overflow:hidden;height:480px}
+    .pres-img img{width:100%;height:100%;object-fit:cover}
+    .pres-txt .eyebrow{display:block;margin-bottom:14px}
+    .pres-txt h2{margin-bottom:20px}
+    .pres-txt p{color:var(--gray);line-height:1.8;margin-bottom:32px}
+    .address-block{
+      background:var(--light);border-radius:14px;padding:24px;
+      border-left:3px solid var(--orange);margin-bottom:28px;
+    }
+    .address-block p{font-size:.9rem;color:var(--text2);font-weight:500;line-height:1.7;margin:0}
+    .langs{display:flex;flex-wrap:wrap;gap:8px}
+    .lang-tag{
+      background:var(--light);border:1.5px solid var(--border);
+      padding:6px 16px;border-radius:50px;
+      font-size:.8rem;font-weight:600;color:var(--navy);
+    }
+
+    /* ────────────────── FONDATEUR ────────────────── */
+    .founder{
+      background:var(--navy3);padding:100px 64px;
+      position:relative;overflow:hidden;
+    }
+    .founder::before{
+      content:'';position:absolute;top:-300px;right:-200px;
+      width:700px;height:700px;border-radius:50%;
+      border:1px solid rgba(255,255,255,.04);pointer-events:none;
+    }
+    .founder::after{
+      content:'';position:absolute;bottom:-200px;left:-150px;
+      width:500px;height:500px;border-radius:50%;
+      background:radial-gradient(circle,rgba(232,93,32,.08),transparent 70%);
+      pointer-events:none;
+    }
+    .founder-inner{
+      max-width:1280px;margin:0 auto;
+      display:grid;grid-template-columns:420px 1fr;gap:80px;align-items:center;
+      position:relative;z-index:1;
+    }
+    .founder-photo-wrap{position:relative}
+    .founder-photo{
+      border-radius:24px;overflow:hidden;height:560px;
+      border:2px solid rgba(255,255,255,.08);
+      box-shadow:0 40px 120px rgba(0,0,0,.5);
+    }
+    .founder-photo img{width:100%;height:100%;object-fit:cover;object-position:top center}
+    .founder-award-badge{
+      position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);
+      background:linear-gradient(135deg,var(--orange),var(--orange2));
+      border-radius:16px;padding:16px 28px;
+      display:flex;align-items:center;gap:12px;
+      box-shadow:0 8px 32px rgba(232,93,32,.5);
+      white-space:nowrap;
+    }
+    .founder-award-badge span{font-size:1.4rem}
+    .founder-award-badge div strong{display:block;font-weight:800;font-size:.9rem;color:#fff}
+    .founder-award-badge div em{font-style:normal;font-size:.75rem;color:rgba(255,255,255,.75)}
+
+    .founder-txt .eyebrow{color:var(--orange2)}
+    .founder-quote{
+      font-size:clamp(1.3rem,2.2vw,1.7rem);font-weight:700;
+      color:#fff;line-height:1.45;letter-spacing:-.01em;
+      margin-bottom:32px;position:relative;padding-left:24px;
+    }
+    .founder-quote::before{
+      content:'"';position:absolute;left:-16px;top:-20px;
+      font-size:7rem;color:rgba(232,93,32,.25);font-family:Georgia,serif;
+      line-height:1;pointer-events:none;
+    }
+    .founder-name-block{
+      display:flex;align-items:center;gap:20px;
+      background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);
+      border-radius:16px;padding:20px 24px;margin-bottom:36px;
+    }
+    .founder-name-block .fn-ava{
+      width:56px;height:56px;border-radius:50%;overflow:hidden;
+      border:2.5px solid var(--orange);flex-shrink:0;
+    }
+    .founder-name-block .fn-ava img{width:100%;height:100%;object-fit:cover;object-position:top}
+    .fn-info strong{display:block;font-weight:800;font-size:1.05rem;color:#fff}
+    .fn-info span{font-size:.82rem;color:var(--orange2);font-weight:600}
+
+    .founder-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+    .ftag{
+      background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);
+      padding:7px 16px;border-radius:50px;font-size:.8rem;font-weight:600;color:rgba(255,255,255,.75);
+    }
+    .founder-cv{display:flex;flex-direction:column;gap:14px;margin-bottom:36px}
+    .cv-item{
+      display:flex;align-items:flex-start;gap:14px;
+    }
+    .cv-dot{
+      width:36px;height:36px;border-radius:10px;flex-shrink:0;
+      background:rgba(232,93,32,.15);border:1px solid rgba(232,93,32,.3);
+      display:flex;align-items:center;justify-content:center;font-size:16px;margin-top:2px;
+    }
+    .cv-item strong{display:block;font-weight:700;font-size:.9rem;color:#fff;margin-bottom:2px}
+    .cv-item span{font-size:.8rem;color:rgba(255,255,255,.5)}
+    .founder-vision{
+      background:rgba(232,93,32,.1);border:1px solid rgba(232,93,32,.25);
+      border-radius:14px;padding:22px 24px;
+    }
+    .founder-vision h4{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--orange2);margin-bottom:10px}
+    .founder-vision p{font-size:.92rem;color:rgba(255,255,255,.7);line-height:1.75}
+
+    /* ────────────────── POURQUOI (visuel) ────────────────── */
+    .why{background:#fff;padding:100px 64px}
+    .why-grid-top{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-bottom:4px}
+    .why-grid-bot{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:32px}
+    .why-visual{
+      position:relative;height:320px;overflow:hidden;cursor:pointer;
+      border-radius:0;
+    }
+    .why-visual:first-child{border-radius:20px 0 0 20px}
+    .why-visual:last-child{border-radius:0 20px 20px 0}
+    .why-visual img{
+      width:100%;height:100%;object-fit:cover;
+      transition:transform .6s ease;
+    }
+    .why-visual:hover img{transform:scale(1.08)}
+    .why-visual-overlay{
+      position:absolute;inset:0;
+      background:linear-gradient(to top,rgba(0,20,60,.92) 0%,rgba(0,20,60,.5) 50%,rgba(0,20,60,.2) 100%);
+      transition:background .4s;
+    }
+    .why-visual:hover .why-visual-overlay{
+      background:linear-gradient(to top,rgba(0,20,60,.97) 0%,rgba(0,20,60,.7) 50%,rgba(0,20,60,.3) 100%);
+    }
+    .why-visual-content{
+      position:absolute;inset:0;display:flex;flex-direction:column;
+      justify-content:flex-end;padding:28px 28px;
+    }
+    .why-visual-ico{
+      font-size:1.8rem;margin-bottom:10px;
+      transform:translateY(8px);transition:transform .4s;
+    }
+    .why-visual:hover .why-visual-ico{transform:translateY(0)}
+    .why-visual h3{
+      font-size:1.1rem;font-weight:800;color:#fff;margin-bottom:6px;
+      transform:translateY(4px);transition:transform .4s .05s;
+    }
+    .why-visual:hover h3{transform:translateY(0)}
+    .why-visual p{
+      font-size:.82rem;color:rgba(255,255,255,.7);line-height:1.6;
+      max-height:0;overflow:hidden;opacity:0;
+      transition:max-height .5s ease,opacity .4s ease .1s;
+    }
+    .why-visual:hover p{max-height:120px;opacity:1}
+    .why-chip{
+      display:inline-block;background:var(--orange);color:#fff;
+      padding:4px 12px;border-radius:50px;font-size:.7rem;font-weight:700;
+      margin-bottom:10px;letter-spacing:.04em;text-transform:uppercase;
+    }
+    .why-mini{
+      background:var(--light);border-radius:16px;padding:28px 24px;
+      border:1px solid var(--border);transition:all .3s;
+      display:flex;gap:16px;align-items:flex-start;
+    }
+    .why-mini:hover{border-color:var(--orange);box-shadow:0 4px 24px rgba(232,93,32,.1);transform:translateY(-3px)}
+    .why-mini-ico{
+      width:44px;height:44px;border-radius:12px;flex-shrink:0;
+      background:rgba(232,93,32,.1);border:1px solid rgba(232,93,32,.2);
+      display:flex;align-items:center;justify-content:center;font-size:18px;
+    }
+    .why-mini h3{font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:4px}
+    .why-mini p{font-size:.82rem;color:var(--gray);line-height:1.65}
+
+    /* ────────────────── GALERIE ────────────────── */
+    .gallery{background:#fff;padding:80px 0;overflow:hidden}
+    .gallery-top{max-width:1280px;margin:0 auto;padding:0 64px;margin-bottom:48px}
+    .gal-strip{
+      display:flex;gap:16px;
+      animation:scroll 40s linear infinite;
+      width:max-content;
+    }
+    .gal-strip:hover{animation-play-state:paused}
+    @keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    .gal-item{
+      width:320px;height:220px;border-radius:14px;overflow:hidden;flex-shrink:0;
+    }
+    .gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+    .gal-item:hover img{transform:scale(1.04)}
+
+    /* ────────────────── VIDÉOS ────────────────── */
+    .video-section{background:var(--light);padding:100px 64px}
+    .vids-top{max-width:1280px;margin:0 auto}
+    .main-video-wrap{
+      max-width:900px;margin:0 auto 64px;
+    }
+    .video-embed{
+      border-radius:20px;overflow:hidden;
+      position:relative;padding-bottom:56.25%;height:0;
+      box-shadow:0 20px 80px rgba(0,0,0,.15);
+      border:1px solid var(--border);
+    }
+    .video-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+    .vid-label{
+      display:inline-flex;align-items:center;gap:8px;
+      background:rgba(232,93,32,.1);border:1px solid rgba(232,93,32,.25);
+      color:var(--orange);padding:6px 16px;border-radius:50px;
+      font-size:.78rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+      margin-bottom:16px;
+    }
+
+    .vids-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .vcard{
+      background:#fff;border-radius:16px;overflow:hidden;
+      border:1px solid var(--border);transition:all .3s;
+    }
+    .vcard:hover{box-shadow:0 8px 40px rgba(0,0,0,.1);transform:translateY(-4px)}
+    .vcard-player video{
+      width:100%;display:block;aspect-ratio:16/9;object-fit:cover;background:#0F172A;
+    }
+    .vcard-body{padding:24px}
+    .vtag{
+      display:inline-block;background:rgba(232,93,32,.1);color:var(--orange);
+      padding:4px 12px;border-radius:50px;font-size:.72rem;font-weight:700;
+      margin-bottom:10px;letter-spacing:.03em;text-transform:uppercase;
+    }
+    .vcard-body h4{font-size:.97rem;font-weight:700;color:var(--navy);line-height:1.4;margin-bottom:6px}
+    .vcard-body p{font-size:.82rem;color:var(--gray);line-height:1.65}
+
+    /* ────────────────── TESTIMONIALS ────────────────── */
+    .testi{background:#fff;padding:100px 64px}
+    .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .tcard{
+      background:var(--light);border-radius:16px;padding:36px 32px;
+      border:1px solid var(--border);transition:all .3s;
+      display:flex;flex-direction:column;gap:20px;
+    }
+    .tcard:hover{box-shadow:0 8px 40px rgba(0,0,0,.08);background:#fff}
+    .tcard-stars{color:var(--orange);font-size:1rem;letter-spacing:2px}
+    .tcard q{
+      font-size:.92rem;color:var(--text2);line-height:1.75;
+      font-style:italic;quotes:'"' '"';flex:1;
+    }
+    .tcard-author{display:flex;align-items:center;gap:12px;padding-top:16px;border-top:1px solid var(--border)}
+    .tcard-ava{
+      width:44px;height:44px;border-radius:50%;
+      background:linear-gradient(135deg,var(--navy),var(--navy2));
+      display:flex;align-items:center;justify-content:center;
+      color:#fff;font-weight:800;font-size:.9rem;flex-shrink:0;
+    }
+    .tcard-name{font-weight:700;font-size:.88rem;color:var(--navy)}
+    .tcard-role{font-size:.78rem;color:var(--gray)}
+
+    /* ────────────────── CTA SECTION ────────────────── */
+    .cta-section{
+      background:var(--navy);padding:100px 64px;
+      text-align:center;position:relative;overflow:hidden;
+    }
+    .cta-section::before{
+      content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);
+      width:800px;height:800px;border-radius:50%;
+      background:rgba(232,93,32,.08);
+      pointer-events:none;
+    }
+    .cta-section .eyebrow{color:rgba(255,255,255,.5)}
+    .cta-section h2{
+      font-size:clamp(2rem,4vw,3.2rem);font-weight:800;color:#fff;
+      line-height:1.15;letter-spacing:-.02em;margin-bottom:20px;max-width:700px;margin-left:auto;margin-right:auto;
+    }
+    .cta-section p{color:rgba(255,255,255,.55);font-size:1rem;margin-bottom:44px;max-width:480px;margin-left:auto;margin-right:auto}
+
+    /* ────────────────── CONTACT ────────────────── */
+    .contact{background:var(--light);padding:100px 64px}
+    .contact-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:80px;align-items:start;max-width:1280px;margin:0 auto}
+    .ctc-info h2{font-size:2rem;font-weight:800;color:var(--navy);line-height:1.2;margin-bottom:14px}
+    .ctc-info>p{color:var(--gray);margin-bottom:40px;line-height:1.75}
+    .ctc-items{display:flex;flex-direction:column;gap:16px}
+    .ctc-item{
+      display:flex;align-items:flex-start;gap:16px;
+      background:#fff;padding:20px 24px;border-radius:14px;
+      border:1px solid var(--border);transition:all .2s;
+    }
+    .ctc-item:hover{border-color:var(--orange);box-shadow:0 4px 20px rgba(232,93,32,.1)}
+    .ctc-ico{
+      width:48px;height:48px;min-width:48px;border-radius:12px;
+      background:rgba(232,93,32,.1);
+      display:flex;align-items:center;justify-content:center;font-size:20px;
+    }
+    .ctc-text label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--gray2)}
+    .ctc-text p,.ctc-text a{font-size:.93rem;font-weight:600;color:var(--navy);margin-top:3px;text-decoration:none}
+    .ctc-text a:hover{color:var(--orange)}
+
+    .form-box{background:#fff;border-radius:20px;padding:44px;border:1px solid var(--border)}
+    .form-box h3{font-size:1.4rem;font-weight:800;color:var(--navy);margin-bottom:28px}
+    .fr{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .fg{margin-bottom:18px}
+    .fg label{display:block;font-size:.8rem;font-weight:600;margin-bottom:7px;color:var(--text2);letter-spacing:.02em}
+    .fg input,.fg select,.fg textarea{
+      width:100%;padding:13px 16px;
+      border:1.5px solid var(--border);border-radius:10px;
+      font-family:'Inter',sans-serif;font-size:.93rem;color:var(--text);
+      background:#fff;transition:border-color .2s;outline:none;
+    }
+    .fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--navy)}
+    .fg textarea{resize:vertical;min-height:110px}
+    .form-btn{
+      width:100%;padding:15px;border:none;border-radius:50px;
+      background:var(--orange);
+      color:#fff;font-family:'Inter',sans-serif;font-size:.95rem;font-weight:700;
+      cursor:pointer;transition:all .25s;letter-spacing:.01em;
+    }
+    .form-btn:hover{background:var(--orange2);transform:translateY(-2px);box-shadow:0 8px 28px rgba(232,93,32,.4)}
+
+    /* ────────────────── FOOTER ────────────────── */
+    footer{background:var(--dark);padding:72px 64px 32px}
+    .ft-top{
+      max-width:1280px;margin:0 auto;
+      display:grid;grid-template-columns:2.5fr 1fr 1fr 1fr;gap:48px;
+      margin-bottom:56px;
+    }
+    .ft-logo img{height:42px;margin-bottom:18px;filter:brightness(0) invert(1)}
+    .ft-brand p{font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.75;max-width:280px}
+    .ft-col h4{color:#fff;font-weight:700;font-size:.85rem;margin-bottom:18px;letter-spacing:.04em;text-transform:uppercase}
+    .ft-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+    .ft-col ul li a{color:rgba(255,255,255,.4);text-decoration:none;font-size:.85rem;transition:color .2s}
+    .ft-col ul li a:hover{color:#fff}
+    .ft-bottom{
+      max-width:1280px;margin:0 auto;
+      border-top:1px solid rgba(255,255,255,.08);padding-top:24px;
+      display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+    }
+    .ft-bottom p{font-size:.8rem;color:rgba(255,255,255,.25)}
+    .socials{display:flex;gap:10px}
+    .soc{
+      width:38px;height:38px;border-radius:10px;
+      background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+      display:flex;align-items:center;justify-content:center;
+      text-decoration:none;color:rgba(255,255,255,.5);font-size:.8rem;font-weight:700;
+      transition:all .2s;
+    }
+    .soc:hover{background:var(--orange);border-color:var(--orange);color:#fff}
+
+    /* ────────────────── FAB ────────────────── */
+    .fab{
+      position:fixed;bottom:28px;right:28px;z-index:999;
+      background:var(--orange);color:#fff;
+      padding:14px 28px;border-radius:50px;
+      font-weight:700;font-size:.9rem;text-decoration:none;
+      box-shadow:0 8px 32px rgba(232,93,32,.5);
+      display:flex;align-items:center;gap:8px;
+      animation:pulse 2.5s infinite;
+    }
+    .fab:hover{transform:scale(1.04)}
+    @keyframes pulse{0%,100%{box-shadow:0 8px 32px rgba(232,93,32,.5)}50%{box-shadow:0 8px 48px rgba(232,93,32,.8)}}
+
+    /* ────────────────── FADE IN ────────────────── */
+    .fi{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+    .fi.on{opacity:1;transform:translateY(0)}
+    .fi-d1{transition-delay:.1s}.fi-d2{transition-delay:.2s}.fi-d3{transition-delay:.3s}.fi-d4{transition-delay:.4s}
+
+    /* ────────────────── RESPONSIVE ────────────────── */
+    @media(max-width:1100px){
+      nav{padding:0 32px}
+      section,footer,.ambition,.stats,.gallery-top,.band,.cta-section,.contact{padding-left:32px;padding-right:32px}
+      .hero-content{padding:80px 32px;grid-template-columns:1fr}
+      .hero-right{display:none}
+      .amb-inner,.pres-inner,.contact-grid,.founder-inner{grid-template-columns:1fr}
+      .amb-right{display:none}
+      .founder-photo-wrap{max-width:400px;margin:0 auto}
+      .ft-top{grid-template-columns:1fr 1fr}
+      .why-grid-top{grid-template-columns:1fr 1fr}
+      .why-visual:last-child{display:none}
+      .why-visual:first-child{border-radius:20px 0 0 20px}
+      .why-visual:nth-child(2){border-radius:0 20px 20px 0}
+    }
+    @media(max-width:900px){
+      .svcs-grid,.testi-grid{grid-template-columns:1fr 1fr}
+      .vids-grid{grid-template-columns:1fr 1fr}
+      .stats-grid{grid-template-columns:repeat(2,1fr)}
+      .stat-item:nth-child(1),.stat-item:nth-child(2){border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:40px;margin-bottom:40px}
+      .why-grid-top{grid-template-columns:1fr}
+      .why-visual{border-radius:16px !important;height:260px}
+      .why-grid-bot{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:640px){
+      .nav-links{display:none}
+      .burger{display:flex}
+      section{padding:64px 20px}
+      .ambition,.stats,.band,.founder{padding:64px 20px}
+      .hero-content{padding:60px 20px}
+      .cta-section{padding:64px 20px}
+      .svcs-grid,.testi-grid,.vids-grid,.why-grid-bot{grid-template-columns:1fr}
+      .stats-grid{grid-template-columns:1fr 1fr}
+      .ft-top{grid-template-columns:1fr}
+      .fr{grid-template-columns:1fr}
+      .contact{padding:64px 20px}
+      footer{padding:56px 20px 24px}
+      .gal-item{width:260px;height:180px}
+      .hero-trust{gap:20px}
+      .founder-award-badge{flex-direction:column;text-align:center;bottom:-36px}
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════ NAV ══════════ -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <img src="logo.jpeg" alt="Help'me Process"/>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">Qui sommes-nous ?</a></li>
+      <li><a href="#services">Nos solutions</a></li>
+      <li><a href="#pourquoi">Nos différences</a></li>
+      <li><a href="#fondateur">Co-fondateur</a></li>
+      <li><a href="actualites.html">Actualités</a></li>
+      <li><a href="recrutement.html">Recrutement</a></li>
+      <li><a href="#contact" class="nav-cta">Nous contacter</a></li>
+    </ul>
+    <div class="burger" id="burger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+<div class="mob-nav" id="mobnav">
+  <a href="#about" onclick="cm()">Qui sommes-nous ?</a>
+  <a href="#services" onclick="cm()">Nos solutions</a>
+  <a href="#pourquoi" onclick="cm()">Nos différences</a>
+  <a href="#fondateur" onclick="cm()">Co-fondateur</a>
+  <a href="actualites.html" onclick="cm()">Actualités</a>
+  <a href="recrutement.html" onclick="cm()">Recrutement</a>
+  <a href="#contact" onclick="cm()">Nous contacter →</a>
+</div>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero" id="accueil">
+  <div class="hero-bg">
+    <video autoplay muted loop playsinline preload="auto">
+      <source src="video-boostez.mp4" type="video/mp4"/>
+    </video>
+  </div>
+
+  <div class="hero-content">
+    <!-- LEFT -->
+    <div class="hero-left">
+      <div class="hero-tag"><span class="dot"></span>Conakry, Guinée — Opérationnel 6j/7</div>
+
+      <h1>Le meilleur de l'humain,</h1>
+      <div class="hero-rotating-wrap">
+        <span class="hero-static">une relation</span>
+        <span class="hero-words" id="heroWords">
+          <span class="hero-word active">exceptionnelle</span>
+          <span class="hero-word">multilingue</span>
+          <span class="hero-word">innovante</span>
+          <span class="hero-word">guinéenne</span>
+          <span class="hero-word">performante</span>
+        </span>
+      </div>
+
+      <p class="hero-desc">Help'me Process accompagne les entreprises guinéennes et internationales avec des solutions d'externalisation d'excellence — 30 agents qualifiés, disponibles, multilingues.</p>
+
+      <div class="hero-actions">
+        <a href="#services" class="btn-orange">Découvrir nos solutions →</a>
+        <a href="#contact" class="btn-ghost">Devis gratuit</a>
+      </div>
+
+      <div class="hero-trust">
+        <div class="trust-item">
+          <div><div class="trust-val">30<sup>+</sup></div><div class="trust-lbl">Agents qualifiés</div></div>
+        </div>
+        <div class="trust-item">
+          <div><div class="trust-val">5<sup>+</sup></div><div class="trust-lbl">Langues parlées</div></div>
+        </div>
+        <div class="trust-item">
+          <div><div class="trust-val">2</div><div class="trust-lbl">Marchés couverts</div></div>
+        </div>
+        <div class="trust-item">
+          <div><div class="trust-val">#1</div><div class="trust-lbl">Service Client 2023</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT — floating cards -->
+    <div class="hero-right">
+      <div class="hero-card">
+        <div class="hcard-ico">🇬🇳</div>
+        <div>
+          <div class="hcard-num">100<sup>%</sup></div>
+          <div class="hcard-txt">Ancrage local Guinée</div>
+        </div>
+      </div>
+      <div class="hero-card hcard-award">
+        <div class="hcard-ico">🏆</div>
+        <div>
+          <div class="hcard-num" style="font-size:1.1rem;margin-bottom:2px">Élu Service Client</div>
+          <div class="hcard-txt">de l'Année 2023</div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="hcard-ico">🌍</div>
+        <div>
+          <div class="hcard-num">3</div>
+          <div class="hcard-txt">Pôles : Inbound · Outbound · Back Office</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-scroll"><div class="scroll-line"></div></div>
+</section>
+
+<!-- ══════════ BAND ══════════ -->
+<div class="band">
+  <div class="band-inner">
+    <span class="band-label">Marchés servis</span>
+    <div class="band-items">
+      <span class="band-item"><span class="band-dot"></span>Guinée</span>
+      <span class="band-item"><span class="band-dot"></span>France</span>
+      <span class="band-item"><span class="band-dot"></span>Sénégal</span>
+      <span class="band-item"><span class="band-dot"></span>Afrique de l'Ouest</span>
+      <span class="band-item"><span class="band-dot"></span>Europe</span>
+      <span class="band-item"><span class="band-dot"></span>International</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ AMBITION ══════════ -->
+<div class="ambition" id="about">
+  <div class="amb-inner">
+    <div class="amb-left fi">
+      <span class="eyebrow">Notre ambition</span>
+      <h2>La Guinée comme terre d'excellence en relation client</h2>
+      <p>Help'me Process est né d'une conviction forte : la Guinée possède tout le potentiel humain pour rivaliser avec les meilleures destinations d'externalisation mondiales. Nous combinons expertise locale, multilinguisme et standards internationaux pour offrir un service client d'exception.</p>
+      <p>Co-fondé par Abdourahamane Cissé, notre centre d'appel accompagne aujourd'hui aussi bien les entreprises guinéennes dans leur développement que les entreprises étrangères à la conquête du marché local.</p>
+      <a href="#services" class="link-arrow">Découvrir nos solutions <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+    <div class="amb-right fi fi-d2">
+      <div class="amb-img">
+        <img src="director-portrait.jpeg" alt="Abdourahamane Cissé — Co-fondateur Help'me Process"/>
+      </div>
+      <div class="amb-badge">
+        <div class="badge-ico">🏆</div>
+        <div class="badge-txt">
+          <strong>Service Client 2023</strong>
+          <span>Élu meilleur service client</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ STATS ══════════ -->
+<div class="stats">
+  <div class="stats-grid">
+    <div class="stat-item fi"><div class="stat-num">30<span>+</span></div><div class="stat-lbl">Agents formés &amp; opérationnels</div></div>
+    <div class="stat-item fi fi-d1"><div class="stat-num">5<span>+</span></div><div class="stat-lbl">Langues maîtrisées</div></div>
+    <div class="stat-item fi fi-d2"><div class="stat-num">3</div><div class="stat-lbl">Pôles de services intégrés</div></div>
+    <div class="stat-item fi fi-d3"><div class="stat-num">2</div><div class="stat-lbl">Marchés : national &amp; international</div></div>
+  </div>
+</div>
+
+<!-- ══════════ SERVICES ══════════ -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="hd c fi">
+      <span class="eyebrow">Nos solutions</span>
+      <h2 class="ttl">Une offre complète pour votre relation client</h2>
+      <p class="sub">Inbound, Outbound ou Back Office — nous vous accompagnons à chaque étape du parcours client</p>
+    </div>
+  </div>
+  <div class="svcs-grid">
+    <div class="svc fi">
+      <div class="svc-ico">📥</div>
+      <h3>Front Office — Inbound</h3>
+      <p>Vos clients méritent la meilleure écoute. Nos agents gèrent chaque appel entrant avec professionnalisme et bienveillance, en toutes langues.</p>
+      <ul class="svc-list">
+        <li>Accueil téléphonique multilingue</li>
+        <li>Service client &amp; SAV</li>
+        <li>Gestion des réclamations</li>
+        <li>Support technique niveau 1 &amp; 2</li>
+        <li>Assistance e-commerce</li>
+      </ul>
+      <a href="#contact" class="svc-lnk">Découvrir <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+    <div class="svc fi fi-d1">
+      <div class="svc-ico">📤</div>
+      <h3>Front Office — Outbound</h3>
+      <p>Nos équipes commerciales contactent vos prospects et clients pour générer des opportunités et fidéliser votre portefeuille.</p>
+      <ul class="svc-list">
+        <li>Téléprospection B2B &amp; B2C</li>
+        <li>Prise de rendez-vous qualifiés</li>
+        <li>Sondages &amp; études de marché</li>
+        <li>Fidélisation &amp; rétention clients</li>
+        <li>Recouvrement amiable</li>
+      </ul>
+      <a href="#contact" class="svc-lnk">Découvrir <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+    <div class="svc fi fi-d2">
+      <div class="svc-ico">🗂️</div>
+      <h3>Back Office &amp; Processus</h3>
+      <p>Nous libérons vos équipes des tâches administratives pour qu'elles se concentrent sur leur cœur de métier.</p>
+      <ul class="svc-list">
+        <li>Saisie &amp; traitement de données</li>
+        <li>Gestion documentaire &amp; archivage</li>
+        <li>Traitement des emails &amp; tickets</li>
+        <li>Vérification qualité &amp; contrôle</li>
+        <li>Reporting &amp; tableaux de bord</li>
+      </ul>
+      <a href="#contact" class="svc-lnk">Découvrir <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PRÉSENCE ══════════ -->
+<section class="presence">
+  <div class="pres-inner fi">
+    <div class="pres-img">
+      <img src="hero-team.jpeg" alt="Équipe Help'me Process"/>
+    </div>
+    <div class="pres-txt">
+      <span class="eyebrow">Notre implantation</span>
+      <h2 class="ttl">Basé à Conakry,<br>ouvert sur le monde</h2>
+      <p>Notre centre d'appel est installé au cœur de Conakry, dans des locaux modernes et équipés. Cette position géographique stratégique nous permet de servir efficacement aussi bien le marché national que les clients africains et internationaux, avec des fuseaux horaires compatibles France/Europe.</p>
+      <div class="address-block">
+        <p>📍 Köbaya carrefour BBC, Immeuble Monopole<br>Commune de Lambanyi, Conakry, République de Guinée<br>📞 <strong>+224 628 93 53 35</strong></p>
+      </div>
+      <p style="margin-bottom:20px;color:var(--gray);font-size:.9rem;font-weight:600">Langues parlées par nos agents :</p>
+      <div class="langs">
+        <span class="lang-tag">🇫🇷 Français</span>
+        <span class="lang-tag">🇬🇧 Anglais</span>
+        <span class="lang-tag">Pular</span>
+        <span class="lang-tag">Soussou</span>
+        <span class="lang-tag">Malinké</span>
+        <span class="lang-tag">+ langues nationales</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ POURQUOI ══════════ -->
+<section class="why" id="pourquoi">
+  <div class="wrap">
+    <div class="hd c fi">
+      <span class="eyebrow">Pourquoi nous choisir</span>
+      <h2 class="ttl">Ce qui nous différencie</h2>
+      <p class="sub">Des avantages concrets, prouvés sur le terrain — pas des promesses</p>
+    </div>
+
+    <!-- Cartes visuelles avec photos -->
+    <div class="why-grid-top fi">
+      <div class="why-visual">
+        <img src="manager-coaching.jpeg" alt="Expertise locale"/>
+        <div class="why-visual-overlay"></div>
+        <div class="why-visual-content">
+          <span class="why-chip">N°1</span>
+          <div class="why-visual-ico">🎯</div>
+          <h3>Expertise locale unique</h3>
+          <p>Nous connaissons le marché guinéen dans ses moindres détails — culture, langue, habitudes des consommateurs. Un avantage décisif pour vos campagnes nationales.</p>
+        </div>
+      </div>
+      <div class="why-visual">
+        <img src="open-space.jpeg" alt="Équipe multilingue"/>
+        <div class="why-visual-overlay"></div>
+        <div class="why-visual-content">
+          <span class="why-chip">Multilingue</span>
+          <div class="why-visual-ico">🌐</div>
+          <h3>5+ langues maîtrisées</h3>
+          <p>Français, anglais, pular, soussou, malinké et autres langues nationales. Chaque client servi dans sa langue naturelle, sans barrière culturelle.</p>
+        </div>
+      </div>
+      <div class="why-visual">
+        <img src="hero-team.jpeg" alt="Agents qualifiés"/>
+        <div class="why-visual-overlay"></div>
+        <div class="why-visual-content">
+          <span class="why-chip">30+ agents</span>
+          <div class="why-visual-ico">👥</div>
+          <h3>Équipe structurée & scalable</h3>
+          <p>Managers, agents et superviseurs formés aux standards internationaux — prêts à s'adapter à vos volumes et pics d'activité en temps réel.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mini cartes info -->
+    <div class="why-grid-bot fi fi-d2">
+      <div class="why-mini">
+        <div class="why-mini-ico">💰</div>
+        <div>
+          <h3>Tarifs ultra-compétitifs</h3>
+          <p>Jusqu'à 60% d'économies vs. un centre d'appel européen, sans compromis sur la qualité de service.</p>
+        </div>
+      </div>
+      <div class="why-mini">
+        <div class="why-mini-ico">📊</div>
+        <div>
+          <h3>Reporting en temps réel</h3>
+          <p>Tableaux de bord personnalisés, KPIs transparents, bilans réguliers. Vous pilotez, nous exécutons.</p>
+        </div>
+      </div>
+      <div class="why-mini">
+        <div class="why-mini-ico">🏆</div>
+        <div>
+          <h3>Qualité primée 2023</h3>
+          <p>Élu Meilleur Service Client de l'Année. Nos standards d'excellence sont reconnus et certifiés.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ MOT DU CO-FONDATEUR ══════════ -->
+<section class="founder" id="fondateur">
+  <div class="founder-inner">
+    <div class="founder-photo-wrap fi">
+      <div class="founder-photo">
+        <img src="award.jpeg" alt="Abdourahamane Cissé — Co-fondateur Help'me Process"/>
+      </div>
+      <div class="founder-award-badge">
+        <span>🏆</span>
+        <div>
+          <strong>Élu Service Client de l'Année</strong>
+          <em>Conakry, Guinée — 2023</em>
+        </div>
+      </div>
+    </div>
+
+    <div class="founder-txt fi fi-d2">
+      <span class="eyebrow">Mot du co-fondateur</span>
+
+      <blockquote class="founder-quote">
+        « La Guinée regorge de talents exceptionnels. Help'me Process est la preuve que l'excellence en relation client peut naître, grandir et rayonner depuis notre pays vers le monde entier. »
+      </blockquote>
+
+      <div class="founder-name-block">
+        <div class="fn-ava"><img src="award.jpeg" alt="Abdourahamane Cissé" style="object-position:top center"/></div>
+        <div class="fn-info">
+          <strong>Abdourahamane Cissé</strong>
+          <span>Co-fondateur & Directeur Général — Help'me Process</span>
+        </div>
+      </div>
+
+      <div class="founder-tags">
+        <span class="ftag">Expert Outsourcing</span>
+        <span class="ftag">Externalisation BPO</span>
+        <span class="ftag">Gestion Relation Client</span>
+        <span class="ftag">Management d'équipes</span>
+        <span class="ftag">Marchés Afrique & Europe</span>
+      </div>
+
+      <div class="founder-cv">
+        <div class="cv-item">
+          <div class="cv-dot">🎓</div>
+          <div>
+            <strong>Formation en Management & Relation Client</strong>
+            <span>Spécialisation en gestion de la relation client et processus d'externalisation</span>
+          </div>
+        </div>
+        <div class="cv-item">
+          <div class="cv-dot">💼</div>
+          <div>
+            <strong>Expert en outsourcing & BPO — +5 ans d'expérience</strong>
+            <span>Accompagnement d'entreprises guinéennes et internationales dans leur stratégie d'externalisation</span>
+          </div>
+        </div>
+        <div class="cv-item">
+          <div class="cv-dot">🌍</div>
+          <div>
+            <strong>Co-fondateur & DG de Help'me Process</strong>
+            <span>Création et direction du premier call center multilingue de référence à Conakry</span>
+          </div>
+        </div>
+        <div class="cv-item">
+          <div class="cv-dot">🏆</div>
+          <div>
+            <strong>Élu Meilleur Service Client de l'Année 2023</strong>
+            <span>Distinction officielle récompensant l'excellence opérationnelle de Help'me Process</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="founder-vision">
+        <h4>🔭 Notre vision</h4>
+        <p>Faire de Help'me Process le centre d'appel de référence en Afrique de l'Ouest — un hub multilingue, technologique et humain, capable de rivaliser avec les meilleures destinations d'externalisation mondiales, tout en créant de l'emploi qualifié pour la jeunesse guinéenne.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ GALERIE ══════════ -->
+<div class="gallery">
+  <div class="gallery-top fi">
+    <span class="eyebrow">Notre équipe</span>
+    <h2 class="ttl">Des visages derrière chaque appel</h2>
+    <p class="sub">Une équipe passionnée, formée et engagée pour représenter vos clients au quotidien</p>
+  </div>
+  <div style="overflow:hidden">
+    <div class="gal-strip">
+      <div class="gal-item"><img src="hero-team.jpeg" alt="Équipe"/></div>
+      <div class="gal-item"><img src="director-portrait.jpeg" alt="Co-fondateur"/></div>
+      <div class="gal-item"><img src="open-space.jpeg" alt="Open space"/></div>
+      <div class="gal-item"><img src="manager-coaching.jpeg" alt="Coaching"/></div>
+      <div class="gal-item"><img src="team-headsets.jpeg" alt="Agents"/></div>
+      <div class="gal-item"><img src="agent-male.jpeg" alt="Agent"/></div>
+      <div class="gal-item"><img src="agents-travail.jpeg" alt="Agents au travail"/></div>
+      <div class="gal-item"><img src="award.jpeg" alt="Trophée 2023"/></div>
+      <div class="gal-item"><img src="office.jpeg" alt="Bureau"/></div>
+      <div class="gal-item"><img src="team-office.jpeg" alt="Équipe bureau"/></div>
+      <div class="gal-item"><img src="training.jpeg" alt="Formation"/></div>
+      <div class="gal-item"><img src="training2.jpeg" alt="Formation 2"/></div>
+      <div class="gal-item"><img src="training3.jpeg" alt="Formation 3"/></div>
+      <!-- duplicate loop -->
+      <div class="gal-item"><img src="hero-team.jpeg" alt="Équipe"/></div>
+      <div class="gal-item"><img src="director-portrait.jpeg" alt="Co-fondateur"/></div>
+      <div class="gal-item"><img src="open-space.jpeg" alt="Open space"/></div>
+      <div class="gal-item"><img src="manager-coaching.jpeg" alt="Coaching"/></div>
+      <div class="gal-item"><img src="team-headsets.jpeg" alt="Agents"/></div>
+      <div class="gal-item"><img src="agent-male.jpeg" alt="Agent"/></div>
+      <div class="gal-item"><img src="agents-travail.jpeg" alt="Agents au travail"/></div>
+      <div class="gal-item"><img src="award.jpeg" alt="Trophée 2023"/></div>
+      <div class="gal-item"><img src="office.jpeg" alt="Bureau"/></div>
+      <div class="gal-item"><img src="team-office.jpeg" alt="Équipe bureau"/></div>
+      <div class="gal-item"><img src="training.jpeg" alt="Formation"/></div>
+      <div class="gal-item"><img src="training2.jpeg" alt="Formation 2"/></div>
+      <div class="gal-item"><img src="training3.jpeg" alt="Formation 3"/></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ VIDÉOS ══════════ -->
+<section class="video-section" id="videos">
+  <div class="vids-top">
+    <div class="hd fi" style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px">
+      <div>
+        <span class="eyebrow">Vidéos &amp; Interviews</span>
+        <h2 class="ttl">Notre vision, en images</h2>
+        <p class="sub">Découvrez Help'me Process à travers les mots de son co-fondateur et nos reportages</p>
+      </div>
+      <div style="flex-shrink:0;display:flex;align-items:center;gap:14px;background:#fff;border-radius:14px;padding:18px 22px;border:1px solid var(--border)">
+        <div style="width:56px;height:56px;border-radius:50%;overflow:hidden;border:2.5px solid var(--orange);flex-shrink:0">
+          <img src="award.jpeg" alt="Abdourahamane Cissé" style="width:100%;height:100%;object-fit:cover;object-position:top center"/>
+        </div>
+        <div>
+          <div style="font-weight:800;font-size:.95rem;color:var(--navy)">Abdourahamane Cissé</div>
+          <div style="font-size:.78rem;color:var(--orange);font-weight:600">Co-fondateur &amp; Directeur</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-video-wrap fi">
+      <div class="vid-label">🎤 Interview co-fondateur</div>
+      <div class="video-embed" id="ytWrap">
+        <div id="ytThumb" style="position:absolute;inset:0;cursor:pointer;background:#000" onclick="loadYT()">
+          <img src="https://img.youtube.com/vi/fQ_qigCUk20/maxresdefault.jpg"
+               onerror="this.src='https://img.youtube.com/vi/fQ_qigCUk20/hqdefault.jpg'"
+               style="width:100%;height:100%;object-fit:cover;opacity:.75"/>
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">
+            <div style="width:80px;height:80px;border-radius:50%;background:rgba(232,93,32,.92);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 32px rgba(0,0,0,.5);transition:transform .2s" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+          <div style="position:absolute;bottom:20px;left:20px;background:rgba(0,0,0,.7);color:#fff;padding:8px 16px;border-radius:8px;font-size:.82rem;font-weight:600">🎤 Interview co-fondateur — Abdourahamane Cissé</div>
+        </div>
+      </div>
+      <script>
+        function loadYT(){
+          document.getElementById('ytThumb').style.display='none';
+          var f=document.createElement('iframe');
+          f.src='https://www.youtube.com/embed/fQ_qigCUk20?start=499&autoplay=1&rel=0&modestbranding=1';
+          f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+          f.allowFullscreen=true;
+          f.style.cssText='position:absolute;inset:0;width:100%;height:100%;border:0';
+          document.getElementById('ytWrap').appendChild(f);
+        }
+      </script>
+    </div>
+
+    <div class="vids-grid fi">
+      <div class="vcard">
+        <div class="vcard-player">
+          <video controls preload="metadata">
+            <source src="video-boostez.mp4" type="video/mp4"/>
+          </video>
+        </div>
+        <div class="vcard-body">
+          <div class="vtag">Business</div>
+          <h4>Boostez Votre Entreprise</h4>
+          <p>Les clés pour accélérer votre croissance grâce à l'externalisation intelligente.</p>
+        </div>
+      </div>
+      <div class="vcard">
+        <div class="vcard-player">
+          <video controls preload="metadata">
+            <source src="video-emploi-guinee.mp4" type="video/mp4"/>
+          </video>
+        </div>
+        <div class="vcard-body">
+          <div class="vtag">Impact local</div>
+          <h4>Call Centers &amp; Emploi des Jeunes</h4>
+          <p>Pourquoi les call centers changent l'emploi des jeunes en Guinée.</p>
+        </div>
+      </div>
+      <div class="vcard">
+        <div class="vcard-player">
+          <video controls preload="metadata">
+            <source src="video-potentiel.mp4" type="video/mp4"/>
+          </video>
+        </div>
+        <div class="vcard-body">
+          <div class="vtag">International</div>
+          <h4>Débloquer le Potentiel des Call Centers</h4>
+          <p>Transformer les centres d'appels en Afrique pour le monde entier.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ TÉMOIGNAGES ══════════ -->
+<section class="testi" id="temoignages">
+  <div class="wrap">
+    <div class="hd c fi">
+      <span class="eyebrow">Ils nous font confiance</span>
+      <h2 class="ttl">Ce que disent nos clients</h2>
+      <p class="sub">Des partenariats durables fondés sur la confiance, la qualité et les résultats mesurables</p>
+    </div>
+    <div class="testi-grid">
+      <div class="tcard fi">
+        <div class="tcard-stars">★★★★★</div>
+        <q>Help'me Process a transformé notre service client. La qualité des agents et leur maîtrise du contexte guinéen ont permis d'augmenter notre satisfaction client de façon significative.</q>
+        <div class="tcard-author">
+          <div class="tcard-ava">KD</div>
+          <div>
+            <div class="tcard-name">Kofi Diallo</div>
+            <div class="tcard-role">Directeur Commercial, PME Conakry</div>
+          </div>
+        </div>
+      </div>
+      <div class="tcard fi fi-d1">
+        <div class="tcard-stars">★★★★★</div>
+        <q>Grâce à Help'me Process, nous avons pu externaliser notre support client francophone à un coût très compétitif. L'équipe est réactive, professionnelle et parfaitement formée.</q>
+        <div class="tcard-author">
+          <div class="tcard-ava">AM</div>
+          <div>
+            <div class="tcard-name">Aminata Magassouba</div>
+            <div class="tcard-role">Responsable Opérations, Startup Dakar</div>
+          </div>
+        </div>
+      </div>
+      <div class="tcard fi fi-d2">
+        <div class="tcard-stars">★★★★★</div>
+        <q>Un partenariat qui dépasse nos attentes. La maîtrise des langues nationales par leurs agents est un atout incomparable pour notre activité en Afrique de l'Ouest.</q>
+        <div class="tcard-author">
+          <div class="tcard-ava">IB</div>
+          <div>
+            <div class="tcard-name">Ibrahima Barry</div>
+            <div class="tcard-role">DG, Société Financière Guinée</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PROCESSUS ══════════ -->
+<section style="background:var(--light);padding:100px 64px" id="processus">
+  <div class="wrap">
+    <div class="hd c fi">
+      <span class="eyebrow">Comment ça marche</span>
+      <h2 class="ttl">Un démarrage rapide en 4 étapes</h2>
+      <p class="sub">De l'audit à la prise en charge opérationnelle — nous gérons tout</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;position:relative" id="steps">
+      <div style="position:absolute;top:38px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,var(--navy),var(--orange));z-index:0;opacity:.2"></div>
+      <div style="text-align:center;position:relative;z-index:1" class="fi">
+        <div style="width:76px;height:76px;border-radius:50%;margin:0 auto 20px;background:var(--navy);display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:900;color:#fff;box-shadow:0 6px 24px rgba(0,44,110,.25)">1</div>
+        <h3 style="font-size:.97rem;font-weight:700;margin-bottom:8px;color:var(--navy)">Analyse &amp; Audit</h3>
+        <p style="font-size:.84rem;color:var(--gray)">Nous étudions vos besoins et vous proposons une solution sur mesure</p>
+      </div>
+      <div style="text-align:center;position:relative;z-index:1" class="fi fi-d1">
+        <div style="width:76px;height:76px;border-radius:50%;margin:0 auto 20px;background:var(--navy);display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:900;color:#fff;box-shadow:0 6px 24px rgba(0,44,110,.25)">2</div>
+        <h3 style="font-size:.97rem;font-weight:700;margin-bottom:8px;color:var(--navy)">Formation dédiée</h3>
+        <p style="font-size:.84rem;color:var(--gray)">Nos agents sont formés à votre secteur, vos produits et vos scripts</p>
+      </div>
+      <div style="text-align:center;position:relative;z-index:1" class="fi fi-d2">
+        <div style="width:76px;height:76px;border-radius:50%;margin:0 auto 20px;background:var(--navy);display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:900;color:#fff;box-shadow:0 6px 24px rgba(0,44,110,.25)">3</div>
+        <h3 style="font-size:.97rem;font-weight:700;margin-bottom:8px;color:var(--navy)">Démarrage opérationnel</h3>
+        <p style="font-size:.84rem;color:var(--gray)">Lancement des opérations avec suivi qualité en temps réel</p>
+      </div>
+      <div style="text-align:center;position:relative;z-index:1" class="fi fi-d3">
+        <div style="width:76px;height:76px;border-radius:50%;margin:0 auto 20px;background:var(--orange);display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:900;color:#fff;box-shadow:0 6px 24px rgba(232,93,32,.3)">4</div>
+        <h3 style="font-size:.97rem;font-weight:700;margin-bottom:8px;color:var(--navy)">Reporting &amp; Optimisation</h3>
+        <p style="font-size:.84rem;color:var(--gray)">Bilans réguliers, optimisation continue, KPIs transparents</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CTA ══════════ -->
+<div class="cta-section">
+  <div style="position:relative;z-index:1;max-width:1280px;margin:0 auto">
+    <span class="eyebrow fi">Passez à l'action</span>
+    <h2 class="fi">Ensemble, construisons une relation client exceptionnelle</h2>
+    <p class="fi">Contactez-nous dès aujourd'hui pour un audit gratuit de vos besoins et une proposition sur mesure.</p>
+    <a href="#contact" class="btn-orange fi" style="display:inline-flex;margin:0 auto">Obtenir un devis gratuit →</a>
+  </div>
+</div>
+
+<!-- ══════════ CONTACT ══════════ -->
+<section class="contact" id="contact">
+  <div class="contact-grid">
+    <div class="ctc-info fi">
+      <span class="eyebrow">Contact</span>
+      <h2>Parlons de votre projet</h2>
+      <p>Vous souhaitez externaliser votre service client ou obtenir une solution sur mesure ? Notre équipe vous répond rapidement.</p>
+      <div class="ctc-items">
+        <div class="ctc-item">
+          <div class="ctc-ico">📞</div>
+          <div class="ctc-text">
+            <label>Téléphone</label>
+            <p><a href="tel:+224628935335">+224 628 93 53 35</a></p>
+          </div>
+        </div>
+        <div class="ctc-item">
+          <div class="ctc-ico">📍</div>
+          <div class="ctc-text">
+            <label>Adresse</label>
+            <p>Köbaya carrefour BBC, Immeuble Monopole<br>Commune de Lambanyi, Conakry</p>
+          </div>
+        </div>
+        <div class="ctc-item">
+          <div class="ctc-ico">🌍</div>
+          <div class="ctc-text">
+            <label>Marchés</label>
+            <p>National (Guinée) &amp; International</p>
+          </div>
+        </div>
+        <div class="ctc-item">
+          <div class="ctc-ico">🏆</div>
+          <div class="ctc-text">
+            <label>Distinction</label>
+            <p>Élu Meilleur Service Client 2023</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-box fi fi-d1">
+      <h3>Demande de devis gratuit</h3>
+      <div class="fr">
+        <div class="fg"><label>Prénom</label><input type="text" placeholder="Votre prénom"/></div>
+        <div class="fg"><label>Nom</label><input type="text" placeholder="Votre nom"/></div>
+      </div>
+      <div class="fg"><label>Email professionnel</label><input type="email" placeholder="vous@entreprise.com"/></div>
+      <div class="fg"><label>Téléphone</label><input type="tel" placeholder="+224 6XX XX XX XX"/></div>
+      <div class="fg">
+        <label>Service souhaité</label>
+        <select>
+          <option value="">Sélectionnez un service</option>
+          <option>Inbound — Réception d'appels</option>
+          <option>Outbound — Appels sortants</option>
+          <option>Back Office — Traitement de données</option>
+          <option>Offre mixte / sur mesure</option>
+        </select>
+      </div>
+      <div class="fg"><label>Message</label><textarea placeholder="Décrivez votre besoin, volume d'appels estimé, horaires souhaités…"></textarea></div>
+      <button class="form-btn" type="submit">Envoyer ma demande →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <div class="ft-top">
+    <div class="ft-brand">
+      <div class="ft-logo"><img src="logo.jpeg" alt="Help'me Process"/></div>
+      <p>Le call center professionnel de Guinée. Inbound, Outbound, Back Office — au service de vos clients, en toutes langues.</p>
+    </div>
+    <div class="ft-col">
+      <h4>Entreprise</h4>
+      <ul>
+        <li><a href="#about">Qui sommes-nous ?</a></li>
+        <li><a href="#services">Nos solutions</a></li>
+        <li><a href="#pourquoi">Pourquoi nous</a></li>
+        <li><a href="#temoignages">Témoignages</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Solutions</h4>
+      <ul>
+        <li><a href="#services">Front Office Inbound</a></li>
+        <li><a href="#services">Front Office Outbound</a></li>
+        <li><a href="#services">Back Office &amp; BPO</a></li>
+        <li><a href="#contact">Devis sur mesure</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+224628935335">+224 628 93 53 35</a></li>
+        <li><a href="#contact">Nous écrire</a></li>
+        <li><a href="#">LinkedIn</a></li>
+        <li><a href="#">WhatsApp</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <p>Help'me Process © 2025 — Conakry, République de Guinée. Tous droits réservés.</p>
+    <div class="socials">
+      <a href="#" class="soc">in</a>
+      <a href="#" class="soc">fb</a>
+      <a href="#" class="soc">wa</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════ FAB ══════════ -->
+<a href="tel:+224628935335" class="fab">📞 Appeler maintenant</a>
+
+<script>
+  // Navbar shadow
+  const nav=document.getElementById('nav');
+  window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>20)});
+
+  // Burger
+  const burger=document.getElementById('burger');
+  const mob=document.getElementById('mobnav');
+  burger.addEventListener('click',()=>mob.classList.toggle('open'));
+  function cm(){mob.classList.remove('open')}
+
+  // Rotating hero words
+  (function(){
+    const words=document.querySelectorAll('.hero-word');
+    if(!words.length) return;
+    let cur=0;
+    setInterval(()=>{
+      words[cur].classList.remove('active');
+      words[cur].classList.add('exit');
+      const prev=cur;
+      cur=(cur+1)%words.length;
+      words[cur].classList.add('active');
+      setTimeout(()=>words[prev].classList.remove('exit'),500);
+    },2400);
+  })();
+
+  // Animated counters for stats strip
+  function animateCount(el,target,suffix){
+    let start=0;
+    const dur=1800;
+    const step=target/dur*16;
+    const timer=setInterval(()=>{
+      start=Math.min(start+step,target);
+      el.textContent=Math.floor(start)+(suffix||'');
+      if(start>=target) clearInterval(timer);
+    },16);
+  }
+  const statsObserver=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.querySelectorAll('[data-count]').forEach(el=>{
+          animateCount(el,+el.dataset.count,el.dataset.suffix||'');
+        });
+        statsObserver.unobserve(e.target);
+      }
+    });
+  },{threshold:.3});
+  document.querySelectorAll('.stats-grid').forEach(el=>statsObserver.observe(el));
+
+  // IntersectionObserver fade-in
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})
+  },{threshold:.1});
+  document.querySelectorAll('.fi').forEach(el=>io.observe(el));
+
+  // Form submit
+  document.querySelector('.form-btn').addEventListener('click',function(e){
+    e.preventDefault();
+    this.textContent='✓ Demande envoyée !';
+    this.style.background='#16A34A';
+    setTimeout(()=>{this.textContent='Envoyer ma demande →';this.style.background=''},4000);
+  });
+</script>
+</body>
+</html>
