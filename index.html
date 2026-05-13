@@ -693,6 +693,105 @@
     .fab:hover{transform:scale(1.04)}
     @keyframes pulse{0%,100%{box-shadow:0 8px 32px rgba(232,93,32,.5)}50%{box-shadow:0 8px 48px rgba(232,93,32,.8)}}
 
+    /* ────────────────── INFRA CRM ────────────────── */
+    .infra{background:var(--navy);padding:100px 64px;overflow:hidden;position:relative}
+    .infra::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;border:1px solid rgba(255,255,255,.05);top:-200px;right:-150px}
+    .infra-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+    .infra-txt .eyebrow{color:var(--orange2)}
+    .infra-txt h2{font-size:clamp(1.8rem,3vw,2.4rem);font-weight:900;color:#fff;line-height:1.2;margin-bottom:20px}
+    .infra-txt p{color:rgba(255,255,255,.65);font-size:1rem;line-height:1.8;margin-bottom:36px}
+    .infra-items{display:flex;flex-direction:column;gap:20px}
+    .infra-item{
+      display:flex;gap:16px;padding:22px 24px;
+      background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+      border-radius:14px;transition:all .3s;
+    }
+    .infra-item:hover{background:rgba(255,255,255,.1);transform:translateX(6px)}
+    .infra-ico{
+      width:48px;height:48px;border-radius:12px;flex-shrink:0;
+      background:linear-gradient(135deg,var(--orange),var(--orange2));
+      display:flex;align-items:center;justify-content:center;font-size:1.3rem;
+    }
+    .infra-item-txt strong{display:block;color:#fff;font-size:.95rem;font-weight:700;margin-bottom:4px}
+    .infra-item-txt span{color:rgba(255,255,255,.55);font-size:.85rem;line-height:1.6}
+    .infra-visual{position:relative}
+    .infra-screen{
+      background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);
+      border-radius:20px;padding:28px;backdrop-filter:blur(10px);
+    }
+    .infra-screen-bar{display:flex;gap:6px;margin-bottom:20px}
+    .infra-screen-bar span{width:10px;height:10px;border-radius:50%}
+    .infra-screen-bar span:nth-child(1){background:#FF5F57}
+    .infra-screen-bar span:nth-child(2){background:#FFBD2E}
+    .infra-screen-bar span:nth-child(3){background:#28CA41}
+    .infra-kpi-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+    .infra-kpi{background:rgba(255,255,255,.08);border-radius:10px;padding:16px;text-align:center}
+    .infra-kpi strong{display:block;font-size:1.6rem;font-weight:800;color:#fff}
+    .infra-kpi span{font-size:.72rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.05em}
+    .infra-bar-wrap{background:rgba(255,255,255,.08);border-radius:10px;padding:16px}
+    .infra-bar-label{font-size:.75rem;color:rgba(255,255,255,.5);margin-bottom:10px;display:flex;justify-content:space-between}
+    .infra-bar-track{height:6px;background:rgba(255,255,255,.1);border-radius:3px;margin-bottom:8px;overflow:hidden}
+    .infra-bar-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--orange),var(--orange2))}
+    .infra-calls{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+    .infra-call{
+      display:flex;align-items:center;gap:10px;padding:10px 14px;
+      background:rgba(255,255,255,.06);border-radius:8px;
+    }
+    .call-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+    .call-dot.active{background:#4ADE80;animation:blink 1.5s infinite}
+    .call-dot.hold{background:#FACC15}
+    .call-dot.queue{background:rgba(255,255,255,.3)}
+    .infra-call span{font-size:.78rem;color:rgba(255,255,255,.65)}
+    .infra-call strong{margin-left:auto;font-size:.72rem;color:rgba(255,255,255,.4)}
+
+    /* ────────────────── DÉCIDEURS ────────────────── */
+    .decideurs{background:var(--light);padding:100px 64px}
+    .decideurs-inner{max-width:1280px;margin:0 auto}
+    .decideurs-intro{text-align:center;max-width:680px;margin:0 auto 60px}
+    .cas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:56px}
+    .cas-card{
+      background:#fff;border-radius:18px;padding:32px;
+      border:1px solid var(--border);position:relative;overflow:hidden;
+      transition:all .3s;
+    }
+    .cas-card::before{
+      content:'';position:absolute;top:0;left:0;right:0;height:4px;
+      background:linear-gradient(90deg,var(--navy),var(--navy2));
+    }
+    .cas-card:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(0,44,110,.12)}
+    .cas-problem{
+      display:flex;align-items:flex-start;gap:12px;
+      background:#FEF2F2;border-radius:10px;padding:14px;margin-bottom:20px;
+    }
+    .cas-problem-ico{font-size:1.2rem;flex-shrink:0}
+    .cas-problem p{font-size:.85rem;color:#B91C1C;line-height:1.6;font-weight:500}
+    .cas-arrow{text-align:center;font-size:1.2rem;margin:0 0 16px;color:var(--orange)}
+    .cas-solution{
+      display:flex;align-items:flex-start;gap:12px;
+      background:#F0FDF4;border-radius:10px;padding:14px;margin-bottom:20px;
+    }
+    .cas-solution-ico{font-size:1.2rem;flex-shrink:0}
+    .cas-solution p{font-size:.85rem;color:#15803D;line-height:1.6;font-weight:500}
+    .cas-result{
+      display:flex;align-items:center;gap:10px;
+      padding-top:18px;border-top:1px solid var(--border);
+    }
+    .cas-result strong{font-size:1.4rem;font-weight:900;color:var(--navy)}
+    .cas-result span{font-size:.82rem;color:var(--gray);line-height:1.4}
+    .cas-sector{
+      position:absolute;top:20px;right:20px;
+      font-size:.7rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+      padding:3px 10px;border-radius:50px;background:var(--light);color:var(--gray);
+    }
+    .decideurs-cta{
+      text-align:center;padding:48px;
+      background:linear-gradient(135deg,var(--navy3),var(--navy));
+      border-radius:24px;color:#fff;
+    }
+    .decideurs-cta h3{font-size:1.6rem;font-weight:800;margin-bottom:12px}
+    .decideurs-cta p{color:rgba(255,255,255,.65);margin-bottom:28px;font-size:.95rem}
+    .decideurs-cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+
     /* ────────────────── FADE IN ────────────────── */
     .fi{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
     .fi.on{opacity:1;transform:translateY(0)}
@@ -801,7 +900,7 @@
         </span>
       </div>
 
-      <p class="hero-desc">Help'me Process est le premier call center de référence à Conakry — 30 agents d'élite, formés, multilingues, au service de vos clients nationaux et internationaux. Zéro compromis sur la qualité.</p>
+      <p class="hero-desc">Help'me Process est le premier call center de référence à Conakry — une équipe d'élite, formée, multilingue, portée par une infrastructure CRM de pointe, au service de vos clients nationaux et internationaux. Zéro compromis sur la qualité.</p>
 
       <div class="hero-actions">
         <a href="#services" class="btn-orange">Découvrir nos solutions →</a>
@@ -1016,7 +1115,7 @@
         <img src="hero-team.jpeg" alt="Agents qualifiés"/>
         <div class="why-visual-overlay"></div>
         <div class="why-visual-content">
-          <span class="why-chip">30+ agents</span>
+          <span class="why-chip">Équipe scalable</span>
           <div class="why-visual-ico">👥</div>
           <h3>Équipe structurée & scalable</h3>
           <p>Managers, agents et superviseurs formés aux standards internationaux — prêts à s'adapter à vos volumes et pics d'activité en temps réel.</p>
@@ -1338,6 +1437,140 @@
   </div>
 </section>
 
+<!-- ══════════ INFRASTRUCTURE CRM ══════════ -->
+<section class="infra" id="infrastructure">
+  <div class="infra-inner">
+    <div class="infra-txt fi">
+      <span class="eyebrow">Technologie & Infrastructure</span>
+      <h2>Un arsenal technique au niveau des meilleurs</h2>
+      <p>Derrière chaque appel, une infrastructure professionnelle qui garantit fluidité, traçabilité et performance. Pas d'improvisation — des outils pensés pour l'excellence.</p>
+      <div class="infra-items">
+        <div class="infra-item">
+          <div class="infra-ico">🖥️</div>
+          <div class="infra-item-txt">
+            <strong>CRM dédié à la gestion de votre clientèle</strong>
+            <span>Chaque interaction client est tracée, historisée et accessible en temps réel. Vos données sont centralisées, sécurisées et exploitables pour prendre de meilleures décisions.</span>
+          </div>
+        </div>
+        <div class="infra-item">
+          <div class="infra-ico">📞</div>
+          <div class="infra-item-txt">
+            <strong>Système d'appel multi-lignes simultanées</strong>
+            <span>Notre plateforme téléphonique permet d'émettre et recevoir des dizaines d'appels en parallèle — files d'attente intelligentes, transferts automatiques, enregistrement de qualité.</span>
+          </div>
+        </div>
+        <div class="infra-item">
+          <div class="infra-ico">📊</div>
+          <div class="infra-item-txt">
+            <strong>Reporting en temps réel & tableaux de bord</strong>
+            <span>Suivez vos KPIs en direct : taux de décrochage, durée moyenne de traitement, satisfaction client, volume d'appels. Vos données, lisibles et actionnables.</span>
+          </div>
+        </div>
+        <div class="infra-item">
+          <div class="infra-ico">🔒</div>
+          <div class="infra-item-txt">
+            <strong>Sécurité & confidentialité des données</strong>
+            <span>Protocoles de sécurité stricts, accès cloisonnés par campagne, enregistrements chiffrés. La confidentialité de vos clients est une priorité non négociable.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="infra-visual fi fi-d2">
+      <div class="infra-screen">
+        <div class="infra-screen-bar"><span></span><span></span><span></span></div>
+        <div class="infra-kpi-grid">
+          <div class="infra-kpi"><strong id="ic1">0</strong><span>Appels / jour</span></div>
+          <div class="infra-kpi"><strong id="ic2">0%</strong><span>Décrochage</span></div>
+          <div class="infra-kpi"><strong id="ic3">0s</strong><span>Attente moy.</span></div>
+          <div class="infra-kpi"><strong id="ic4">0%</strong><span>Satisfaction</span></div>
+        </div>
+        <div class="infra-bar-wrap">
+          <div class="infra-bar-label"><span>Capacité lignes actives</span><span id="icap">0%</span></div>
+          <div class="infra-bar-track"><div class="infra-bar-fill" id="ibar" style="width:0%"></div></div>
+          <div class="infra-bar-label"><span>CRM — dossiers traités</span><span id="icrm">0%</span></div>
+          <div class="infra-bar-track"><div class="infra-bar-fill" id="ibar2" style="width:0%"></div></div>
+        </div>
+        <div class="infra-calls">
+          <div class="infra-call"><div class="call-dot active"></div><span>Ligne 1 — Appel entrant SAV</span><strong>02:14</strong></div>
+          <div class="infra-call"><div class="call-dot active"></div><span>Ligne 2 — Prospection outbound</span><strong>00:47</strong></div>
+          <div class="infra-call"><div class="call-dot hold"></div><span>Ligne 3 — En attente transfert</span><strong>00:08</strong></div>
+          <div class="infra-call"><div class="call-dot queue"></div><span>Ligne 4 — File d'attente (2)</span><strong>—</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ DÉCIDEURS ══════════ -->
+<section class="decideurs" id="decideurs">
+  <div class="decideurs-inner">
+    <div class="decideurs-intro fi">
+      <span class="eyebrow">Pour les décideurs d'entreprise</span>
+      <h2 class="ttl">Pourquoi votre entreprise a besoin d'un call center professionnel</h2>
+      <p class="sub">Un client mal pris en charge est un client perdu. Un appel sans réponse est une opportunité offerte à votre concurrent. Voici des situations réelles — et comment Help'me Process les résout.</p>
+    </div>
+
+    <div class="cas-grid">
+      <div class="cas-card fi">
+        <span class="cas-sector">Commerce & Retail</span>
+        <div class="cas-problem"><div class="cas-problem-ico">😤</div><p>Vos clients appellent, personne ne répond. Ils abandonnent et commandent chez un concurrent. Vous perdez 30% de vos ventes potentielles.</p></div>
+        <div class="cas-arrow">↓</div>
+        <div class="cas-solution"><div class="cas-solution-ico">✅</div><p>Help'me Process prend en charge tous vos appels entrants — 6j/7, multi-lignes — avec des agents formés à vos produits, votre ton, votre culture client.</p></div>
+        <div class="cas-result"><strong>+30%</strong><span>de commandes converties grâce à un accueil réactif</span></div>
+      </div>
+
+      <div class="cas-card fi fi-d1">
+        <span class="cas-sector">Banque & Finance</span>
+        <div class="cas-problem"><div class="cas-problem-ico">⏳</div><p>Vos clients attendent 20 minutes pour joindre le service client. La frustration monte, les réclamations explosent, votre réputation se dégrade.</p></div>
+        <div class="cas-arrow">↓</div>
+        <div class="cas-solution"><div class="cas-solution-ico">✅</div><p>Notre système multi-lignes garantit un décroché rapide. File d'attente intelligente, rappel automatique, traitement des réclamations en temps réel via CRM.</p></div>
+        <div class="cas-result"><strong>-65%</strong><span>de temps d'attente moyen sur les campagnes SAV</span></div>
+      </div>
+
+      <div class="cas-card fi fi-d2">
+        <span class="cas-sector">Santé & Services</span>
+        <div class="cas-problem"><div class="cas-problem-ico">📋</div><p>Votre équipe interne gère les appels entre deux tâches. Les rendez-vous sont mal gérés, les informations se perdent, les patients ou clients se sentent délaissés.</p></div>
+        <div class="cas-arrow">↓</div>
+        <div class="cas-solution"><div class="cas-solution-ico">✅</div><p>Externalisation complète de votre accueil téléphonique. Prise de rendez-vous, confirmation, rappels automatiques — tout est tracé dans notre CRM dédié.</p></div>
+        <div class="cas-result"><strong>100%</strong><span>des appels documentés, zéro information perdue</span></div>
+      </div>
+
+      <div class="cas-card fi">
+        <span class="cas-sector">E-commerce</span>
+        <div class="cas-problem"><div class="cas-problem-ico">🛒</div><p>Votre boutique en ligne génère des paniers abandonnés. Vous n'avez ni le temps ni les ressources pour rappeler chaque prospect chaud et les convertir.</p></div>
+        <div class="cas-arrow">↓</div>
+        <div class="cas-solution"><div class="cas-solution-ico">✅</div><p>Nos agents outbound relancent vos prospects ciblés avec un script personnalisé. Qualification, argumentation, conversion — on s'occupe de tout.</p></div>
+        <div class="cas-result"><strong>+45%</strong><span>de taux de conversion sur les paniers abandonnés relancés</span></div>
+      </div>
+
+      <div class="cas-card fi fi-d1">
+        <span class="cas-sector">Télécoms & Tech</span>
+        <div class="cas-problem"><div class="cas-problem-ico">🔧</div><p>Votre support technique est saturé. Les tickets s'accumulent, les clients cherchent d'autres solutions, et votre NPS s'effondre mois après mois.</p></div>
+        <div class="cas-arrow">↓</div>
+        <div class="cas-solution"><div class="cas-solution-ico">✅</div><p>Une équipe Back Office dédiée traite vos tickets de niveau 1, décharge vos équipes techniques, et escalade uniquement les cas complexes — avec tout le contexte dans le CRM.</p></div>
+        <div class="cas-result"><strong>-70%</strong><span>de tickets non résolus grâce au traitement Back Office dédié</span></div>
+      </div>
+
+      <div class="cas-card fi fi-d2">
+        <span class="cas-sector">Immobilier & BTP</span>
+        <div class="cas-problem"><div class="cas-problem-ico">📞</div><p>Vos commerciaux passent leur temps à appeler des leads non qualifiés. Résultat : énergie gaspillée, quota non atteint, coût d'acquisition client qui s'envole.</p></div>
+        <div class="cas-arrow">↓</div>
+        <div class="cas-solution"><div class="cas-solution-ico">✅</div><p>Help'me Process qualifie vos leads en amont : appels de présélection, scoring, prise de RDV. Vos commerciaux ne reçoivent que des prospects chauds et prêts à signer.</p></div>
+        <div class="cas-result"><strong>×3</strong><span>de productivité commerciale sur les projets de qualification de leads</span></div>
+      </div>
+    </div>
+
+    <div class="decideurs-cta fi">
+      <h3>Votre secteur n'est pas listé ? Chaque problème a une solution.</h3>
+      <p>Chaque entreprise a des besoins uniques. Parlons-en — notre équipe vous propose un diagnostic gratuit et une solution sur mesure sous 48h.</p>
+      <div class="decideurs-cta-btns">
+        <a href="#contact" class="btn-orange">Demander un diagnostic gratuit →</a>
+        <a href="#services" class="btn-ghost-light" style="padding:14px 28px;border-radius:50px;border:1.5px solid rgba(255,255,255,.3);color:#fff;text-decoration:none;font-weight:600;font-size:.9rem;transition:all .2s">Voir nos solutions</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ══════════ CTA ══════════ -->
 <div class="cta-section">
   <div style="position:relative;z-index:1;max-width:1280px;margin:0 auto">
@@ -1513,6 +1746,32 @@
     entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})
   },{threshold:.1});
   document.querySelectorAll('.fi').forEach(el=>io.observe(el));
+
+  // Infra CRM counters
+  let infraDone=false;
+  const infraObs=new IntersectionObserver(entries=>{
+    if(entries[0].isIntersecting && !infraDone){
+      infraDone=true;
+      function anim(id,to,suf,dur){
+        const el=document.getElementById(id);if(!el)return;
+        let cur=0;const step=to/(dur/16);
+        const t=setInterval(()=>{cur=Math.min(cur+step,to);el.textContent=Math.round(cur)+suf;if(cur>=to)clearInterval(t)},16);
+      }
+      function animBar(id,to,dur,labelId){
+        const el=document.getElementById(id);if(!el)return;
+        let cur=0;const step=to/(dur/16);
+        const t=setInterval(()=>{cur=Math.min(cur+step,to);el.style.width=Math.round(cur)+'%';if(labelId)document.getElementById(labelId).textContent=Math.round(cur)+'%';if(cur>=to)clearInterval(t)},16);
+      }
+      anim('ic1',320,'',1600);
+      anim('ic2',94,'%',1400);
+      anim('ic3',18,'s',1200);
+      anim('ic4',97,'%',1500);
+      animBar('ibar',78,1800,'icap');
+      animBar('ibar2',91,2000,'icrm');
+    }
+  },{threshold:.3});
+  const infraSec=document.getElementById('infrastructure');
+  if(infraSec)infraObs.observe(infraSec);
 
   // Form submit
   document.querySelector('.form-btn').addEventListener('click',function(e){

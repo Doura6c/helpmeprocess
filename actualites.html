@@ -20,7 +20,10 @@
     nav{position:fixed;inset:0 0 auto;z-index:999;height:72px;display:flex;align-items:center;padding:0 64px;background:#fff;border-bottom:1px solid var(--border);transition:box-shadow .3s}
     nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.08)}
     .nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:1280px;margin:0 auto}
-    .nav-logo img{height:42px;display:block}
+    .nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+    .nav-logo img{height:44px;display:block}
+    .nav-logo-text strong{display:block;font-size:.92rem;font-weight:800;color:var(--navy)}
+    .nav-logo-text span{display:block;font-size:.68rem;font-weight:500;color:var(--orange);letter-spacing:.04em;text-transform:uppercase}
     .nav-links{display:flex;align-items:center;gap:8px;list-style:none}
     .nav-links a{text-decoration:none;color:var(--text2);font-weight:500;font-size:.9rem;padding:8px 16px;border-radius:6px;transition:all .2s}
     .nav-links a:hover,.nav-links a.active{color:var(--navy);background:var(--light)}
@@ -34,106 +37,157 @@
 
     /* HERO PAGE */
     .page-hero{
-      padding:140px 64px 80px;
-      background:linear-gradient(135deg,var(--navy3) 0%,var(--navy) 100%);
-      text-align:center;
+      padding:130px 64px 72px;
+      background:linear-gradient(135deg,var(--navy3) 0%,var(--navy) 60%,var(--navy2) 100%);
+      position:relative;overflow:hidden;
     }
-    .page-hero .eyebrow{color:var(--orange2);font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;display:block;margin-bottom:16px}
-    .page-hero h1{font-size:clamp(2rem,4vw,3.2rem);font-weight:900;color:#fff;letter-spacing:-.02em;margin-bottom:16px}
-    .page-hero p{color:rgba(255,255,255,.6);font-size:1rem;max-width:520px;margin:0 auto;line-height:1.75}
+    .page-hero::after{
+      content:'ACTUALITÉS';
+      position:absolute;right:-20px;top:50%;transform:translateY(-50%);
+      font-size:9rem;font-weight:900;color:rgba(255,255,255,.04);
+      letter-spacing:.1em;white-space:nowrap;pointer-events:none;
+    }
+    .page-hero-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;position:relative}
+    .page-hero-left .eyebrow{color:var(--orange2);font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;display:block;margin-bottom:16px}
+    .page-hero-left h1{font-size:clamp(2rem,4vw,3rem);font-weight:900;color:#fff;letter-spacing:-.02em;margin-bottom:14px;line-height:1.15}
+    .page-hero-left p{color:rgba(255,255,255,.6);font-size:.97rem;max-width:480px;line-height:1.75}
+    .page-hero-stats{display:flex;gap:32px;flex-wrap:wrap}
+    .ph-stat strong{display:block;font-size:1.8rem;font-weight:900;color:#fff}
+    .ph-stat span{font-size:.78rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.05em}
 
     /* FILTERS */
-    .filters{background:#fff;border-bottom:1px solid var(--border);padding:20px 64px;position:sticky;top:72px;z-index:10}
-    .filters-inner{max-width:1280px;margin:0 auto;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    .filters{background:#fff;border-bottom:1px solid var(--border);padding:0 64px;position:sticky;top:72px;z-index:10}
+    .filters-inner{max-width:1280px;margin:0 auto;display:flex;gap:6px;align-items:center;overflow-x:auto;scrollbar-width:none;padding:14px 0}
+    .filters-inner::-webkit-scrollbar{display:none}
     .filter-btn{
-      padding:8px 20px;border-radius:50px;border:1.5px solid var(--border);
+      white-space:nowrap;padding:8px 18px;border-radius:50px;border:1.5px solid var(--border);
       background:#fff;font-family:'Inter',sans-serif;font-size:.82rem;font-weight:600;
-      color:var(--text2);cursor:pointer;transition:all .2s;
+      color:var(--gray);cursor:pointer;transition:all .2s;flex-shrink:0;
     }
     .filter-btn:hover,.filter-btn.active{background:var(--navy);color:#fff;border-color:var(--navy)}
-    .filter-btn.cat-orange{border-color:rgba(232,93,32,.3);color:var(--orange)}
-    .filter-btn.cat-orange:hover,.filter-btn.cat-orange.active{background:var(--orange);color:#fff;border-color:var(--orange)}
 
-    /* GRID */
-    section.news{padding:72px 64px 100px}
+    /* SECTION NEWS */
+    section.news{padding:72px 64px 100px;background:#fff}
     .news-wrap{max-width:1280px;margin:0 auto}
+
+    /* FEATURED — magazine style */
     .news-featured{
-      display:grid;grid-template-columns:1.6fr 1fr;gap:28px;
-      margin-bottom:28px;
+      display:grid;grid-template-columns:1.8fr 1fr;gap:24px;
+      margin-bottom:56px;
     }
     .art-big{
       border-radius:20px;overflow:hidden;
-      border:1px solid var(--border);
+      box-shadow:0 2px 16px rgba(0,0,0,.06);
       display:flex;flex-direction:column;
-      transition:all .3s;cursor:pointer;
+      transition:all .35s;cursor:pointer;
+      border:1px solid var(--border);
     }
-    .art-big:hover{box-shadow:0 12px 48px rgba(0,0,0,.1);transform:translateY(-4px)}
-    .art-img{overflow:hidden;height:300px}
-    .art-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
-    .art-big:hover .art-img img{transform:scale(1.05)}
-    .art-body{padding:32px;flex:1;display:flex;flex-direction:column}
+    .art-big:hover{box-shadow:0 16px 56px rgba(0,44,110,.14);transform:translateY(-5px)}
+    .art-img{overflow:hidden;position:relative}
+    .art-img img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .6s ease}
+    .art-big .art-img{height:340px}
+    .art-big:hover .art-img img{transform:scale(1.04)}
+    .art-award-ribbon{
+      position:absolute;top:16px;left:16px;
+      background:linear-gradient(135deg,#F59E0B,#D97706);
+      color:#fff;font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;
+      padding:6px 14px;border-radius:50px;display:flex;align-items:center;gap:6px;
+      box-shadow:0 4px 12px rgba(217,119,6,.4);
+    }
+    .art-body{padding:28px 32px 32px;flex:1;display:flex;flex-direction:column;background:#fff}
     .art-cat{
-      display:inline-block;padding:4px 14px;border-radius:50px;
+      display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:50px;
       font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
-      margin-bottom:14px;
+      margin-bottom:14px;width:fit-content;
     }
-    .cat-actu{background:rgba(0,44,110,.1);color:var(--navy)}
-    .cat-presse{background:rgba(232,93,32,.12);color:var(--orange)}
-    .cat-emploi{background:rgba(34,197,94,.12);color:#16A34A}
-    .cat-prix{background:rgba(234,179,8,.12);color:#854D0E}
-    .art-body h2{font-size:1.3rem;font-weight:800;color:var(--navy);line-height:1.3;margin-bottom:10px}
-    .art-body h3{font-size:1.05rem;font-weight:700;color:var(--navy);line-height:1.35;margin-bottom:8px}
-    .art-body p{font-size:.88rem;color:var(--gray);line-height:1.75;flex:1}
-    .art-meta{display:flex;align-items:center;gap:16px;margin-top:20px;padding-top:18px;border-top:1px solid var(--border)}
-    .art-date{font-size:.78rem;color:var(--gray);font-weight:500}
+    .cat-prix{background:#FEF9C3;color:#854D0E;border:1px solid #FDE047}
+    .cat-actu{background:#EFF6FF;color:var(--navy);border:1px solid #BFDBFE}
+    .cat-presse{background:#FFF7ED;color:var(--orange);border:1px solid #FED7AA}
+    .cat-emploi{background:#F0FDF4;color:#15803D;border:1px solid #BBF7D0}
+    .cat-bpo{background:#F5F3FF;color:#6D28D9;border:1px solid #DDD6FE}
+    .art-body h2{font-size:1.35rem;font-weight:800;color:var(--navy);line-height:1.3;margin-bottom:12px}
+    .art-body h3{font-size:1rem;font-weight:700;color:var(--navy);line-height:1.4;margin-bottom:8px}
+    .art-body p{font-size:.88rem;color:var(--gray);line-height:1.8;flex:1;margin-bottom:0}
+    .art-meta{display:flex;align-items:center;gap:12px;margin-top:20px;padding-top:16px;border-top:1px solid var(--border)}
+    .art-ava{width:32px;height:32px;border-radius:50%;overflow:hidden;flex-shrink:0}
+    .art-ava img{width:100%;height:100%;object-fit:cover;object-position:top center}
+    .art-author{font-size:.78rem;font-weight:600;color:var(--text2)}
+    .art-date{font-size:.75rem;color:var(--gray2)}
     .art-lire{
-      margin-left:auto;display:inline-flex;align-items:center;gap:6px;
-      color:var(--orange);font-weight:600;font-size:.8rem;text-decoration:none;transition:gap .2s;
+      margin-left:auto;display:inline-flex;align-items:center;gap:5px;
+      color:var(--orange);font-weight:700;font-size:.8rem;text-decoration:none;
+      transition:gap .2s,color .2s;white-space:nowrap;
     }
-    .art-lire:hover{gap:10px}
+    .art-lire:hover{gap:10px;color:var(--orange2)}
 
-    /* small articles col */
+    /* SIDE ARTICLES */
     .art-side{display:flex;flex-direction:column;gap:16px}
     .art-sm{
-      border-radius:16px;overflow:hidden;border:1px solid var(--border);
-      display:flex;gap:0;flex-direction:column;transition:all .3s;cursor:pointer;
+      border-radius:14px;overflow:hidden;border:1px solid var(--border);
+      display:flex;flex-direction:row;transition:all .3s;cursor:pointer;background:#fff;
+      box-shadow:0 1px 8px rgba(0,0,0,.04);
     }
-    .art-sm:hover{box-shadow:0 6px 28px rgba(0,0,0,.08);transform:translateY(-3px)}
-    .art-sm .art-img{height:160px}
-    .art-sm .art-body{padding:20px}
-    .art-sm .art-body h3{font-size:.95rem}
+    .art-sm:hover{box-shadow:0 8px 28px rgba(0,44,110,.1);transform:translateY(-3px)}
+    .art-sm .art-img{width:100px;min-width:100px;height:auto}
+    .art-sm .art-body{padding:16px;flex:1}
+    .art-sm .art-body h3{font-size:.88rem;line-height:1.4;margin-bottom:6px}
+    .art-sm .art-meta{margin-top:10px;padding-top:10px}
 
-    /* GRID 3 cols */
-    .news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:28px}
+    /* SEPARATOR */
+    .news-sep{display:flex;align-items:center;gap:16px;margin:48px 0 36px}
+    .news-sep h2{font-size:1.1rem;font-weight:800;color:var(--navy);white-space:nowrap}
+    .news-sep-line{flex:1;height:1px;background:var(--border)}
+    .news-sep-count{font-size:.78rem;color:var(--gray);background:var(--light);padding:4px 12px;border-radius:50px;white-space:nowrap}
+
+    /* GRID */
+    .news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
     .art-card{
       border-radius:16px;overflow:hidden;border:1px solid var(--border);
-      display:flex;flex-direction:column;transition:all .3s;cursor:pointer;
+      display:flex;flex-direction:column;transition:all .35s;cursor:pointer;background:#fff;
+      box-shadow:0 1px 8px rgba(0,0,0,.04);
     }
-    .art-card:hover{box-shadow:0 8px 36px rgba(0,0,0,.09);transform:translateY(-4px)}
-    .art-card .art-img{height:200px}
-    .art-card .art-body{padding:24px;flex:1;display:flex;flex-direction:column}
-    .art-card .art-body h3{font-size:1rem}
+    .art-card:hover{box-shadow:0 12px 40px rgba(0,44,110,.12);transform:translateY(-5px)}
+    .art-card .art-img{height:190px}
+    .art-card .art-body{padding:22px;flex:1;display:flex;flex-direction:column}
+    .art-card .art-body h3{font-size:.97rem;margin-bottom:8px}
+    .art-card .art-body p{font-size:.84rem;color:var(--gray);line-height:1.7;flex:1}
+
+    /* ARTICLE FEATURED BPO (big analysis) */
+    .art-analysis{
+      background:linear-gradient(135deg,var(--navy3),var(--navy));
+      border-radius:20px;padding:40px;display:grid;grid-template-columns:1fr auto;gap:32px;
+      align-items:center;margin-top:24px;cursor:pointer;transition:all .3s;
+      border:1px solid rgba(255,255,255,.08);
+    }
+    .art-analysis:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(0,44,110,.3)}
+    .art-analysis-txt h3{font-size:1.3rem;font-weight:800;color:#fff;margin-bottom:10px;line-height:1.3}
+    .art-analysis-txt p{color:rgba(255,255,255,.6);font-size:.88rem;line-height:1.7;max-width:600px}
+    .art-analysis-txt .art-meta{border-color:rgba(255,255,255,.15);margin-top:20px}
+    .art-analysis-txt .art-date{color:rgba(255,255,255,.4)}
+    .art-analysis-txt .art-lire{color:var(--orange2)}
+    .art-analysis-badge{
+      background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);
+      border-radius:14px;padding:20px 24px;text-align:center;flex-shrink:0;
+    }
+    .art-analysis-badge strong{display:block;font-size:2rem;font-weight:900;color:#fff}
+    .art-analysis-badge span{font-size:.72rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.06em}
 
     /* NEWSLETTER */
     .newsletter{
-      background:var(--navy);padding:80px 64px;text-align:center;margin-top:80px;
+      background:linear-gradient(135deg,var(--navy3),var(--navy));
+      padding:80px 64px;text-align:center;position:relative;overflow:hidden;
     }
-    .newsletter h2{font-size:2rem;font-weight:800;color:#fff;margin-bottom:12px}
-    .newsletter p{color:rgba(255,255,255,.55);margin-bottom:36px}
-    .nl-form{display:flex;gap:12px;max-width:480px;margin:0 auto;flex-wrap:wrap}
-    .nl-input{
-      flex:1;min-width:220px;padding:14px 20px;border-radius:50px;border:none;
-      font-family:'Inter',sans-serif;font-size:.93rem;outline:none;
-    }
-    .nl-btn{
-      padding:14px 28px;border-radius:50px;border:none;background:var(--orange);
-      color:#fff;font-family:'Inter',sans-serif;font-weight:700;font-size:.9rem;cursor:pointer;transition:background .2s;
-    }
-    .nl-btn:hover{background:var(--orange2)}
+    .newsletter::before{content:'';position:absolute;width:500px;height:500px;border-radius:50%;border:1px solid rgba(255,255,255,.05);top:-200px;right:-100px}
+    .newsletter h2{font-size:2rem;font-weight:800;color:#fff;margin-bottom:12px;position:relative}
+    .newsletter p{color:rgba(255,255,255,.55);margin-bottom:36px;position:relative;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.7}
+    .nl-form{display:flex;gap:12px;max-width:500px;margin:0 auto;flex-wrap:wrap;position:relative}
+    .nl-input{flex:1;min-width:220px;padding:14px 22px;border-radius:50px;border:none;font-family:'Inter',sans-serif;font-size:.93rem;outline:none;box-shadow:0 4px 16px rgba(0,0,0,.15)}
+    .nl-btn{padding:14px 28px;border-radius:50px;border:none;background:var(--orange);color:#fff;font-family:'Inter',sans-serif;font-weight:700;font-size:.9rem;cursor:pointer;transition:all .2s;box-shadow:0 4px 16px rgba(232,93,32,.4)}
+    .nl-btn:hover{background:var(--orange2);transform:translateY(-2px)}
 
     /* FOOTER */
-    footer{background:var(--dark);padding:48px 64px 28px}
-    .ft-bottom{max-width:1280px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding-top:20px}
+    footer{background:var(--dark);padding:40px 64px 24px}
+    .ft-bottom{max-width:1280px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
     .ft-bottom p{font-size:.82rem;color:rgba(255,255,255,.3)}
     .ft-logo img{height:36px;filter:brightness(0) invert(1);opacity:.5}
     .ft-links{display:flex;gap:24px}
@@ -141,20 +195,24 @@
     .ft-links a:hover{color:#fff}
 
     /* FADE */
-    .fi{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+    .fi{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
     .fi.on{opacity:1;transform:translateY(0)}
     .fi-d1{transition-delay:.1s}.fi-d2{transition-delay:.2s}.fi-d3{transition-delay:.3s}
 
     /* RESPONSIVE */
-    @media(max-width:1100px){nav{padding:0 32px}.page-hero,.filters,.news,.newsletter{padding-left:32px;padding-right:32px}}
-    @media(max-width:900px){.news-featured{grid-template-columns:1fr}.news-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:1100px){nav,.page-hero,.filters,section.news,.newsletter,footer{padding-left:32px;padding-right:32px}}
+    @media(max-width:900px){
+      .news-featured{grid-template-columns:1fr}
+      .news-grid{grid-template-columns:1fr 1fr}
+      .art-analysis{grid-template-columns:1fr}
+      .art-analysis-badge{display:none}
+    }
     @media(max-width:640px){
-      .nav-links{display:none}.burger{display:flex}
-      .page-hero{padding:120px 20px 60px}.filters{padding:16px 20px}
-      .news{padding:48px 20px 80px}.newsletter{padding:56px 20px}
+      .nav-links{display:none}.burger{display:flex}.nav-logo-text{display:none}
+      .page-hero,.filters,section.news,.newsletter,footer{padding-left:20px;padding-right:20px}
       .news-grid{grid-template-columns:1fr}
-      footer{padding:40px 20px 20px}
       .nl-form{flex-direction:column}.nl-input,.nl-btn{width:100%;border-radius:12px}
+      .art-analysis{padding:24px}
     }
   </style>
 </head>
@@ -163,7 +221,10 @@
 <!-- NAV -->
 <nav id="nav">
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo"><img src="logo.jpeg" alt="Help'me Process"/></a>
+    <a href="index.html" class="nav-logo">
+      <img src="logo.jpeg" alt="Help'me Process"/>
+      <div class="nav-logo-text"><strong>Help'me Process</strong><span>Call Center · Conakry</span></div>
+    </a>
     <ul class="nav-links">
       <li><a href="index.html#about">Qui sommes-nous ?</a></li>
       <li><a href="index.html#services">Nos solutions</a></li>
@@ -185,9 +246,18 @@
 
 <!-- PAGE HERO -->
 <div class="page-hero">
-  <span class="eyebrow">Toute l'actualité</span>
-  <h1>Actualités Help'me Process</h1>
-  <p>Restez informé de nos dernières nouvelles, distinctions, événements et réflexions sur le secteur de la relation client en Guinée et en Afrique.</p>
+  <div class="page-hero-inner">
+    <div class="page-hero-left">
+      <span class="eyebrow">Toute l'actualité</span>
+      <h1>Notre histoire,<br/>en direct.</h1>
+      <p>Distinctions, recrutements, analyses sectorielles, prises de parole — suivez l'aventure Help'me Process et l'essor du BPO guinéen.</p>
+    </div>
+    <div class="page-hero-stats">
+      <div class="ph-stat"><strong>2023</strong><span>Élu service client</span></div>
+      <div class="ph-stat"><strong>10+</strong><span>Ans d'expertise</span></div>
+      <div class="ph-stat"><strong>3</strong><span>Pôles de services</span></div>
+    </div>
+  </div>
 </div>
 
 <!-- FILTERS -->
@@ -207,16 +277,23 @@
   <div class="news-wrap">
 
     <!-- FEATURED -->
-    <div class="news-featured">
-      <article class="art-big fi">
-        <div class="art-img"><img src="award.jpeg" alt="Élu Service Client 2023"/></div>
+    <div class="news-featured fi">
+      <article class="art-big">
+        <div class="art-img" style="height:380px">
+          <div class="art-award-ribbon">🏆 Meilleur Service Client 2023</div>
+          <img src="award.jpeg" alt="Abdourahamane Cissé — Élu Service Client 2023" style="object-position:top center"/>
+        </div>
         <div class="art-body">
-          <span class="art-cat cat-prix">🏆 Distinction</span>
-          <h2>Help'me Process élu Meilleur Service Client de l'Année 2023</h2>
-          <p>Une distinction majeure qui récompense l'engagement sans faille de nos 30 agents et de toute notre équipe au service de l'excellence relationnelle. Ce prix confirme notre positionnement comme référence du call center en Guinée et sur le marché ouest-africain.</p>
+          <span class="art-cat cat-prix">🏆 Distinction officielle</span>
+          <h2>Help'me Process élu Meilleur Service Client de l'Année 2023 en Guinée</h2>
+          <p>Une consécration historique pour notre centre d'appels — la première distinction de ce type attribuée à une entreprise guinéenne dans le secteur de la relation client. Une victoire collective qui confirme notre positionnement comme référence régionale.</p>
           <div class="art-meta">
-            <span class="art-date">📅 Décembre 2023</span>
-            <a href="#" class="art-lire">Lire l'article <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <div class="art-ava"><img src="award.jpeg" alt="Abdourahamane Cissé"/></div>
+            <div>
+              <div class="art-author">Abdourahamane Cissé</div>
+              <div class="art-date">Décembre 2023</div>
+            </div>
+            <a href="#article-maroc" class="art-lire">Lire l'analyse complète →</a>
           </div>
         </div>
       </article>
@@ -226,9 +303,9 @@
           <div class="art-img"><img src="training.jpeg" alt="Formation"/></div>
           <div class="art-body">
             <span class="art-cat cat-actu">Actualité</span>
-            <h3>Lancement de notre programme de formation continue pour tous nos agents</h3>
+            <h3>Nouveau programme de formation certifiante pour nos équipes</h3>
             <div class="art-meta">
-              <span class="art-date">📅 Mars 2024</span>
+              <span class="art-date">Mars 2024</span>
               <a href="#" class="art-lire">Lire →</a>
             </div>
           </div>
@@ -237,39 +314,57 @@
           <div class="art-img"><img src="open-space.jpeg" alt="Open space"/></div>
           <div class="art-body">
             <span class="art-cat cat-presse">Presse</span>
-            <h3>Help'me Process dans les médias guinéens : interview exclusive du co-fondateur</h3>
+            <h3>Interview exclusive du co-fondateur dans les médias guinéens</h3>
             <div class="art-meta">
-              <span class="art-date">📅 Janvier 2024</span>
+              <span class="art-date">Janvier 2024</span>
               <a href="#" class="art-lire">Lire →</a>
+            </div>
+          </div>
+        </article>
+        <article class="art-sm">
+          <div class="art-img"><img src="manager-coaching.jpeg" alt="Coaching"/></div>
+          <div class="art-body">
+            <span class="art-cat cat-emploi">Recrutement</span>
+            <h3>Help'me Process ouvre de nouveaux postes à Conakry</h3>
+            <div class="art-meta">
+              <span class="art-date">Avril 2024</span>
+              <a href="recrutement.html" class="art-lire">Voir →</a>
             </div>
           </div>
         </article>
       </div>
     </div>
 
+    <!-- SEPARATOR -->
+    <div class="news-sep fi">
+      <h2>Toutes les actualités</h2>
+      <div class="news-sep-line"></div>
+      <span class="news-sep-count">6 articles</span>
+    </div>
+
     <!-- GRID -->
     <div class="news-grid">
       <article class="art-card fi">
-        <div class="art-img"><img src="manager-coaching.jpeg" alt="Coaching"/></div>
+        <div class="art-img"><img src="hero-team.jpeg" alt="Équipe"/></div>
         <div class="art-body">
           <span class="art-cat cat-actu">Actualité</span>
-          <h3>Help'me Process recrute : 10 nouveaux postes ouverts à Conakry</h3>
-          <p>Dans le cadre de notre expansion, nous ouvrons de nouvelles opportunités pour des talents guinéens passionnés par la relation client.</p>
+          <h3>Expansion de nos capacités : nouveaux espaces et équipements CRM déployés</h3>
+          <p>Pour répondre à la croissance de nos campagnes, Help'me Process a investi dans une infrastructure technique de nouvelle génération.</p>
           <div class="art-meta">
-            <span class="art-date">📅 Avril 2024</span>
-            <a href="recrutement.html" class="art-lire">Voir les offres →</a>
+            <span class="art-date">Mai 2024</span>
+            <a href="#" class="art-lire">Lire →</a>
           </div>
         </div>
       </article>
 
       <article class="art-card fi fi-d1">
-        <div class="art-img"><img src="director-portrait.jpeg" alt="Co-fondateur"/></div>
+        <div class="art-img"><img src="award.jpeg" alt="Abdourahamane Cissé" style="object-position:top center"/></div>
         <div class="art-body">
           <span class="art-cat cat-presse">Presse & Médias</span>
-          <h3>Interview : « Les call centers, moteur de l'emploi des jeunes en Guinée »</h3>
-          <p>Abdourahamane Cissé s'exprime sur le rôle transformateur des centres d'appels pour la jeunesse guinéenne et l'économie nationale.</p>
+          <h3>« Le BPO guinéen peut rivaliser avec Casablanca » — Abdourahamane Cissé</h3>
+          <p>Le co-fondateur expose sa vision ambitieuse pour positionner Conakry comme hub d'externalisation d'Afrique de l'Ouest.</p>
           <div class="art-meta">
-            <span class="art-date">📅 Février 2024</span>
+            <span class="art-date">Février 2024</span>
             <a href="#" class="art-lire">Lire l'article →</a>
           </div>
         </div>
@@ -280,53 +375,61 @@
         <div class="art-body">
           <span class="art-cat cat-actu">Événement</span>
           <h3>Help'me Process au Forum Économique de Conakry 2024</h3>
-          <p>Notre équipe a participé au Forum Économique National pour présenter le modèle BPO guinéen et ses opportunités d'investissement.</p>
+          <p>Notre équipe a présenté le modèle BPO guinéen et ses opportunités d'investissement devant décideurs et investisseurs.</p>
           <div class="art-meta">
-            <span class="art-date">📅 Mai 2024</span>
+            <span class="art-date">Mai 2024</span>
             <a href="#" class="art-lire">En savoir plus →</a>
           </div>
         </div>
       </article>
 
       <article class="art-card fi">
-        <div class="art-img"><img src="hero-team.jpeg" alt="Équipe agents"/></div>
+        <div class="art-img"><img src="training2.jpeg" alt="Formation"/></div>
         <div class="art-body">
-          <span class="art-cat cat-actu">Actualité</span>
-          <h3>Nouveau partenariat : Help'me Process s'ouvre au marché sénégalais</h3>
-          <p>La signature d'un accord de partenariat stratégique marque notre première expansion officielle hors des frontières guinéennes.</p>
+          <span class="art-cat cat-actu">Formation</span>
+          <h3>Nos équipes certifiées aux standards internationaux de la relation client</h3>
+          <p>Help'me Process investit dans la montée en compétences continue — protocoles qualité, gestion émotionnelle, performance KPI.</p>
           <div class="art-meta">
-            <span class="art-date">📅 Juin 2024</span>
+            <span class="art-date">Juillet 2024</span>
             <a href="#" class="art-lire">Lire l'article →</a>
           </div>
         </div>
       </article>
 
       <article class="art-card fi fi-d1">
-        <div class="art-img"><img src="training2.jpeg" alt="Formation"/></div>
-        <div class="art-body">
-          <span class="art-cat cat-actu">Formation</span>
-          <h3>Certification qualité : nos agents formés aux standards internationaux ISO</h3>
-          <p>Dans notre quête d'excellence, Help'me Process investit dans la certification et la montée en compétences continue de ses équipes.</p>
-          <div class="art-meta">
-            <span class="art-date">📅 Juillet 2024</span>
-            <a href="#" class="art-lire">Lire l'article →</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="art-card fi fi-d2">
         <div class="art-img"><img src="agents-travail.jpeg" alt="Agents"/></div>
         <div class="art-body">
-          <span class="art-cat cat-presse">Secteur BPO</span>
-          <h3>L'Afrique de l'Ouest, nouvelle terre promise de l'outsourcing mondial ?</h3>
-          <p>Analyse et perspectives sur le développement du secteur BPO en Guinée et dans la sous-région. Help'me Process en première ligne.</p>
+          <span class="art-cat cat-bpo">Secteur BPO</span>
+          <h3>L'Afrique de l'Ouest, nouvelle destination mondiale de l'outsourcing ?</h3>
+          <p>Analyse et perspectives sur l'essor du BPO en Guinée et dans la sous-région, avec Help'me Process en première ligne.</p>
           <div class="art-meta">
-            <span class="art-date">📅 Août 2024</span>
-            <a href="#" class="art-lire">Lire l'article →</a>
+            <span class="art-date">Août 2024</span>
+            <a href="#article-maroc" class="art-lire">Lire l'analyse →</a>
           </div>
         </div>
       </article>
     </div>
+
+    <!-- ARTICLE ANALYSE DARK -->
+    <div class="art-analysis fi" onclick="document.getElementById('article-maroc').scrollIntoView({behavior:'smooth'})">
+      <div class="art-analysis-txt">
+        <span class="art-cat cat-bpo" style="margin-bottom:16px;display:inline-flex">📊 Analyse approfondie</span>
+        <h3>Défis en opportunités : comment les call centers ont réduit le chômage en Afrique — et ce que cela signifie pour la Guinée</h3>
+        <p>Le Maroc emploie 140 000 personnes dans son secteur BPO et crée 10 000 emplois nets par an. La Guinée a les mêmes atouts. Décryptage complet par Abdourahamane Cissé.</p>
+        <div class="art-meta">
+          <div class="art-ava" style="border:2px solid rgba(255,255,255,.2)"><img src="award.jpeg" alt="Abdourahamane Cissé"/></div>
+          <div><div class="art-author" style="color:#fff">Abdourahamane Cissé</div><div class="art-date">Mai 2026 · 6 min</div></div>
+          <a href="#article-maroc" class="art-lire">Lire l'article complet →</a>
+        </div>
+      </div>
+      <div class="art-analysis-badge">
+        <strong>6</strong><span>min de lecture</span>
+        <div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.1)">
+          <strong style="font-size:1.2rem">140K</strong><span style="display:block">emplois BPO Maroc</span>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
