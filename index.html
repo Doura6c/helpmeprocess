@@ -37,7 +37,11 @@
     }
     nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.08)}
     .nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:1280px;margin:0 auto}
-    .nav-logo img{height:42px;display:block}
+    .nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+    .nav-logo img{height:46px;display:block;filter:drop-shadow(0 1px 4px rgba(0,44,110,.12))}
+    .nav-logo-text{display:flex;flex-direction:column;line-height:1.1}
+    .nav-logo-text strong{font-size:.92rem;font-weight:800;color:var(--navy);letter-spacing:-.01em}
+    .nav-logo-text span{font-size:.68rem;font-weight:500;color:var(--orange);letter-spacing:.04em;text-transform:uppercase}
     .nav-links{display:flex;align-items:center;gap:8px;list-style:none}
     .nav-links a{
       text-decoration:none;color:var(--text2);
@@ -120,8 +124,8 @@
     }
     .hero-static{color:#fff}
     .hero-words{
-      position:relative;height:1.1em;overflow:hidden;
-      display:inline-block;min-width:260px;
+      position:relative;height:1.15em;overflow:hidden;
+      display:inline-block;min-width:520px;
     }
     .hero-word{
       position:absolute;top:0;left:0;
@@ -721,6 +725,7 @@
     @media(max-width:640px){
       .nav-links{display:none}
       .burger{display:flex}
+      .nav-logo-text{display:none}
       section{padding:64px 20px}
       .ambition,.stats,.band,.founder{padding:64px 20px}
       .hero-content{padding:60px 20px}
@@ -742,8 +747,12 @@
 <!-- ══════════ NAV ══════════ -->
 <nav id="nav">
   <div class="nav-inner">
-    <a href="#" class="nav-logo">
+    <a href="index.html" class="nav-logo">
       <img src="logo.jpeg" alt="Help'me Process"/>
+      <div class="nav-logo-text">
+        <strong>Help'me Process</strong>
+        <span>Call Center · Conakry</span>
+      </div>
     </a>
     <ul class="nav-links">
       <li><a href="#about">Qui sommes-nous ?</a></li>
@@ -752,7 +761,6 @@
       <li><a href="#fondateur">Co-fondateur</a></li>
       <li><a href="actualites.html">Actualités</a></li>
       <li><a href="recrutement.html">Recrutement</a></li>
-      <li><a href="espace-client.html">Espace client</a></li>
       <li><a href="#contact" class="nav-cta">Nous contacter</a></li>
     </ul>
     <div class="burger" id="burger"><span></span><span></span><span></span></div>
@@ -781,19 +789,19 @@
     <div class="hero-left">
       <div class="hero-tag"><span class="dot"></span>Conakry, Guinée — Opérationnel 6j/7</div>
 
-      <h1>Le meilleur de l'humain,</h1>
+      <h1>Quand la Guinée parle,<br/>le monde écoute.</h1>
       <div class="hero-rotating-wrap">
-        <span class="hero-static">une relation</span>
+        <span class="hero-static">Une relation client</span>
         <span class="hero-words" id="heroWords">
           <span class="hero-word active">exceptionnelle</span>
           <span class="hero-word">multilingue</span>
-          <span class="hero-word">innovante</span>
-          <span class="hero-word">guinéenne</span>
+          <span class="hero-word">primée #1</span>
+          <span class="hero-word">100% guinéenne</span>
           <span class="hero-word">performante</span>
         </span>
       </div>
 
-      <p class="hero-desc">Help'me Process accompagne les entreprises guinéennes et internationales avec des solutions d'externalisation d'excellence — 30 agents qualifiés, disponibles, multilingues.</p>
+      <p class="hero-desc">Help'me Process est le premier call center de référence à Conakry — 30 agents d'élite, formés, multilingues, au service de vos clients nationaux et internationaux. Zéro compromis sur la qualité.</p>
 
       <div class="hero-actions">
         <a href="#services" class="btn-orange">Découvrir nos solutions →</a>
@@ -802,16 +810,16 @@
 
       <div class="hero-trust">
         <div class="trust-item">
-          <div><div class="trust-val">30<sup>+</sup></div><div class="trust-lbl">Agents qualifiés</div></div>
+          <div><div class="trust-val">30<sup>+</sup></div><div class="trust-lbl">Agents d'élite</div></div>
         </div>
         <div class="trust-item">
-          <div><div class="trust-val">5<sup>+</sup></div><div class="trust-lbl">Langues parlées</div></div>
+          <div><div class="trust-val">10<sup>+</sup></div><div class="trust-lbl">Ans d'expertise</div></div>
         </div>
         <div class="trust-item">
-          <div><div class="trust-val">2</div><div class="trust-lbl">Marchés couverts</div></div>
+          <div><div class="trust-val">3</div><div class="trust-lbl">Pôles de services</div></div>
         </div>
         <div class="trust-item">
-          <div><div class="trust-val">#1</div><div class="trust-lbl">Service Client 2023</div></div>
+          <div><div class="trust-val">🏆</div><div class="trust-lbl">Élu #1 — 2023</div></div>
         </div>
       </div>
     </div>
@@ -1063,7 +1071,7 @@
       <span class="eyebrow">Mot du co-fondateur</span>
 
       <blockquote class="founder-quote">
-        « La Guinée regorge de talents exceptionnels. Help'me Process est la preuve que l'excellence en relation client peut naître, grandir et rayonner depuis notre pays vers le monde entier. »
+        « J'ai passé plus de 10 ans à apprendre les codes de la relation client en Europe et en Afrique. Un jour, j'ai compris que nos talents guinéens valaient largement ceux de Paris, Casablanca ou Dakar. Il suffisait de leur donner une scène. Help'me Process est cette scène. »
       </blockquote>
 
       <div class="founder-name-block">
@@ -1075,47 +1083,47 @@
       </div>
 
       <div class="founder-tags">
+        <span class="ftag">+10 ans en BPO</span>
         <span class="ftag">Expert Outsourcing</span>
-        <span class="ftag">Externalisation BPO</span>
-        <span class="ftag">Gestion Relation Client</span>
-        <span class="ftag">Management d'équipes</span>
+        <span class="ftag">Relation Client</span>
         <span class="ftag">Marchés Afrique & Europe</span>
+        <span class="ftag">Leadership</span>
       </div>
 
       <div class="founder-cv">
         <div class="cv-item">
-          <div class="cv-dot">🎓</div>
-          <div>
-            <strong>Formation en Management & Relation Client</strong>
-            <span>Spécialisation en gestion de la relation client et processus d'externalisation</span>
-          </div>
-        </div>
-        <div class="cv-item">
-          <div class="cv-dot">💼</div>
-          <div>
-            <strong>Expert en outsourcing & BPO — +5 ans d'expérience</strong>
-            <span>Accompagnement d'entreprises guinéennes et internationales dans leur stratégie d'externalisation</span>
-          </div>
-        </div>
-        <div class="cv-item">
           <div class="cv-dot">🌍</div>
           <div>
+            <strong>Un parcours forgé entre deux continents</strong>
+            <span>Plus de 10 ans d'immersion dans les meilleures structures BPO d'Europe et d'Afrique — de la gestion d'équipes en France aux marchés subsahariens — avant de tout ramener à Conakry.</span>
+          </div>
+        </div>
+        <div class="cv-item">
+          <div class="cv-dot">💡</div>
+          <div>
+            <strong>L'intuition fondatrice</strong>
+            <span>Face à un chômage des jeunes Guinéens en croissance, il a vu une opportunité là où d'autres voyaient un problème : transformer cette énergie en centre d'appel d'excellence, créateur d'emplois qualifiés.</span>
+          </div>
+        </div>
+        <div class="cv-item">
+          <div class="cv-dot">🏗️</div>
+          <div>
             <strong>Co-fondateur & DG de Help'me Process</strong>
-            <span>Création et direction du premier call center multilingue de référence à Conakry</span>
+            <span>A bâti de zéro le premier call center de référence à Conakry — recrutement, formation, process qualité, acquisition clients internationaux. Une entreprise 100% guinéenne aux standards mondiaux.</span>
           </div>
         </div>
         <div class="cv-item">
           <div class="cv-dot">🏆</div>
           <div>
             <strong>Élu Meilleur Service Client de l'Année 2023</strong>
-            <span>Distinction officielle récompensant l'excellence opérationnelle de Help'me Process</span>
+            <span>La consécration d'une vision : prouver que la Guinée peut rivaliser avec les grandes destinations BPO de la sous-région et au-delà.</span>
           </div>
         </div>
       </div>
 
       <div class="founder-vision">
-        <h4>🔭 Notre vision</h4>
-        <p>Faire de Help'me Process le centre d'appel de référence en Afrique de l'Ouest — un hub multilingue, technologique et humain, capable de rivaliser avec les meilleures destinations d'externalisation mondiales, tout en créant de l'emploi qualifié pour la jeunesse guinéenne.</p>
+        <h4>🔭 La vision pour demain</h4>
+        <p>Faire de Conakry le hub BPO incontournable d'Afrique de l'Ouest. Chaque agent formé, c'est une famille sortie de la précarité. Chaque client conquis à l'international, c'est un signal fort envoyé au monde : la Guinée est prête, compétente, et ambitieuse.</p>
       </div>
     </div>
   </div>
