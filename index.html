@@ -99,36 +99,85 @@
     .afp-route-city.active{color:var(--gold);font-weight:800}
     .afp-route-arr{color:rgba(255,255,255,.2);font-size:.65rem}
 
-    /* Colonne droite : 3 pilliers */
-    .afp-right{display:flex;flex-direction:column;gap:1px}
-    .afp-pillar{
-      padding:32px 36px;
-      border:1px solid rgba(255,255,255,.06);
-      border-radius:0;
-      transition:all .4s;
-      position:relative;overflow:hidden;
-      cursor:default;
+    /* Colonne droite : carte animée */
+    .afp-right{position:relative;display:flex;align-items:center;justify-content:center}
+    .afp-map-wrap{
+      position:relative;width:100%;max-width:480px;
     }
-    .afp-pillar:first-child{border-radius:16px 16px 0 0}
-    .afp-pillar:last-child{border-radius:0 0 16px 16px}
-    .afp-pillar::before{
-      content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
-      background:linear-gradient(to bottom,transparent,var(--gold),transparent);
-      opacity:0;transition:opacity .4s;
+    .afp-map-img{
+      width:100%;border-radius:20px;
+      filter:saturate(.55) brightness(.72) contrast(1.15);
+      display:block;
     }
-    .afp-pillar:hover{background:rgba(200,150,14,.06);border-color:rgba(200,150,14,.18)}
-    .afp-pillar:hover::before{opacity:1}
-    .afp-pil-num{
-      font-size:2.6rem;font-weight:900;letter-spacing:-.04em;
-      line-height:1;margin-bottom:8px;
-      color:#fff;
+    /* Overlay teinté pour harmoniser avec le fond sombre */
+    .afp-map-overlay{
+      position:absolute;inset:0;border-radius:20px;
+      background:linear-gradient(135deg,rgba(9,14,7,.35) 0%,rgba(9,14,7,.1) 60%,rgba(9,14,7,.4) 100%);
+      pointer-events:none;
     }
-    .afp-pil-num span{font-size:55%;color:var(--gold)}
-    .afp-pil-txt{font-size:.82rem;color:rgba(255,255,255,.38);line-height:1.6}
-    .afp-pil-tag{
-      display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:.1em;
-      text-transform:uppercase;color:rgba(200,150,14,.6);margin-bottom:10px;
+    /* Point Guinée pulsant — environ 19% gauche, 40% haut sur la carte Afrique */
+    .afp-guinea-pin{
+      position:absolute;left:19%;top:40%;
+      transform:translate(-50%,-50%);
+      z-index:4;
     }
+    .afp-pin-dot{
+      width:12px;height:12px;border-radius:50%;
+      background:var(--gold);
+      box-shadow:0 0 0 0 rgba(200,150,14,.5);
+      animation:guineaPulse 2.4s ease-out infinite;
+      position:relative;z-index:2;
+    }
+    @keyframes guineaPulse{
+      0%{box-shadow:0 0 0 0 rgba(200,150,14,.65)}
+      50%{box-shadow:0 0 0 18px rgba(200,150,14,0)}
+      100%{box-shadow:0 0 0 0 rgba(200,150,14,0)}
+    }
+    .afp-pin-ring{
+      position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+      width:36px;height:36px;border-radius:50%;
+      border:1.5px solid rgba(200,150,14,.45);
+      animation:ringGrow 2.4s ease-out infinite;
+    }
+    .afp-pin-ring2{
+      position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+      width:56px;height:56px;border-radius:50%;
+      border:1px solid rgba(200,150,14,.22);
+      animation:ringGrow 2.4s ease-out infinite .5s;
+    }
+    @keyframes ringGrow{
+      0%{opacity:1;transform:translate(-50%,-50%) scale(.4)}
+      100%{opacity:0;transform:translate(-50%,-50%) scale(1)}
+    }
+    /* Étiquette Conakry */
+    .afp-label-pin{
+      position:absolute;top:50%;left:calc(100% + 8px);transform:translateY(-50%);
+      background:rgba(200,150,14,.9);color:#000;
+      font-size:.62rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+      padding:3px 8px;border-radius:4px;white-space:nowrap;
+    }
+    /* Lignes de connexion animées vers Paris/Dakar */
+    .afp-conn-lines{
+      position:absolute;inset:0;pointer-events:none;
+      border-radius:20px;overflow:hidden;
+    }
+    .afp-conn-lines svg{width:100%;height:100%;position:absolute;inset:0}
+    /* Pilliers en dessous de la carte */
+    .afp-stats-row{
+      display:flex;gap:0;margin-top:16px;
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:12px;overflow:hidden;
+    }
+    .afp-stat-mini{
+      flex:1;padding:18px 16px;text-align:center;
+      border-right:1px solid rgba(255,255,255,.07);
+      transition:background .3s;cursor:default;
+    }
+    .afp-stat-mini:last-child{border-right:none}
+    .afp-stat-mini:hover{background:rgba(200,150,14,.07)}
+    .afp-stat-num{font-size:1.6rem;font-weight:900;color:#fff;letter-spacing:-.04em;line-height:1}
+    .afp-stat-num span{font-size:55%;color:var(--gold)}
+    .afp-stat-lbl{font-size:.65rem;color:rgba(255,255,255,.35);margin-top:4px;line-height:1.3}
     /* Ligne décorative bas de section */
     .afp-line-bottom{
       position:absolute;bottom:0;left:10%;right:10%;height:1px;
@@ -162,7 +211,7 @@
     nav{
       position:fixed;inset:0 0 auto;z-index:999;
       height:72px;display:flex;align-items:center;
-      padding:0 64px;
+      padding:0 32px;
       background:#fff;
       border-bottom:1px solid var(--border);
       transition:box-shadow .3s;
@@ -174,19 +223,19 @@
     .nav-logo-text{display:flex;flex-direction:column;line-height:1.1}
     .nav-logo-text strong{font-size:.92rem;font-weight:800;color:var(--navy);letter-spacing:-.01em}
     .nav-logo-text span{font-size:.68rem;font-weight:500;color:var(--orange);letter-spacing:.04em;text-transform:uppercase}
-    .nav-links{display:flex;align-items:center;gap:8px;list-style:none}
+    .nav-links{display:flex;align-items:center;gap:2px;list-style:none}
     .nav-links a{
       text-decoration:none;color:var(--text2);
-      font-weight:500;font-size:.9rem;
-      padding:8px 16px;border-radius:6px;
-      transition:all .2s;
+      font-weight:500;font-size:.82rem;
+      padding:7px 11px;border-radius:6px;
+      transition:all .2s;white-space:nowrap;
     }
     .nav-links a:hover{color:var(--navy);background:var(--light)}
     .nav-cta{
       background:var(--orange);color:#fff !important;
-      padding:10px 24px !important;border-radius:50px !important;
-      font-weight:600 !important;font-size:.88rem !important;
-      transition:all .2s !important;
+      padding:9px 20px !important;border-radius:50px !important;
+      font-weight:600 !important;font-size:.82rem !important;
+      transition:all .2s !important;white-space:nowrap;
     }
     .nav-cta:hover{background:var(--orange2) !important;transform:translateY(-1px);box-shadow:0 4px 16px rgba(232,93,32,.35) !important}
     .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
@@ -660,44 +709,57 @@
     .gal-item:hover img{transform:scale(1.04)}
 
     /* ────────────────── VIDÉOS ────────────────── */
-    .video-section{background:var(--light);padding:100px 64px}
-    .vids-top{max-width:1280px;margin:0 auto}
+    .video-section{
+      background:var(--navy3);padding:100px 64px;
+      position:relative;overflow:hidden;
+    }
+    .video-section::before{
+      content:'';position:absolute;inset:0;pointer-events:none;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cpolygon points='40,4 76,40 40,76 4,40' fill='none' stroke='%23ffffff' stroke-width='0.4' opacity='0.04'/%3E%3C/svg%3E");
+      background-size:80px 80px;
+    }
+    .vids-top{max-width:1280px;margin:0 auto;position:relative;z-index:1}
     .main-video-wrap{
       max-width:900px;margin:0 auto 64px;
     }
     .video-embed{
       border-radius:20px;overflow:hidden;
       position:relative;padding-bottom:56.25%;height:0;
-      box-shadow:0 20px 80px rgba(0,0,0,.15);
-      border:1px solid var(--border);
+      box-shadow:0 24px 80px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.07);
+      transition:box-shadow .4s,transform .4s;
+    }
+    .video-embed:hover{
+      box-shadow:0 32px 100px rgba(232,93,32,.25),0 0 0 1px rgba(232,93,32,.3);
+      transform:translateY(-4px);
     }
     .video-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 
     .vid-label{
       display:inline-flex;align-items:center;gap:8px;
-      background:rgba(232,93,32,.1);border:1px solid rgba(232,93,32,.25);
-      color:var(--orange);padding:6px 16px;border-radius:50px;
+      background:rgba(232,93,32,.15);border:1px solid rgba(232,93,32,.35);
+      color:var(--orange2);padding:6px 16px;border-radius:50px;
       font-size:.78rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
-      margin-bottom:16px;
+      margin-bottom:16px;animation:glowPulse 3s ease infinite;
     }
+    @keyframes glowPulse{0%,100%{box-shadow:none}50%{box-shadow:0 0 20px rgba(232,93,32,.3)}}
 
     .vids-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
     .vcard{
-      background:#fff;border-radius:16px;overflow:hidden;
-      border:1px solid var(--border);transition:all .3s;
+      background:rgba(255,255,255,.05);border-radius:16px;overflow:hidden;
+      border:1px solid rgba(255,255,255,.08);transition:all .35s;
     }
-    .vcard:hover{box-shadow:0 8px 40px rgba(0,0,0,.1);transform:translateY(-4px)}
+    .vcard:hover{box-shadow:0 8px 40px rgba(0,0,0,.4),0 0 0 1px rgba(232,93,32,.25);transform:translateY(-6px);background:rgba(255,255,255,.08)}
     .vcard-player video{
-      width:100%;display:block;aspect-ratio:16/9;object-fit:cover;background:#0F172A;
+      width:100%;display:block;aspect-ratio:16/9;object-fit:cover;background:#000;
     }
     .vcard-body{padding:24px}
     .vtag{
-      display:inline-block;background:rgba(232,93,32,.1);color:var(--orange);
+      display:inline-block;background:rgba(232,93,32,.18);color:var(--orange2);
       padding:4px 12px;border-radius:50px;font-size:.72rem;font-weight:700;
       margin-bottom:10px;letter-spacing:.03em;text-transform:uppercase;
     }
-    .vcard-body h4{font-size:.97rem;font-weight:700;color:var(--navy);line-height:1.4;margin-bottom:6px}
-    .vcard-body p{font-size:.82rem;color:var(--gray);line-height:1.65}
+    .vcard-body h4{font-size:.97rem;font-weight:700;color:#fff;line-height:1.4;margin-bottom:6px}
+    .vcard-body p{font-size:.82rem;color:rgba(255,255,255,.45);line-height:1.65}
 
     /* ────────────────── TESTIMONIALS ────────────────── */
     .testi{background:#fff;padding:100px 64px}
@@ -992,7 +1054,7 @@
       <li><a href="#fondateur">Co-fondateur</a></li>
       <li><a href="actualites.html">Actualités</a></li>
       <li><a href="recrutement.html">Recrutement</a></li>
-      <li><a href="presentation-entreprises.html">📋 Entreprises</a></li>
+      <li><a href="presentation-entreprises.html">Entreprises</a></li>
       <li><a href="#contact" class="nav-cta">Nous contacter</a></li>
     </ul>
     <div class="burger" id="burger"><span></span><span></span><span></span></div>
@@ -1161,22 +1223,54 @@
       </div>
     </div>
 
-    <!-- Droite : 3 pilliers chiffrés -->
+    <!-- Droite : Carte Afrique animée -->
     <div class="afp-right">
-      <div class="afp-pillar">
-        <div class="afp-pil-tag">Marché francophone</div>
-        <div class="afp-pil-num">400<span>M+</span></div>
-        <div class="afp-pil-txt">francophones en Afrique — le plus grand vivier de talents du monde francophone</div>
-      </div>
-      <div class="afp-pillar">
-        <div class="afp-pil-tag">Avantage compétitif</div>
-        <div class="afp-pil-num">60<span>%</span></div>
-        <div class="afp-pil-txt">d'économies vs. un centre d'appel européen — même niveau d'exigence, coût réduit</div>
-      </div>
-      <div class="afp-pillar">
-        <div class="afp-pil-tag">Reconnaissance 2023</div>
-        <div class="afp-pil-num">#<span style="-webkit-text-fill-color:#fff;background:none">1</span></div>
-        <div class="afp-pil-txt">Élu meilleur service client de l'année en Guinée — la preuve par les faits</div>
+      <div class="afp-map-wrap">
+        <!-- Carte de l'Afrique avec Guinée mise en avant -->
+        <img src="africa-map.png" alt="Afrique — Guinée, notre ancrage" class="afp-map-img"/>
+        <div class="afp-map-overlay"></div>
+
+        <!-- Lignes SVG de connexion animées -->
+        <div class="afp-conn-lines">
+          <svg viewBox="0 0 480 520" preserveAspectRatio="none">
+            <!-- Conakry → Paris (vers haut-droite) -->
+            <path d="M92 208 Q200 100 380 60" fill="none" stroke="rgba(200,150,14,.25)" stroke-width="1" stroke-dasharray="6 4">
+              <animate attributeName="stroke-dashoffset" from="100" to="0" dur="3s" repeatCount="indefinite"/>
+            </path>
+            <!-- Conakry → Dakar (vers le nord-ouest) -->
+            <path d="M92 208 Q60 160 30 120" fill="none" stroke="rgba(200,150,14,.2)" stroke-width="1" stroke-dasharray="4 4">
+              <animate attributeName="stroke-dashoffset" from="80" to="0" dur="2.5s" repeatCount="indefinite"/>
+            </path>
+            <!-- Conakry → Abidjan (vers le sud-est) -->
+            <path d="M92 208 Q160 240 200 290" fill="none" stroke="rgba(200,150,14,.15)" stroke-width="1" stroke-dasharray="4 4">
+              <animate attributeName="stroke-dashoffset" from="60" to="0" dur="2s" repeatCount="indefinite"/>
+            </path>
+          </svg>
+        </div>
+
+        <!-- Point pulsant sur la Guinée -->
+        <div class="afp-guinea-pin">
+          <div class="afp-pin-ring2"></div>
+          <div class="afp-pin-ring"></div>
+          <div class="afp-pin-dot"></div>
+          <span class="afp-label-pin">Conakry</span>
+        </div>
+
+        <!-- Stats en dessous de la carte -->
+        <div class="afp-stats-row">
+          <div class="afp-stat-mini">
+            <div class="afp-stat-num">400<span>M+</span></div>
+            <div class="afp-stat-lbl">Francophones en Afrique</div>
+          </div>
+          <div class="afp-stat-mini">
+            <div class="afp-stat-num">60<span>%</span></div>
+            <div class="afp-stat-lbl">Économies vs. Europe</div>
+          </div>
+          <div class="afp-stat-mini">
+            <div class="afp-stat-num">#<span style="-webkit-text-fill-color:#fff;background:none">1</span></div>
+            <div class="afp-stat-lbl">Service client 2023</div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1452,17 +1546,17 @@
   <div class="vids-top">
     <div class="hd fi" style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px">
       <div>
-        <span class="eyebrow">Vidéos &amp; Interviews</span>
-        <h2 class="ttl">Notre vision, en images</h2>
-        <p class="sub">Découvrez Help'me Process à travers les mots de son co-fondateur et nos reportages</p>
+        <span class="eyebrow" style="color:rgba(255,255,255,.45)">Vidéos &amp; Interviews</span>
+        <h2 class="ttl" style="color:#fff">Notre vision, en images</h2>
+        <p class="sub" style="color:rgba(255,255,255,.45)">Découvrez Help'me Process à travers les mots de son co-fondateur et nos reportages</p>
       </div>
-      <div style="flex-shrink:0;display:flex;align-items:center;gap:14px;background:#fff;border-radius:14px;padding:18px 22px;border:1px solid var(--border)">
+      <div style="flex-shrink:0;display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:18px 22px;backdrop-filter:blur(10px)">
         <div style="width:56px;height:56px;border-radius:50%;overflow:hidden;border:2.5px solid var(--orange);flex-shrink:0">
           <img src="award.jpeg" alt="Abdourahamane Cissé" style="width:100%;height:100%;object-fit:cover;object-position:top center"/>
         </div>
         <div>
-          <div style="font-weight:800;font-size:.95rem;color:var(--navy)">Abdourahamane Cissé</div>
-          <div style="font-size:.78rem;color:var(--orange);font-weight:600">Co-fondateur &amp; Directeur</div>
+          <div style="font-weight:800;font-size:.95rem;color:#fff">Abdourahamane Cissé</div>
+          <div style="font-size:.78rem;color:var(--orange2);font-weight:600">Co-fondateur &amp; Directeur</div>
         </div>
       </div>
     </div>
