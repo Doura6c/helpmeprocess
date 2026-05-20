@@ -18,15 +18,18 @@
     body{font-family:'Inter',sans-serif;color:var(--text);background:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
     /* ── NAV ── */
-    nav{position:fixed;inset:0 0 auto;z-index:99;height:64px;display:flex;align-items:center;padding:0 48px;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
-    .nav-in{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:1200px;margin:0 auto}
-    .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+    nav{position:fixed;inset:0 0 auto;z-index:99;height:64px;display:flex;align-items:center;padding:0 32px;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+    .nav-in{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:1400px;margin:0 auto;gap:16px}
+    .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
     .nav-logo img{height:36px}
     .nav-logo strong{font-size:.88rem;font-weight:800;color:var(--navy)}
     .nav-logo span{font-size:.65rem;font-weight:500;color:var(--orange);text-transform:uppercase;letter-spacing:.05em}
     .nav-logo-txt{display:flex;flex-direction:column;line-height:1.1}
-    .nav-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(232,93,32,.08);border:1px solid rgba(232,93,32,.2);color:var(--orange);padding:5px 14px;border-radius:50px;font-size:.72rem;font-weight:700;letter-spacing:.04em}
-    .nav-cta-btn{background:var(--orange);color:#fff;padding:9px 22px;border-radius:50px;font-size:.82rem;font-weight:700;text-decoration:none;transition:all .2s}
+    .nav-links{display:flex;align-items:center;gap:2px;list-style:none;flex:1;justify-content:center}
+    .nav-links a{text-decoration:none;color:var(--gray);font-weight:500;font-size:.82rem;padding:7px 11px;border-radius:6px;transition:all .2s;white-space:nowrap}
+    .nav-links a:hover,.nav-links a.active{color:var(--navy);background:var(--light)}
+    .nav-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(232,93,32,.08);border:1px solid rgba(232,93,32,.2);color:var(--orange);padding:5px 14px;border-radius:50px;font-size:.72rem;font-weight:700;letter-spacing:.04em;white-space:nowrap;flex-shrink:0}
+    .nav-cta-btn{background:var(--orange);color:#fff;padding:9px 20px;border-radius:50px;font-size:.82rem;font-weight:700;text-decoration:none;transition:all .2s;white-space:nowrap;flex-shrink:0}
     .nav-cta-btn:hover{background:var(--orange2)}
     @media print{nav{display:none}}
 
@@ -302,8 +305,16 @@
         <span>Call Center · Conakry</span>
       </div>
     </a>
-    <div style="display:flex;align-items:center;gap:16px">
-      <div class="nav-tag">📋 Présentation Entreprises</div>
+    <ul class="nav-links">
+      <li><a href="index.html#about">Qui sommes-nous ?</a></li>
+      <li><a href="index.html#services">Nos solutions</a></li>
+      <li><a href="index.html#pourquoi">Nos différences</a></li>
+      <li><a href="actualites.html">Actualités</a></li>
+      <li><a href="recrutement.html">Recrutement</a></li>
+      <li><a href="presentation-entreprises.html" class="active">Entreprises</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:12px;flex-shrink:0">
+      <div class="nav-tag">📋 Présentation</div>
       <a href="#contact-final" class="nav-cta-btn">Devis gratuit →</a>
     </div>
   </div>
