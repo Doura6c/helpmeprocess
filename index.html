@@ -104,16 +104,42 @@
     .afp-map-wrap{
       position:relative;width:100%;max-width:480px;
     }
-    .afp-map-img{
-      width:100%;border-radius:20px;
-      filter:saturate(.55) brightness(.72) contrast(1.15);
-      display:block;
+    /* SVG carte Afrique animée */
+    .africa-svg-map{
+      width:100%;height:auto;display:block;border-radius:20px;
+      background:linear-gradient(160deg,#0a140c 0%,#0e1e10 100%);
     }
-    /* Overlay teinté pour harmoniser avec le fond sombre */
-    .afp-map-overlay{
-      position:absolute;inset:0;border-radius:20px;
-      background:linear-gradient(135deg,rgba(9,14,7,.35) 0%,rgba(9,14,7,.1) 60%,rgba(9,14,7,.4) 100%);
-      pointer-events:none;
+    .af-continent{
+      fill:rgba(20,55,28,.75);
+      stroke:rgba(80,160,80,.3);stroke-width:1.2;stroke-linejoin:round;
+    }
+    .af-guinee{
+      fill:url(#guineeGrad);
+      stroke:#E85D20;stroke-width:1.5;stroke-linejoin:round;
+      animation:guineeGlow 3s ease-in-out infinite;
+    }
+    @keyframes guineeGlow{
+      0%,100%{filter:url(#guineeGlow) brightness(1)}
+      50%{filter:url(#guineeGlow) brightness(1.3)}
+    }
+    .af-line-eu,.af-line-ea,.af-line-sa{
+      fill:none;stroke-width:1;stroke-dasharray:6 5;
+    }
+    .af-line-eu{
+      stroke:rgba(200,150,14,.35);
+      animation:dashFlow 3s linear infinite;
+    }
+    .af-line-ea{
+      stroke:rgba(200,150,14,.25);
+      animation:dashFlow 2.5s linear infinite 0.5s;
+    }
+    .af-line-sa{
+      stroke:rgba(200,150,14,.18);
+      animation:dashFlow 3.5s linear infinite 1s;
+    }
+    @keyframes dashFlow{
+      from{stroke-dashoffset:66}
+      to{stroke-dashoffset:0}
     }
     /* Point Guinée pulsant — environ 19% gauche, 40% haut sur la carte Afrique */
     .afp-guinea-pin{
@@ -479,46 +505,91 @@
     .stat-lbl{color:rgba(255,255,255,.5);font-size:.85rem;font-weight:500;line-height:1.4}
 
     /* ────────────────── SERVICES ────────────────── */
-    .services{background:var(--light);padding:100px 64px}
-    .svcs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:-2px}
+    /* ── SERVICES REDESIGN — style sombre premium ── */
+    .services{
+      background:var(--navy3);padding:100px 64px;
+      position:relative;overflow:hidden;
+    }
+    .services::before{
+      content:'';position:absolute;inset:0;pointer-events:none;
+      background-image:radial-gradient(circle, rgba(255,255,255,.06) 1px, transparent 1px);
+      background-size:32px 32px;
+    }
+    .services::after{
+      content:'';position:absolute;top:-200px;right:-200px;
+      width:600px;height:600px;border-radius:50%;
+      background:radial-gradient(circle,rgba(232,93,32,.07),transparent 65%);
+      pointer-events:none;
+    }
+    .services .ttl{color:#fff}
+    .services .sub{color:rgba(255,255,255,.42)}
+    .svcs-grid{
+      display:grid;grid-template-columns:repeat(3,1fr);
+      gap:24px;max-width:1280px;margin:0 auto;
+    }
     .svc{
-      background:#fff;padding:48px 40px;
-      border:1px solid var(--border);
-      transition:all .3s;position:relative;overflow:hidden;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.09);
+      border-radius:20px;padding:48px 36px;
+      position:relative;overflow:hidden;
+      transition:all .45s cubic-bezier(.23,1,.32,1);
+      display:flex;flex-direction:column;
     }
+    /* Carte centrale "populaire" */
+    .svc:nth-child(2){
+      border-color:rgba(232,93,32,.4);
+      background:rgba(232,93,32,.06);
+    }
+    .svc:nth-child(2)::after{
+      content:'Populaire ★';
+      position:absolute;top:-1px;right:24px;
+      background:var(--orange);color:#fff;
+      font-size:.62rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+      padding:5px 14px;border-radius:0 0 10px 10px;
+    }
+    /* Shimmer au survol */
     .svc::before{
-      content:'';position:absolute;top:0;left:0;right:0;height:3px;
-      background:var(--orange);transform:scaleX(0);transform-origin:left;
-      transition:transform .3s;
+      content:'';position:absolute;inset:0;
+      background:linear-gradient(135deg,transparent 30%,rgba(255,255,255,.04) 50%,transparent 70%);
+      transform:translateX(-110%);transition:transform .6s ease;
     }
-    .svc:hover::before{transform:scaleX(1)}
-    .svc:hover{box-shadow:0 8px 48px rgba(0,0,0,.1);z-index:1}
+    .svc:hover::before{transform:translateX(110%)}
+    .svc:hover{
+      transform:translateY(-10px);
+      box-shadow:0 32px 80px rgba(0,0,0,.5),0 0 0 1px rgba(232,93,32,.35);
+      border-color:rgba(232,93,32,.45);
+    }
     .svc-ico{
-      width:56px;height:56px;border-radius:14px;
-      background:linear-gradient(135deg,var(--navy),var(--navy2));
+      width:64px;height:64px;border-radius:18px;
+      background:linear-gradient(135deg,rgba(232,93,32,.18),rgba(0,44,110,.35));
+      border:1px solid rgba(232,93,32,.2);
       display:flex;align-items:center;justify-content:center;
-      font-size:24px;margin-bottom:24px;
+      font-size:28px;margin-bottom:28px;
+      transition:transform .35s cubic-bezier(.23,1,.32,1);
     }
-    .svc h3{font-size:1.2rem;font-weight:800;color:var(--navy);margin-bottom:12px}
-    .svc>p{color:var(--gray);font-size:.9rem;line-height:1.75;margin-bottom:24px}
-    .svc-list{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:32px}
+    .svc:hover .svc-ico{transform:scale(1.12) rotate(-6deg)}
+    .svc h3{font-size:1.22rem;font-weight:800;color:#fff;margin-bottom:12px}
+    .svc>p{color:rgba(255,255,255,.42);font-size:.9rem;line-height:1.75;margin-bottom:24px}
+    .svc-list{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:36px;flex:1}
     .svc-list li{
-      font-size:.88rem;color:var(--text2);font-weight:500;
+      font-size:.87rem;color:rgba(255,255,255,.6);font-weight:500;
       display:flex;align-items:center;gap:10px;
     }
     .svc-list li::before{
-      content:'';width:18px;height:18px;border-radius:50%;
-      background:rgba(232,93,32,.1);flex-shrink:0;
-      display:flex;align-items:center;justify-content:center;
+      content:'';width:18px;height:18px;border-radius:50%;flex-shrink:0;
+      background:rgba(232,93,32,.15);border:1px solid rgba(232,93,32,.3);
       background-image:url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.5 5L4 7.5L8.5 2.5' stroke='%23E85D20' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
       background-repeat:no-repeat;background-position:center;background-size:10px;
     }
     .svc-lnk{
-      display:inline-flex;align-items:center;gap:6px;
-      color:var(--orange);font-weight:600;font-size:.85rem;
-      text-decoration:none;transition:gap .2s;margin-top:auto;
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      background:rgba(232,93,32,.12);border:1px solid rgba(232,93,32,.3);
+      color:#fff;font-weight:600;font-size:.88rem;
+      text-decoration:none;padding:13px 24px;border-radius:10px;
+      transition:all .3s;margin-top:auto;
     }
-    .svc-lnk:hover{gap:10px}
+    .svc:nth-child(2) .svc-lnk{background:var(--orange);border-color:var(--orange)}
+    .svc-lnk:hover{background:var(--orange);border-color:var(--orange);gap:12px}
 
     /* ────────────────── PRÉSENCE / MAP ────────────────── */
     .presence{background:#fff;padding:100px 64px}
@@ -1226,35 +1297,85 @@
     <!-- Droite : Carte Afrique animée -->
     <div class="afp-right">
       <div class="afp-map-wrap">
-        <!-- Carte de l'Afrique avec Guinée mise en avant -->
-        <img src="africa-map.png" alt="Afrique — Guinée, notre ancrage" class="afp-map-img"/>
-        <div class="afp-map-overlay"></div>
+        <!-- Carte SVG Afrique animée — Guinée en surbrillance -->
+        <svg class="africa-svg-map" viewBox="55 10 310 460" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <filter id="guineeGlow" x="-60%" y="-60%" width="220%" height="220%">
+              <feGaussianBlur stdDeviation="6" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <radialGradient id="guineeGrad" cx="50%" cy="50%" r="60%">
+              <stop offset="0%" stop-color="#E85D20" stop-opacity="0.95"/>
+              <stop offset="100%" stop-color="#C8960E" stop-opacity="0.55"/>
+            </radialGradient>
+            <radialGradient id="continentGrad" cx="50%" cy="50%" r="70%">
+              <stop offset="0%" stop-color="#1a3a20" stop-opacity="0.9"/>
+              <stop offset="100%" stop-color="#0d1f10" stop-opacity="0.7"/>
+            </radialGradient>
+          </defs>
 
-        <!-- Lignes SVG de connexion animées -->
-        <div class="afp-conn-lines">
-          <svg viewBox="0 0 480 520" preserveAspectRatio="none">
-            <!-- Conakry → Paris (vers haut-droite) -->
-            <path d="M92 208 Q200 100 380 60" fill="none" stroke="rgba(200,150,14,.25)" stroke-width="1" stroke-dasharray="6 4">
-              <animate attributeName="stroke-dashoffset" from="100" to="0" dur="3s" repeatCount="indefinite"/>
-            </path>
-            <!-- Conakry → Dakar (vers le nord-ouest) -->
-            <path d="M92 208 Q60 160 30 120" fill="none" stroke="rgba(200,150,14,.2)" stroke-width="1" stroke-dasharray="4 4">
-              <animate attributeName="stroke-dashoffset" from="80" to="0" dur="2.5s" repeatCount="indefinite"/>
-            </path>
-            <!-- Conakry → Abidjan (vers le sud-est) -->
-            <path d="M92 208 Q160 240 200 290" fill="none" stroke="rgba(200,150,14,.15)" stroke-width="1" stroke-dasharray="4 4">
-              <animate attributeName="stroke-dashoffset" from="60" to="0" dur="2s" repeatCount="indefinite"/>
-            </path>
-          </svg>
-        </div>
+          <!-- Silhouette continent africain -->
+          <path class="af-continent" d="
+            M117,31 C110,28 97,26 87,33
+            L72,65 L55,100 L45,135 L42,162
+            L48,178 L55,185 L62,190
+            L70,193 L72,200 L78,210
+            L87,222 L100,230 L118,228
+            L128,222 L142,216 L154,214
+            L162,226 L174,224 L176,238
+            L178,248 L188,274 L188,320
+            L185,355 L183,390 L188,420
+            L205,452 L218,458 L238,452
+            L255,440 L268,415 L275,385
+            L280,348 L292,305 L305,262
+            L315,240 L335,215 L342,188
+            L338,162 L318,128 L295,90
+            L270,58 L248,38 L220,22
+            L195,14 L175,18 L155,20
+            L135,22 L117,31 Z"/>
 
-        <!-- Point pulsant sur la Guinée -->
-        <div class="afp-guinea-pin">
-          <div class="afp-pin-ring2"></div>
-          <div class="afp-pin-ring"></div>
-          <div class="afp-pin-dot"></div>
-          <span class="afp-label-pin">Conakry</span>
-        </div>
+          <!-- Guinée mise en surbrillance (orange/or) -->
+          <path class="af-guinee" d="
+            M62,190 L65,182 L78,175
+            L92,180 L100,192 L98,205
+            L90,210 L78,210 L70,200 Z"
+            filter="url(#guineeGlow)"/>
+
+          <!-- Ligne animée : Conakry → Europe (nord) -->
+          <path class="af-line-eu" d="M72,193 Q160,80 340,28"/>
+          <!-- Ligne animée : Conakry → Afrique Est -->
+          <path class="af-line-ea" d="M72,193 Q200,255 305,265"/>
+          <!-- Ligne animée : Conakry → Afrique du Sud -->
+          <path class="af-line-sa" d="M72,193 Q140,320 210,455"/>
+
+          <!-- Rings pulsants Conakry -->
+          <circle cx="72" cy="193" r="5" fill="none" stroke="#E85D20" stroke-width="1.5" opacity="0.9">
+            <animate attributeName="r" values="5;30" dur="2.2s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.9;0" dur="2.2s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="72" cy="193" r="5" fill="none" stroke="#E85D20" stroke-width="1" opacity="0.6">
+            <animate attributeName="r" values="5;30" dur="2.2s" begin="0.75s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.6;0" dur="2.2s" begin="0.75s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="72" cy="193" r="5" fill="none" stroke="#C8960E" stroke-width="0.8" opacity="0.4">
+            <animate attributeName="r" values="5;30" dur="2.2s" begin="1.5s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.4;0" dur="2.2s" begin="1.5s" repeatCount="indefinite"/>
+          </circle>
+          <!-- Point Conakry -->
+          <circle cx="72" cy="193" r="5" fill="#E85D20"/>
+          <circle cx="72" cy="193" r="2.5" fill="#fff"/>
+
+          <!-- Points villes contexte -->
+          <circle cx="68" cy="158" r="2" fill="rgba(255,255,255,0.25)"/><!-- Dakar -->
+          <circle cx="120" cy="226" r="2" fill="rgba(255,255,255,0.25)"/><!-- Abidjan -->
+          <circle cx="100" cy="50" r="2" fill="rgba(255,255,255,0.25)"/><!-- Casablanca -->
+          <circle cx="335" cy="215" r="2" fill="rgba(255,255,255,0.25)"/><!-- Mogadiscio -->
+
+          <!-- Label Conakry -->
+          <text x="80" y="190" style="font-family:'Inter',sans-serif;font-size:7px;font-weight:800;fill:#E85D20;letter-spacing:.06em">CONAKRY</text>
+          <!-- Label Guinée -->
+          <text x="75" y="203" style="font-family:'Inter',sans-serif;font-size:6px;font-weight:600;fill:rgba(255,255,255,.6);letter-spacing:.04em">Guinée</text>
+        </svg>
 
         <!-- Stats en dessous de la carte -->
         <div class="afp-stats-row">
