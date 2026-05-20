@@ -104,42 +104,63 @@
     .afp-map-wrap{
       position:relative;width:100%;max-width:480px;
     }
-    /* SVG carte Afrique animée */
-    .africa-svg-map{
-      width:100%;height:auto;display:block;border-radius:20px;
-      background:linear-gradient(160deg,#0a140c 0%,#0e1e10 100%);
+    /* ─── CARTE AFRIQUE CRÉATIVE — pure SVG, animée ─── */
+    .africa-creative{
+      width:100%;height:auto;display:block;border-radius:24px;
+      background:linear-gradient(160deg,#0a1410 0%,#0e1f1a 50%,#0a1410 100%);
+      box-shadow:0 24px 60px rgba(0,0,0,.5),inset 0 0 80px rgba(0,0,0,.4);
     }
-    .af-continent{
-      fill:rgba(20,55,28,.75);
-      stroke:rgba(80,160,80,.3);stroke-width:1.2;stroke-linejoin:round;
+    .ac-continent{
+      fill:rgba(15,45,22,.8);
+      stroke:rgba(120,200,140,.32);
+      stroke-width:1.5;stroke-linejoin:round;stroke-linecap:round;
+      filter:drop-shadow(0 0 8px rgba(120,200,140,.08));
     }
-    .af-guinee{
-      fill:url(#guineeGrad);
-      stroke:#E85D20;stroke-width:1.5;stroke-linejoin:round;
-      animation:guineeGlow 3s ease-in-out infinite;
+    .ac-guinea{
+      stroke:#FF6B35;stroke-width:2;stroke-linejoin:round;
+      animation:guineaPulse 3s ease-in-out infinite;
     }
-    @keyframes guineeGlow{
-      0%,100%{filter:url(#guineeGlow) brightness(1)}
-      50%{filter:url(#guineeGlow) brightness(1.3)}
+    @keyframes guineaPulse{
+      0%,100%{filter:drop-shadow(0 0 12px rgba(232,93,32,.6)) drop-shadow(0 0 24px rgba(200,150,14,.3))}
+      50%{filter:drop-shadow(0 0 20px rgba(232,93,32,.9)) drop-shadow(0 0 40px rgba(200,150,14,.5))}
     }
-    .af-line-eu,.af-line-ea,.af-line-sa{
-      fill:none;stroke-width:1;stroke-dasharray:6 5;
+    .ac-line{
+      fill:none;stroke-width:1.2;stroke-linecap:round;
+      stroke-dasharray:5 7;
     }
-    .af-line-eu{
-      stroke:rgba(200,150,14,.35);
-      animation:dashFlow 3s linear infinite;
+    .ac-line-1{stroke:rgba(255,215,0,.45);animation:dashSlide 2.5s linear infinite}
+    .ac-line-2{stroke:rgba(255,180,80,.35);animation:dashSlide 3s linear infinite .3s}
+    .ac-line-3{stroke:rgba(200,150,14,.3);animation:dashSlide 3.5s linear infinite .6s}
+    @keyframes dashSlide{from{stroke-dashoffset:72}to{stroke-dashoffset:0}}
+    .ac-city{fill:rgba(255,255,255,.5)}
+    .ac-city-label{
+      font-family:'Inter',sans-serif;font-size:8px;font-weight:500;
+      fill:rgba(255,255,255,.5);letter-spacing:.03em;
     }
-    .af-line-ea{
-      stroke:rgba(200,150,14,.25);
-      animation:dashFlow 2.5s linear infinite 0.5s;
+    .ac-conakry-label{
+      font-family:'Inter',sans-serif;font-size:9px;font-weight:800;
+      fill:#FF6B35;letter-spacing:.08em;
     }
-    .af-line-sa{
-      stroke:rgba(200,150,14,.18);
-      animation:dashFlow 3.5s linear infinite 1s;
+    .ac-guinea-label{
+      font-family:'Inter',sans-serif;font-size:11px;font-weight:900;
+      fill:#FFD700;letter-spacing:.12em;
     }
-    @keyframes dashFlow{
-      from{stroke-dashoffset:66}
-      to{stroke-dashoffset:0}
+    .ac-orbit{
+      fill:none;stroke:rgba(200,150,14,.08);stroke-width:1;
+      stroke-dasharray:1 6;
+      animation:orbitSpin 60s linear infinite;
+      transform-origin:300px 360px;
+    }
+    @keyframes orbitSpin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+    .ac-scan{
+      stroke:rgba(255,215,0,.4);stroke-width:1.5;
+      filter:drop-shadow(0 0 6px rgba(255,215,0,.6));
+      animation:scanMove 5s ease-in-out infinite;
+    }
+    @keyframes scanMove{
+      0%,100%{transform:translateY(80px);opacity:0}
+      10%,90%{opacity:1}
+      50%{transform:translateY(580px);opacity:1}
     }
     /* Point Guinée pulsant — environ 19% gauche, 40% haut sur la carte Afrique */
     .afp-guinea-pin{
@@ -702,66 +723,227 @@
     .founder-vision p{font-size:.92rem;color:rgba(255,255,255,.7);line-height:1.75}
 
     /* ────────────────── POURQUOI (visuel) ────────────────── */
-    .why{background:#fff;padding:100px 64px}
-    .why-grid-top{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-bottom:4px}
-    .why-grid-bot{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:32px}
-    .why-visual{
-      position:relative;height:320px;overflow:hidden;cursor:pointer;
-      border-radius:0;
+    /* ═══════ POURQUOI NOUS — Bento grid animé ═══════ */
+    .why{
+      background:linear-gradient(180deg,#001533 0%,var(--navy3) 50%,#001020 100%);
+      padding:110px 64px;position:relative;overflow:hidden;
     }
-    .why-visual:first-child{border-radius:20px 0 0 20px}
-    .why-visual:last-child{border-radius:0 20px 20px 0}
-    .why-visual img{
-      width:100%;height:100%;object-fit:cover;
-      transition:transform .6s ease;
+    .why::before{
+      content:'';position:absolute;inset:0;pointer-events:none;
+      background-image:radial-gradient(circle, rgba(255,255,255,.05) 1px, transparent 1px);
+      background-size:32px 32px;opacity:.4;
     }
-    .why-visual:hover img{transform:scale(1.08)}
-    .why-visual-overlay{
-      position:absolute;inset:0;
-      background:linear-gradient(to top,rgba(0,20,60,.92) 0%,rgba(0,20,60,.5) 50%,rgba(0,20,60,.2) 100%);
-      transition:background .4s;
+    .why::after{
+      content:'';position:absolute;top:-300px;left:50%;transform:translateX(-50%);
+      width:900px;height:900px;border-radius:50%;
+      background:radial-gradient(circle,rgba(232,93,32,.08),transparent 65%);
+      pointer-events:none;
     }
-    .why-visual:hover .why-visual-overlay{
-      background:linear-gradient(to top,rgba(0,20,60,.97) 0%,rgba(0,20,60,.7) 50%,rgba(0,20,60,.3) 100%);
+    .why .wrap{position:relative;z-index:1}
+    .why .ttl{color:#fff}
+    .why .sub{color:rgba(255,255,255,.5)}
+
+    .bento-grid{
+      display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:180px;
+      gap:18px;max-width:1280px;margin:0 auto;
     }
-    .why-visual-content{
-      position:absolute;inset:0;display:flex;flex-direction:column;
-      justify-content:flex-end;padding:28px 28px;
+    .bento{
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.09);
+      border-radius:22px;padding:30px;
+      position:relative;overflow:hidden;
+      transition:all .5s cubic-bezier(.23,1,.32,1);
+      display:flex;flex-direction:column;justify-content:space-between;
     }
-    .why-visual-ico{
-      font-size:1.8rem;margin-bottom:10px;
-      transform:translateY(8px);transition:transform .4s;
+    .bento::before{
+      content:'';position:absolute;top:-1px;left:-1px;right:-1px;bottom:-1px;
+      background:conic-gradient(from var(--angle,0deg),transparent,rgba(232,93,32,.5),transparent 30%);
+      border-radius:22px;opacity:0;z-index:-1;
+      transition:opacity .4s;
+      animation:rotateBorder 4s linear infinite;
     }
-    .why-visual:hover .why-visual-ico{transform:translateY(0)}
-    .why-visual h3{
-      font-size:1.1rem;font-weight:800;color:#fff;margin-bottom:6px;
-      transform:translateY(4px);transition:transform .4s .05s;
+    .bento:hover::before{opacity:1}
+    @property --angle{syntax:'<angle>';initial-value:0deg;inherits:false}
+    @keyframes rotateBorder{to{--angle:360deg}}
+    .bento::after{
+      content:'';position:absolute;inset:0;border-radius:22px;
+      background:linear-gradient(135deg,transparent 30%,rgba(255,255,255,.04) 50%,transparent 70%);
+      transform:translateX(-100%);transition:transform .8s ease;
+      pointer-events:none;
     }
-    .why-visual:hover h3{transform:translateY(0)}
-    .why-visual p{
-      font-size:.82rem;color:rgba(255,255,255,.7);line-height:1.6;
-      max-height:0;overflow:hidden;opacity:0;
-      transition:max-height .5s ease,opacity .4s ease .1s;
+    .bento:hover::after{transform:translateX(100%)}
+    .bento:hover{
+      transform:translateY(-8px);
+      border-color:rgba(232,93,32,.4);
+      box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 0 1px rgba(232,93,32,.25);
     }
-    .why-visual:hover p{max-height:120px;opacity:1}
-    .why-chip{
-      display:inline-block;background:var(--orange);color:#fff;
-      padding:4px 12px;border-radius:50px;font-size:.7rem;font-weight:700;
-      margin-bottom:10px;letter-spacing:.04em;text-transform:uppercase;
+
+    /* Tailles bento */
+    .bento-hero{grid-column:span 3;grid-row:span 2}
+    .bento-award{grid-column:span 3;grid-row:span 1}
+    .bento-lang{grid-column:span 3;grid-row:span 1}
+    .bento-local{grid-column:span 2;grid-row:span 1}
+    .bento-data{grid-column:span 2;grid-row:span 1}
+    .bento-scale{grid-column:span 2;grid-row:span 1}
+
+    /* Halo lumineux */
+    .bento-glow{
+      position:absolute;width:200px;height:200px;border-radius:50%;
+      background:radial-gradient(circle,rgba(232,93,32,.18),transparent 65%);
+      filter:blur(40px);pointer-events:none;
+      top:-80px;right:-60px;
+      transition:all .5s;
     }
-    .why-mini{
-      background:var(--light);border-radius:16px;padding:28px 24px;
-      border:1px solid var(--border);transition:all .3s;
-      display:flex;gap:16px;align-items:flex-start;
+    .bento:hover .bento-glow{
+      width:280px;height:280px;
+      background:radial-gradient(circle,rgba(232,93,32,.28),transparent 65%);
     }
-    .why-mini:hover{border-color:var(--orange);box-shadow:0 4px 24px rgba(232,93,32,.1);transform:translateY(-3px)}
-    .why-mini-ico{
-      width:44px;height:44px;border-radius:12px;flex-shrink:0;
-      background:rgba(232,93,32,.1);border:1px solid rgba(232,93,32,.2);
-      display:flex;align-items:center;justify-content:center;font-size:18px;
+
+    /* Numéros énormes animés */
+    .bento-num{
+      font-size:4.5rem;font-weight:900;line-height:1;
+      background:linear-gradient(135deg,#FF6B35,#C8960E);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+      letter-spacing:-.04em;
+      animation:numReveal .8s cubic-bezier(.34,1.56,.64,1) backwards;
     }
-    .why-mini h3{font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:4px}
-    .why-mini p{font-size:.82rem;color:var(--gray);line-height:1.65}
+    @keyframes numReveal{
+      from{opacity:0;transform:translateY(20px) scale(.8)}
+      to{opacity:1;transform:translateY(0) scale(1)}
+    }
+    .bento-hero .bento-num{font-size:7rem}
+    .bento-num span{
+      font-size:38%;background:var(--orange);-webkit-text-fill-color:#fff;
+      padding:6px 14px;border-radius:50px;margin-left:8px;
+      vertical-align:middle;font-weight:800;
+    }
+
+    .bento-label,.bento-tag{
+      font-size:.62rem;font-weight:800;letter-spacing:.14em;
+      text-transform:uppercase;color:var(--orange);
+      display:inline-block;
+    }
+    .bento-tag{
+      background:rgba(232,93,32,.15);border:1px solid rgba(232,93,32,.3);
+      padding:4px 12px;border-radius:50px;
+    }
+    .bento h3{font-size:1.15rem;font-weight:800;color:#fff;margin-bottom:8px;line-height:1.25}
+    .bento-hero h3{font-size:1.5rem}
+    .bento p{font-size:.85rem;color:rgba(255,255,255,.55);line-height:1.65}
+
+    .bento-icon{
+      font-size:2.2rem;display:inline-block;
+      animation:bentoFloat 3.5s ease-in-out infinite;
+    }
+    @keyframes bentoFloat{
+      0%,100%{transform:translateY(0) rotate(0)}
+      50%{transform:translateY(-8px) rotate(6deg)}
+    }
+
+    /* Barres comparatives Europe vs Help'me */
+    .bento-bars{margin-top:24px;display:flex;flex-direction:column;gap:14px}
+    .b-bar{display:flex;align-items:center;gap:14px}
+    .b-bar-label{
+      font-size:.78rem;color:rgba(255,255,255,.7);font-weight:700;
+      width:90px;display:flex;align-items:center;gap:6px;
+    }
+    .b-bar-track{
+      flex:1;height:12px;background:rgba(255,255,255,.06);border-radius:50px;
+      position:relative;overflow:hidden;
+    }
+    .b-bar-fill{
+      position:absolute;inset:0;border-radius:50px;
+      box-shadow:0 0 12px currentColor;
+    }
+    .b-bar-fill-eur{
+      background:linear-gradient(90deg,#ef4444,#f59e0b);color:#f59e0b;
+      animation:fillEur 1.4s cubic-bezier(.23,1,.32,1) .3s both;
+    }
+    .b-bar-fill-hp{
+      background:linear-gradient(90deg,#16A34A,#4ade80);color:#4ade80;
+      animation:fillHp 1.4s cubic-bezier(.23,1,.32,1) .7s both;
+    }
+    .b-bar-val{font-size:.72rem;font-weight:700;color:rgba(255,255,255,.5);width:42px;text-align:right}
+    @keyframes fillEur{from{width:0}to{width:100%}}
+    @keyframes fillHp{from{width:0}to{width:40%}}
+
+    /* Trophy */
+    .bento-trophy{
+      font-size:3rem;display:inline-block;
+      animation:trophyShine 4s ease-in-out infinite;
+    }
+    @keyframes trophyShine{
+      0%,100%{transform:rotate(0);filter:drop-shadow(0 0 0 rgba(255,215,0,0))}
+      50%{transform:rotate(-8deg);filter:drop-shadow(0 0 24px rgba(255,215,0,.7))}
+    }
+
+    /* Tags langues */
+    .lang-pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+    .lang-pills span{
+      background:rgba(232,93,32,.12);border:1px solid rgba(232,93,32,.25);
+      padding:5px 12px;border-radius:50px;
+      font-size:.74rem;font-weight:600;color:#fff;
+      transition:all .25s;
+    }
+    .lang-pills span:hover{background:var(--orange);transform:translateY(-2px) scale(1.05)}
+
+    /* Mini stat */
+    .bento-stat{margin-top:14px;display:flex;align-items:baseline;gap:10px}
+    .bento-stat strong{
+      font-size:1.8rem;font-weight:900;color:var(--orange);
+      line-height:1;letter-spacing:-.02em;
+    }
+    .bento-stat em{font-style:normal;font-size:.78rem;color:rgba(255,255,255,.5)}
+
+    /* Mini chart animé */
+    .mini-chart{width:100%;height:60px;margin-top:14px}
+    .mini-chart rect{
+      transform-origin:bottom;
+      animation:barRise 1.4s cubic-bezier(.34,1.56,.64,1) backwards;
+    }
+    .mini-chart rect:nth-child(1){animation-delay:.1s}
+    .mini-chart rect:nth-child(2){animation-delay:.18s}
+    .mini-chart rect:nth-child(3){animation-delay:.26s}
+    .mini-chart rect:nth-child(4){animation-delay:.34s}
+    .mini-chart rect:nth-child(5){animation-delay:.42s}
+    .mini-chart rect:nth-child(6){animation-delay:.5s}
+    .mini-chart rect:nth-child(7){animation-delay:.58s}
+    @keyframes barRise{
+      from{transform:scaleY(0)}
+      to{transform:scaleY(1)}
+    }
+
+    /* Dots scalable team */
+    .scale-dots{
+      display:grid;grid-template-columns:repeat(5,1fr);gap:6px;
+      margin-top:14px;max-width:120px;
+    }
+    .scale-dots span{
+      width:11px;height:11px;border-radius:50%;
+      background:rgba(232,93,32,.25);
+      animation:dotPulseScale 2s ease-in-out infinite;
+    }
+    .scale-dots span:nth-child(1){animation-delay:0s}
+    .scale-dots span:nth-child(2){animation-delay:.1s}
+    .scale-dots span:nth-child(3){animation-delay:.2s}
+    .scale-dots span:nth-child(4){animation-delay:.3s}
+    .scale-dots span:nth-child(5){animation-delay:.4s}
+    .scale-dots span:nth-child(6){animation-delay:.5s}
+    .scale-dots span:nth-child(7){animation-delay:.6s}
+    .scale-dots span:nth-child(8){animation-delay:.7s}
+    .scale-dots span:nth-child(9){animation-delay:.8s}
+    .scale-dots span:nth-child(10){animation-delay:.9s}
+    @keyframes dotPulseScale{
+      0%,100%{background:rgba(232,93,32,.25);transform:scale(1)}
+      50%{background:var(--orange);transform:scale(1.4);box-shadow:0 0 12px rgba(232,93,32,.7)}
+    }
+
+    @media (max-width:900px){
+      .bento-grid{grid-template-columns:1fr 1fr;grid-auto-rows:auto}
+      .bento-hero,.bento-award,.bento-lang,.bento-local,.bento-data,.bento-scale{
+        grid-column:span 2;grid-row:auto;
+      }
+    }
 
     /* ────────────────── GALERIE ────────────────── */
     .gallery{background:#fff;padding:80px 0;overflow:hidden}
@@ -1297,32 +1479,188 @@
     <!-- Droite : Carte Afrique animée -->
     <div class="afp-right">
       <div class="afp-map-wrap">
-        <!-- Vraie photo carte Afrique avec animations par-dessus -->
-        <img src="africa-map.png" alt="Afrique — Guinée, notre ancrage" class="afp-map-img"/>
-        <div class="afp-map-overlay"></div>
+        <!-- ════ CARTE AFRIQUE CRÉATIVE — 100% SVG animé ════ -->
+        <svg class="africa-creative" viewBox="0 0 600 720" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <!-- Gradient Guinée or/orange -->
+            <linearGradient id="acGuineaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#FF6B35"/>
+              <stop offset="50%" stop-color="#E85D20"/>
+              <stop offset="100%" stop-color="#C8960E"/>
+            </linearGradient>
+            <!-- Particule lumineuse -->
+            <radialGradient id="acParticle">
+              <stop offset="0%" stop-color="#FFE066" stop-opacity="1"/>
+              <stop offset="40%" stop-color="#FFD700" stop-opacity="0.8"/>
+              <stop offset="100%" stop-color="#FFD700" stop-opacity="0"/>
+            </radialGradient>
+            <!-- Grille hexagonale subtile -->
+            <pattern id="acHexGrid" x="0" y="0" width="48" height="55.4" patternUnits="userSpaceOnUse">
+              <polygon points="24,3 45,15 45,40 24,52 3,40 3,15" fill="none" stroke="rgba(200,150,14,.06)" stroke-width="0.5"/>
+            </pattern>
+            <!-- Chemins de connexion (réutilisables pour animateMotion) -->
+            <path id="acLineEU" d="M118,328 Q280,160 510,80" fill="none"/>
+            <path id="acLineEA" d="M118,328 Q320,400 495,365" fill="none"/>
+            <path id="acLineSA" d="M118,328 Q200,500 380,580" fill="none"/>
+          </defs>
 
-        <!-- Lignes SVG de connexion animées -->
-        <div class="afp-conn-lines">
-          <svg viewBox="0 0 480 520" preserveAspectRatio="none">
-            <path d="M92 208 Q200 100 380 60" fill="none" stroke="rgba(200,150,14,.25)" stroke-width="1" stroke-dasharray="6 4">
-              <animate attributeName="stroke-dashoffset" from="100" to="0" dur="3s" repeatCount="indefinite"/>
-            </path>
-            <path d="M92 208 Q60 160 30 120" fill="none" stroke="rgba(200,150,14,.2)" stroke-width="1" stroke-dasharray="4 4">
-              <animate attributeName="stroke-dashoffset" from="80" to="0" dur="2.5s" repeatCount="indefinite"/>
-            </path>
-            <path d="M92 208 Q160 240 200 290" fill="none" stroke="rgba(200,150,14,.15)" stroke-width="1" stroke-dasharray="4 4">
-              <animate attributeName="stroke-dashoffset" from="60" to="0" dur="2s" repeatCount="indefinite"/>
-            </path>
-          </svg>
-        </div>
+          <!-- Fond grille hexagonale tech -->
+          <rect width="600" height="720" fill="url(#acHexGrid)"/>
 
-        <!-- Point pulsant sur la Guinée -->
-        <div class="afp-guinea-pin">
-          <div class="afp-pin-ring2"></div>
-          <div class="afp-pin-ring"></div>
-          <div class="afp-pin-dot"></div>
-          <span class="afp-label-pin">Conakry</span>
-        </div>
+          <!-- Anneaux orbitaux décoratifs autour de l'Afrique -->
+          <g class="ac-orbit">
+            <ellipse cx="300" cy="360" rx="290" ry="340"/>
+            <ellipse cx="300" cy="360" rx="240" ry="290"/>
+            <ellipse cx="300" cy="360" rx="190" ry="240"/>
+          </g>
+
+          <!-- ═══ AFRIQUE — silhouette détaillée ═══ -->
+          <path class="ac-continent" d="
+            M 195,28
+            C 215,24 250,26 285,30
+            L 335,38 380,50 420,68
+            L 450,90 472,118 488,148
+            L 500,180 510,210
+            C 518,235 525,255 535,275
+            L 550,295
+            C 565,308 575,320 580,338
+            C 582,355 572,365 558,372
+            L 540,378
+            C 528,388 520,402 512,418
+            L 500,452
+            C 492,478 482,498 472,520
+            L 455,548 432,572 408,585
+            C 390,592 370,592 352,580
+            L 340,560 332,538
+            C 326,510 322,478 322,448
+            L 322,410
+            C 318,378 314,348 308,322
+            L 298,308
+            C 285,302 270,308 258,318
+            L 240,322 218,324
+            L 190,326
+            C 172,326 158,322 145,318
+            L 132,322
+            L 122,328
+            L 115,335
+            C 110,340 108,348 110,355
+            L 115,365
+            C 110,355 105,340 100,320
+            L 92,295 82,265
+            L 75,240
+            C 70,215 68,195 75,175
+            L 88,148 105,118 128,90 155,62 178,42 195,28 Z"/>
+
+          <!-- Lignes intérieures Afrique (subtil) -->
+          <g opacity="0.12">
+            <path d="M 80,200 Q 250,210 500,220" fill="none" stroke="#fff" stroke-width="0.4" stroke-dasharray="2 4"/>
+            <path d="M 90,340 Q 280,355 530,370" fill="none" stroke="#fff" stroke-width="0.4" stroke-dasharray="2 4"/>
+            <path d="M 200,50 Q 250,300 320,580" fill="none" stroke="#fff" stroke-width="0.4" stroke-dasharray="2 4"/>
+          </g>
+
+          <!-- ═══ GUINÉE — surbrillance avec gradient ═══ -->
+          <path class="ac-guinea" fill="url(#acGuineaGrad)" d="
+            M 118,328
+            L 113,310
+            L 122,295
+            L 145,288
+            L 175,298
+            L 188,315
+            L 184,335
+            L 168,348
+            L 142,352
+            L 122,342
+            Z"/>
+
+          <!-- Lignes de connexion vers le monde -->
+          <use href="#acLineEU" class="ac-line ac-line-1"/>
+          <use href="#acLineEA" class="ac-line ac-line-2"/>
+          <use href="#acLineSA" class="ac-line ac-line-3"/>
+
+          <!-- Particules lumineuses qui voyagent sur les lignes -->
+          <circle r="5" fill="url(#acParticle)">
+            <animateMotion dur="3s" repeatCount="indefinite" rotate="auto">
+              <mpath href="#acLineEU"/>
+            </animateMotion>
+          </circle>
+          <circle r="4" fill="url(#acParticle)">
+            <animateMotion dur="3.5s" begin="0.8s" repeatCount="indefinite">
+              <mpath href="#acLineEA"/>
+            </animateMotion>
+          </circle>
+          <circle r="4" fill="url(#acParticle)">
+            <animateMotion dur="4s" begin="1.5s" repeatCount="indefinite">
+              <mpath href="#acLineSA"/>
+            </animateMotion>
+          </circle>
+
+          <!-- Villes secondaires -->
+          <g>
+            <circle class="ac-city" cx="80" cy="225" r="2.5"/>
+            <text class="ac-city-label" x="42" y="228">Dakar</text>
+            <circle class="ac-city" cx="218" cy="324" r="2.5"/>
+            <text class="ac-city-label" x="208" y="338">Abidjan</text>
+            <circle class="ac-city" cx="285" cy="312" r="2.5"/>
+            <text class="ac-city-label" x="290" y="306">Lagos</text>
+            <circle class="ac-city" cx="160" cy="62" r="2.5"/>
+            <text class="ac-city-label" x="128" y="56">Casablanca</text>
+            <circle class="ac-city" cx="475" cy="125" r="2.5"/>
+            <text class="ac-city-label" x="475" y="118">Le Caire</text>
+            <circle class="ac-city" cx="375" cy="568" r="2.5"/>
+            <text class="ac-city-label" x="315" y="582">Cape Town</text>
+            <circle class="ac-city" cx="495" cy="370" r="2.5"/>
+            <text class="ac-city-label" x="500" y="365">Nairobi</text>
+          </g>
+
+          <!-- ═══ BALISE CONAKRY — 4 anneaux pulsants ═══ -->
+          <g>
+            <circle cx="118" cy="328" r="6" fill="none" stroke="#FF6B35" stroke-width="1.8" opacity="1">
+              <animate attributeName="r" values="6;50" dur="2.4s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="1;0" dur="2.4s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="118" cy="328" r="6" fill="none" stroke="#FF6B35" stroke-width="1.5" opacity="0.85">
+              <animate attributeName="r" values="6;50" dur="2.4s" begin="0.6s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.85;0" dur="2.4s" begin="0.6s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="118" cy="328" r="6" fill="none" stroke="#FFD700" stroke-width="1.2" opacity="0.6">
+              <animate attributeName="r" values="6;50" dur="2.4s" begin="1.2s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.6;0" dur="2.4s" begin="1.2s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="118" cy="328" r="6" fill="none" stroke="#FFD700" stroke-width="1" opacity="0.4">
+              <animate attributeName="r" values="6;50" dur="2.4s" begin="1.8s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.4;0" dur="2.4s" begin="1.8s" repeatCount="indefinite"/>
+            </circle>
+            <!-- Point central Conakry -->
+            <circle cx="118" cy="328" r="6" fill="#FF6B35"/>
+            <circle cx="118" cy="328" r="3" fill="#fff"/>
+          </g>
+
+          <!-- Étiquette Conakry avec encart -->
+          <g transform="translate(130,318)">
+            <rect width="78" height="16" rx="3" fill="rgba(255,107,53,.95)" stroke="rgba(255,255,255,.3)" stroke-width="0.5"/>
+            <text class="ac-conakry-label" x="6" y="11">⚡ CONAKRY</text>
+          </g>
+
+          <!-- Label Guinée -->
+          <text class="ac-guinea-label" x="115" y="372">GUINÉE</text>
+
+          <!-- Labels routes vers le monde -->
+          <text x="510" y="68" style="font-family:'Inter';font-size:7px;fill:rgba(255,215,0,.7);font-weight:700;letter-spacing:.1em">→ EUROPE</text>
+          <text x="495" y="358" style="font-family:'Inter';font-size:7px;fill:rgba(255,215,0,.55);font-weight:700;letter-spacing:.1em">→ EST AFRIQUE</text>
+          <text x="340" y="600" style="font-family:'Inter';font-size:7px;fill:rgba(255,215,0,.5);font-weight:700;letter-spacing:.1em">→ SUD AFRIQUE</text>
+
+          <!-- Ligne de scan horizontale animée -->
+          <line class="ac-scan" x1="60" x2="540" y1="0" y2="0"/>
+
+          <!-- Particules d'étoiles scattered (décoratif) -->
+          <g opacity="0.6">
+            <circle cx="50" cy="80" r="1" fill="#fff"><animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/></circle>
+            <circle cx="540" cy="50" r="1" fill="#fff"><animate attributeName="opacity" values="0.3;1;0.3" dur="2.4s" begin="0.4s" repeatCount="indefinite"/></circle>
+            <circle cx="570" cy="450" r="1" fill="#fff"><animate attributeName="opacity" values="0.3;1;0.3" dur="2.2s" begin="0.8s" repeatCount="indefinite"/></circle>
+            <circle cx="30" cy="500" r="1" fill="#fff"><animate attributeName="opacity" values="0.3;1;0.3" dur="2.6s" begin="1.2s" repeatCount="indefinite"/></circle>
+            <circle cx="550" cy="650" r="1" fill="#fff"><animate attributeName="opacity" values="0.3;1;0.3" dur="2.8s" begin="1.6s" repeatCount="indefinite"/></circle>
+          </g>
+        </svg>
 
         <!-- Stats en dessous de la carte -->
         <div class="afp-stats-row">
@@ -1432,63 +1770,110 @@
       <p class="sub">Des avantages concrets, prouvés sur le terrain — pas des promesses</p>
     </div>
 
-    <!-- Cartes visuelles avec photos -->
-    <div class="why-grid-top fi">
-      <div class="why-visual">
-        <img src="manager-coaching.jpeg" alt="Expertise locale"/>
-        <div class="why-visual-overlay"></div>
-        <div class="why-visual-content">
-          <span class="why-chip">N°1</span>
-          <div class="why-visual-ico">🎯</div>
-          <h3>Expertise locale unique</h3>
-          <p>Nous connaissons le marché guinéen dans ses moindres détails — culture, langue, habitudes des consommateurs. Un avantage décisif pour vos campagnes nationales.</p>
-        </div>
-      </div>
-      <div class="why-visual">
-        <img src="open-space.jpeg" alt="Équipe multilingue"/>
-        <div class="why-visual-overlay"></div>
-        <div class="why-visual-content">
-          <span class="why-chip">Multilingue</span>
-          <div class="why-visual-ico">🌐</div>
-          <h3>5+ langues maîtrisées</h3>
-          <p>Français, anglais, pular, soussou, malinké et autres langues nationales. Chaque client servi dans sa langue naturelle, sans barrière culturelle.</p>
-        </div>
-      </div>
-      <div class="why-visual">
-        <img src="hero-team.jpeg" alt="Agents qualifiés"/>
-        <div class="why-visual-overlay"></div>
-        <div class="why-visual-content">
-          <span class="why-chip">Équipe scalable</span>
-          <div class="why-visual-ico">👥</div>
-          <h3>Équipe structurée & scalable</h3>
-          <p>Managers, agents et superviseurs formés aux standards internationaux — prêts à s'adapter à vos volumes et pics d'activité en temps réel.</p>
-        </div>
-      </div>
-    </div>
+    <!-- ═══ BENTO GRID — 6 cartes animées ═══ -->
+    <div class="bento-grid">
 
-    <!-- Mini cartes info -->
-    <div class="why-grid-bot fi fi-d2">
-      <div class="why-mini">
-        <div class="why-mini-ico">💰</div>
+      <!-- Card 1 : HERO 60% économies (grande) -->
+      <div class="bento bento-hero fi">
+        <div class="bento-glow"></div>
         <div>
-          <h3>Tarifs ultra-compétitifs</h3>
-          <p>Jusqu'à 60% d'économies vs. un centre d'appel européen, sans compromis sur la qualité de service.</p>
+          <span class="bento-label">⚡ Avantage tarifaire</span>
+          <div class="bento-num">60<span>%</span></div>
+          <h3>D'économies vs. un call center européen</h3>
+          <p>Le même standard de qualité — voire supérieur — à une fraction du coût. Sans compromis sur le service ou la formation des agents.</p>
+        </div>
+        <div class="bento-bars">
+          <div class="b-bar">
+            <div class="b-bar-label">🇪🇺 Europe</div>
+            <div class="b-bar-track"><div class="b-bar-fill b-bar-fill-eur"></div></div>
+            <div class="b-bar-val">100%</div>
+          </div>
+          <div class="b-bar">
+            <div class="b-bar-label">🇬🇳 Help'me</div>
+            <div class="b-bar-track"><div class="b-bar-fill b-bar-fill-hp"></div></div>
+            <div class="b-bar-val">40%</div>
+          </div>
         </div>
       </div>
-      <div class="why-mini">
-        <div class="why-mini-ico">📊</div>
-        <div>
-          <h3>Reporting en temps réel</h3>
-          <p>Tableaux de bord personnalisés, KPIs transparents, bilans réguliers. Vous pilotez, nous exécutons.</p>
+
+      <!-- Card 2 : Trophée 2023 -->
+      <div class="bento bento-award fi">
+        <div class="bento-glow"></div>
+        <div style="display:flex;align-items:center;gap:20px;height:100%">
+          <div class="bento-trophy">🏆</div>
+          <div style="flex:1">
+            <span class="bento-tag">2023</span>
+            <h3 style="margin-top:8px">Élu Service Client de l'Année</h3>
+            <p>Premier centre d'appel guinéen primé pour la qualité de service.</p>
+          </div>
         </div>
       </div>
-      <div class="why-mini">
-        <div class="why-mini-ico">🏆</div>
-        <div>
-          <h3>Qualité primée 2023</h3>
-          <p>Élu Meilleur Service Client de l'Année. Nos standards d'excellence sont reconnus et certifiés.</p>
+
+      <!-- Card 3 : 5+ langues -->
+      <div class="bento bento-lang fi">
+        <div class="bento-glow"></div>
+        <div style="display:flex;align-items:center;gap:24px;height:100%">
+          <div>
+            <div class="bento-num" style="font-size:3.5rem">5<span style="font-size:50%">+</span></div>
+            <h3>Langues maîtrisées</h3>
+          </div>
+          <div class="lang-pills" style="margin-top:0;flex:1">
+            <span>🇫🇷 Français</span>
+            <span>🇬🇧 English</span>
+            <span>Pular</span>
+            <span>Soussou</span>
+            <span>Malinké</span>
+          </div>
         </div>
       </div>
+
+      <!-- Card 4 : Expertise locale -->
+      <div class="bento bento-local fi">
+        <div class="bento-glow"></div>
+        <div>
+          <div class="bento-icon">🇬🇳</div>
+          <h3>Expertise 100% guinéenne</h3>
+          <p>Nous parlons la langue de vos clients. Au sens propre et figuré.</p>
+        </div>
+        <div class="bento-stat">
+          <strong>10+</strong>
+          <em>ans d'expérience cumulée</em>
+        </div>
+      </div>
+
+      <!-- Card 5 : Reporting temps réel -->
+      <div class="bento bento-data fi">
+        <div class="bento-glow"></div>
+        <div>
+          <div class="bento-icon">📊</div>
+          <h3>Reporting temps réel</h3>
+          <p>KPIs transparents, dashboards live.</p>
+        </div>
+        <svg class="mini-chart" viewBox="0 0 100 30" preserveAspectRatio="none">
+          <rect x="2" y="20" width="11" height="10" fill="rgba(232,93,32,.6)" rx="2"/>
+          <rect x="16" y="15" width="11" height="15" fill="rgba(232,93,32,.7)" rx="2"/>
+          <rect x="30" y="8" width="11" height="22" fill="rgba(232,93,32,.8)" rx="2"/>
+          <rect x="44" y="12" width="11" height="18" fill="rgba(232,93,32,.85)" rx="2"/>
+          <rect x="58" y="5" width="11" height="25" fill="rgba(232,93,32,.9)" rx="2"/>
+          <rect x="72" y="10" width="11" height="20" fill="rgba(232,93,32,.95)" rx="2"/>
+          <rect x="86" y="3" width="11" height="27" fill="#FF6B35" rx="2"/>
+        </svg>
+      </div>
+
+      <!-- Card 6 : Équipe scalable -->
+      <div class="bento bento-scale fi">
+        <div class="bento-glow"></div>
+        <div>
+          <div class="bento-icon">👥</div>
+          <h3>Équipe scalable</h3>
+          <p>De 5 à 50 agents en quelques jours.</p>
+        </div>
+        <div class="scale-dots">
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
