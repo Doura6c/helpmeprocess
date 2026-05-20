@@ -23,124 +23,159 @@
       --text:#1F2937;
       --text2:#374151;
       /* ── Palette africaine ── */
-      --gold:#D4A310;
-      --gold2:#F0C040;
-      --guinea-red:#CE1126;
-      --guinea-green:#009460;
-      --africa-dark:#0A1E10;
+      --gold:#C8960E;
+      --terra:#C05020;
     }
     html{scroll-behavior:smooth}
     body{font-family:'Inter',sans-serif;color:var(--text);background:#fff;overflow-x:hidden;line-height:1.6;-webkit-font-smoothing:antialiased}
 
     /* ════════════════════════════════════════
-       TOUCHE AFRICAINE 🇬🇳
+       AFRICA PRIDE — Design artistique
        ════════════════════════════════════════ */
 
-    /* Bande drapeau guinéen — fixe en haut */
-    .pan-strip{
-      position:fixed;top:0;left:0;right:0;height:5px;z-index:1001;
+    /* Liseré doré premium en haut de page */
+    .gold-top{
+      position:fixed;top:0;left:0;right:0;height:3px;z-index:1001;
       background:linear-gradient(90deg,
-        var(--guinea-red)  0   33.33%,
-        #FCD20F           33.33%  66.66%,
-        var(--guinea-green) 66.66% 100%
+        transparent 0%,
+        var(--terra) 15%,
+        var(--gold) 40%,
+        #F0C040 55%,
+        var(--gold) 70%,
+        var(--terra) 85%,
+        transparent 100%
       );
     }
 
-    /* Diviseur kente entre sections */
-    .kente-div{
-      height:8px;
-      background:repeating-linear-gradient(90deg,
-        #CE1126 0px,#CE1126 18px,
-        #FCD20F 18px,#FCD20F 36px,
-        #009460 36px,#009460 54px,
-        #1A1A1A 54px,#1A1A1A 72px
-      );
+    /* Section Africa Pride */
+    .africa-pride{
+      background:linear-gradient(160deg,#090E07 0%,#0F1A0C 50%,#090E07 100%);
+      padding:110px 64px;
+      position:relative;overflow:hidden;
+    }
+    /* SVG géométrique Adinkra en fond */
+    .africa-pride::before{
+      content:'';position:absolute;inset:0;pointer-events:none;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cpolygon points='50,6 94,50 50,94 6,50' fill='none' stroke='%23C8960E' stroke-width='0.7' opacity='0.09'/%3E%3Cpolygon points='50,24 76,50 50,76 24,50' fill='none' stroke='%23C8960E' stroke-width='0.7' opacity='0.06'/%3E%3Ccircle cx='50' cy='50' r='3' fill='%23C8960E' opacity='0.13'/%3E%3C/svg%3E");
+      background-size:100px 100px;
+    }
+    /* Grand cercle architectural */
+    .africa-pride::after{
+      content:'';position:absolute;
+      width:720px;height:720px;border-radius:50%;
+      border:1px solid rgba(200,150,14,.07);
+      top:50%;left:50%;transform:translate(-50%,-50%);
+      pointer-events:none;
+    }
+    .afp-wrap{
+      max-width:1280px;margin:0 auto;
+      display:grid;grid-template-columns:1fr 1fr;
+      gap:80px;align-items:center;
+      position:relative;z-index:1;
+    }
+    /* Colonne gauche : texte monumental */
+    .afp-left{}
+    .afp-eyebrow{
+      display:inline-flex;align-items:center;gap:14px;
+      font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+      color:rgba(200,150,14,.75);margin-bottom:36px;
+    }
+    .afp-eyebrow::before{
+      content:'';display:block;width:32px;height:2px;
+      background:linear-gradient(90deg,transparent,var(--gold));
+    }
+    .afp-title{
+      font-size:clamp(2.2rem,4vw,3.4rem);font-weight:900;
+      line-height:1.12;letter-spacing:-.03em;
+      margin-bottom:32px;
+    }
+    .afp-t1{display:block;color:#fff}
+    .afp-t2{
+      display:block;
+      background:linear-gradient(90deg,var(--terra),var(--gold),#F0C040);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+      background-size:200%;animation:shimmer 4s ease infinite;
+    }
+    @keyframes shimmer{0%,100%{background-position:0%}50%{background-position:100%}}
+    .afp-t3{display:block;color:rgba(255,255,255,.5);font-size:70%;font-weight:700;letter-spacing:.02em;margin-top:6px}
+    .afp-desc{
+      color:rgba(255,255,255,.42);font-size:.95rem;line-height:1.8;
+      max-width:440px;margin-bottom:40px;
+    }
+    .afp-route{
+      display:flex;align-items:center;gap:10px;
+      font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+    }
+    .afp-route-dot{
+      width:6px;height:6px;border-radius:50%;background:var(--gold);opacity:.7;
+    }
+    .afp-route-city{color:rgba(255,255,255,.55)}
+    .afp-route-city.active{color:var(--gold);font-weight:800}
+    .afp-route-arr{color:rgba(255,255,255,.2);font-size:.65rem}
+
+    /* Colonne droite : 3 pilliers */
+    .afp-right{display:flex;flex-direction:column;gap:1px}
+    .afp-pillar{
+      padding:32px 36px;
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:0;
+      transition:all .4s;
+      position:relative;overflow:hidden;
+      cursor:default;
+    }
+    .afp-pillar:first-child{border-radius:16px 16px 0 0}
+    .afp-pillar:last-child{border-radius:0 0 16px 16px}
+    .afp-pillar::before{
+      content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+      background:linear-gradient(to bottom,transparent,var(--gold),transparent);
+      opacity:0;transition:opacity .4s;
+    }
+    .afp-pillar:hover{background:rgba(200,150,14,.06);border-color:rgba(200,150,14,.18)}
+    .afp-pillar:hover::before{opacity:1}
+    .afp-pil-num{
+      font-size:2.6rem;font-weight:900;letter-spacing:-.04em;
+      line-height:1;margin-bottom:8px;
+      color:#fff;
+    }
+    .afp-pil-num span{font-size:55%;color:var(--gold)}
+    .afp-pil-txt{font-size:.82rem;color:rgba(255,255,255,.38);line-height:1.6}
+    .afp-pil-tag{
+      display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:.1em;
+      text-transform:uppercase;color:rgba(200,150,14,.6);margin-bottom:10px;
+    }
+    /* Ligne décorative bas de section */
+    .afp-line-bottom{
+      position:absolute;bottom:0;left:10%;right:10%;height:1px;
+      background:linear-gradient(90deg,transparent,rgba(200,150,14,.3),transparent);
     }
 
-    /* Stats — motif géométrique kente subtil */
+    /* Stats section — pattern Adinkra subtil */
     .stats{position:relative}
     .stats::before{
       content:'';position:absolute;inset:0;pointer-events:none;
-      background-image:
-        repeating-linear-gradient(45deg,rgba(212,163,16,.07) 0,rgba(212,163,16,.07) 1px,transparent 1px,transparent 22px),
-        repeating-linear-gradient(-45deg,rgba(212,163,16,.07) 0,rgba(212,163,16,.07) 1px,transparent 1px,transparent 22px);
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpolygon points='30,4 56,30 30,56 4,30' fill='none' stroke='%23ffffff' stroke-width='0.5' opacity='0.04'/%3E%3C/svg%3E");
+      background-size:60px 60px;
     }
 
-    /* ─── Section proverbe africain ─── */
-    .proverbe{
-      background:linear-gradient(135deg,#071510 0%,#0D2418 55%,#071510 100%);
-      padding:88px 64px;
-      position:relative;overflow:hidden;text-align:center;
-    }
-    /* motif géométrique bogolan */
-    .proverbe::before{
-      content:'';position:absolute;inset:0;pointer-events:none;
-      background-image:
-        repeating-linear-gradient(60deg,transparent,transparent 26px,rgba(212,163,16,.055) 26px,rgba(212,163,16,.055) 27px),
-        repeating-linear-gradient(-60deg,transparent,transparent 26px,rgba(212,163,16,.055) 26px,rgba(212,163,16,.055) 27px);
-    }
-    /* continent africain décoratif */
-    .proverbe::after{
-      content:'🌍';
-      position:absolute;right:5%;top:50%;transform:translateY(-50%);
-      font-size:13rem;opacity:.035;line-height:1;pointer-events:none;
-    }
-    .proverbe-wrap{position:relative;z-index:1;max-width:820px;margin:0 auto}
-    .prov-eyebrow{
-      font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
-      color:var(--gold);margin-bottom:22px;
-      display:flex;align-items:center;justify-content:center;gap:18px;
-    }
-    .prov-eyebrow::before,.prov-eyebrow::after{
-      content:'';display:block;height:1px;width:52px;
-      background:linear-gradient(90deg,transparent,var(--gold),transparent);
-    }
-    .prov-flags{
-      font-size:1.9rem;letter-spacing:.4em;margin-bottom:22px;
-      display:block;filter:drop-shadow(0 2px 8px rgba(0,0,0,.4));
-    }
-    .prov-quote{
-      font-size:clamp(1.4rem,2.6vw,2rem);font-weight:700;
-      color:#fff;line-height:1.6;letter-spacing:-.015em;
-      font-style:italic;margin-bottom:28px;
-      text-shadow:0 2px 20px rgba(0,0,0,.3);
-    }
-    .prov-quote::before{content:'\201C\00A0';color:var(--gold);font-size:120%}
-    .prov-quote::after{content:'\00A0\201D';color:var(--gold);font-size:120%}
-    .prov-attr{
-      font-size:.83rem;color:rgba(255,255,255,.38);
-      font-weight:500;letter-spacing:.03em;
-    }
-    .prov-attr strong{color:rgba(212,163,16,.75);font-weight:700}
-    /* Coins dorés décoratifs */
-    .prov-corner{
-      position:absolute;width:60px;height:60px;opacity:.35;
-    }
-    .prov-corner.tl{top:28px;left:40px;border-top:2px solid var(--gold);border-left:2px solid var(--gold)}
-    .prov-corner.tr{top:28px;right:40px;border-top:2px solid var(--gold);border-right:2px solid var(--gold)}
-    .prov-corner.bl{bottom:28px;left:40px;border-bottom:2px solid var(--gold);border-left:2px solid var(--gold)}
-    .prov-corner.br{bottom:28px;right:40px;border-bottom:2px solid var(--gold);border-right:2px solid var(--gold)}
-
-    /* ─── Footer pride badge ─── */
-    .ft-pride{
-      display:inline-flex;align-items:center;gap:8px;
-      background:rgba(212,163,16,.1);
-      border:1px solid rgba(212,163,16,.22);
-      color:rgba(212,163,16,.75);
-      padding:6px 16px;border-radius:50px;
-      font-size:.74rem;font-weight:600;letter-spacing:.03em;margin-top:14px;
+    /* Footer signature Guinée */
+    .ft-africa{
+      font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+      color:rgba(200,150,14,.5);margin-top:10px;
+      display:block;
     }
 
+    @media(max-width:900px){
+      .afp-wrap{grid-template-columns:1fr}
+    }
     @media(max-width:640px){
-      .proverbe{padding:64px 20px}
-      .prov-corner{display:none}
-      .prov-quote{font-size:1.25rem}
+      .africa-pride{padding:72px 20px}
+      .afp-route{flex-wrap:wrap;gap:6px}
     }
 
     /* ────────────────── NAV ────────────────── */
     nav{
       position:fixed;inset:0 0 auto;z-index:999;
-      top:5px;
+      top:3px;
       height:72px;display:flex;align-items:center;
       padding:0 64px;
       background:#fff;
@@ -172,7 +207,7 @@
     .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
     .burger span{width:24px;height:2px;background:var(--navy);border-radius:2px;transition:.3s}
     .mob-nav{
-      display:none;position:fixed;inset:77px 0 0;
+      display:none;position:fixed;inset:75px 0 0;
       background:#fff;z-index:998;padding:24px 24px;
       flex-direction:column;gap:4px;border-top:1px solid var(--border);
     }
@@ -182,7 +217,7 @@
 
     /* ────────────────── HERO ────────────────── */
     .hero{
-      min-height:100vh;padding-top:77px;
+      min-height:100vh;padding-top:75px;
       position:relative;overflow:hidden;
       display:flex;align-items:center;
     }
@@ -955,8 +990,8 @@
 </head>
 <body>
 
-<!-- Bande drapeau guinéen -->
-<div class="pan-strip"></div>
+<!-- Liseré doré premium -->
+<div class="gold-top"></div>
 
 <!-- ══════════ NAV ══════════ -->
 <nav id="nav">
@@ -1117,32 +1152,53 @@
   </div>
 </div>
 
-<!-- ══════════ KENTE DIVIDER ══════════ -->
-<div class="kente-div"></div>
+<!-- ══════════ AFRICA PRIDE ══════════ -->
+<div class="africa-pride">
+  <div class="afp-line-bottom"></div>
+  <div class="afp-wrap fi">
 
-<!-- ══════════ PROVERBE AFRICAIN ══════════ -->
-<div class="proverbe">
-  <!-- Coins dorés décoratifs -->
-  <div class="prov-corner tl"></div>
-  <div class="prov-corner tr"></div>
-  <div class="prov-corner bl"></div>
-  <div class="prov-corner br"></div>
+    <!-- Gauche : manifeste typographique -->
+    <div class="afp-left">
+      <div class="afp-eyebrow">Ancrage &amp; Vision</div>
+      <h2 class="afp-title">
+        <span class="afp-t1">Née en Guinée.</span>
+        <span class="afp-t2">Portée par l'Afrique.</span>
+        <span class="afp-t3">Bâtie pour rivaliser avec le monde entier.</span>
+      </h2>
+      <p class="afp-desc">L'Afrique de l'Ouest est la prochaine grande destination BPO mondiale. Ses talents, ses langues, son énergie — Help'me Process en est le fer de lance depuis Conakry.</p>
+      <div class="afp-route">
+        <div class="afp-route-dot"></div>
+        <span class="afp-route-city active">Conakry</span>
+        <span class="afp-route-arr">——</span>
+        <span class="afp-route-city">Dakar</span>
+        <span class="afp-route-arr">——</span>
+        <span class="afp-route-city">Paris</span>
+        <span class="afp-route-arr">——</span>
+        <span class="afp-route-city">Le monde</span>
+      </div>
+    </div>
 
-  <div class="proverbe-wrap fi">
-    <div class="prov-eyebrow">Sagesse africaine</div>
-    <span class="prov-flags">🇬🇳&nbsp;🌍&nbsp;✨</span>
-    <p class="prov-quote">
-      Un seul homme de vision peut transformer une terre entière en terre d'opportunités.
-    </p>
-    <p class="prov-attr">
-      <strong>La conviction fondatrice de Help'me Process</strong> —
-      Faire de Conakry un hub d'excellence reconnu sur tous les continents.
-    </p>
+    <!-- Droite : 3 pilliers chiffrés -->
+    <div class="afp-right">
+      <div class="afp-pillar">
+        <div class="afp-pil-tag">Marché francophone</div>
+        <div class="afp-pil-num">400<span>M+</span></div>
+        <div class="afp-pil-txt">francophones en Afrique — le plus grand vivier de talents du monde francophone</div>
+      </div>
+      <div class="afp-pillar">
+        <div class="afp-pil-tag">Avantage compétitif</div>
+        <div class="afp-pil-num">60<span>%</span></div>
+        <div class="afp-pil-txt">d'économies vs. un centre d'appel européen — même niveau d'exigence, coût réduit</div>
+      </div>
+      <div class="afp-pillar">
+        <div class="afp-pil-tag">Reconnaissance 2023</div>
+        <div class="afp-pil-num">#<span style="-webkit-text-fill-color:#fff;background:none">1</span></div>
+        <div class="afp-pil-txt">Élu meilleur service client de l'année en Guinée — la preuve par les faits</div>
+      </div>
+    </div>
+
   </div>
 </div>
-
-<!-- ══════════ KENTE DIVIDER ══════════ -->
-<div class="kente-div"></div>
 
 <!-- ══════════ SERVICES ══════════ -->
 <section class="services" id="services">
@@ -1824,7 +1880,7 @@
   <div class="ft-bottom">
     <div>
       <p>Help'me Process © 2025 — Conakry, République de Guinée. Tous droits réservés.</p>
-      <div class="ft-pride">🇬🇳 Fiers d'être 100% guinéens — Bâti en Afrique, pour le monde</div>
+      <span class="ft-africa">Guinée · Afrique de l'Ouest · Le monde</span>
     </div>
     <div class="socials">
       <a href="#" class="soc">in</a>
@@ -1833,9 +1889,6 @@
     </div>
   </div>
 </footer>
-
-<!-- Kente avant footer -->
-<div class="kente-div"></div>
 
 <!-- ══════════ FAB ══════════ -->
 <a href="tel:+224628935335" class="fab">📞 Appeler maintenant</a>

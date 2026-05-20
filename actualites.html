@@ -17,11 +17,8 @@
     body{font-family:'Inter',sans-serif;color:var(--text);background:#fff;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 
     /* NAV */
-    /* Pan-strip guinéen */
-    .pan-strip{position:fixed;top:0;left:0;right:0;height:5px;z-index:1001;background:linear-gradient(90deg,#CE1126 0 33.33%,#FCD20F 33.33% 66.66%,#009460 66.66% 100%)}
-    /* Kente div */
-    .kente-div{height:8px;background:repeating-linear-gradient(90deg,#CE1126 0,#CE1126 18px,#FCD20F 18px,#FCD20F 36px,#009460 36px,#009460 54px,#1A1A1A 54px,#1A1A1A 72px)}
-    nav{position:fixed;inset:0 0 auto;top:5px;z-index:999;height:72px;display:flex;align-items:center;padding:0 64px;background:#fff;border-bottom:1px solid var(--border);transition:box-shadow .3s}
+    .gold-top{position:fixed;top:0;left:0;right:0;height:3px;z-index:1001;background:linear-gradient(90deg,transparent 0%,#C05020 15%,#C8960E 40%,#F0C040 55%,#C8960E 70%,#C05020 85%,transparent 100%)}
+    nav{position:fixed;inset:0 0 auto;top:3px;z-index:999;height:72px;display:flex;align-items:center;padding:0 64px;background:#fff;border-bottom:1px solid var(--border);transition:box-shadow .3s}
     nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.08)}
     .nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:1280px;margin:0 auto}
     .nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
@@ -222,7 +219,7 @@
 </head>
 <body>
 
-<div class="pan-strip"></div>
+<div class="gold-top"></div>
 <!-- NAV -->
 <nav id="nav">
   <div class="nav-inner">
@@ -591,7 +588,6 @@
   </div>
 </div>
 
-<div class="kente-div"></div>
 <!-- FOOTER -->
 <footer>
   <div class="ft-bottom">
