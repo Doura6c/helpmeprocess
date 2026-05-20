@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Présentation Entreprises | Help'me Process — Call Center Conakry</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --navy:#002C6E;--navy2:#003A8C;--navy3:#001A4A;
+      --orange:#E85D20;--orange2:#FF6D35;
+      --light:#F5F7FA;--dark:#0F172A;
+      --gray:#6B7280;--border:#E5E7EB;--text:#1F2937;--text2:#374151;
+      --red:#DC2626;--green:#16A34A;--gold:#C8960E;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',sans-serif;color:var(--text);background:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+    /* ── NAV ── */
+    nav{position:fixed;inset:0 0 auto;z-index:99;height:64px;display:flex;align-items:center;padding:0 48px;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+    .nav-in{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:1200px;margin:0 auto}
+    .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+    .nav-logo img{height:36px}
+    .nav-logo strong{font-size:.88rem;font-weight:800;color:var(--navy)}
+    .nav-logo span{font-size:.65rem;font-weight:500;color:var(--orange);text-transform:uppercase;letter-spacing:.05em}
+    .nav-logo-txt{display:flex;flex-direction:column;line-height:1.1}
+    .nav-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(232,93,32,.08);border:1px solid rgba(232,93,32,.2);color:var(--orange);padding:5px 14px;border-radius:50px;font-size:.72rem;font-weight:700;letter-spacing:.04em}
+    .nav-cta-btn{background:var(--orange);color:#fff;padding:9px 22px;border-radius:50px;font-size:.82rem;font-weight:700;text-decoration:none;transition:all .2s}
+    .nav-cta-btn:hover{background:var(--orange2)}
+    @media print{nav{display:none}}
+
+    /* ── HERO COVER ── */
+    .cover{
+      min-height:100vh;padding-top:64px;
+      background:linear-gradient(145deg,var(--navy3) 0%,#002050 45%,#003070 100%);
+      display:flex;align-items:center;justify-content:center;
+      position:relative;overflow:hidden;text-align:center;
+    }
+    .cover::before{
+      content:'';position:absolute;inset:0;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cpolygon points='40,4 76,40 40,76 4,40' fill='none' stroke='%23ffffff' stroke-width='0.5' opacity='0.04'/%3E%3C/svg%3E");
+      background-size:80px 80px;
+    }
+    .cover::after{
+      content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);
+      width:900px;height:900px;border-radius:50%;
+      background:radial-gradient(circle,rgba(232,93,32,.12),transparent 65%);
+      pointer-events:none;
+    }
+    .cover-inner{position:relative;z-index:1;max-width:900px;padding:40px 48px}
+    .cover-tag{
+      display:inline-flex;align-items:center;gap:8px;
+      background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+      color:rgba(255,255,255,.75);padding:8px 20px;border-radius:50px;
+      font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+      margin-bottom:36px;
+    }
+    .cover-dot{width:7px;height:7px;border-radius:50%;background:#4ADE80;animation:pulse 1.5s infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+    .cover h1{
+      font-size:clamp(2.4rem,5vw,4rem);font-weight:900;color:#fff;
+      line-height:1.1;letter-spacing:-.03em;margin-bottom:24px;
+    }
+    .cover h1 em{
+      font-style:normal;
+      background:linear-gradient(90deg,var(--orange),#FF8C42);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    }
+    .cover-sub{font-size:1.05rem;color:rgba(255,255,255,.55);line-height:1.75;max-width:640px;margin:0 auto 48px}
+    .cover-stats{
+      display:flex;justify-content:center;gap:0;
+      border:1px solid rgba(255,255,255,.1);border-radius:16px;overflow:hidden;
+      max-width:600px;margin:0 auto;
+    }
+    .cst{flex:1;padding:24px 16px;text-align:center;border-right:1px solid rgba(255,255,255,.1)}
+    .cst:last-child{border-right:none}
+    .cst-num{font-size:1.8rem;font-weight:900;color:#fff;letter-spacing:-.03em;line-height:1}
+    .cst-num span{font-size:55%;color:var(--orange2)}
+    .cst-lbl{font-size:.7rem;color:rgba(255,255,255,.4);margin-top:5px;line-height:1.3;font-weight:500}
+    .scroll-hint{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,.3);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase}
+    .scroll-hint::after{content:'';display:block;width:1px;height:36px;background:linear-gradient(to bottom,rgba(255,255,255,.3),transparent)}
+
+    /* ── SECTION BASE ── */
+    .sec{padding:96px 48px;max-width:1200px;margin:0 auto}
+    .sec-full{padding:96px 48px;background:var(--light)}
+    .sec-full .sec{padding:0;background:none}
+    .sec-dark{padding:96px 48px;background:var(--navy)}
+    .sec-dark .sec{padding:0;background:none}
+    .eyebrow{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--orange);display:block;margin-bottom:12px}
+    .eyebrow-white{color:rgba(255,255,255,.5)}
+    h2.big{font-size:clamp(1.9rem,3.5vw,2.9rem);font-weight:900;color:var(--navy);line-height:1.15;letter-spacing:-.025em;margin-bottom:16px}
+    h2.big-white{color:#fff}
+    .lead{font-size:1rem;color:var(--gray);line-height:1.8;max-width:620px}
+    .lead-white{color:rgba(255,255,255,.5)}
+    .hd{margin-bottom:64px}
+    .hd.c{text-align:center}.hd.c .lead{margin:0 auto}
+
+    /* ── ALERTE CHIFFRES ── */
+    .alert-strip{
+      background:linear-gradient(135deg,#1A0808 0%,#2D0F0F 100%);
+      padding:64px 48px;
+    }
+    .alert-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+    .alert-card{
+      background:rgba(255,255,255,.04);border:1px solid rgba(220,38,38,.15);
+      padding:40px 36px;text-align:center;
+      transition:background .3s;
+    }
+    .alert-card:hover{background:rgba(220,38,38,.08)}
+    .alert-num{font-size:clamp(3rem,5vw,4.5rem);font-weight:900;color:#EF4444;letter-spacing:-.04em;line-height:1;margin-bottom:12px}
+    .alert-num span{font-size:50%;color:#F87171}
+    .alert-txt{font-size:.9rem;color:rgba(255,255,255,.5);line-height:1.7;max-width:260px;margin:0 auto}
+    .alert-ico{font-size:2rem;margin-bottom:16px;display:block}
+
+    /* ── PROBLÈMES ── */
+    .probs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .prob-card{
+      background:#fff;border:1px solid var(--border);border-radius:18px;
+      padding:36px 32px;position:relative;overflow:hidden;
+      transition:all .3s;
+    }
+    .prob-card:hover{box-shadow:0 12px 40px rgba(220,38,38,.1);border-color:rgba(220,38,38,.25);transform:translateY(-4px)}
+    .prob-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#DC2626,#EF4444)}
+    .prob-num{
+      font-size:4rem;font-weight:900;letter-spacing:-.06em;
+      color:rgba(220,38,38,.08);line-height:1;
+      position:absolute;top:12px;right:20px;
+    }
+    .prob-ico{font-size:2rem;margin-bottom:18px;display:block}
+    .prob-card h3{font-size:1.1rem;font-weight:800;color:var(--navy);margin-bottom:10px}
+    .prob-card p{font-size:.875rem;color:var(--gray);line-height:1.75}
+    .prob-impact{
+      display:flex;align-items:center;gap:8px;
+      margin-top:18px;padding-top:18px;border-top:1px solid var(--border);
+    }
+    .prob-impact-val{font-size:1.3rem;font-weight:900;color:#DC2626}
+    .prob-impact-txt{font-size:.75rem;color:var(--gray);line-height:1.35}
+
+    /* ── CAS PRATIQUES ── */
+    .cas-list{display:flex;flex-direction:column;gap:32px}
+    .cas{
+      background:#fff;border-radius:20px;border:1px solid var(--border);
+      overflow:hidden;transition:box-shadow .3s;
+    }
+    .cas:hover{box-shadow:0 8px 40px rgba(0,0,0,.08)}
+    .cas-head{
+      padding:28px 36px;
+      display:flex;align-items:center;justify-content:space-between;
+      border-bottom:1px solid var(--border);
+      gap:16px;
+    }
+    .cas-sector-badge{
+      display:inline-flex;align-items:center;gap:8px;
+      background:var(--navy);color:#fff;
+      padding:8px 18px;border-radius:50px;
+      font-size:.78rem;font-weight:700;letter-spacing:.03em;flex-shrink:0;
+    }
+    .cas-title{font-size:1.15rem;font-weight:800;color:var(--navy);flex:1}
+    .cas-body{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:stretch;gap:0}
+    .cas-col{padding:32px 36px}
+    .cas-col-arrow{display:flex;align-items:center;justify-content:center;padding:0 16px;color:var(--orange);font-size:1.6rem}
+    .cas-col h4{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:14px}
+    .cas-col-prob h4{color:#DC2626}
+    .cas-col-sol h4{color:var(--green)}
+    .cas-col-res h4{color:var(--navy)}
+    .cas-col-prob{background:#FEF2F2;border-right:1px solid #FECACA}
+    .cas-col-sol{background:#F0FDF4;border-right:1px solid #BBF7D0}
+    .cas-col-res{background:var(--light)}
+    .cas-col p{font-size:.87rem;line-height:1.7;color:var(--text2)}
+    .cas-metric{font-size:2.2rem;font-weight:900;color:var(--navy);letter-spacing:-.04em;line-height:1;margin-bottom:4px}
+    .cas-metric-txt{font-size:.78rem;color:var(--gray);line-height:1.4}
+    .cas-cost{
+      display:flex;align-items:center;gap:10px;
+      margin-top:14px;padding:10px 14px;
+      background:#fff;border-radius:10px;border:1px solid var(--border);
+    }
+    .cas-cost-ico{font-size:1.1rem}
+    .cas-cost-txt{font-size:.78rem;color:var(--gray);font-weight:600}
+    .cas-cost-val{font-size:.9rem;font-weight:800;color:var(--green);margin-left:auto}
+
+    /* ── ROI TABLEAU ── */
+    .roi-wrap{overflow-x:auto}
+    .roi-table{width:100%;border-collapse:collapse;border-radius:16px;overflow:hidden;box-shadow:0 4px 32px rgba(0,0,0,.07)}
+    .roi-table th{background:var(--navy);color:#fff;padding:18px 24px;text-align:left;font-size:.8rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+    .roi-table th:first-child{border-radius:0}
+    .roi-table td{padding:18px 24px;border-bottom:1px solid var(--border);font-size:.9rem;color:var(--text2)}
+    .roi-table tr:last-child td{border-bottom:none}
+    .roi-table tr:hover td{background:#F8FAFF}
+    .roi-table .highlight{background:rgba(232,93,32,.04)}
+    .roi-table .highlight td{color:var(--navy);font-weight:700}
+    .roi-table .roi-good{color:var(--green);font-weight:700}
+    .roi-table .roi-bad{color:var(--red);font-weight:600}
+    .roi-table .roi-neutral{color:var(--gray)}
+
+    /* ── OFFRE PACKS ── */
+    .packs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .pack{
+      border-radius:20px;overflow:hidden;border:1px solid var(--border);
+      display:flex;flex-direction:column;transition:all .3s;
+    }
+    .pack:hover{box-shadow:0 12px 40px rgba(0,44,110,.1);transform:translateY(-4px)}
+    .pack.featured{border-color:var(--orange);box-shadow:0 8px 32px rgba(232,93,32,.2)}
+    .pack-head{padding:32px 28px}
+    .pack.p1 .pack-head{background:var(--light)}
+    .pack.p2 .pack-head{background:var(--navy)}
+    .pack.p3 .pack-head{background:var(--navy3)}
+    .pack-badge{display:inline-block;background:var(--orange);color:#fff;font-size:.66rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:50px;margin-bottom:14px}
+    .pack-name{font-size:1.3rem;font-weight:900;margin-bottom:4px}
+    .pack.p1 .pack-name{color:var(--navy)}
+    .pack.p2 .pack-name,.pack.p3 .pack-name{color:#fff}
+    .pack-desc{font-size:.82rem;line-height:1.65}
+    .pack.p1 .pack-desc{color:var(--gray)}
+    .pack.p2 .pack-desc,.pack.p3 .pack-desc{color:rgba(255,255,255,.5)}
+    .pack-body{padding:28px;flex:1;background:#fff}
+    .pack-list{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
+    .pack-list li{font-size:.875rem;color:var(--text2);display:flex;align-items:flex-start;gap:10px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+    .pack-list li:last-child{border-bottom:none;padding-bottom:0}
+    .pack-list li::before{content:'✓';color:var(--green);font-weight:800;flex-shrink:0}
+    .pack-cta{
+      display:block;text-align:center;padding:13px;border-radius:50px;
+      font-weight:700;font-size:.88rem;text-decoration:none;transition:all .2s;
+    }
+    .pack.p1 .pack-cta{background:var(--light);color:var(--navy);border:1.5px solid var(--border)}
+    .pack.p1 .pack-cta:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+    .pack.p2 .pack-cta,.pack.p3 .pack-cta{background:var(--orange);color:#fff}
+    .pack.p2 .pack-cta:hover,.pack.p3 .pack-cta:hover{background:var(--orange2)}
+
+    /* ── TÉMOIGNAGES ── */
+    .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .tcard{background:#fff;border:1px solid var(--border);border-radius:18px;padding:36px 32px;transition:all .3s}
+    .tcard:hover{box-shadow:0 8px 32px rgba(0,0,0,.08);background:var(--light)}
+    .stars{color:var(--orange);font-size:.95rem;letter-spacing:2px;margin-bottom:14px}
+    .tcard q{font-size:.9rem;color:var(--text2);line-height:1.75;font-style:italic;display:block;margin-bottom:20px;quotes:'"' '"'}
+    .t-author{display:flex;align-items:center;gap:12px;border-top:1px solid var(--border);padding-top:18px}
+    .t-ava{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--navy),var(--navy2));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:.88rem;flex-shrink:0}
+    .t-name{font-weight:700;font-size:.85rem;color:var(--navy)}
+    .t-role{font-size:.75rem;color:var(--gray)}
+
+    /* ── CTA FINAL ── */
+    .final-cta{
+      background:linear-gradient(145deg,var(--orange) 0%,#D44510 50%,var(--orange2) 100%);
+      padding:100px 48px;text-align:center;position:relative;overflow:hidden;
+    }
+    .final-cta::before{
+      content:'';position:absolute;inset:0;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpolygon points='30,3 57,30 30,57 3,30' fill='none' stroke='%23ffffff' stroke-width='0.6' opacity='0.08'/%3E%3C/svg%3E");
+    }
+    .final-cta h2{font-size:clamp(2rem,4vw,3.2rem);font-weight:900;color:#fff;margin-bottom:16px;letter-spacing:-.025em;line-height:1.15;position:relative;z-index:1}
+    .final-cta p{color:rgba(255,255,255,.7);font-size:1rem;margin-bottom:40px;position:relative;z-index:1;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.7}
+    .final-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
+    .btn-white{background:#fff;color:var(--orange);padding:15px 36px;border-radius:50px;font-weight:700;font-size:.95rem;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:8px}
+    .btn-white:hover{background:var(--light);transform:translateY(-2px)}
+    .btn-outline-white{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.5);padding:15px 36px;border-radius:50px;font-weight:600;font-size:.95rem;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:8px}
+    .btn-outline-white:hover{background:rgba(255,255,255,.12);border-color:#fff}
+
+    /* ── FOOTER ── */
+    .pres-footer{background:var(--dark);padding:40px 48px;text-align:center}
+    .pres-footer p{font-size:.8rem;color:rgba(255,255,255,.25);line-height:1.7}
+    .pres-footer a{color:rgba(255,255,255,.45);text-decoration:none}
+    .pres-footer a:hover{color:#fff}
+
+    /* ── FADE IN ── */
+    .fi{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+    .fi.on{opacity:1;transform:none}
+    .fi-d1{transition-delay:.1s}.fi-d2{transition-delay:.2s}.fi-d3{transition-delay:.3s}
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:900px){
+      .probs-grid,.packs-grid,.testi-grid{grid-template-columns:1fr 1fr}
+      .alert-inner{grid-template-columns:1fr}
+      .cas-body{grid-template-columns:1fr;grid-template-rows:auto}
+      .cas-col-arrow{display:none}
+      .cas-col-prob,.cas-col-sol{border-right:none;border-bottom:1px solid var(--border)}
+    }
+    @media(max-width:600px){
+      .probs-grid,.packs-grid,.testi-grid{grid-template-columns:1fr}
+      .sec,.sec-full,.sec-dark,.alert-strip,.final-cta{padding:64px 20px}
+      nav{padding:0 20px}
+      .cover-stats{flex-direction:column;max-width:280px}
+      .cst{border-right:none;border-bottom:1px solid rgba(255,255,255,.1)}
+      .cst:last-child{border-bottom:none}
+      .cas-head{flex-direction:column;align-items:flex-start}
+    }
+    @media print{
+      nav,.scroll-hint{display:none}
+      .cover{min-height:auto;padding:60px 48px}
+      .fi{opacity:1;transform:none}
+      .sec,.sec-full,.sec-dark,.alert-strip,.final-cta{padding:48px}
+      .probs-grid{grid-template-columns:repeat(3,1fr)}
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════ NAV ══════════ -->
+<nav>
+  <div class="nav-in">
+    <a href="index.html" class="nav-logo">
+      <img src="logo.jpeg" alt="Help'me Process"/>
+      <div class="nav-logo-txt">
+        <strong>Help'me Process</strong>
+        <span>Call Center · Conakry</span>
+      </div>
+    </a>
+    <div style="display:flex;align-items:center;gap:16px">
+      <div class="nav-tag">📋 Présentation Entreprises</div>
+      <a href="#contact-final" class="nav-cta-btn">Devis gratuit →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════ COUVERTURE ══════════ -->
+<section class="cover">
+  <div class="cover-inner">
+    <div class="cover-tag"><span class="cover-dot"></span>Pour les Décideurs d'Entreprise</div>
+    <h1>Votre relation client est votre <em>actif le plus précieux.</em><br/>Ne la laissez pas au hasard.</h1>
+    <p class="cover-sub">Chaque appel manqué est un client perdu. Chaque attente trop longue est une mauvaise réputation. Help'me Process prend en charge votre relation client — pour que vous puissiez vous concentrer sur votre cœur de métier.</p>
+    <div class="cover-stats">
+      <div class="cst"><div class="cst-num">80<span>%</span></div><div class="cst-lbl">des clients ne rappellent pas après un appel manqué</div></div>
+      <div class="cst"><div class="cst-num">67<span>%</span></div><div class="cst-lbl">des clients quittent une marque après 3 mauvaises expériences</div></div>
+      <div class="cst"><div class="cst-num">60<span>%</span></div><div class="cst-lbl">d'économies vs. un service client interne</div></div>
+    </div>
+  </div>
+  <div class="scroll-hint">Défiler pour découvrir</div>
+</section>
+
+<!-- ══════════ ALERTE : LE COÛT RÉEL ══════════ -->
+<div class="alert-strip">
+  <div class="alert-inner">
+    <div class="alert-card fi">
+      <span class="alert-ico">📵</span>
+      <div class="alert-num">1<span>appel/3</span></div>
+      <div class="alert-txt">En moyenne, 1 appel sur 3 reste sans réponse dans une entreprise sans call center dédié. Chacun représente une opportunité perdue.</div>
+    </div>
+    <div class="alert-card fi fi-d1">
+      <span class="alert-ico">⏳</span>
+      <div class="alert-num">8<span>min</span></div>
+      <div class="alert-txt">C'est le temps d'attente moyen toléré par un client. Au-delà, il raccroche — et dans 62% des cas, contacte un concurrent immédiatement.</div>
+    </div>
+    <div class="alert-card fi fi-d2">
+      <span class="alert-ico">💸</span>
+      <div class="alert-num">5<span>×</span></div>
+      <div class="alert-txt">Il coûte 5 fois plus cher d'acquérir un nouveau client que de fidéliser un client existant. Un mauvais SAV détruit cet investissement en quelques secondes.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ LES 6 PROBLÈMES ══════════ -->
+<div class="sec-full">
+  <div class="sec">
+    <div class="hd c fi">
+      <span class="eyebrow">Diagnostic</span>
+      <h2 class="big">Les 6 problèmes que rencontrent<br/>toutes les entreprises sans call center</h2>
+      <p class="lead">Ces situations vous sont peut-être familières. Elles ont toutes un coût direct sur votre chiffre d'affaires et votre réputation.</p>
+    </div>
+    <div class="probs-grid">
+      <div class="prob-card fi">
+        <div class="prob-num">01</div>
+        <span class="prob-ico">📵</span>
+        <h3>Appels manqués</h3>
+        <p>Votre équipe jongle entre les tâches — elle ne peut pas décrocher chaque appel. Des clients raccrochent, frustrés, sans jamais rappeler.</p>
+        <div class="prob-impact"><div class="prob-impact-val">-30%</div><div class="prob-impact-txt">de commandes perdues sur les pics d'activité</div></div>
+      </div>
+      <div class="prob-card fi fi-d1">
+        <div class="prob-num">02</div>
+        <span class="prob-ico">😤</span>
+        <h3>Attente insupportable</h3>
+        <p>Pas de file d'attente intelligente, pas de rappel automatique. Le client attend 15-20 minutes, abandonne et partage son mécontentement.</p>
+        <div class="prob-impact"><div class="prob-impact-val">-45%</div><div class="prob-impact-txt">de satisfaction client sur les services sans gestion des files</div></div>
+      </div>
+      <div class="prob-card fi fi-d2">
+        <div class="prob-num">03</div>
+        <span class="prob-ico">🔀</span>
+        <h3>Équipe interne surchargée</h3>
+        <p>Vos collaborateurs gèrent les appels, les emails ET leurs missions principales. Résultat : tout est fait à moitié, rien n'est fait vraiment bien.</p>
+        <div class="prob-impact"><div class="prob-impact-val">-40%</div><div class="prob-impact-txt">de productivité interne quand les appels sont gérés en interne</div></div>
+      </div>
+      <div class="prob-card fi">
+        <div class="prob-num">04</div>
+        <span class="prob-ico">📉</span>
+        <h3>Qualité inconsistante</h3>
+        <p>Pas de script, pas de formation dédiée, pas de suivi. Chaque appel est géré différemment. Votre image en souffre, et vous ne le savez même pas.</p>
+        <div class="prob-impact"><div class="prob-impact-val">×3</div><div class="prob-impact-txt">plus de réclamations dans les structures sans process définis</div></div>
+      </div>
+      <div class="prob-card fi fi-d1">
+        <div class="prob-num">05</div>
+        <span class="prob-ico">📋</span>
+        <h3>Données clients perdues</h3>
+        <p>Sans CRM centralisé, chaque information client est dans la tête de quelqu'un. Quand cet employé part, l'historique client disparaît avec lui.</p>
+        <div class="prob-impact"><div class="prob-impact-val">0</div><div class="prob-impact-txt">traçabilité des échanges = zéro continuité de service</div></div>
+      </div>
+      <div class="prob-card fi fi-d2">
+        <div class="prob-num">06</div>
+        <span class="prob-ico">💼</span>
+        <h3>Impossible de scaler</h3>
+        <p>En période de pointe, vous êtes débordé. En période creuse, vous payez des ressources inutilisées. Vous ne pouvez pas adapter vos capacités.</p>
+        <div class="prob-impact"><div class="prob-impact-val">2×</div><div class="prob-impact-txt">le coût d'une gestion rigide vs. un call center externalisé et flexible</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ CAS PRATIQUES ══════════ -->
+<div class="sec">
+  <div class="hd fi">
+    <span class="eyebrow">Cas pratiques réels</span>
+    <h2 class="big">Problème → Solution Help'me Process → Résultat</h2>
+    <p class="lead">Des situations concrètes. Des solutions déployées. Des résultats mesurables — à un coût maîtrisé.</p>
+  </div>
+  <div class="cas-list">
+
+    <!-- CAS 1 -->
+    <div class="cas fi">
+      <div class="cas-head">
+        <div class="cas-sector-badge">🛒 Commerce & Retail</div>
+        <div class="cas-title">Une boutique perd 1 client sur 3 faute de réponse</div>
+      </div>
+      <div class="cas-body">
+        <div class="cas-col cas-col-prob">
+          <h4>❌ Le problème</h4>
+          <p>Une boutique multi-produits reçoit 80 à 120 appels par jour. Son équipe de 3 vendeurs ne peut pas tout gérer. 35% des appels restent sans réponse. Les clients commandent chez la concurrence. Le directeur estime perdre 2 à 3 millions GNF de chiffre d'affaires par semaine.</p>
+        </div>
+        <div class="cas-col-arrow">→</div>
+        <div class="cas-col cas-col-sol">
+          <h4>✅ La solution Help'me Process</h4>
+          <p>Déploiement d'une équipe Inbound dédiée (3 agents formés aux produits), disponible 6j/7 de 8h à 20h. Script personnalisé, CRM centralisé, redirection intelligente. Tous les appels pris en charge dès le 3e ring.</p>
+          <div class="cas-cost">
+            <span class="cas-cost-ico">💰</span>
+            <span class="cas-cost-txt">Coût mensuel externalisé</span>
+            <span class="cas-cost-val">vs. 3× moins cher qu'un recrutement interne</span>
+          </div>
+        </div>
+        <div class="cas-col-arrow">→</div>
+        <div class="cas-col cas-col-res">
+          <h4>📈 Le résultat</h4>
+          <div class="cas-metric">+32%</div>
+          <div class="cas-metric-txt">de commandes converties sur les appels entrants</div>
+          <div style="margin-top:14px"><div class="cas-metric" style="font-size:1.6rem">0%</div><div class="cas-metric-txt">d'appels manqués en heures ouvrées</div></div>
+          <div style="margin-top:14px"><div class="cas-metric" style="font-size:1.6rem">ROI</div><div class="cas-metric-txt">positif dès le 1er mois</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CAS 2 -->
+    <div class="cas fi fi-d1">
+      <div class="cas-head">
+        <div class="cas-sector-badge">🏦 Banque & Microfinance</div>
+        <div class="cas-title">Une institution financière croule sous les réclamations non traitées</div>
+      </div>
+      <div class="cas-body">
+        <div class="cas-col cas-col-prob">
+          <h4>❌ Le problème</h4>
+          <p>Une institution de microfinance voit ses réclamations clients augmenter de 40% en 6 mois. Les délais de traitement atteignent 5 jours. Les clients insatisfaits parlent — la réputation se dégrade. L'équipe RH est saturée par les plaintes internes.</p>
+        </div>
+        <div class="cas-col-arrow">→</div>
+        <div class="cas-col cas-col-sol">
+          <h4>✅ La solution Help'me Process</h4>
+          <p>Mise en place d'un pôle SAV Back Office dédié : traitement des réclamations sous 24h, ticket tracking CRM, reporting hebdomadaire au client. Formation spécifique des agents aux produits financiers. Escalade des cas complexes avec tout le contexte documenté.</p>
+          <div class="cas-cost">
+            <span class="cas-cost-ico">💰</span>
+            <span class="cas-cost-txt">Économie vs. recrutement interne</span>
+            <span class="cas-cost-val">-55% sur le coût de traitement</span>
+          </div>
+        </div>
+        <div class="cas-col-arrow">→</div>
+        <div class="cas-col cas-col-res">
+          <h4>📈 Le résultat</h4>
+          <div class="cas-metric">-65%</div>
+          <div class="cas-metric-txt">de temps de traitement des réclamations</div>
+          <div style="margin-top:14px"><div class="cas-metric" style="font-size:1.6rem">+28%</div><div class="cas-metric-txt">de satisfaction client mesurée à 3 mois</div></div>
+          <div style="margin-top:14px"><div class="cas-metric" style="font-size:1.6rem">100%</div><div class="cas-metric-txt">des dossiers tracés et documentés</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CAS 3 -->
+    <div class="cas fi">
+      <div class="cas-head">
+        <div class="cas-sector-badge">🏥 Santé & Cliniques</div>
+        <div class="cas-title">Une clinique privée perd des rendez-vous par manque de gestion des appels</div>
+      </div>
+      <div class="cas-body">
+        <div class="cas-col cas-col-prob">
+          <h4>❌ Le problème</h4>
+          <p>Une clinique privée de Conakry reçoit 60 à 80 appels quotidiens. L'infirmière d'accueil ne peut pas gérer simultanément les patients présents et les appels. 25% des rendez-vous sont mal enregistrés. Des patients consultent une autre structure par défaut.</p>
+        </div>
+        <div class="cas-col-arrow">→</div>
+        <div class="cas-col cas-col-sol">
+          <h4>✅ La solution Help'me Process</h4>
+          <p>Externalisation complète de l'accueil téléphonique. Prise et confirmation de rendez-vous, envoi de rappels SMS/appel, gestion des annulations et reprogrammations. Connexion directe avec le planning interne. Agents formés au vocabulaire médical de base.</p>
+          <div class="cas-cost">
+            <span class="cas-cost-ico">💰</span>
+            <span class="cas-cost-txt">Sans embauche d'un standardiste dédié</span>
+            <span class="cas-cost-val">Économie : -70% vs. poste interne</span>
+          </div>
+        </div>
+        <div class="cas-col-arrow">→</div>
+        <div class="cas-col cas-col-res">
+          <h4>📈 Le résultat</h4>
+          <div class="cas-metric">-80%</div>
+          <div class="cas-metric-txt">d'erreurs de planification</div>
+          <div style="margin-top:14px"><div class="cas-metric" style="font-size:1.6rem">+22%</div><div class="cas-metric-txt">de rendez-vous honorés grâce aux rappels</div></div>
+          <div style="margin-top:14px"><div class="cas-metric" style="font-size:1.6rem">100%</div><div class="cas-metric-txt">de l'équipe interne recentrée sur les soins</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CAS 4 -->
+    <div class="cas fi fi-d1">
+      <div class="cas-head">
+        <div class="cas-sector-badge">📦 E-commerce & Livraison</div>
+        <div class="cas-title">Un e-commerçant laisse ses paniers abandonnés sans relance</div>
+      </div>
+      <div class="cas-body">
+        <div class="cas-col cas-col-prob">
+          <h4>❌ Le problème</h4>
+          <p>Une boutique en ligne génère 200 à 300 visites par jour, mais le taux de conversion stagne à 4%. Des dizaines de prospects ajoutent des articles au panier et disparaissent. Aucune ressource interne n'est disponible pour les rappeler. Le chiffre d'affaires potentiel dort dans une base de données.</p>
+        </div>
+        <div class="cas-col-arrow">→</div>
+        <div class="cas-col cas-col-sol">
+          <h4>✅ La solution Help'me Process</h4>
+          <p>Campagne Outbound de relance paniers abandonnés : appel dans les 2h suivant l'abandon, script de qualification personnalisé, offre de réassurance (garantie, délai, paiement). Rapport de conversion quotidien fourni au client. Adaptation du script selon les retours terrain.</p>
+          <div class="cas-cost">
+            <span class="cas-cost-ico">💰</span>
+            <span class="cas-cost-txt">Coût par conversion</span>
+            <span class="cas-cost-val">Largement inférieur au coût d'acquisition</span>
+          </div>
+        </div>
+        <div class="cas-col-arrow">→</div>
+        <div class="cas-col cas-col-res">
+          <h4>📈 Le résultat</h4>
+          <div class="cas-metric">+47%</div>
+          <div class="cas-metric-txt">de taux de conversion sur les paniers relancés</div>
+          <div style="margin-top:14px"><div class="cas-metric" style="font-size:1.6rem">×2.4</div><div class="cas-metric-txt">de revenus supplémentaires générés par campagne</div></div>
+          <div style="margin-top:14px"><div class="cas-metric" style="font-size:1.6rem">J+30</div><div class="cas-metric-txt">retour sur investissement atteint dès le 1er mois</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CAS 5 -->
+    <div class="cas fi">
+      <div class="cas-head">
+        <div class="cas-sector-badge">🏗️ BTP & Immobilier</div>
+        <div class="cas-title">Une agence immobilière gaspille 60% du temps de ses commerciaux sur des leads froids</div>
+      </div>
+      <div class="cas-body">
+        <div class="cas-col cas-col-prob">
+          <h4>❌ Le problème</h4>
+          <p>Une agence immobilière dépense des millions en publicité pour générer des leads. Ses 4 commerciaux passent 60% de leur journée à appeler des prospects non qualifiés, peu intéressés ou déjà servis. Résultat : épuisement de l'équipe, objectifs non atteints, turnover élevé.</p>
+        </div>
+        <div class="cas-col-arrow">→</div>
+        <div class="cas-col cas-col-sol">
+          <h4>✅ La solution Help'me Process</h4>
+          <p>Préqualification Outbound de tous les leads entrants : appel de découverte, scoring selon budget/projet/délai, prise de RDV uniquement pour les leads "chauds". Les commerciaux ne reçoivent que des prospects prêts à passer à l'étape suivante, avec une fiche complète.</p>
+          <div class="cas-cost">
+            <span class="cas-cost-ico">💰</span>
+            <span class="cas-cost-txt">Coût qualification externalisée</span>
+            <span class="cas-cost-val">3× moins cher qu'un commercial dédié</span>
+          </div>
+        </div>
+        <div class="cas-col-arrow">→</div>
+        <div class="cas-col cas-col-res">
+          <h4>📈 Le résultat</h4>
+          <div class="cas-metric">×3</div>
+          <div class="cas-metric-txt">de productivité commerciale sur les RDV qualifiés</div>
+          <div style="margin-top:14px"><div class="cas-metric" style="font-size:1.6rem">-60%</div><div class="cas-metric-txt">de temps gaspillé sur des leads non qualifiés</div></div>
+          <div style="margin-top:14px"><div class="cas-metric" style="font-size:1.6rem">+38%</div><div class="cas-metric-txt">de taux de closing sur les leads préqualifiés</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════ TABLEAU ROI ══════════ -->
+<div class="sec-full">
+  <div class="sec">
+    <div class="hd c fi">
+      <span class="eyebrow">Analyse financière</span>
+      <h2 class="big">Interne vs. Externalisé :<br/>le vrai calcul du coût</h2>
+      <p class="lead">Beaucoup d'entreprises pensent qu'un service interne revient moins cher. Les chiffres disent le contraire.</p>
+    </div>
+    <div class="roi-wrap fi">
+      <table class="roi-table">
+        <thead>
+          <tr>
+            <th>Poste de coût</th>
+            <th>Équipe interne (par agent/mois)</th>
+            <th>Help'me Process (par agent/mois)</th>
+            <th>Économie</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Salaire brut + charges</strong></td>
+            <td class="roi-bad">Élevé + charges patronales</td>
+            <td class="roi-good">Inclus dans le forfait</td>
+            <td class="roi-good">✓ Économie directe</td>
+          </tr>
+          <tr>
+            <td><strong>Formation initiale</strong></td>
+            <td class="roi-bad">2–4 semaines à votre charge</td>
+            <td class="roi-good">Prise en charge complète</td>
+            <td class="roi-good">✓ Zéro coût</td>
+          </tr>
+          <tr>
+            <td><strong>Recrutement</strong></td>
+            <td class="roi-bad">Annonces, entretiens, tests</td>
+            <td class="roi-good">Zéro — on s'en charge</td>
+            <td class="roi-good">✓ Économie de temps</td>
+          </tr>
+          <tr>
+            <td><strong>Équipement (PC, casque, logiciel)</strong></td>
+            <td class="roi-bad">À votre charge</td>
+            <td class="roi-good">Inclus</td>
+            <td class="roi-good">✓ Économie matériel</td>
+          </tr>
+          <tr>
+            <td><strong>Supervision & management</strong></td>
+            <td class="roi-bad">Superviseur à recruter</td>
+            <td class="roi-good">Inclus (superviseurs dédiés)</td>
+            <td class="roi-good">✓ Économie management</td>
+          </tr>
+          <tr>
+            <td><strong>Congés / Absences / Turnover</strong></td>
+            <td class="roi-bad">Votre risque</td>
+            <td class="roi-good">Notre risque — continuité garantie</td>
+            <td class="roi-good">✓ Zéro interruption</td>
+          </tr>
+          <tr>
+            <td><strong>Scalabilité (pics d'activité)</strong></td>
+            <td class="roi-bad">Impossible rapidement</td>
+            <td class="roi-good">Ajustement en 48-72h</td>
+            <td class="roi-good">✓ Flexibilité totale</td>
+          </tr>
+          <tr>
+            <td><strong>Logiciel CRM</strong></td>
+            <td class="roi-bad">Abonnement mensuel séparé</td>
+            <td class="roi-good">Inclus dans l'offre</td>
+            <td class="roi-good">✓ Économie logiciel</td>
+          </tr>
+          <tr class="highlight">
+            <td><strong>💡 TOTAL ESTIMÉ / mois</strong></td>
+            <td class="roi-bad" style="font-size:1.1rem">100%</td>
+            <td class="roi-good" style="font-size:1.1rem">30% à 50%</td>
+            <td class="roi-good" style="font-size:1.1rem">-50% à -70%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="text-align:center;margin-top:20px;font-size:.8rem;color:var(--gray)">* Estimations basées sur des comparatifs sectoriels BPO Afrique de l'Ouest — les économies varient selon le volume et le type de service.</p>
+  </div>
+</div>
+
+<!-- ══════════ NOS OFFRES ══════════ -->
+<div class="sec-dark">
+  <div class="sec">
+    <div class="hd c fi">
+      <span class="eyebrow eyebrow-white">Nos offres</span>
+      <h2 class="big big-white">Une solution pour chaque besoin,<br/>un tarif pour chaque budget</h2>
+      <p class="lead lead-white">Démarrage rapide, sans engagement long terme, avec des résultats mesurables dès le premier mois.</p>
+    </div>
+    <div class="packs-grid fi">
+
+      <div class="pack p1">
+        <div class="pack-head">
+          <div class="pack-badge">Essentiel</div>
+          <div class="pack-name">Starter</div>
+          <div class="pack-desc">Idéal pour les PME qui démarrent leur externalisation — tester sans risque.</div>
+        </div>
+        <div class="pack-body">
+          <ul class="pack-list">
+            <li>Équipe dédiée Inbound (2–3 agents)</li>
+            <li>Accueil téléphonique 6j/7, 8h–18h</li>
+            <li>Script personnalisé selon votre secteur</li>
+            <li>Reporting hebdomadaire</li>
+            <li>CRM de base inclus</li>
+            <li>Formation aux produits/services client</li>
+          </ul>
+          <a href="index.html#contact" class="pack-cta">Demander un devis</a>
+        </div>
+      </div>
+
+      <div class="pack p2 featured">
+        <div class="pack-head">
+          <div class="pack-badge">⭐ Le plus choisi</div>
+          <div class="pack-name">Pro</div>
+          <div class="pack-desc">Pour les entreprises en croissance qui veulent un service complet et des résultats concrets.</div>
+        </div>
+        <div class="pack-body">
+          <ul class="pack-list">
+            <li>Équipe Inbound + Outbound (5–10 agents)</li>
+            <li>Couverture 6j/7, 8h–20h</li>
+            <li>Gestion réclamations & SAV</li>
+            <li>Campagnes de relance et téléprospection</li>
+            <li>CRM complet + tableaux de bord live</li>
+            <li>Superviseur dédié</li>
+            <li>Reporting quotidien + réunion mensuelle</li>
+          </ul>
+          <a href="index.html#contact" class="pack-cta">Demander un devis</a>
+        </div>
+      </div>
+
+      <div class="pack p3">
+        <div class="pack-head">
+          <div class="pack-badge">Sur-mesure</div>
+          <div class="pack-name">Enterprise</div>
+          <div class="pack-desc">Pour les grands comptes et les besoins complexes — une solution 100% personnalisée.</div>
+        </div>
+        <div class="pack-body">
+          <ul class="pack-list">
+            <li>Équipe dédiée dimensionnée selon vos volumes</li>
+            <li>Couverture 6j/7 ou 7j/7 selon besoin</li>
+            <li>Inbound + Outbound + Back Office intégrés</li>
+            <li>Intégration avec vos outils existants</li>
+            <li>Manager de compte dédié</li>
+            <li>SLA (accord de niveau de service) contractualisé</li>
+            <li>Audit qualité mensuel + optimisation continue</li>
+          </ul>
+          <a href="index.html#contact" class="pack-cta">Nous contacter</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ TÉMOIGNAGES ══════════ -->
+<div class="sec-full">
+  <div class="sec">
+    <div class="hd c fi">
+      <span class="eyebrow">Ils nous font confiance</span>
+      <h2 class="big">Ce que disent nos clients</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="tcard fi">
+        <div class="stars">★★★★★</div>
+        <q>Depuis qu'on a confié nos appels à Help'me Process, notre taux de réponse est passé de 65% à 98%. Le changement est spectaculaire — et nos clients le ressentent.</q>
+        <div class="t-author"><div class="t-ava">DK</div><div><div class="t-name">Directeur Kouyaté</div><div class="t-role">Commerce & Distribution, Conakry</div></div></div>
+      </div>
+      <div class="tcard fi fi-d1">
+        <div class="stars">★★★★★</div>
+        <q>On cherchait à réduire nos coûts sans sacrifier la qualité. Help'me Process nous a prouvé que c'était possible. Nos clients sont mieux servis, et on dépense 50% de moins.</q>
+        <div class="t-author"><div class="t-ava">AB</div><div><div class="t-name">Aminata Baldé</div><div class="t-role">Directrice, Microfinance Guinée</div></div></div>
+      </div>
+      <div class="tcard fi fi-d2">
+        <div class="stars">★★★★★</div>
+        <q>L'équipe est formée, professionnelle et réactive. En 3 semaines, ils connaissaient nos produits mieux que certains de nos employés. Je recommande sans hésiter.</q>
+        <div class="t-author"><div class="t-ava">MS</div><div><div class="t-name">Mohamed Sylla</div><div class="t-role">CEO, Tech Startup, Conakry</div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ CTA FINAL ══════════ -->
+<div class="final-cta" id="contact-final">
+  <h2>Prêt à transformer votre relation client ?<br/>Parlons-en — c'est gratuit.</h2>
+  <p>Diagnostic offert sous 24h. Proposition sur mesure. Démarrage possible en 72h. Aucun engagement minimum.</p>
+  <div class="final-btns">
+    <a href="index.html#contact" class="btn-white">📞 Demander un diagnostic gratuit</a>
+    <a href="tel:+224628935335" class="btn-outline-white">📱 +224 628 93 53 35</a>
+  </div>
+</div>
+
+<!-- ══════════ FOOTER ══════════ -->
+<div class="pres-footer">
+  <p>
+    <strong style="color:rgba(255,255,255,.6)">Help'me Process</strong> — Centre d'appel professionnel à Conakry, Guinée<br/>
+    📍 Köbaya carrefour BBC, Commune de Lambanyi, Conakry &nbsp;|&nbsp;
+    📧 <a href="mailto:contact@helpmeprocess.com">contact@helpmeprocess.com</a> &nbsp;|&nbsp;
+    📞 <a href="tel:+224628935335">+224 628 93 53 35</a><br/>
+    <span style="margin-top:8px;display:block">🏆 Élu Meilleur Service Client de l'Année 2023 &nbsp;·&nbsp; <a href="index.html">Retour au site principal →</a></span>
+  </p>
+</div>
+
+<script>
+  // Fade-in observer
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})
+  },{threshold:.08});
+  document.querySelectorAll('.fi').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

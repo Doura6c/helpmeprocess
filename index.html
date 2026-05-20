@@ -33,20 +33,6 @@
        AFRICA PRIDE — Design artistique
        ════════════════════════════════════════ */
 
-    /* Liseré doré premium en haut de page */
-    .gold-top{
-      position:fixed;top:0;left:0;right:0;height:3px;z-index:1001;
-      background:linear-gradient(90deg,
-        transparent 0%,
-        var(--terra) 15%,
-        var(--gold) 40%,
-        #F0C040 55%,
-        var(--gold) 70%,
-        var(--terra) 85%,
-        transparent 100%
-      );
-    }
-
     /* Section Africa Pride */
     .africa-pride{
       background:linear-gradient(160deg,#090E07 0%,#0F1A0C 50%,#090E07 100%);
@@ -175,7 +161,6 @@
     /* ────────────────── NAV ────────────────── */
     nav{
       position:fixed;inset:0 0 auto;z-index:999;
-      top:3px;
       height:72px;display:flex;align-items:center;
       padding:0 64px;
       background:#fff;
@@ -207,7 +192,7 @@
     .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
     .burger span{width:24px;height:2px;background:var(--navy);border-radius:2px;transition:.3s}
     .mob-nav{
-      display:none;position:fixed;inset:75px 0 0;
+      display:none;position:fixed;inset:72px 0 0;
       background:#fff;z-index:998;padding:24px 24px;
       flex-direction:column;gap:4px;border-top:1px solid var(--border);
     }
@@ -217,7 +202,7 @@
 
     /* ────────────────── HERO ────────────────── */
     .hero{
-      min-height:100vh;padding-top:75px;
+      min-height:100vh;padding-top:72px;
       position:relative;overflow:hidden;
       display:flex;align-items:center;
     }
@@ -990,9 +975,6 @@
 </head>
 <body>
 
-<!-- Liseré doré premium -->
-<div class="gold-top"></div>
-
 <!-- ══════════ NAV ══════════ -->
 <nav id="nav">
   <div class="nav-inner">
@@ -1010,6 +992,7 @@
       <li><a href="#fondateur">Co-fondateur</a></li>
       <li><a href="actualites.html">Actualités</a></li>
       <li><a href="recrutement.html">Recrutement</a></li>
+      <li><a href="presentation-entreprises.html">📋 Entreprises</a></li>
       <li><a href="#contact" class="nav-cta">Nous contacter</a></li>
     </ul>
     <div class="burger" id="burger"><span></span><span></span><span></span></div>
@@ -1435,33 +1418,31 @@
   </div>
   <div style="overflow:hidden">
     <div class="gal-strip">
+      <div class="gal-item"><img src="team-smile.jpeg" alt="Équipe Help'me Process"/></div>
+      <div class="gal-item"><img src="coaching2.jpeg" alt="Coaching agent"/></div>
+      <div class="gal-item"><img src="team-wave.jpeg" alt="Équipe accueillante"/></div>
+      <div class="gal-item"><img src="agents-bleu.jpeg" alt="Agents professionnels"/></div>
+      <div class="gal-item"><img src="duo-agents.jpeg" alt="Agents en action"/></div>
       <div class="gal-item"><img src="hero-team.jpeg" alt="Équipe"/></div>
-      <div class="gal-item"><img src="director-portrait.jpeg" alt="Co-fondateur"/></div>
       <div class="gal-item"><img src="open-space.jpeg" alt="Open space"/></div>
       <div class="gal-item"><img src="manager-coaching.jpeg" alt="Coaching"/></div>
       <div class="gal-item"><img src="team-headsets.jpeg" alt="Agents"/></div>
-      <div class="gal-item"><img src="agent-male.jpeg" alt="Agent"/></div>
-      <div class="gal-item"><img src="agents-travail.jpeg" alt="Agents au travail"/></div>
       <div class="gal-item"><img src="award.jpeg" alt="Trophée 2023"/></div>
-      <div class="gal-item"><img src="office.jpeg" alt="Bureau"/></div>
-      <div class="gal-item"><img src="team-office.jpeg" alt="Équipe bureau"/></div>
+      <div class="gal-item"><img src="agents-travail.jpeg" alt="Agents au travail"/></div>
       <div class="gal-item"><img src="training.jpeg" alt="Formation"/></div>
-      <div class="gal-item"><img src="training2.jpeg" alt="Formation 2"/></div>
-      <div class="gal-item"><img src="training3.jpeg" alt="Formation 3"/></div>
       <!-- duplicate loop -->
+      <div class="gal-item"><img src="team-smile.jpeg" alt="Équipe Help'me Process"/></div>
+      <div class="gal-item"><img src="coaching2.jpeg" alt="Coaching agent"/></div>
+      <div class="gal-item"><img src="team-wave.jpeg" alt="Équipe accueillante"/></div>
+      <div class="gal-item"><img src="agents-bleu.jpeg" alt="Agents professionnels"/></div>
+      <div class="gal-item"><img src="duo-agents.jpeg" alt="Agents en action"/></div>
       <div class="gal-item"><img src="hero-team.jpeg" alt="Équipe"/></div>
-      <div class="gal-item"><img src="director-portrait.jpeg" alt="Co-fondateur"/></div>
       <div class="gal-item"><img src="open-space.jpeg" alt="Open space"/></div>
       <div class="gal-item"><img src="manager-coaching.jpeg" alt="Coaching"/></div>
       <div class="gal-item"><img src="team-headsets.jpeg" alt="Agents"/></div>
-      <div class="gal-item"><img src="agent-male.jpeg" alt="Agent"/></div>
-      <div class="gal-item"><img src="agents-travail.jpeg" alt="Agents au travail"/></div>
       <div class="gal-item"><img src="award.jpeg" alt="Trophée 2023"/></div>
-      <div class="gal-item"><img src="office.jpeg" alt="Bureau"/></div>
-      <div class="gal-item"><img src="team-office.jpeg" alt="Équipe bureau"/></div>
+      <div class="gal-item"><img src="agents-travail.jpeg" alt="Agents au travail"/></div>
       <div class="gal-item"><img src="training.jpeg" alt="Formation"/></div>
-      <div class="gal-item"><img src="training2.jpeg" alt="Formation 2"/></div>
-      <div class="gal-item"><img src="training3.jpeg" alt="Formation 3"/></div>
     </div>
   </div>
 </div>
