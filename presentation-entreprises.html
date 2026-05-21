@@ -3,7 +3,15 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Présentation Help'me Process pour décideurs — externalisez votre relation client à Conakry. ROI, cas pratiques, packages."/>
   <title>Présentation Entreprises | Help'me Process — Call Center Conakry</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https://img.youtube.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; frame-src https://www.youtube.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"/>
+  <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+  <meta name="referrer" content="strict-origin-when-cross-origin"/>
+  <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=()"/>
+  <meta name="theme-color" content="#002C6E"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -295,11 +303,14 @@
 </head>
 <body>
 
+<!-- Scroll Progress Bar -->
+<div id="scrollProgress" style="position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--orange),#FFD700);z-index:10000;transition:width .1s ease-out;box-shadow:0 0 10px rgba(232,93,32,.5)"></div>
+
 <!-- ══════════ NAV ══════════ -->
 <nav>
   <div class="nav-in">
     <a href="index.html" class="nav-logo">
-      <img src="logo.jpeg" alt="Help'me Process"/>
+      <img src="logo.jpeg" alt="Help'me Process" loading="lazy" decoding="async"/>
       <div class="nav-logo-txt">
         <strong>Help'me Process</strong>
         <span>Call Center · Conakry</span>
@@ -798,7 +809,7 @@
     📍 Köbaya carrefour BBC, Commune de Lambanyi, Conakry &nbsp;|&nbsp;
     📧 <a href="mailto:contact@helpmeprocess.com">contact@helpmeprocess.com</a> &nbsp;|&nbsp;
     📞 <a href="tel:+224628935335">+224 628 93 53 35</a><br/>
-    <span style="margin-top:8px;display:block">🏆 Élu Meilleur Service Client de l'Année 2023 &nbsp;·&nbsp; <a href="index.html">Retour au site principal →</a></span>
+    <span style="margin-top:8px;display:block">🏆 Co-fondateur primé chez Total Energies France 2023 &nbsp;·&nbsp; <a href="index.html">Retour au site principal →</a></span>
   </p>
 </div>
 
@@ -808,6 +819,36 @@
     entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})
   },{threshold:.08});
   document.querySelectorAll('.fi').forEach(el=>io.observe(el));
+
+  /* Scroll Progress Bar */
+  (function(){
+    const bar=document.getElementById('scrollProgress');
+    if(!bar)return;
+    let ticking=false;
+    window.addEventListener('scroll',()=>{
+      if(!ticking){
+        requestAnimationFrame(()=>{
+          const h=document.documentElement.scrollHeight-window.innerHeight;
+          bar.style.width=(h>0?(window.scrollY/h)*100:0)+'%';
+          ticking=false;
+        });
+        ticking=true;
+      }
+    },{passive:true});
+  })();
+
+  /* Magnetic CTA buttons */
+  (function(){
+    if(window.matchMedia('(pointer:coarse)').matches)return;
+    document.querySelectorAll('.nav-cta-btn,.btn-pack,.cta-btn').forEach(btn=>{
+      btn.style.transition='transform .25s cubic-bezier(.23,1,.32,1)';
+      btn.addEventListener('mousemove',e=>{
+        const r=btn.getBoundingClientRect();
+        btn.style.transform=`translate(${(e.clientX-(r.left+r.width/2))*0.15}px,${(e.clientY-(r.top+r.height/2))*0.2}px)`;
+      });
+      btn.addEventListener('mouseleave',()=>{btn.style.transform='translate(0,0)'});
+    });
+  })();
 </script>
 </body>
 </html>

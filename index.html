@@ -5,6 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="Help'me Process — Centre d'appel professionnel en Guinée. Inbound, Outbound, Back Office pour marchés national et international."/>
   <title>Help'me Process | Call Center in Guinea</title>
+
+  <!-- ═══ SÉCURITÉ — Headers méta (durcissement) ═══ -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https://img.youtube.com https://i.ytimg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; frame-src https://www.youtube.com https://www.youtube-nocookie.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"/>
+  <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+  <meta name="referrer" content="strict-origin-when-cross-origin"/>
+  <meta name="robots" content="index, follow"/>
+  <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=()"/>
+
+  <!-- ═══ SEO + Open Graph ═══ -->
+  <meta property="og:title" content="Help'me Process | Centre d'appel premium à Conakry"/>
+  <meta property="og:description" content="Centre d'appel professionnel en Guinée. Inbound, Outbound, Back Office. Dirigé par un Manager Service Client Premium primé chez Total Energies France."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:locale" content="fr_FR"/>
+  <meta name="theme-color" content="#002C6E"/>
+
+  <!-- ═══ PERFORMANCE — Preconnect Google Fonts ═══ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -1290,11 +1308,17 @@
 </head>
 <body>
 
+<!-- ═══ TOUCHE FINALE INGÉNIEUR : Scroll Progress Bar ═══ -->
+<div id="scrollProgress" style="position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--orange),#FFD700);z-index:10000;transition:width .1s ease-out;box-shadow:0 0 10px rgba(232,93,32,.5)"></div>
+
+<!-- Cursor spotlight effect (suit la souris en hero) -->
+<div id="cursorSpot" style="position:fixed;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(232,93,32,.12) 0%,transparent 65%);pointer-events:none;z-index:1;mix-blend-mode:screen;transform:translate(-50%,-50%);transition:opacity .3s;opacity:0;will-change:transform"></div>
+
 <!-- ══════════ NAV ══════════ -->
 <nav id="nav">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">
-      <img src="logo.jpeg" alt="Help'me Process"/>
+      <img src="logo.jpeg" alt="Help'me Process" loading="lazy" decoding="async"/>
       <div class="nav-logo-text">
         <strong>Help'me Process</strong>
         <span>Call Center · Conakry</span>
@@ -1342,7 +1366,7 @@
         <span class="hero-words" id="heroWords">
           <span class="hero-word active">exceptionnelle</span>
           <span class="hero-word">multilingue</span>
-          <span class="hero-word">primée #1</span>
+          <span class="hero-word">d'excellence</span>
           <span class="hero-word">100% guinéenne</span>
           <span class="hero-word">performante</span>
         </span>
@@ -1366,7 +1390,7 @@
           <div><div class="trust-val">3</div><div class="trust-lbl">Pôles de services</div></div>
         </div>
         <div class="trust-item">
-          <div><div class="trust-val">🏆</div><div class="trust-lbl">Élu #1 — 2023</div></div>
+          <div><div class="trust-val">🏆</div><div class="trust-lbl">DG primé Total Energies</div></div>
         </div>
       </div>
     </div>
@@ -1383,8 +1407,8 @@
       <div class="hero-card hcard-award">
         <div class="hcard-ico">🏆</div>
         <div>
-          <div class="hcard-num" style="font-size:1.1rem;margin-bottom:2px">Élu Service Client</div>
-          <div class="hcard-txt">de l'Année 2023</div>
+          <div class="hcard-num" style="font-size:1.05rem;margin-bottom:2px">Co-fondateur primé</div>
+          <div class="hcard-txt">Total Energies France</div>
         </div>
       </div>
       <div class="hero-card">
@@ -1427,7 +1451,7 @@
     </div>
     <div class="amb-right fi fi-d2">
       <div class="amb-img">
-        <img src="director-portrait.jpeg" alt="Abdourahamane Cissé — Co-fondateur Help'me Process"/>
+        <img src="director-portrait.jpeg" alt="Abdourahamane Cissé — Co-fondateur Help'me Process" loading="lazy" decoding="async"/>
       </div>
       <div class="amb-badge">
         <div class="badge-ico">🏆</div>
@@ -1674,7 +1698,7 @@
           </div>
           <div class="afp-stat-mini">
             <div class="afp-stat-num">#<span style="-webkit-text-fill-color:#fff;background:none">1</span></div>
-            <div class="afp-stat-lbl">Service client 2023</div>
+            <div class="afp-stat-lbl">Top Manager international 2023</div>
           </div>
         </div>
       </div>
@@ -1739,7 +1763,7 @@
 <section class="presence">
   <div class="pres-inner fi">
     <div class="pres-img">
-      <img src="hero-team.jpeg" alt="Équipe Help'me Process"/>
+      <img src="hero-team.jpeg" alt="Équipe Help'me Process" loading="lazy" decoding="async"/>
     </div>
     <div class="pres-txt">
       <span class="eyebrow">Notre implantation</span>
@@ -1796,15 +1820,15 @@
         </div>
       </div>
 
-      <!-- Card 2 : Trophée 2023 -->
+      <!-- Card 2 : Excellence internationale -->
       <div class="bento bento-award fi">
         <div class="bento-glow"></div>
         <div style="display:flex;align-items:center;gap:20px;height:100%">
           <div class="bento-trophy">🏆</div>
           <div style="flex:1">
-            <span class="bento-tag">2023</span>
-            <h3 style="margin-top:8px">Élu Service Client de l'Année</h3>
-            <p>Premier centre d'appel guinéen primé pour la qualité de service.</p>
+            <span class="bento-tag">Excellence internationale</span>
+            <h3 style="margin-top:8px">Co-fondateur primé chez Total Energies</h3>
+            <p>Abdourahamane Cissé, élu Manager Service Client Premium 2023 — un savoir-faire international qu'il apporte à Help'me Process.</p>
           </div>
         </div>
       </div>
@@ -1883,13 +1907,13 @@
   <div class="founder-inner">
     <div class="founder-photo-wrap fi">
       <div class="founder-photo">
-        <img src="award.jpeg" alt="Abdourahamane Cissé — Co-fondateur Help'me Process"/>
+        <img src="award.jpeg" alt="Abdourahamane Cissé — Co-fondateur Help'me Process" loading="lazy" decoding="async"/>
       </div>
       <div class="founder-award-badge">
         <span>🏆</span>
         <div>
-          <strong>Élu Service Client de l'Année</strong>
-          <em>Conakry, Guinée — 2023</em>
+          <strong>Manager Service Client Premium 2023</strong>
+          <em>Total Energies France · via ADM Value Maroc</em>
         </div>
       </div>
     </div>
@@ -1902,7 +1926,7 @@
       </blockquote>
 
       <div class="founder-name-block">
-        <div class="fn-ava"><img src="award.jpeg" alt="Abdourahamane Cissé" style="object-position:top center"/></div>
+        <div class="fn-ava"><img src="award.jpeg" alt="Abdourahamane Cissé" style="object-position:top center" loading="lazy" decoding="async"/></div>
         <div class="fn-info">
           <strong>Abdourahamane Cissé</strong>
           <span>Co-fondateur & Directeur Général — Help'me Process</span>
@@ -1942,8 +1966,8 @@
         <div class="cv-item">
           <div class="cv-dot">🏆</div>
           <div>
-            <strong>Élu Meilleur Service Client de l'Année 2023</strong>
-            <span>La consécration d'une vision : prouver que la Guinée peut rivaliser avec les grandes destinations BPO de la sous-région et au-delà.</span>
+            <strong>Élu Meilleur Manager Service Client Premium — 2023</strong>
+            <span>Distinction personnelle obtenue dans l'exercice de ses fonctions au compte de <strong>Total Energies France</strong>, via le prestataire <strong>ADM Value Maroc</strong>. Une référence internationale rare en Afrique de l'Ouest — qui irrigue aujourd'hui chaque process de Help'me Process.</span>
           </div>
         </div>
       </div>
@@ -1965,31 +1989,31 @@
   </div>
   <div style="overflow:hidden">
     <div class="gal-strip">
-      <div class="gal-item"><img src="team-smile.jpeg" alt="Équipe Help'me Process"/></div>
-      <div class="gal-item"><img src="coaching2.jpeg" alt="Coaching agent"/></div>
-      <div class="gal-item"><img src="team-wave.jpeg" alt="Équipe accueillante"/></div>
-      <div class="gal-item"><img src="agents-bleu.jpeg" alt="Agents professionnels"/></div>
-      <div class="gal-item"><img src="duo-agents.jpeg" alt="Agents en action"/></div>
-      <div class="gal-item"><img src="hero-team.jpeg" alt="Équipe"/></div>
-      <div class="gal-item"><img src="open-space.jpeg" alt="Open space"/></div>
-      <div class="gal-item"><img src="manager-coaching.jpeg" alt="Coaching"/></div>
-      <div class="gal-item"><img src="team-headsets.jpeg" alt="Agents"/></div>
-      <div class="gal-item"><img src="award.jpeg" alt="Trophée 2023"/></div>
-      <div class="gal-item"><img src="agents-travail.jpeg" alt="Agents au travail"/></div>
-      <div class="gal-item"><img src="training.jpeg" alt="Formation"/></div>
+      <div class="gal-item"><img src="team-smile.jpeg" alt="Équipe Help'me Process" loading="lazy" decoding="async"/></div>
+      <div class="gal-item"><img src="coaching2.jpeg" alt="Coaching agent" loading="lazy" decoding="async"/></div>
+      <div class="gal-item"><img src="team-wave.jpeg" alt="Équipe accueillante" loading="lazy" decoding="async"/></div>
+      <div class="gal-item"><img src="agents-bleu.jpeg" alt="Agents professionnels" loading="lazy" decoding="async"/></div>
+      <div class="gal-item"><img src="duo-agents.jpeg" alt="Agents en action" loading="lazy" decoding="async"/></div>
+      <div class="gal-item"><img src="hero-team.jpeg" alt="Équipe" loading="lazy" decoding="async"/></div>
+      <div class="gal-item"><img src="open-space.jpeg" alt="Open space" loading="lazy" decoding="async"/></div>
+      <div class="gal-item"><img src="manager-coaching.jpeg" alt="Coaching" loading="lazy" decoding="async"/></div>
+      <div class="gal-item"><img src="team-headsets.jpeg" alt="Agents" loading="lazy" decoding="async"/></div>
+      <div class="gal-item"><img src="award.jpeg" alt="Trophée Manager Service Client Premium — Total Energies France 2023" loading="lazy" decoding="async"/></div>
+      <div class="gal-item"><img src="agents-travail.jpeg" alt="Agents au travail" loading="lazy" decoding="async"/></div>
+      <div class="gal-item"><img src="training.jpeg" alt="Formation" loading="lazy" decoding="async"/></div>
       <!-- duplicate loop -->
-      <div class="gal-item"><img src="team-smile.jpeg" alt="Équipe Help'me Process"/></div>
-      <div class="gal-item"><img src="coaching2.jpeg" alt="Coaching agent"/></div>
-      <div class="gal-item"><img src="team-wave.jpeg" alt="Équipe accueillante"/></div>
-      <div class="gal-item"><img src="agents-bleu.jpeg" alt="Agents professionnels"/></div>
-      <div class="gal-item"><img src="duo-agents.jpeg" alt="Agents en action"/></div>
-      <div class="gal-item"><img src="hero-team.jpeg" alt="Équipe"/></div>
-      <div class="gal-item"><img src="open-space.jpeg" alt="Open space"/></div>
-      <div class="gal-item"><img src="manager-coaching.jpeg" alt="Coaching"/></div>
-      <div class="gal-item"><img src="team-headsets.jpeg" alt="Agents"/></div>
-      <div class="gal-item"><img src="award.jpeg" alt="Trophée 2023"/></div>
-      <div class="gal-item"><img src="agents-travail.jpeg" alt="Agents au travail"/></div>
-      <div class="gal-item"><img src="training.jpeg" alt="Formation"/></div>
+      <div class="gal-item"><img src="team-smile.jpeg" alt="Équipe Help'me Process" loading="lazy" decoding="async"/></div>
+      <div class="gal-item"><img src="coaching2.jpeg" alt="Coaching agent" loading="lazy" decoding="async"/></div>
+      <div class="gal-item"><img src="team-wave.jpeg" alt="Équipe accueillante" loading="lazy" decoding="async"/></div>
+      <div class="gal-item"><img src="agents-bleu.jpeg" alt="Agents professionnels" loading="lazy" decoding="async"/></div>
+      <div class="gal-item"><img src="duo-agents.jpeg" alt="Agents en action" loading="lazy" decoding="async"/></div>
+      <div class="gal-item"><img src="hero-team.jpeg" alt="Équipe" loading="lazy" decoding="async"/></div>
+      <div class="gal-item"><img src="open-space.jpeg" alt="Open space" loading="lazy" decoding="async"/></div>
+      <div class="gal-item"><img src="manager-coaching.jpeg" alt="Coaching" loading="lazy" decoding="async"/></div>
+      <div class="gal-item"><img src="team-headsets.jpeg" alt="Agents" loading="lazy" decoding="async"/></div>
+      <div class="gal-item"><img src="award.jpeg" alt="Trophée Manager Service Client Premium — Total Energies France 2023" loading="lazy" decoding="async"/></div>
+      <div class="gal-item"><img src="agents-travail.jpeg" alt="Agents au travail" loading="lazy" decoding="async"/></div>
+      <div class="gal-item"><img src="training.jpeg" alt="Formation" loading="lazy" decoding="async"/></div>
     </div>
   </div>
 </div>
@@ -2005,7 +2029,7 @@
       </div>
       <div style="flex-shrink:0;display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:18px 22px;backdrop-filter:blur(10px)">
         <div style="width:56px;height:56px;border-radius:50%;overflow:hidden;border:2.5px solid var(--orange);flex-shrink:0">
-          <img src="award.jpeg" alt="Abdourahamane Cissé" style="width:100%;height:100%;object-fit:cover;object-position:top center"/>
+          <img src="award.jpeg" alt="Abdourahamane Cissé" style="width:100%;height:100%;object-fit:cover;object-position:top center" loading="lazy" decoding="async"/>
         </div>
         <div>
           <div style="font-weight:800;font-size:.95rem;color:#fff">Abdourahamane Cissé</div>
@@ -2339,8 +2363,8 @@
         <div class="ctc-item">
           <div class="ctc-ico">🏆</div>
           <div class="ctc-text">
-            <label>Distinction</label>
-            <p>Élu Meilleur Service Client 2023</p>
+            <label>Distinction de notre co-fondateur</label>
+            <p>Manager Service Client Premium Total Energies — 2023</p>
           </div>
         </div>
       </div>
@@ -2374,7 +2398,7 @@
 <footer>
   <div class="ft-top">
     <div class="ft-brand">
-      <div class="ft-logo"><img src="logo.jpeg" alt="Help'me Process"/></div>
+      <div class="ft-logo"><img src="logo.jpeg" alt="Help'me Process" loading="lazy" decoding="async"/></div>
       <p>Le call center professionnel de Guinée. Inbound, Outbound, Back Office — au service de vos clients, en toutes langues.</p>
     </div>
     <div class="ft-col">
@@ -2510,6 +2534,93 @@
     setTimeout(()=>{this.textContent='Envoyer ma demande →';this.style.background=''},4000);
   });
 </script>
+
+<!-- ═══════ TOUCHE FINALE INGÉNIEUR — Effets premium ═══════ -->
+<script>
+  /* 1. Scroll Progress Bar */
+  (function(){
+    const bar=document.getElementById('scrollProgress');
+    if(!bar)return;
+    let ticking=false;
+    window.addEventListener('scroll',()=>{
+      if(!ticking){
+        requestAnimationFrame(()=>{
+          const h=document.documentElement.scrollHeight-window.innerHeight;
+          const p=h>0?(window.scrollY/h)*100:0;
+          bar.style.width=Math.min(100,Math.max(0,p))+'%';
+          ticking=false;
+        });
+        ticking=true;
+      }
+    },{passive:true});
+  })();
+
+  /* 2. Cursor Spotlight — uniquement sur hero/sections sombres */
+  (function(){
+    const spot=document.getElementById('cursorSpot');
+    if(!spot||window.matchMedia('(pointer:coarse)').matches)return; // pas mobile
+    let visible=false,x=0,y=0;
+    document.addEventListener('mousemove',e=>{
+      x=e.clientX;y=e.clientY;
+      const el=document.elementFromPoint(x,y);
+      const sec=el?.closest('.hero,.founder,.africa-pride,.video-section,.services,.why,.cta-section,.infra');
+      if(sec){
+        if(!visible){spot.style.opacity='1';visible=true}
+        spot.style.transform=`translate(${x}px,${y}px) translate(-50%,-50%)`;
+      }else if(visible){
+        spot.style.opacity='0';visible=false;
+      }
+    },{passive:true});
+    document.addEventListener('mouseleave',()=>{spot.style.opacity='0';visible=false});
+  })();
+
+  /* 3. Magnetic CTA buttons — boutons qui suivent légèrement la souris */
+  (function(){
+    if(window.matchMedia('(pointer:coarse)').matches)return; // pas mobile
+    const buttons=document.querySelectorAll('.btn-orange,.nav-cta,.form-btn,.svc-lnk');
+    buttons.forEach(btn=>{
+      btn.style.transition='transform .25s cubic-bezier(.23,1,.32,1)';
+      btn.addEventListener('mousemove',e=>{
+        const r=btn.getBoundingClientRect();
+        const mx=e.clientX-(r.left+r.width/2);
+        const my=e.clientY-(r.top+r.height/2);
+        btn.style.transform=`translate(${mx*0.18}px,${my*0.25}px)`;
+      });
+      btn.addEventListener('mouseleave',()=>{btn.style.transform='translate(0,0)'});
+    });
+  })();
+
+  /* 4. Reveal text animation — titres h2 qui se révèlent au scroll */
+  (function(){
+    const titles=document.querySelectorAll('.ttl,h2.big');
+    titles.forEach(t=>{
+      t.style.opacity='0';
+      t.style.transform='translateY(20px)';
+      t.style.transition='opacity .8s cubic-bezier(.23,1,.32,1),transform .8s cubic-bezier(.23,1,.32,1)';
+    });
+    const io=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.style.opacity='1';
+          e.target.style.transform='translateY(0)';
+          io.unobserve(e.target);
+        }
+      });
+    },{threshold:0.2});
+    titles.forEach(t=>io.observe(t));
+  })();
+
+  /* 5. Nav shadow on scroll */
+  (function(){
+    const nav=document.getElementById('nav');
+    if(!nav)return;
+    window.addEventListener('scroll',()=>{
+      if(window.scrollY>20)nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+    },{passive:true});
+  })();
+</script>
+
 <script src="chatbot.js"></script>
 </body>
 </html>
