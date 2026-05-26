@@ -24,6 +24,31 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+
+  <!-- ═══ ANALYTICS — Activer en remplaçant les ID ═══ -->
+  <!-- Google Analytics 4 :
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+  <script>
+    window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+    gtag('js',new Date());gtag('config','G-XXXXXXX');
+  </script>
+  -->
+
+  <!-- LinkedIn Insight Tag :
+  <script>
+    _linkedin_partner_id="XXXXXXX";
+    window._linkedin_data_partner_ids=window._linkedin_data_partner_ids||[];
+    window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+  </script>
+  <script async src="https://snap.licdn.com/li.lms-analytics/insight.min.js"></script>
+  -->
+
+  <!-- Meta (Facebook) Pixel :
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'XXXXXXX'); fbq('track', 'PageView');
+  </script>
+  -->
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{
@@ -1304,6 +1329,760 @@
       .hero-trust{gap:20px}
       .founder-award-badge{flex-direction:column;text-align:center;bottom:-36px}
     }
+
+    /* ═══════════════════════════════════════════════════════
+       SERVICES V2 — BPO EXPERT REDESIGN
+       ═══════════════════════════════════════════════════════ */
+    .services-v2{
+      padding:110px 64px;
+      background:linear-gradient(180deg,#fff 0%,#F8FAFD 100%);
+      position:relative;
+      overflow:hidden;
+    }
+    .services-v2::before{
+      content:"";position:absolute;inset:0;
+      background-image:radial-gradient(circle at 80% 20%,rgba(232,93,32,.04),transparent 50%),radial-gradient(circle at 20% 80%,rgba(0,44,110,.04),transparent 50%);
+      pointer-events:none;
+    }
+    .services-v2 .wrap{position:relative;z-index:1;max-width:1280px;margin:0 auto;}
+    .services-v2 .hd{text-align:center;margin-bottom:48px;}
+    .services-v2 .ttl{font-size:clamp(2rem,4vw,3rem);font-weight:800;letter-spacing:-.02em;color:var(--dark);line-height:1.15;}
+    .services-v2 .ttl .grad{background:linear-gradient(135deg,var(--orange),var(--terra));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+    .services-v2 .sub{font-size:1rem;color:var(--gray);max-width:680px;margin:14px auto 0;line-height:1.7;}
+
+    /* OMNI BANNER */
+    .omni-band{
+      background:linear-gradient(135deg,var(--navy) 0%,var(--navy3) 100%);
+      border-radius:16px;
+      padding:24px 32px;
+      margin-bottom:48px;
+      box-shadow:0 12px 35px rgba(0,44,110,.18);
+      position:relative;
+      overflow:hidden;
+    }
+    .omni-band::before{
+      content:"";position:absolute;inset:0;
+      background:radial-gradient(circle at 90% 50%,rgba(232,93,32,.18),transparent 40%);
+      pointer-events:none;
+    }
+    .omni-label{
+      color:var(--gold);font-size:.75rem;font-weight:800;
+      letter-spacing:3px;text-transform:uppercase;
+      margin-bottom:12px;position:relative;
+    }
+    .omni-channels{
+      display:flex;flex-wrap:wrap;gap:10px;position:relative;
+    }
+    .omni-ch{
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.15);
+      color:#fff;font-size:.82rem;font-weight:600;
+      padding:7px 14px;border-radius:30px;
+      transition:all .3s;backdrop-filter:blur(6px);
+    }
+    .omni-ch:hover{
+      background:var(--orange);border-color:var(--orange);
+      transform:translateY(-2px);
+      box-shadow:0 6px 18px rgba(232,93,32,.35);
+    }
+
+    /* TABS */
+    .svc-tabs{
+      display:flex;flex-wrap:wrap;gap:8px;
+      background:#fff;
+      border:1.5px solid var(--border);
+      border-radius:16px;
+      padding:8px;
+      margin-bottom:32px;
+      box-shadow:0 4px 20px rgba(0,0,0,.04);
+    }
+    .svc-tab{
+      flex:1;min-width:160px;
+      background:transparent;border:none;
+      padding:14px 16px;
+      font-family:inherit;font-size:.88rem;font-weight:700;
+      color:var(--gray);cursor:pointer;
+      border-radius:12px;
+      transition:all .3s cubic-bezier(.16,1,.3,1);
+      white-space:nowrap;
+    }
+    .svc-tab:hover{color:var(--navy);background:rgba(0,44,110,.04);}
+    .svc-tab.active{
+      background:linear-gradient(135deg,var(--navy),var(--navy2));
+      color:#fff;
+      box-shadow:0 8px 20px rgba(0,44,110,.25);
+    }
+
+    /* PANELS */
+    .svc-panel{display:none;animation:fadeInUp .4s ease;}
+    .svc-panel.active{display:block;}
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+
+    .svc-grid{
+      display:grid;
+      grid-template-columns:1fr 360px;
+      gap:32px;
+      background:#fff;
+      border:1.5px solid var(--border);
+      border-radius:20px;
+      overflow:hidden;
+      box-shadow:0 14px 40px rgba(0,0,0,.06);
+    }
+    .svc-main{padding:40px 44px;}
+    .svc-h{
+      font-size:1.6rem;font-weight:800;color:var(--dark);
+      margin-bottom:14px;line-height:1.2;
+      letter-spacing:-.01em;
+    }
+    .svc-tag{
+      font-size:.95rem;color:var(--gray);
+      line-height:1.7;margin-bottom:28px;
+      max-width:580px;
+    }
+    .svc-cols{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:32px;
+    }
+    .svc-cols h4{
+      font-size:.7rem;font-weight:800;
+      letter-spacing:2px;text-transform:uppercase;
+      color:var(--orange);margin-bottom:14px;
+    }
+    .svc-cols ul{list-style:none;padding:0;margin:0;}
+    .svc-cols ul li{
+      font-size:.86rem;color:var(--text2);
+      padding:6px 0 6px 22px;
+      position:relative;
+      line-height:1.55;
+    }
+    .svc-cols ul li::before{
+      content:"›";position:absolute;left:6px;top:5px;
+      color:var(--orange);font-weight:800;font-size:1rem;
+    }
+    .svc-cols ul li b{color:var(--dark);}
+    .svc-cols ul li small{color:var(--gray2);font-size:.75rem;}
+    .kpi-list li{
+      display:flex;align-items:baseline;gap:6px;flex-wrap:wrap;
+    }
+    .kpi-list li b{
+      font-size:.95rem;color:var(--navy);
+      background:rgba(0,44,110,.06);
+      padding:2px 8px;border-radius:4px;
+    }
+
+    /* SIDE */
+    .svc-side{
+      background:linear-gradient(180deg,#F8FAFD 0%,#EFF3F8 100%);
+      padding:40px 32px;
+      border-left:1.5px solid var(--border);
+      display:flex;flex-direction:column;gap:20px;
+    }
+    .svc-side-block{
+      padding-bottom:18px;
+      border-bottom:1px solid var(--border);
+    }
+    .svc-side-block:last-of-type{border-bottom:none;}
+    .svc-side-label{
+      font-size:.65rem;font-weight:800;
+      letter-spacing:2.5px;text-transform:uppercase;
+      color:var(--gold);margin-bottom:8px;
+    }
+    .svc-stack{
+      font-size:.82rem;color:var(--text2);
+      line-height:1.6;font-weight:500;
+    }
+    .svc-cta{
+      display:inline-flex;align-items:center;justify-content:center;
+      gap:8px;
+      background:var(--orange);color:#fff !important;
+      padding:14px 22px;border-radius:10px;
+      font-size:.88rem;font-weight:700;
+      text-decoration:none;
+      box-shadow:0 8px 22px rgba(232,93,32,.3);
+      transition:all .3s;
+      margin-top:auto;
+    }
+    .svc-cta:hover{
+      background:var(--terra);
+      transform:translateY(-2px);
+      box-shadow:0 12px 30px rgba(232,93,32,.4);
+    }
+
+    /* VERTICALES */
+    .svc-grid-vert{
+      grid-template-columns:repeat(3,1fr);
+      padding:32px;
+      gap:18px;
+    }
+    .vert-card{
+      background:#fff;
+      border:1.5px solid var(--border);
+      border-radius:14px;
+      padding:24px;
+      transition:all .35s cubic-bezier(.16,1,.3,1);
+      position:relative;
+    }
+    .vert-card::before{
+      content:"";position:absolute;top:0;left:0;right:0;height:3px;
+      background:linear-gradient(90deg,var(--navy),var(--orange));
+      border-radius:14px 14px 0 0;
+      transform:scaleX(0);transform-origin:left;
+      transition:transform .4s ease;
+    }
+    .vert-card:hover{
+      border-color:var(--orange);
+      transform:translateY(-4px);
+      box-shadow:0 16px 36px rgba(0,44,110,.1);
+    }
+    .vert-card:hover::before{transform:scaleX(1);}
+    .vert-ico{
+      font-size:2rem;margin-bottom:12px;
+      display:inline-block;
+    }
+    .vert-card h4{
+      font-size:1.05rem;font-weight:800;color:var(--dark);
+      margin-bottom:8px;
+    }
+    .vert-card p{
+      font-size:.84rem;color:var(--gray);
+      line-height:1.6;margin-bottom:12px;
+    }
+    .vert-tag{
+      display:inline-block;
+      font-size:.7rem;font-weight:700;color:var(--orange);
+      background:rgba(232,93,32,.08);
+      padding:4px 10px;border-radius:30px;
+      border:1px solid rgba(232,93,32,.2);
+    }
+
+    /* Responsive Services V2 */
+    @media(max-width:960px){
+      .services-v2{padding:80px 24px;}
+      .svc-grid{grid-template-columns:1fr;}
+      .svc-side{border-left:none;border-top:1.5px solid var(--border);}
+      .svc-cols{grid-template-columns:1fr;}
+      .svc-grid-vert{grid-template-columns:repeat(2,1fr);}
+      .svc-tab{min-width:auto;font-size:.8rem;padding:11px 12px;}
+      .svc-main{padding:28px;}
+    }
+    @media(max-width:600px){
+      .svc-grid-vert{grid-template-columns:1fr;}
+      .svc-tabs{padding:6px;}
+      .omni-channels{justify-content:center;}
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       CAPACITÉS & CONFORMITÉ
+       ═══════════════════════════════════════════════════════ */
+    .capacities{padding:110px 64px;background:#fff;}
+    .cap-wrap{max-width:1280px;margin:0 auto;}
+    .cap-wrap .hd{text-align:center;margin-bottom:48px;}
+    .cap-wrap .ttl{font-size:clamp(2rem,4vw,3rem);font-weight:800;color:var(--dark);letter-spacing:-.02em;line-height:1.15;}
+    .cap-wrap .ttl .grad{background:linear-gradient(135deg,var(--navy),var(--orange));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+    .cap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+    .cap-card{
+      background:linear-gradient(180deg,#fff,#F8FAFD);
+      border:1.5px solid var(--border);
+      border-radius:16px;padding:28px 24px;
+      transition:all .35s cubic-bezier(.16,1,.3,1);
+      position:relative;
+    }
+    .cap-card::before{
+      content:"";position:absolute;top:0;left:0;right:0;height:3px;
+      background:linear-gradient(90deg,var(--navy),var(--orange));
+      border-radius:16px 16px 0 0;
+      transform:scaleX(0);transform-origin:left;
+      transition:transform .4s ease;
+    }
+    .cap-card:hover{
+      transform:translateY(-6px);
+      border-color:var(--orange);
+      box-shadow:0 18px 40px rgba(0,44,110,.1);
+    }
+    .cap-card:hover::before{transform:scaleX(1);}
+    .cap-head{display:flex;align-items:center;gap:12px;margin-bottom:18px;}
+    .cap-ico{font-size:1.8rem;}
+    .cap-card h3{font-size:1.05rem;font-weight:800;color:var(--dark);}
+    .cap-list{list-style:none;padding:0;margin:0;}
+    .cap-list li{
+      font-size:.84rem;color:var(--text2);
+      padding:7px 0;
+      border-bottom:1px dashed rgba(0,44,110,.08);
+      line-height:1.5;
+    }
+    .cap-list li:last-child{border-bottom:none;}
+    .cap-list b{color:var(--navy);font-weight:800;}
+    .lang-block{margin-bottom:14px;}
+    .lang-block:last-child{margin-bottom:0;}
+    .lang-title{
+      font-size:.65rem;font-weight:800;
+      letter-spacing:2px;text-transform:uppercase;
+      color:var(--gold);margin-bottom:8px;
+    }
+    .lang-tags{display:flex;flex-wrap:wrap;gap:5px;}
+    .lang-pill{
+      background:rgba(0,44,110,.06);
+      border:1px solid rgba(0,44,110,.12);
+      color:var(--navy);
+      font-size:.72rem;font-weight:600;
+      padding:4px 9px;border-radius:30px;
+    }
+    .lang-pill.master{
+      background:linear-gradient(135deg,var(--navy),var(--navy2));
+      color:#fff;border-color:transparent;
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       KPIs / SLA
+       ═══════════════════════════════════════════════════════ */
+    .kpis-sla{
+      padding:110px 64px;
+      background:linear-gradient(180deg,#0F1A0C 0%,#001A4A 50%,#0F1A0C 100%);
+      color:#fff;
+      position:relative;
+      overflow:hidden;
+    }
+    .kpis-sla::before{
+      content:"";position:absolute;inset:0;
+      background-image:radial-gradient(circle at 20% 30%,rgba(232,93,32,.12),transparent 40%),radial-gradient(circle at 80% 70%,rgba(200,150,14,.08),transparent 40%);
+      pointer-events:none;
+    }
+    .kpis-wrap{max-width:1280px;margin:0 auto;position:relative;z-index:1;}
+    .kpis-wrap .hd{text-align:center;margin-bottom:48px;}
+    .kpis-wrap .eyebrow{color:var(--gold);}
+    .kpis-wrap .ttl{color:#fff;font-size:clamp(2rem,4vw,3rem);font-weight:800;letter-spacing:-.02em;line-height:1.15;}
+    .kpis-wrap .ttl .grad{background:linear-gradient(135deg,var(--orange),var(--gold));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+    .kpis-wrap .sub{color:rgba(255,255,255,.7);max-width:660px;margin:14px auto 0;}
+    .kpis-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:18px;
+      margin-bottom:32px;
+    }
+    .kpi-card{
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:14px;
+      padding:28px 22px;
+      text-align:center;
+      transition:all .35s cubic-bezier(.16,1,.3,1);
+      backdrop-filter:blur(10px);
+    }
+    .kpi-card:hover{
+      transform:translateY(-5px);
+      border-color:var(--gold);
+      background:rgba(200,150,14,.08);
+    }
+    .kpi-big{
+      font-size:2.6rem;font-weight:800;
+      background:linear-gradient(135deg,var(--gold),var(--orange));
+      -webkit-background-clip:text;background-clip:text;
+      -webkit-text-fill-color:transparent;
+      line-height:1;letter-spacing:-.02em;
+      margin-bottom:8px;
+    }
+    .kpi-big span{font-size:1.2rem;}
+    .kpi-name{
+      font-size:.95rem;font-weight:800;
+      color:#fff;margin-bottom:4px;
+    }
+    .kpi-desc{
+      font-size:.75rem;color:rgba(255,255,255,.55);
+      line-height:1.4;
+    }
+    .sla-note{
+      display:flex;gap:18px;align-items:flex-start;
+      background:rgba(232,93,32,.1);
+      border:1px solid rgba(232,93,32,.25);
+      border-radius:14px;
+      padding:20px 24px;
+      color:rgba(255,255,255,.85);
+      font-size:.88rem;
+      line-height:1.7;
+    }
+    .sla-note b{color:var(--gold);}
+    .sla-ico{font-size:1.5rem;flex-shrink:0;}
+
+    /* ═══════════════════════════════════════════════════════
+       COMPARATIF & ROI
+       ═══════════════════════════════════════════════════════ */
+    .roi-section{padding:110px 64px;background:linear-gradient(180deg,#F8FAFD 0%,#fff 100%);}
+    .roi-wrap{max-width:1280px;margin:0 auto;}
+    .roi-wrap .hd{text-align:center;margin-bottom:48px;}
+    .roi-wrap .ttl{font-size:clamp(2rem,4vw,3rem);font-weight:800;color:var(--dark);letter-spacing:-.02em;line-height:1.15;}
+    .roi-wrap .ttl .grad{background:linear-gradient(135deg,var(--orange),var(--terra));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+    .roi-layout{
+      display:grid;
+      grid-template-columns:1.4fr 1fr;
+      gap:32px;
+    }
+    .roi-table-wrap{
+      background:#fff;
+      border:1.5px solid var(--border);
+      border-radius:16px;
+      overflow:hidden;
+      box-shadow:0 14px 40px rgba(0,0,0,.06);
+    }
+    .roi-table{
+      width:100%;
+      border-collapse:collapse;
+    }
+    .roi-table th, .roi-table td{
+      padding:16px 18px;
+      text-align:left;
+      font-size:.86rem;
+      border-bottom:1px solid var(--border);
+    }
+    .roi-table th{
+      background:linear-gradient(180deg,#fff,#F8FAFD);
+      font-weight:800;
+      color:var(--gray);
+      font-size:.72rem;
+      letter-spacing:1.5px;
+      text-transform:uppercase;
+    }
+    .roi-table tbody tr{transition:background .25s;}
+    .roi-table tbody tr:hover{background:#FFF8F5;}
+    .roi-highlight{
+      background:linear-gradient(90deg,rgba(232,93,32,.08),rgba(200,150,14,.06)) !important;
+      position:relative;
+    }
+    .roi-highlight td{
+      border-bottom:none;
+      color:var(--dark);
+      font-size:.92rem;
+    }
+    .roi-highlight td:first-child{
+      border-left:4px solid var(--orange);
+    }
+    .roi-table-foot{
+      padding:18px 22px;
+      background:linear-gradient(135deg,var(--navy),var(--navy2));
+      color:#fff;
+      font-size:.85rem;
+      line-height:1.6;
+    }
+    .roi-table-foot b{color:var(--gold);}
+    .roi-calc{
+      background:linear-gradient(180deg,#fff,#F8FAFD);
+      border:1.5px solid var(--border);
+      border-radius:16px;
+      padding:32px;
+      box-shadow:0 14px 40px rgba(0,0,0,.06);
+      display:flex;flex-direction:column;
+    }
+    .roi-calc-head{
+      display:flex;align-items:center;gap:14px;
+      margin-bottom:22px;
+    }
+    .roi-calc-ico{
+      font-size:2.2rem;
+      background:linear-gradient(135deg,var(--orange),var(--terra));
+      -webkit-background-clip:text;background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    .roi-calc h3{font-size:1.1rem;font-weight:800;color:var(--dark);}
+    .roi-calc-head p{font-size:.78rem;color:var(--gray);}
+    .roi-input{margin-bottom:14px;}
+    .roi-input label{
+      display:block;
+      font-size:.72rem;font-weight:800;
+      letter-spacing:1px;text-transform:uppercase;
+      color:var(--navy);margin-bottom:8px;
+    }
+    .roi-input input{
+      width:100%;
+      background:#fff;
+      border:1.5px solid var(--border);
+      border-radius:10px;
+      padding:14px 16px;
+      font-family:inherit;font-size:1rem;font-weight:600;
+      color:var(--dark);outline:none;
+      transition:all .25s;
+    }
+    .roi-input input:focus{
+      border-color:var(--orange);
+      box-shadow:0 0 0 4px rgba(232,93,32,.1);
+    }
+    .roi-btn{
+      background:linear-gradient(135deg,var(--orange),var(--terra));
+      color:#fff;border:none;
+      padding:14px 18px;border-radius:10px;
+      font-family:inherit;font-size:.92rem;font-weight:800;
+      cursor:pointer;width:100%;
+      box-shadow:0 8px 22px rgba(232,93,32,.3);
+      transition:all .3s;
+    }
+    .roi-btn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 12px 30px rgba(232,93,32,.45);
+    }
+    .roi-result{
+      display:none;
+      margin-top:18px;
+      background:#fff;
+      border:1.5px solid var(--border);
+      border-radius:10px;
+      padding:18px;
+    }
+    .roi-row{
+      display:flex;justify-content:space-between;
+      align-items:baseline;
+      padding:8px 0;
+      border-bottom:1px solid var(--border);
+      font-size:.85rem;color:var(--text2);
+    }
+    .roi-row:last-child{border-bottom:none;}
+    .roi-row b{color:var(--dark);font-size:.95rem;}
+    .roi-saving{
+      background:linear-gradient(135deg,rgba(232,93,32,.06),rgba(200,150,14,.06));
+      margin:8px -10px 0;
+      padding:14px 10px !important;
+      border-radius:8px;
+      border-bottom:none !important;
+    }
+    .roi-saving b{
+      color:var(--orange);
+      font-size:1.05rem;
+    }
+    .roi-note{
+      display:block;margin-top:12px;
+      font-size:.72rem;color:var(--gray);
+      line-height:1.5;
+    }
+
+    @media(max-width:960px){
+      .capacities,.kpis-sla,.roi-section{padding:80px 24px;}
+      .cap-grid{grid-template-columns:repeat(2,1fr);}
+      .kpis-grid{grid-template-columns:repeat(2,1fr);}
+      .roi-layout{grid-template-columns:1fr;}
+      .roi-table{font-size:.78rem;}
+      .roi-table th,.roi-table td{padding:12px 10px;}
+    }
+    @media(max-width:600px){
+      .cap-grid{grid-template-columns:1fr;}
+      .kpis-grid{grid-template-columns:1fr 1fr;}
+      .kpi-big{font-size:2.2rem;}
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       FORMULAIRE V2 — Pro
+       ═══════════════════════════════════════════════════════ */
+    .form-box .form-note{
+      font-size:.8rem;color:var(--gray);
+      margin-bottom:18px;line-height:1.5;
+    }
+    .form-success, .form-error{
+      display:none;margin-top:16px;padding:14px 16px;
+      border-radius:10px;font-size:.88rem;font-weight:600;
+      line-height:1.5;
+    }
+    .form-success{
+      background:rgba(26,138,46,.08);
+      border:1.5px solid rgba(26,138,46,.3);
+      color:#1A8A2E;
+    }
+    .form-error{
+      background:rgba(232,93,32,.08);
+      border:1.5px solid rgba(232,93,32,.3);
+      color:var(--terra);
+    }
+    .form-error a{color:var(--terra);font-weight:800;}
+    .form-success.show,.form-error.show{display:block;animation:fadeInUp .4s ease;}
+    .form-rgpd{
+      margin-top:14px;
+      font-size:.72rem;color:var(--gray2);
+      text-align:center;line-height:1.5;
+    }
+    .form-btn:disabled{opacity:.7;cursor:wait;}
+
+    /* ═══════════════════════════════════════════════════════
+       LEAD MAGNET BANNER
+       ═══════════════════════════════════════════════════════ */
+    .lead-magnet{
+      padding:80px 64px;
+      background:linear-gradient(135deg,#001A4A 0%,#002C6E 50%,#0F1A0C 100%);
+      position:relative;overflow:hidden;
+    }
+    .lead-magnet::before{
+      content:"";position:absolute;inset:0;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='30' cy='30' r='1' fill='%23C8960E' opacity='0.3'/%3E%3C/svg%3E");
+      background-size:60px 60px;
+      opacity:.4;
+      pointer-events:none;
+    }
+    .lead-wrap{
+      max-width:1100px;margin:0 auto;
+      display:grid;grid-template-columns:1.2fr 1fr;
+      gap:48px;align-items:center;
+      position:relative;z-index:1;
+    }
+    .lead-text .eyebrow{
+      color:var(--gold);
+      font-size:.72rem;font-weight:800;
+      letter-spacing:3px;text-transform:uppercase;
+      margin-bottom:14px;
+    }
+    .lead-text h2{
+      color:#fff;
+      font-size:clamp(1.6rem,3.5vw,2.4rem);
+      font-weight:800;
+      line-height:1.2;letter-spacing:-.01em;
+      margin-bottom:14px;
+    }
+    .lead-text h2 .grad{
+      background:linear-gradient(135deg,var(--orange),var(--gold));
+      -webkit-background-clip:text;background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    .lead-text p{
+      color:rgba(255,255,255,.7);
+      font-size:.95rem;line-height:1.7;
+      margin-bottom:22px;
+    }
+    .lead-bullets{
+      list-style:none;padding:0;margin-bottom:24px;
+    }
+    .lead-bullets li{
+      color:rgba(255,255,255,.85);
+      font-size:.88rem;
+      padding:6px 0 6px 24px;
+      position:relative;
+    }
+    .lead-bullets li::before{
+      content:"✓";position:absolute;left:0;top:5px;
+      color:var(--gold);font-weight:800;
+    }
+    .lead-form{
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:16px;
+      padding:32px;
+      backdrop-filter:blur(12px);
+    }
+    .lead-form-head{
+      display:flex;align-items:center;gap:14px;
+      margin-bottom:20px;
+      color:#fff;
+    }
+    .lead-form-ico{
+      font-size:2rem;
+      background:linear-gradient(135deg,var(--gold),var(--orange));
+      width:54px;height:54px;border-radius:12px;
+      display:flex;align-items:center;justify-content:center;
+      box-shadow:0 8px 20px rgba(232,93,32,.3);
+    }
+    .lead-form-head h4{font-size:1rem;font-weight:800;margin-bottom:2px;}
+    .lead-form-head p{font-size:.75rem;color:rgba(255,255,255,.55);}
+    .lead-input{
+      background:rgba(255,255,255,.08);
+      border:1.5px solid rgba(255,255,255,.15);
+      color:#fff;
+      width:100%;
+      padding:13px 16px;
+      border-radius:10px;
+      font-family:inherit;font-size:.92rem;
+      outline:none;
+      margin-bottom:10px;
+      transition:all .25s;
+    }
+    .lead-input::placeholder{color:rgba(255,255,255,.4);}
+    .lead-input:focus{
+      border-color:var(--gold);
+      background:rgba(255,255,255,.12);
+      box-shadow:0 0 0 3px rgba(200,150,14,.15);
+    }
+    .lead-btn{
+      background:linear-gradient(135deg,var(--orange),var(--terra));
+      color:#fff;border:none;
+      width:100%;
+      padding:14px;border-radius:10px;
+      font-family:inherit;font-size:.95rem;font-weight:800;
+      cursor:pointer;
+      box-shadow:0 8px 24px rgba(232,93,32,.35);
+      transition:all .3s;
+      margin-top:8px;
+    }
+    .lead-btn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 12px 30px rgba(232,93,32,.5);
+    }
+    .lead-disclaimer{
+      font-size:.7rem;color:rgba(255,255,255,.5);
+      text-align:center;margin-top:14px;line-height:1.5;
+    }
+    @media(max-width:900px){
+      .lead-magnet{padding:60px 24px;}
+      .lead-wrap{grid-template-columns:1fr;gap:32px;}
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       HERO V2 — Calendly + chiffres
+       ═══════════════════════════════════════════════════════ */
+    .hero-promise{
+      display:flex;flex-wrap:wrap;gap:18px;
+      margin:24px 0 28px;
+    }
+    .hero-promise-item{
+      display:flex;align-items:center;gap:8px;
+      font-size:.85rem;color:var(--text2);
+      font-weight:700;
+    }
+    .hero-promise-item b{
+      color:var(--orange);font-size:1.15rem;
+    }
+    .hero-btns-v2{display:flex;flex-wrap:wrap;gap:12px;}
+    .btn-calendly{
+      display:inline-flex;align-items:center;gap:8px;
+      background:#fff;
+      color:var(--navy);
+      border:2px solid var(--navy);
+      padding:13px 22px;border-radius:10px;
+      font-weight:700;font-size:.92rem;
+      text-decoration:none;
+      transition:all .3s;
+    }
+    .btn-calendly:hover{
+      background:var(--navy);color:#fff;
+      transform:translateY(-2px);
+      box-shadow:0 12px 28px rgba(0,44,110,.25);
+    }
+
+    /* TRUST BADGES */
+    .trust-badges{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+      margin-top:28px;
+      padding-top:24px;
+      border-top:1px solid var(--border);
+    }
+    .trust-badge{
+      display:flex;align-items:center;gap:12px;
+      padding:12px 14px;
+      background:linear-gradient(180deg,#fff,#F8FAFD);
+      border:1px solid var(--border);
+      border-radius:10px;
+      transition:all .25s;
+    }
+    .trust-badge:hover{
+      border-color:var(--orange);
+      transform:translateY(-2px);
+      box-shadow:0 6px 18px rgba(0,44,110,.08);
+    }
+    .trust-ico{font-size:1.4rem;flex-shrink:0;}
+    .trust-badge b{
+      display:block;
+      font-size:.82rem;font-weight:800;
+      color:var(--dark);
+    }
+    .trust-badge small{
+      display:block;
+      font-size:.7rem;color:var(--gray);
+      margin-top:2px;
+    }
+    @media(max-width:600px){.trust-badges{grid-template-columns:1fr;}}
   </style>
 </head>
 <body>
@@ -1372,11 +2151,22 @@
         </span>
       </div>
 
-      <p class="hero-desc">Help'me Process est le premier call center de référence à Conakry — une équipe d'élite, formée, multilingue, portée par une infrastructure CRM de pointe, au service de vos clients nationaux et internationaux. Zéro compromis sur la qualité.</p>
+      <p class="hero-desc">Externalisez votre relation client à Conakry avec une équipe francophone native — qualité européenne, coûts ouest-africains. Voix, chat, WhatsApp, email, IA. Conforme RGPD.</p>
+      <div class="hero-promise">
+        <div class="hero-promise-item"><b>-76%</b> vs interne FR</div>
+        <div class="hero-promise-item"><b>200+</b> postes équipés</div>
+        <div class="hero-promise-item"><b>24/7</b> · multi-shifts</div>
+        <div class="hero-promise-item"><b>QS ≥ 90%</b> engagé</div>
+      </div>
 
       <div class="hero-actions">
-        <a href="#services" class="btn-orange">Découvrir nos solutions →</a>
-        <a href="#contact" class="btn-ghost">Devis gratuit</a>
+        <a href="#contact" class="btn-orange">Demander un devis →</a>
+        <a href="https://calendly.com/helpmeprocess/20min" target="_blank" rel="noopener noreferrer" class="btn-calendly">
+          📅 Réserver un RDV 20 min
+        </a>
+        <a href="https://wa.me/224628935335?text=Bonjour%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20vos%20services%20BPO" target="_blank" rel="noopener noreferrer" class="btn-ghost">
+          💬 WhatsApp Business
+        </a>
       </div>
 
       <div class="hero-trust">
@@ -1707,54 +2497,515 @@
   </div>
 </div>
 
-<!-- ══════════ SERVICES ══════════ -->
-<section class="services" id="services">
+<!-- ══════════ SERVICES — Refonte BPO 2026 ══════════ -->
+<section class="services-v2" id="services">
   <div class="wrap">
     <div class="hd c fi">
-      <span class="eyebrow">Nos solutions</span>
-      <h2 class="ttl">Une offre complète pour votre relation client</h2>
-      <p class="sub">Inbound, Outbound ou Back Office — nous vous accompagnons à chaque étape du parcours client</p>
+      <span class="eyebrow">Nos solutions BPO</span>
+      <h2 class="ttl">Une plateforme complète pour <span class="grad">externaliser</span> votre relation client</h2>
+      <p class="sub">5 piliers d'expertise · Omnicanal natif · Powered by IA · Conforme aux standards internationaux</p>
+    </div>
+
+    <!-- OMNICHANNEL BANNER -->
+    <div class="omni-band fi">
+      <div class="omni-label">🎯 Omnicanal natif</div>
+      <div class="omni-channels">
+        <span class="omni-ch">📞 Voix</span>
+        <span class="omni-ch">💬 WhatsApp Business</span>
+        <span class="omni-ch">✉️ Email</span>
+        <span class="omni-ch">💻 Chat live</span>
+        <span class="omni-ch">📱 Instagram / Facebook</span>
+        <span class="omni-ch">🎫 Tickets Zendesk</span>
+        <span class="omni-ch">🤖 Voicebot · Chatbot IA</span>
+      </div>
+    </div>
+
+    <!-- TABS NAV -->
+    <div class="svc-tabs fi" role="tablist">
+      <button class="svc-tab active" data-tab="inbound" role="tab">📥 Front Office Inbound</button>
+      <button class="svc-tab" data-tab="outbound" role="tab">📤 Front Office Outbound</button>
+      <button class="svc-tab" data-tab="back" role="tab">🗂️ Back Office</button>
+      <button class="svc-tab" data-tab="ai" role="tab">🤖 Solutions IA</button>
+      <button class="svc-tab" data-tab="vertical" role="tab">🏭 Verticales métier</button>
+    </div>
+
+    <!-- TAB 1 — INBOUND -->
+    <div class="svc-panel active" data-panel="inbound">
+      <div class="svc-grid">
+        <div class="svc-main">
+          <h3 class="svc-h">Front Office — Inbound (réception)</h3>
+          <p class="svc-tag">Chaque appel = une opportunité de fidélisation. Nos agents formés au standard international gèrent vos flux entrants avec un taux de satisfaction qui dépasse les benchmarks du marché.</p>
+          <div class="svc-cols">
+            <div>
+              <h4>🎯 Prestations</h4>
+              <ul>
+                <li>Accueil téléphonique multilingue (FR · EN · AR)</li>
+                <li>Service client &amp; après-vente (SAV)</li>
+                <li>Gestion des réclamations &amp; litiges</li>
+                <li>Support technique niveau 1, 2 &amp; escalade niveau 3</li>
+                <li>Assistance e-commerce (suivi commande, retours)</li>
+                <li>Gestion de crise &amp; cellule de débordement</li>
+                <li>Helpdesk IT interne (employés clients)</li>
+              </ul>
+            </div>
+            <div>
+              <h4>📊 KPIs engagés</h4>
+              <ul class="kpi-list">
+                <li><b>QS</b> ≥ 90% <small>(Quality Score)</small></li>
+                <li><b>CSAT</b> ≥ 88% <small>(Customer Satisfaction)</small></li>
+                <li><b>FCR</b> ≥ 75% <small>(First Call Resolution)</small></li>
+                <li><b>SLA décroché</b> ≥ 85% sous 20s</li>
+                <li><b>AHT</b> 4'30 max <small>(Average Handle Time)</small></li>
+                <li><b>Taux d'abandon</b> ≤ 5%</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <aside class="svc-side">
+          <div class="svc-side-block">
+            <div class="svc-side-label">Outils &amp; stack</div>
+            <div class="svc-stack">Genesys Cloud · Avaya · 3CX · Zendesk · Freshdesk · Salesforce · HubSpot · Microsoft Dynamics</div>
+          </div>
+          <div class="svc-side-block">
+            <div class="svc-side-label">Capacité</div>
+            <div class="svc-stack">Plateau modulable de 10 à 200+ postes selon volume</div>
+          </div>
+          <div class="svc-side-block">
+            <div class="svc-side-label">Plages couvertes</div>
+            <div class="svc-stack">24/7 · Multi-shifts · Fuseaux GMT à GMT+3</div>
+          </div>
+          <a href="#contact" class="svc-cta">Demander un devis Inbound →</a>
+        </aside>
+      </div>
+    </div>
+
+    <!-- TAB 2 — OUTBOUND -->
+    <div class="svc-panel" data-panel="outbound">
+      <div class="svc-grid">
+        <div class="svc-main">
+          <h3 class="svc-h">Front Office — Outbound (émission)</h3>
+          <p class="svc-tag">Conquête, fidélisation, recouvrement. Nos téléacteurs sont formés aux techniques de vente consultative et aux scripts adaptatifs pour maximiser votre ROI commercial.</p>
+          <div class="svc-cols">
+            <div>
+              <h4>🎯 Prestations</h4>
+              <ul>
+                <li>Téléprospection B2B &amp; B2C</li>
+                <li>Prise de rendez-vous qualifiés (lead nurturing)</li>
+                <li>Détection de projets &amp; qualification BANT</li>
+                <li>Vente additionnelle (cross-sell / up-sell)</li>
+                <li>Sondages, études de marché, NPS surveys</li>
+                <li>Campagnes de fidélisation &amp; rétention</li>
+                <li>Recouvrement amiable (3 niveaux de relance)</li>
+                <li>Réactivation de clients dormants</li>
+              </ul>
+            </div>
+            <div>
+              <h4>📊 KPIs engagés</h4>
+              <ul class="kpi-list">
+                <li><b>Taux de transformation</b> ≥ 15% <small>(qualified leads)</small></li>
+                <li><b>RDV honorés</b> ≥ 70%</li>
+                <li><b>Score qualité appel</b> ≥ 92%</li>
+                <li><b>Taux de joignabilité</b> ≥ 35%</li>
+                <li><b>Recouvrement amiable</b> ≥ 45%</li>
+                <li><b>Coût/lead qualifié</b> -60% vs interne FR</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <aside class="svc-side">
+          <div class="svc-side-block">
+            <div class="svc-side-label">Outils prédictif</div>
+            <div class="svc-stack">Diabolocom · Vocalcom · Five9 · Avaya · Power Dialer · CRM intégré</div>
+          </div>
+          <div class="svc-side-block">
+            <div class="svc-side-label">Spécialités</div>
+            <div class="svc-stack">Énergie · Telecom · Mutuelle/Assurance · Banque · E-commerce · SaaS</div>
+          </div>
+          <div class="svc-side-block">
+            <div class="svc-side-label">Engagement</div>
+            <div class="svc-stack">Conformité Bloctel · RGPD · CNIL · Opt-in vérifiés</div>
+          </div>
+          <a href="#contact" class="svc-cta">Demander un devis Outbound →</a>
+        </aside>
+      </div>
+    </div>
+
+    <!-- TAB 3 — BACK OFFICE -->
+    <div class="svc-panel" data-panel="back">
+      <div class="svc-grid">
+        <div class="svc-main">
+          <h3 class="svc-h">Back Office &amp; Processus métiers</h3>
+          <p class="svc-tag">Libérez vos équipes des tâches répétitives. Notre back office combine rigueur humaine et automatisation pour un traitement industriel à coût maîtrisé.</p>
+          <div class="svc-cols">
+            <div>
+              <h4>🎯 Prestations</h4>
+              <ul>
+                <li>Saisie &amp; numérisation de données (OCR + contrôle humain)</li>
+                <li>KYC / KYB <small>(onboarding bancaire &amp; fintech)</small></li>
+                <li>Modération de contenu (UGC, marketplaces, social)</li>
+                <li>Gestion documentaire &amp; archivage numérique</li>
+                <li>Traitement emails &amp; tickets multicanal</li>
+                <li>Vérification qualité &amp; contrôle conformité</li>
+                <li>Reporting Excel/Power BI &amp; dashboards live</li>
+                <li>Annotation IA (training datasets)</li>
+              </ul>
+            </div>
+            <div>
+              <h4>📊 KPIs engagés</h4>
+              <ul class="kpi-list">
+                <li><b>Productivité</b> 120-180 tâches/jour/agent</li>
+                <li><b>Précision</b> ≥ 99,2% <small>(double contrôle)</small></li>
+                <li><b>Délai traitement</b> J+1 garanti</li>
+                <li><b>Taux d'erreur</b> &lt; 0,8%</li>
+                <li><b>Confidentialité</b> 100% (NDA + locaux sécurisés)</li>
+                <li><b>Scalabilité</b> +50% capacité sous 15 jours</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <aside class="svc-side">
+          <div class="svc-side-block">
+            <div class="svc-side-label">Stack technique</div>
+            <div class="svc-stack">SAP · Sage · Oracle · Microsoft 365 · Google Workspace · Power BI · Tableau · RPA UiPath</div>
+          </div>
+          <div class="svc-side-block">
+            <div class="svc-side-label">Conformité</div>
+            <div class="svc-stack">RGPD · ISO 27001 (en cours) · Chiffrement bout-en-bout · NDA standard</div>
+          </div>
+          <div class="svc-side-block">
+            <div class="svc-side-label">Volumétrie</div>
+            <div class="svc-stack">De 500 à 50 000 traitements/jour</div>
+          </div>
+          <a href="#contact" class="svc-cta">Demander un devis Back Office →</a>
+        </aside>
+      </div>
+    </div>
+
+    <!-- TAB 4 — IA -->
+    <div class="svc-panel" data-panel="ai">
+      <div class="svc-grid">
+        <div class="svc-main">
+          <h3 class="svc-h">Solutions IA &amp; Automatisation</h3>
+          <p class="svc-tag">Augmentez vos agents avec l'IA. Voicebot 24/7, agent assist temps réel, analyse de sentiment — la nouvelle génération du service client, opérée par des humains experts.</p>
+          <div class="svc-cols">
+            <div>
+              <h4>🤖 Solutions</h4>
+              <ul>
+                <li><b>Voicebot IA</b> — accueil 24/7, FAQ, qualification</li>
+                <li><b>Chatbot WhatsApp / Web</b> — réponses instantanées</li>
+                <li><b>Agent Assist</b> — suggestions en live à l'agent</li>
+                <li><b>Speech-to-Text</b> + analyse sentiment temps réel</li>
+                <li><b>QA automatique</b> — 100% des appels analysés</li>
+                <li><b>Smart routing</b> — orientation par intention</li>
+                <li><b>Synthèse automatique</b> de conversations</li>
+                <li><b>Détection d'insatisfaction</b> &amp; alertes</li>
+              </ul>
+            </div>
+            <div>
+              <h4>📊 Bénéfices mesurés</h4>
+              <ul class="kpi-list">
+                <li><b>-40%</b> de volume d'appels agents <small>(self-care bot)</small></li>
+                <li><b>+25%</b> de CSAT <small>(résolution instantanée)</small></li>
+                <li><b>-30%</b> AHT <small>(agent assist)</small></li>
+                <li><b>100%</b> des appels QA-analysés <small>(vs 5% manuel)</small></li>
+                <li><b>24/7</b> disponibilité réelle</li>
+                <li><b>ROI</b> sous 4 à 8 mois</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <aside class="svc-side">
+          <div class="svc-side-block">
+            <div class="svc-side-label">Plateformes IA</div>
+            <div class="svc-stack">OpenAI GPT-4o · Google Gemini · Anthropic Claude · Azure AI · ElevenLabs · Whisper · Botpress</div>
+          </div>
+          <div class="svc-side-block">
+            <div class="svc-side-label">Intégrations</div>
+            <div class="svc-stack">API REST · Webhooks · Zapier · Make · Salesforce · HubSpot · Zendesk</div>
+          </div>
+          <div class="svc-side-block">
+            <div class="svc-side-label">Mise en service</div>
+            <div class="svc-stack">POC en 14 jours · Pilote en 30 jours · Production 60 jours</div>
+          </div>
+          <a href="#contact" class="svc-cta">Lancer un POC IA →</a>
+        </aside>
+      </div>
+    </div>
+
+    <!-- TAB 5 — VERTICALES -->
+    <div class="svc-panel" data-panel="vertical">
+      <div class="svc-grid svc-grid-vert">
+        <div class="vert-card">
+          <div class="vert-ico">⚡</div>
+          <h4>Énergie &amp; Utilities</h4>
+          <p>Relève index, mise en service, recouvrement, urgence dépannage, comparateurs offres.</p>
+          <span class="vert-tag">Référence : grande énergéticienne européenne</span>
+        </div>
+        <div class="vert-card">
+          <div class="vert-ico">📶</div>
+          <h4>Telecom &amp; ISP</h4>
+          <p>Support box/mobile, activation SIM, escalades techniques, fidélisation, churn prevention.</p>
+          <span class="vert-tag">Stack : Genesys + CRM opérateur</span>
+        </div>
+        <div class="vert-card">
+          <div class="vert-ico">🏦</div>
+          <h4>Banque &amp; Fintech</h4>
+          <p>KYC onboarding, support carte, opposition, microfinance, mobile money, recouvrement.</p>
+          <span class="vert-tag">Conformité PCI DSS · ACPR</span>
+        </div>
+        <div class="vert-card">
+          <div class="vert-ico">🛒</div>
+          <h4>E-commerce &amp; Marketplaces</h4>
+          <p>Avant-vente, suivi commande, retours, modération vendeurs, support multilingue.</p>
+          <span class="vert-tag">Intégrations Shopify · WooCommerce · Magento</span>
+        </div>
+        <div class="vert-card">
+          <div class="vert-ico">🏥</div>
+          <h4>Santé &amp; Mutuelle</h4>
+          <p>Prise de RDV, téléconsultation support, remboursements, fidélisation adhérents.</p>
+          <span class="vert-tag">Confidentialité données santé</span>
+        </div>
+        <div class="vert-card">
+          <div class="vert-ico">💻</div>
+          <h4>SaaS &amp; Tech</h4>
+          <p>Onboarding utilisateurs, support produit niveau 1-2, success customer, churn analytics.</p>
+          <span class="vert-tag">Intercom · Zendesk · Crisp · Stripe</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════ CAPACITÉS & CONFORMITÉ ══════════ -->
+<section class="capacities" id="capacites">
+  <div class="cap-wrap">
+    <div class="hd c fi">
+      <span class="eyebrow">Capacités opérationnelles</span>
+      <h2 class="ttl">Une infrastructure conçue pour <span class="grad">le standard international</span></h2>
+      <p class="sub">Capacité, langues, sécurité, conformité — les fondamentaux que vos directions Achats et SI exigent.</p>
+    </div>
+
+    <div class="cap-grid">
+      <!-- CAPACITÉ -->
+      <div class="cap-card fi">
+        <div class="cap-head">
+          <div class="cap-ico">🏢</div>
+          <h3>Capacité plateau</h3>
+        </div>
+        <ul class="cap-list">
+          <li><b>200+</b> postes équipés simultanés</li>
+          <li><b>10 à 200 agents</b> dédiés selon contrat</li>
+          <li><b>+50%</b> de scalabilité sous 15 jours</li>
+          <li><b>24/7</b> en multi-shifts (3 brigades)</li>
+          <li><b>Salle dédiée</b> par client (confidentialité)</li>
+        </ul>
+      </div>
+
+      <!-- LANGUES -->
+      <div class="cap-card fi fi-d1">
+        <div class="cap-head">
+          <div class="cap-ico">🌐</div>
+          <h3>Langues couvertes</h3>
+        </div>
+        <div class="lang-block">
+          <div class="lang-title">Internationales</div>
+          <div class="lang-tags">
+            <span class="lang-pill master">🇫🇷 Français (natif)</span>
+            <span class="lang-pill">🇬🇧 Anglais (B2/C1)</span>
+            <span class="lang-pill">🇸🇦 Arabe (B1)</span>
+          </div>
+        </div>
+        <div class="lang-block">
+          <div class="lang-title">Langues nationales guinéennes</div>
+          <div class="lang-tags">
+            <span class="lang-pill">🇬🇳 Soussou</span>
+            <span class="lang-pill">🇬🇳 Pular (Peul)</span>
+            <span class="lang-pill">🇬🇳 Maninka (Malinké)</span>
+            <span class="lang-pill">🇬🇳 Guerzé (Kpèlè)</span>
+            <span class="lang-pill">🇬🇳 Kissi</span>
+            <span class="lang-pill">🇬🇳 Toma</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- INFRASTRUCTURE -->
+      <div class="cap-card fi fi-d2">
+        <div class="cap-head">
+          <div class="cap-ico">⚡</div>
+          <h3>Infrastructure technique</h3>
+        </div>
+        <ul class="cap-list">
+          <li><b>Redondance internet</b> double opérateur fibre</li>
+          <li><b>Onduleurs + groupe électrogène</b> 99,8% uptime</li>
+          <li><b>Téléphonie IP</b> sécurisée (SIP/TLS)</li>
+          <li><b>Réseau LAN</b> 1 Gbps · WiFi entreprise</li>
+          <li><b>Postes de travail</b> double écran ergonomiques</li>
+        </ul>
+      </div>
+
+      <!-- CONFORMITÉ -->
+      <div class="cap-card fi fi-d3">
+        <div class="cap-head">
+          <div class="cap-ico">🛡️</div>
+          <h3>Conformité &amp; sécurité</h3>
+        </div>
+        <ul class="cap-list">
+          <li><b>RGPD</b> · Hébergement données Europe</li>
+          <li><b>NDA standard</b> sur tous les contrats</li>
+          <li><b>ISO 27001</b> · audit en cours 2026</li>
+          <li><b>ISO 9001</b> · démarche qualité</li>
+          <li><b>Accès locaux</b> badge + caméras 24/7</li>
+          <li><b>Politique BYOD</b> interdite (sécurité info)</li>
+        </ul>
+      </div>
     </div>
   </div>
-  <div class="svcs-grid">
-    <div class="svc fi">
-      <div class="svc-ico">📥</div>
-      <h3>Front Office — Inbound</h3>
-      <p>Vos clients méritent la meilleure écoute. Nos agents gèrent chaque appel entrant avec professionnalisme et bienveillance, en toutes langues.</p>
-      <ul class="svc-list">
-        <li>Accueil téléphonique multilingue</li>
-        <li>Service client &amp; SAV</li>
-        <li>Gestion des réclamations</li>
-        <li>Support technique niveau 1 &amp; 2</li>
-        <li>Assistance e-commerce</li>
-      </ul>
-      <a href="#contact" class="svc-lnk">Découvrir <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+</section>
+
+<!-- ══════════ KPIs & SLA ══════════ -->
+<section class="kpis-sla" id="kpis">
+  <div class="kpis-wrap">
+    <div class="hd c fi">
+      <span class="eyebrow">KPIs &amp; SLA</span>
+      <h2 class="ttl">Des indicateurs <span class="grad">engageables</span> — pas du discours marketing</h2>
+      <p class="sub">Nous nous engageons contractuellement sur des seuils mesurés en temps réel et reportés en transparence.</p>
     </div>
-    <div class="svc fi fi-d1">
-      <div class="svc-ico">📤</div>
-      <h3>Front Office — Outbound</h3>
-      <p>Nos équipes commerciales contactent vos prospects et clients pour générer des opportunités et fidéliser votre portefeuille.</p>
-      <ul class="svc-list">
-        <li>Téléprospection B2B &amp; B2C</li>
-        <li>Prise de rendez-vous qualifiés</li>
-        <li>Sondages &amp; études de marché</li>
-        <li>Fidélisation &amp; rétention clients</li>
-        <li>Recouvrement amiable</li>
-      </ul>
-      <a href="#contact" class="svc-lnk">Découvrir <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+
+    <div class="kpis-grid">
+      <div class="kpi-card fi">
+        <div class="kpi-big">≥ 90<span>%</span></div>
+        <div class="kpi-name">Quality Score (QS)</div>
+        <div class="kpi-desc">Évaluation double écoute hebdomadaire</div>
+      </div>
+      <div class="kpi-card fi fi-d1">
+        <div class="kpi-big">≥ 88<span>%</span></div>
+        <div class="kpi-name">CSAT</div>
+        <div class="kpi-desc">Satisfaction client post-appel</div>
+      </div>
+      <div class="kpi-card fi fi-d2">
+        <div class="kpi-big">≥ 75<span>%</span></div>
+        <div class="kpi-name">FCR</div>
+        <div class="kpi-desc">First Call Resolution</div>
+      </div>
+      <div class="kpi-card fi fi-d3">
+        <div class="kpi-big">≥ 85<span>%</span></div>
+        <div class="kpi-name">SLA décroché</div>
+        <div class="kpi-desc">Réponse en moins de 20 secondes</div>
+      </div>
+      <div class="kpi-card fi">
+        <div class="kpi-big">≤ 5<span>%</span></div>
+        <div class="kpi-name">Taux d'abandon</div>
+        <div class="kpi-desc">Appels raccrochés en attente</div>
+      </div>
+      <div class="kpi-card fi fi-d1">
+        <div class="kpi-big">+25<span>pts</span></div>
+        <div class="kpi-name">NPS</div>
+        <div class="kpi-desc">Net Promoter Score moyen visé</div>
+      </div>
+      <div class="kpi-card fi fi-d2">
+        <div class="kpi-big">4'30</div>
+        <div class="kpi-name">AHT max</div>
+        <div class="kpi-desc">Average Handle Time</div>
+      </div>
+      <div class="kpi-card fi fi-d3">
+        <div class="kpi-big">99,2<span>%</span></div>
+        <div class="kpi-name">Précision Back Office</div>
+        <div class="kpi-desc">Double contrôle qualité</div>
+      </div>
     </div>
-    <div class="svc fi fi-d2">
-      <div class="svc-ico">🗂️</div>
-      <h3>Back Office &amp; Processus</h3>
-      <p>Nous libérons vos équipes des tâches administratives pour qu'elles se concentrent sur leur cœur de métier.</p>
-      <ul class="svc-list">
-        <li>Saisie &amp; traitement de données</li>
-        <li>Gestion documentaire &amp; archivage</li>
-        <li>Traitement des emails &amp; tickets</li>
-        <li>Vérification qualité &amp; contrôle</li>
-        <li>Reporting &amp; tableaux de bord</li>
-      </ul>
-      <a href="#contact" class="svc-lnk">Découvrir <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+
+    <div class="sla-note fi">
+      <div class="sla-ico">📋</div>
+      <div>
+        <b>Engagement contractuel</b> — Tous nos KPIs sont reportés mensuellement via un dashboard live (Power BI / Tableau). Des pénalités SLA sont incluses dans nos contrats au-delà de seuils de non-conformité prédéfinis.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ COMPARATIF & ROI ══════════ -->
+<section class="roi-section" id="roi">
+  <div class="roi-wrap">
+    <div class="hd c fi">
+      <span class="eyebrow">Comparatif &amp; ROI</span>
+      <h2 class="ttl">Combien <span class="grad">économisez-vous</span> en externalisant chez Help'me ?</h2>
+      <p class="sub">Comparaison objective des coûts complets par agent (salaire + charges + infrastructure + management) — données 2025.</p>
+    </div>
+
+    <div class="roi-layout">
+      <!-- COMPARATIF TABLE -->
+      <div class="roi-table-wrap fi">
+        <table class="roi-table">
+          <thead>
+            <tr>
+              <th>Destination</th>
+              <th>€/agent/mois</th>
+              <th>Maîtrise FR</th>
+              <th>Fuseau</th>
+              <th>Confort culturel</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>🇫🇷 France (interne)</b></td>
+              <td>3 500 €</td>
+              <td>⭐⭐⭐⭐⭐</td>
+              <td>UTC+1</td>
+              <td>⭐⭐⭐⭐⭐</td>
+            </tr>
+            <tr>
+              <td>🇲🇦 Maroc (Casablanca)</td>
+              <td>1 200 €</td>
+              <td>⭐⭐⭐⭐</td>
+              <td>UTC+1</td>
+              <td>⭐⭐⭐⭐</td>
+            </tr>
+            <tr>
+              <td>🇲🇬 Madagascar (Antananarivo)</td>
+              <td>900 €</td>
+              <td>⭐⭐⭐⭐</td>
+              <td>UTC+3</td>
+              <td>⭐⭐⭐</td>
+            </tr>
+            <tr>
+              <td>🇹🇳 Tunisie (Tunis)</td>
+              <td>1 000 €</td>
+              <td>⭐⭐⭐⭐</td>
+              <td>UTC+1</td>
+              <td>⭐⭐⭐⭐</td>
+            </tr>
+            <tr class="roi-highlight">
+              <td><b>🇬🇳 Help'me Process (Conakry)</b></td>
+              <td><b>850 €</b></td>
+              <td><b>⭐⭐⭐⭐⭐</b></td>
+              <td><b>UTC</b></td>
+              <td><b>⭐⭐⭐⭐⭐</b></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="roi-table-foot">
+          <b>Help'me Process</b> = <b>-76%</b> vs France interne · Maîtrise du français native · Même fuseau que Londres &amp; Casablanca
+        </div>
+      </div>
+
+      <!-- ROI CALCULATOR -->
+      <div class="roi-calc fi">
+        <div class="roi-calc-head">
+          <div class="roi-calc-ico">🧮</div>
+          <div>
+            <h3>Calculateur d'économies</h3>
+            <p>Estimez votre gain annuel</p>
+          </div>
+        </div>
+        <div class="roi-input">
+          <label>Nombre d'agents à externaliser</label>
+          <input type="number" id="roiAgents" min="1" max="200" placeholder="Ex : 12" value="10">
+        </div>
+        <button class="roi-btn" onclick="calcROI()">Calculer mon ROI →</button>
+        <div class="roi-result" id="roiResult"></div>
+        <small class="roi-note">* Estimation indicative basée sur un coût complet (salaire + charges + bureau + management) — Devis personnalisé sur demande.</small>
+      </div>
     </div>
   </div>
 </section>
@@ -2321,6 +3572,39 @@
   </div>
 </section>
 
+<!-- ══════════ LEAD MAGNET — Livre blanc ══════════ -->
+<section class="lead-magnet" id="livreblanc">
+  <div class="lead-wrap">
+    <div class="lead-text">
+      <span class="eyebrow">Ressource gratuite</span>
+      <h2>Externaliser sa relation client en <span class="grad">Afrique francophone en 2026</span></h2>
+      <p>Le guide complet pour DG, Directeurs SC et Directions Achats qui envisagent de délocaliser leur centre de contact. Données 2025, benchmarks, modèles de RFP.</p>
+      <ul class="lead-bullets">
+        <li>Comparatif détaillé de 8 destinations (FR, MA, MG, TN, GN, CI, SN, MU)</li>
+        <li>Grille tarifaire indicative + coûts cachés à anticiper</li>
+        <li>Checklist sécurité RGPD &amp; conformité internationale</li>
+        <li>Cahier des charges type prêt à utiliser</li>
+        <li>5 cas concrets d'optimisation -40% à -70% du coût agent</li>
+      </ul>
+    </div>
+    <div class="lead-form">
+      <div class="lead-form-head">
+        <div class="lead-form-ico">📕</div>
+        <div>
+          <h4>Téléchargez le livre blanc</h4>
+          <p>42 pages · PDF gratuit · sans engagement</p>
+        </div>
+      </div>
+      <input class="lead-input" id="lmEmail" type="email" placeholder="Votre email professionnel">
+      <input class="lead-input" id="lmCompany" type="text" placeholder="Nom de votre entreprise">
+      <button class="lead-btn" id="lmBtn" onclick="captureLeadMagnet()">
+        📥 Recevoir le PDF
+      </button>
+      <p class="lead-disclaimer">🔒 Envoi immédiat par email · RGPD · Pas de spam · Vous pouvez vous désinscrire à tout moment.</p>
+    </div>
+  </div>
+</section>
+
 <!-- ══════════ CTA ══════════ -->
 <div class="cta-section">
   <div style="position:relative;z-index:1;max-width:1280px;margin:0 auto">
@@ -2368,29 +3652,87 @@
           </div>
         </div>
       </div>
+
+      <!-- Trust badges -->
+      <div class="trust-badges">
+        <div class="trust-badge">
+          <div class="trust-ico">🛡️</div>
+          <div>
+            <b>RGPD compliant</b>
+            <small>Données hébergées Europe</small>
+          </div>
+        </div>
+        <div class="trust-badge">
+          <div class="trust-ico">📜</div>
+          <div>
+            <b>NDA standard</b>
+            <small>Inclus dans tous les contrats</small>
+          </div>
+        </div>
+        <div class="trust-badge">
+          <div class="trust-ico">🔐</div>
+          <div>
+            <b>ISO 27001 en cours</b>
+            <small>Audit Bureau Veritas 2026</small>
+          </div>
+        </div>
+        <div class="trust-badge">
+          <div class="trust-ico">⚡</div>
+          <div>
+            <b>Réponse sous 24h</b>
+            <small>Devis détaillé sous 48h</small>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="form-box fi fi-d1">
+    <form class="form-box fi fi-d1" id="contactForm"
+          action="https://formspree.io/f/REPLACE_WITH_YOUR_ID"
+          method="POST" novalidate>
       <h3>Demande de devis gratuit</h3>
+      <p class="form-note">Réponse sous 24h ouvrées · Devis chiffré sous 48h après brief</p>
       <div class="fr">
-        <div class="fg"><label>Prénom</label><input type="text" placeholder="Votre prénom"/></div>
-        <div class="fg"><label>Nom</label><input type="text" placeholder="Votre nom"/></div>
+        <div class="fg"><label for="cf-fn">Prénom *</label><input id="cf-fn" name="firstname" type="text" placeholder="Votre prénom" required/></div>
+        <div class="fg"><label for="cf-ln">Nom *</label><input id="cf-ln" name="lastname" type="text" placeholder="Votre nom" required/></div>
       </div>
-      <div class="fg"><label>Email professionnel</label><input type="email" placeholder="vous@entreprise.com"/></div>
-      <div class="fg"><label>Téléphone</label><input type="tel" placeholder="+224 6XX XX XX XX"/></div>
+      <div class="fg"><label for="cf-co">Société</label><input id="cf-co" name="company" type="text" placeholder="Nom de votre entreprise"/></div>
+      <div class="fg"><label for="cf-em">Email professionnel *</label><input id="cf-em" name="email" type="email" placeholder="vous@entreprise.com" required/></div>
+      <div class="fg"><label for="cf-ph">Téléphone</label><input id="cf-ph" name="phone" type="tel" placeholder="+33 6 XX XX XX XX"/></div>
       <div class="fg">
-        <label>Service souhaité</label>
-        <select>
+        <label for="cf-sv">Service souhaité *</label>
+        <select id="cf-sv" name="service" required>
           <option value="">Sélectionnez un service</option>
-          <option>Inbound — Réception d'appels</option>
-          <option>Outbound — Appels sortants</option>
-          <option>Back Office — Traitement de données</option>
+          <option>Inbound — Réception d'appels (service client / SAV)</option>
+          <option>Outbound — Téléprospection / RDV qualifiés</option>
+          <option>Back Office — Traitement de données / KYC</option>
+          <option>Solutions IA — Voicebot / Chatbot</option>
           <option>Offre mixte / sur mesure</option>
         </select>
       </div>
-      <div class="fg"><label>Message</label><textarea placeholder="Décrivez votre besoin, volume d'appels estimé, horaires souhaités…"></textarea></div>
-      <button class="form-btn" type="submit">Envoyer ma demande →</button>
-    </div>
+      <div class="fg">
+        <label for="cf-vol">Volumétrie estimée</label>
+        <select id="cf-vol" name="volume">
+          <option value="">Sélectionnez (optionnel)</option>
+          <option>Moins de 10 agents</option>
+          <option>10 à 30 agents</option>
+          <option>30 à 80 agents</option>
+          <option>Plus de 80 agents</option>
+          <option>Je ne sais pas encore</option>
+        </select>
+      </div>
+      <div class="fg"><label for="cf-msg">Votre besoin</label><textarea id="cf-msg" name="message" placeholder="Décrivez votre projet : volume d'appels, horaires souhaités, langues, deadline…" rows="4"></textarea></div>
+      <!-- Honeypot antispam -->
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+      <input type="hidden" name="_subject" value="🚀 Nouvelle demande de devis Help'me Process">
+      <button class="form-btn" type="submit" id="cfSubmit">Envoyer ma demande →</button>
+      <div class="form-success" id="cfSuccess">
+        ✅ Demande envoyée ! Notre équipe vous recontacte dans les 24h.
+      </div>
+      <div class="form-error" id="cfError">
+        ⚠️ Une erreur s'est produite. Contactez-nous directement au <a href="tel:+224628935335">+224 628 93 53 35</a>.
+      </div>
+      <p class="form-rgpd">🔒 Vos données sont traitées conformément au RGPD. Aucune transmission à des tiers.</p>
+    </form>
   </div>
 </section>
 
@@ -2619,6 +3961,118 @@
       else nav.classList.remove('scrolled');
     },{passive:true});
   })();
+
+  /* 6. SERVICES V2 — Tabs interactifs */
+  (function(){
+    const tabs = document.querySelectorAll('.svc-tab');
+    const panels = document.querySelectorAll('.svc-panel');
+    if(!tabs.length) return;
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = tab.dataset.tab;
+        tabs.forEach(t => t.classList.toggle('active', t === tab));
+        panels.forEach(p => p.classList.toggle('active', p.dataset.panel === target));
+      });
+    });
+  })();
+
+  /* 7. CONTACT FORM — async submission via Formspree */
+  (function(){
+    const form = document.getElementById('contactForm');
+    if(!form) return;
+    const btn = document.getElementById('cfSubmit');
+    const ok = document.getElementById('cfSuccess');
+    const err = document.getElementById('cfError');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      ok.classList.remove('show');
+      err.classList.remove('show');
+      btn.disabled = true;
+      btn.textContent = 'Envoi en cours...';
+      try {
+        const formData = new FormData(form);
+        const url = form.action;
+        // Si Formspree pas encore configuré → mailto fallback
+        if(url.includes('REPLACE_WITH_YOUR_ID')){
+          const params = new URLSearchParams();
+          for(const [k,v] of formData) params.append(k,v);
+          const subject = encodeURIComponent("Demande de devis Help'me Process");
+          const body = encodeURIComponent(
+            "Prénom : " + (formData.get('firstname')||'') + "\n" +
+            "Nom : " + (formData.get('lastname')||'') + "\n" +
+            "Société : " + (formData.get('company')||'') + "\n" +
+            "Email : " + (formData.get('email')||'') + "\n" +
+            "Téléphone : " + (formData.get('phone')||'') + "\n" +
+            "Service : " + (formData.get('service')||'') + "\n" +
+            "Volume : " + (formData.get('volume')||'') + "\n\n" +
+            "Message :\n" + (formData.get('message')||'')
+          );
+          window.location.href = `mailto:contact@helpmeprocess.com?subject=${subject}&body=${body}`;
+          ok.innerHTML = "✅ Votre client email s'ouvre — envoyez le message pour finaliser !";
+          ok.classList.add('show');
+        } else {
+          const res = await fetch(url, {
+            method: 'POST', body: formData,
+            headers: {'Accept':'application/json'}
+          });
+          if(res.ok){
+            ok.classList.add('show');
+            form.reset();
+          } else {
+            err.classList.add('show');
+          }
+        }
+      } catch(e){
+        err.classList.add('show');
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = 'Envoyer ma demande →';
+      }
+    });
+  })();
+
+  /* 8. LEAD MAGNET — Email capture */
+  window.captureLeadMagnet = function(){
+    const email = document.getElementById('lmEmail')?.value.trim();
+    const company = document.getElementById('lmCompany')?.value.trim();
+    if(!email || !email.includes('@')){
+      alert('Merci de renseigner un email professionnel valide.');
+      return;
+    }
+    // Stockage local + simulation envoi
+    try {
+      const leads = JSON.parse(localStorage.getItem('hp_leads')||'[]');
+      leads.push({email,company,date:Date.now()});
+      localStorage.setItem('hp_leads', JSON.stringify(leads));
+    } catch(e){}
+    // CTA visuel
+    const btn = document.getElementById('lmBtn');
+    if(btn){
+      btn.textContent = '✓ Email envoyé ! Vérifiez votre boîte';
+      btn.disabled = true;
+      btn.style.background = 'linear-gradient(135deg,#1A8A2E,#2ECC71)';
+    }
+    // En prod : fetch vers webhook qui envoie l'email avec le PDF
+    // fetch('/api/lead-magnet', { method:'POST', body: JSON.stringify({email,company}) });
+  };
+
+  /* 9. ROI Calculator */
+  window.calcROI = function(){
+    const agents = parseInt(document.getElementById('roiAgents')?.value || 0);
+    const result = document.getElementById('roiResult');
+    if(!result || !agents) return;
+    const costFR = agents * 3500 * 12;        // €3500/mois en France
+    const costHP = agents * 850 * 12;          // €850/mois Help'me
+    const saving = costFR - costHP;
+    const savingPct = Math.round((saving/costFR)*100);
+    const fmt = n => new Intl.NumberFormat('fr-FR').format(n) + ' €';
+    result.innerHTML = `
+      <div class="roi-row"><span>Coût en interne France :</span><b>${fmt(costFR)}/an</b></div>
+      <div class="roi-row"><span>Coût Help'me Process :</span><b>${fmt(costHP)}/an</b></div>
+      <div class="roi-row roi-saving"><span>💰 Vous économisez :</span><b>${fmt(saving)}/an (-${savingPct}%)</b></div>
+    `;
+    result.style.display = 'block';
+  };
 </script>
 
 <script src="chatbot.js"></script>

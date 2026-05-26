@@ -1,0 +1,30 @@
+# Local files
+.DS_Store
+.claude/
+.vscode/
+
+# Unused images (uploaded but not referenced)
+Copilot_*.png
+Gemini_Generated_Image_*.png
+WhatsApp\ Image\ 2025-*.jpeg
+WhatsApp\ Video\ 2025-*.mp4
+1714995726665.jpeg
+AI_Generated_Image_2025-08-19.png
+Bareme\ prime\ ISO.png
+Free-pro.svg.png
+Logo-Free-Pro-fond-noir-800x450-c-default-800x450-c-default.png.webp
+Parcours\ et\ Stand.png
+Payplan\ horaire.png
+Presentation\ d'ensemble\ des\ sous\ commission.png
+Presentation\ et\ vue\ parcours.png
+RENTABILITE\ HELPMEPROCESS.jpeg
+Rentabilite\ et\ Seuil\ Critique.png
+Sans\ titre.png
+Silulation\ Gain\ agent\ ISO.png
+Simul\ Gain\ Helpme.png
+Simulation\ GAIN\ HP.png
+Simulation\ KPI\ Commercial\ ISO.png
+carte-de-l-afrique-avec-la-guinée*
+images&.png
+images-2.png
+images.png
