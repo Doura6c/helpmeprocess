@@ -16,7 +16,7 @@
     },
     {
       keys:["prix","tarif","devis","coût","combien"],
-      answer:"Nos tarifs sont personnalisés selon votre volume et vos besoins. Contactez-nous pour un <strong>devis gratuit sous 24h</strong> :<br>📧 contact@helpmeprocess.com<br>📱 +224 620 00 00 00"
+      answer:"Nos tarifs sont personnalisés selon votre volume et vos besoins. Contactez-nous pour un <strong>devis gratuit sous 24h</strong> :<br>📧 contact@helpmeprocess.com<br>📱 +224 628 93 53 35"
     },
     {
       keys:["localisation","adresse","où","conakry","guinee","guinée","situé"],
@@ -24,7 +24,7 @@
     },
     {
       keys:["contact","appeler","joindre","email","mail","téléphone","telephone"],
-      answer:"Voici nos contacts :<br>📧 <strong>contact@helpmeprocess.com</strong><br>📱 <strong>+224 620 00 00 00</strong><br>🕐 Lun–Sam, 8h–20h<br><br>Ou remplissez notre <a href='index.html#contact' style='color:var(--orange)'>formulaire de contact</a>."
+      answer:"Voici nos contacts :<br>📧 <strong>contact@helpmeprocess.com</strong><br>📱 <strong>+224 628 93 53 35</strong><br>🕐 Lun–Sam, 8h–20h<br><br>Ou remplissez notre <a href='index.html#contact' style='color:var(--orange)'>formulaire de contact</a>."
     },
     {
       keys:["emploi","job","recrutement","recrute","postuler","travail","poste"],
@@ -48,7 +48,7 @@
     },
     {
       keys:["merci","super","parfait","excellent","bravo","bonne","top"],
-      answer:"Avec plaisir ! 😊 N'hésitez pas si vous avez d'autres questions. Notre équipe reste disponible au <strong>+224 620 00 00 00</strong>."
+      answer:"Avec plaisir ! 😊 N'hésitez pas si vous avez d'autres questions. Notre équipe reste disponible au <strong>+224 628 93 53 35</strong>."
     },
     {
       keys:["langue","francais","anglais","arabe","multilangue"],
@@ -61,7 +61,7 @@
   ];
 
   const FALLBACK = [
-    "Je n'ai pas bien compris votre question. Pouvez-vous reformuler ? Vous pouvez aussi nous contacter directement au <strong>+224 620 00 00 00</strong>.",
+    "Je n'ai pas bien compris votre question. Pouvez-vous reformuler ? Vous pouvez aussi nous contacter directement au <strong>+224 628 93 53 35</strong>.",
     "Cette question dépasse mes capacités 😅 Notre équipe humaine sera plus précise ! Contactez-nous : <strong>contact@helpmeprocess.com</strong>",
     "Je ne suis pas sûre de pouvoir répondre à cela. Essayez avec des mots comme : <em>services, prix, contact, emploi, localisation...</em>"
   ];

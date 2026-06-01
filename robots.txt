@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /espace-client.html
+
+Sitemap: https://helpmeprocess.com/sitemap.xml
