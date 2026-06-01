@@ -305,10 +305,19 @@
     }
   </style>
   <!-- Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-37403M153P"></script>
   <script>
     window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-    gtag('js',new Date());gtag('config','G-37403M153P');
+    gtag('consent','default',{'analytics_storage':'denied','ad_storage':'denied'});
+    function loadGA4(){
+      if(document.getElementById('ga4script')) return;
+      var s=document.createElement('script');
+      s.id='ga4script';s.async=true;
+      s.src='https://www.googletagmanager.com/gtag/js?id=G-37403M153P';
+      document.head.appendChild(s);
+      gtag('consent','update',{'analytics_storage':'granted'});
+      gtag('js',new Date());gtag('config','G-37403M153P');
+    }
+    if(localStorage.getItem('hp_cookie_consent')==='granted') loadGA4();
   </script>
 </head>
 <body>
@@ -744,7 +753,7 @@
 <!-- ══ FOOTER ══ -->
 <footer>
   <div class="footer-inner">
-    <span>© 2025 Help'me Process · Conakry, Guinée · <a href="mailto:contact@helpmeprocess.com">contact@helpmeprocess.com</a></span>
+    <span>© 2025 Help'me Process · Conakry, Guinée · <a href="mailto:xprocesssarl@gmail.com">xprocesssarl@gmail.com</a></span>
     <div class="footer-links">
       <a href="index.html">Accueil</a>
       <a href="actualites.html">Actualités</a>
@@ -865,5 +874,36 @@
   })();
 </script>
 <script src="chatbot.js"></script>
+
+<!-- ══════════ BANNIÈRE RGPD ══════════ -->
+<div id="cookieBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:99999;background:#0F172A;border-top:2px solid #E85D20;padding:18px 24px;box-shadow:0 -4px 24px rgba(0,0,0,.35)">
+  <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:20px;flex-wrap:wrap;justify-content:space-between">
+    <div style="flex:1;min-width:260px">
+      <p style="color:#fff;font-family:'Inter',sans-serif;font-size:.875rem;line-height:1.6;margin:0">
+        🍪 <strong>Ce site utilise des cookies d'analyse</strong> (Google Analytics) pour mesurer notre audience et améliorer votre expérience. Conformément au RGPD, votre consentement est requis avant tout dépôt de cookie.
+        <a href="mentions-legales.html" style="color:#E85D20;text-decoration:underline;margin-left:4px">En savoir plus</a>
+      </p>
+    </div>
+    <div style="display:flex;gap:10px;flex-shrink:0">
+      <button onclick="cookieDecline()" style="padding:10px 20px;border-radius:8px;border:1.5px solid rgba(255,255,255,.25);background:transparent;color:rgba(255,255,255,.7);font-family:'Inter',sans-serif;font-size:.85rem;font-weight:600;cursor:pointer">Refuser</button>
+      <button onclick="cookieAccept()" style="padding:10px 20px;border-radius:8px;border:none;background:#E85D20;color:#fff;font-family:'Inter',sans-serif;font-size:.85rem;font-weight:700;cursor:pointer">Accepter</button>
+    </div>
+  </div>
+</div>
+<script>
+  (function(){
+    var consent = localStorage.getItem('hp_cookie_consent');
+    if(!consent) document.getElementById('cookieBanner').style.display='block';
+  })();
+  function cookieAccept(){
+    localStorage.setItem('hp_cookie_consent','granted');
+    document.getElementById('cookieBanner').style.display='none';
+    loadGA4();
+  }
+  function cookieDecline(){
+    localStorage.setItem('hp_cookie_consent','denied');
+    document.getElementById('cookieBanner').style.display='none';
+  }
+</script>
 </body>
 </html>

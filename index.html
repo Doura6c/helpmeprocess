@@ -38,7 +38,7 @@
     "url": "https://helpmeprocess.com/",
     "logo": "https://helpmeprocess.com/logo.jpeg",
     "description": "Centre d'appel et BPO francophone basé à Conakry, Guinée. Service client, téléprospection, back-office pour les marchés guinéen, ouest-africain et européen.",
-    "foundingDate": "2015",
+    "foundingDate": "2023",
     "areaServed": ["GN", "FR", "SN", "Afrique de l'Ouest", "Europe"],
     "address": {
       "@type": "PostalAddress",
@@ -128,11 +128,20 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 
-  <!-- ═══ ANALYTICS — Google Analytics 4 ═══ -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-37403M153P"></script>
+  <!-- ═══ ANALYTICS — Google Analytics 4 (chargé après consentement RGPD) ═══ -->
   <script>
     window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-    gtag('js',new Date());gtag('config','G-37403M153P');
+    gtag('consent','default',{'analytics_storage':'denied','ad_storage':'denied'});
+    function loadGA4(){
+      if(document.getElementById('ga4script')) return;
+      var s=document.createElement('script');
+      s.id='ga4script';s.async=true;
+      s.src='https://www.googletagmanager.com/gtag/js?id=G-37403M153P';
+      document.head.appendChild(s);
+      gtag('consent','update',{'analytics_storage':'granted'});
+      gtag('js',new Date());gtag('config','G-37403M153P');
+    }
+    if(localStorage.getItem('hp_cookie_consent')==='granted') loadGA4();
   </script>
 
   <!-- LinkedIn Insight Tag :
@@ -2262,8 +2271,8 @@
 
       <div class="hero-actions">
         <a href="#contact" class="btn-orange">Demander un devis →</a>
-        <a href="https://calendly.com/helpmeprocess/20min" target="_blank" rel="noopener noreferrer" class="btn-calendly">
-          📅 Réserver un RDV 20 min
+        <a href="https://calendly.com/xprocesssarl/30min" target="_blank" rel="noopener noreferrer" class="btn-calendly">
+          📅 Réserver un appel 30 min
         </a>
         <a href="https://wa.me/224628935335?text=Bonjour%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20vos%20services%20BPO" target="_blank" rel="noopener noreferrer" class="btn-ghost">
           💬 WhatsApp Business
@@ -3043,7 +3052,8 @@
               <th>Destination</th>
               <th>€/agent/mois</th>
               <th>Maîtrise FR</th>
-              <th>Fuseau</th>
+              <th>Décalage/Paris</th>
+              <th>Langues diaspora</th>
               <th>Confort culturel</th>
             </tr>
           </thead>
@@ -3052,41 +3062,46 @@
               <td><b>🇫🇷 France (interne)</b></td>
               <td>3 500 €</td>
               <td>⭐⭐⭐⭐⭐</td>
-              <td>UTC+1</td>
+              <td>0h</td>
+              <td>—</td>
               <td>⭐⭐⭐⭐⭐</td>
             </tr>
             <tr>
               <td>🇲🇦 Maroc (Casablanca)</td>
               <td>1 200 €</td>
               <td>⭐⭐⭐⭐</td>
-              <td>UTC+1</td>
+              <td>0h / +1h été</td>
+              <td>❌</td>
               <td>⭐⭐⭐⭐</td>
             </tr>
             <tr>
               <td>🇲🇬 Madagascar (Antananarivo)</td>
               <td>900 €</td>
               <td>⭐⭐⭐⭐</td>
-              <td>UTC+3</td>
+              <td style="color:#B91C1C;font-weight:700">+3h ⚠️</td>
+              <td>❌</td>
               <td>⭐⭐⭐</td>
             </tr>
             <tr>
               <td>🇹🇳 Tunisie (Tunis)</td>
               <td>1 000 €</td>
               <td>⭐⭐⭐⭐</td>
-              <td>UTC+1</td>
+              <td>+1h</td>
+              <td>❌</td>
               <td>⭐⭐⭐⭐</td>
             </tr>
             <tr class="roi-highlight">
               <td><b>🇬🇳 Help'me Process (Conakry)</b></td>
               <td><b>850 €</b></td>
-              <td><b>⭐⭐⭐⭐⭐</b></td>
-              <td><b>UTC</b></td>
+              <td><b>⭐⭐⭐⭐½</b></td>
+              <td><b style="color:#16A34A">0h ✓</b></td>
+              <td><b>✅ Pular · Soussou · Malinké</b></td>
               <td><b>⭐⭐⭐⭐⭐</b></td>
             </tr>
           </tbody>
         </table>
         <div class="roi-table-foot">
-          <b>Help'me Process</b> = <b>-76%</b> vs France interne · Maîtrise du français native · Même fuseau que Londres &amp; Casablanca
+          <b>Help'me Process</b> = <b>-76%</b> vs France interne · Français natif · 0h de décalage · Seul BPO couvrant les diasporas africaines en France
         </div>
       </div>
 
@@ -3251,6 +3266,37 @@
       </div>
 
     </div>
+
+    <!-- ═══ GARANTIES OPÉRATIONNELLES ═══ -->
+    <div style="margin-top:56px;background:linear-gradient(135deg,#0F172A,#002C6E);border-radius:20px;padding:40px 48px;display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center" class="fi">
+      <div>
+        <span style="display:inline-block;background:rgba(232,93,32,.15);color:#FF6D35;font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 12px;border-radius:50px;margin-bottom:16px">🔒 Vos préoccupations · Nos garanties</span>
+        <h3 style="color:#fff;font-size:1.35rem;font-weight:800;margin-bottom:20px">« Et si l'infrastructure en Guinée n'est pas fiable ? »</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px">
+          <div style="display:flex;gap:12px;align-items:flex-start">
+            <span style="font-size:1.4rem;flex-shrink:0">📡</span>
+            <div><strong style="color:#fff;font-size:.88rem;display:block;margin-bottom:4px">Connectivité redondante</strong><span style="color:rgba(255,255,255,.6);font-size:.82rem">Fibre principale + 4G backup automatique — aucune coupure non gérée</span></div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start">
+            <span style="font-size:1.4rem;flex-shrink:0">⚡</span>
+            <div><strong style="color:#fff;font-size:.88rem;display:block;margin-bottom:4px">Énergie continue</strong><span style="color:rgba(255,255,255,.6);font-size:.82rem">Groupe électrogène + onduleurs UPS — continuité garantie 24/7</span></div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start">
+            <span style="font-size:1.4rem;flex-shrink:0">🛡️</span>
+            <div><strong style="color:#fff;font-size:.88rem;display:block;margin-bottom:4px">Données protégées</strong><span style="color:rgba(255,255,255,.6);font-size:.82rem">Accès cloisonnés par campagne · Accord de sous-traitance RGPD signé</span></div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start">
+            <span style="font-size:1.4rem;flex-shrink:0">📋</span>
+            <div><strong style="color:#fff;font-size:.88rem;display:block;margin-bottom:4px">Plan de continuité (PCA)</strong><span style="color:rgba(255,255,255,.6);font-size:.82rem">Protocoles documentés — vos opérations ne s'arrêtent jamais</span></div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center;flex-shrink:0">
+        <div style="font-size:3rem;font-weight:900;color:#E85D20;line-height:1">99%</div>
+        <div style="color:rgba(255,255,255,.7);font-size:.82rem;margin-top:4px">uptime opérationnel</div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -3692,8 +3738,8 @@
       <div class="lead-form-head">
         <div class="lead-form-ico">📕</div>
         <div>
-          <h4>Téléchargez le livre blanc</h4>
-          <p>42 pages · PDF gratuit · sans engagement</p>
+          <h4>Demandez le livre blanc</h4>
+          <p>PDF gratuit · Envoyé sous 24h · Sans engagement</p>
         </div>
       </div>
       <input class="lead-input" id="lmEmail" type="email" placeholder="Votre email professionnel">
@@ -3701,10 +3747,32 @@
       <button class="lead-btn" id="lmBtn" onclick="captureLeadMagnet()">
         📥 Recevoir le PDF
       </button>
-      <p class="lead-disclaimer">🔒 Envoi immédiat par email · RGPD · Pas de spam · Vous pouvez vous désinscrire à tout moment.</p>
+      <p class="lead-disclaimer">🔒 Réponse sous 24h · RGPD · Pas de spam · Vous pouvez vous désinscrire à tout moment.</p>
     </div>
   </div>
 </section>
+
+<!-- ══════════ POC STRIP ══════════ -->
+<div style="background:var(--light);padding:48px 64px;border-top:1px solid #E5E7EB;border-bottom:1px solid #E5E7EB">
+  <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap">
+    <div style="flex:1;min-width:280px">
+      <span style="display:inline-block;background:rgba(22,163,74,.1);color:#16A34A;font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 12px;border-radius:50px;margin-bottom:12px">🧪 Offre découverte — sans risque</span>
+      <h3 style="font-size:1.45rem;font-weight:800;color:var(--navy);margin-bottom:8px">Testez Help'me Process pendant 30 jours</h3>
+      <p style="color:var(--gray);font-size:.92rem;line-height:1.6;max-width:520px">Lancez un pilote sur votre campagne réelle — inbound, outbound ou back office. Vous mesurez les KPIs, vous validez la qualité. Sans engagement long terme, sans frais cachés.</p>
+      <div style="display:flex;gap:24px;margin-top:16px;flex-wrap:wrap">
+        <div style="display:flex;align-items:center;gap:8px;font-size:.85rem;color:var(--navy);font-weight:600"><span>✅</span> 5 à 10 agents dédiés</div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:.85rem;color:var(--navy);font-weight:600"><span>✅</span> Reporting hebdomadaire</div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:.85rem;color:var(--navy);font-weight:600"><span>✅</span> KPIs transparents</div>
+      </div>
+    </div>
+    <div style="flex-shrink:0;text-align:center">
+      <a href="#contact" style="display:inline-flex;align-items:center;gap:10px;background:var(--navy);color:#fff;text-decoration:none;padding:16px 32px;border-radius:50px;font-weight:700;font-size:.95rem;box-shadow:0 6px 24px rgba(0,44,110,.25);transition:all .2s">
+        🚀 Démarrer mon POC 30 jours →
+      </a>
+      <p style="font-size:.78rem;color:var(--gray);margin-top:10px">Réponse sous 24h · Sans engagement</p>
+    </div>
+  </div>
+</div>
 
 <!-- ══════════ CTA ══════════ -->
 <div class="cta-section">
@@ -3867,8 +3935,7 @@
       <ul>
         <li><a href="tel:+224628935335">+224 628 93 53 35</a></li>
         <li><a href="#contact">Nous écrire</a></li>
-        <li><a href="#">LinkedIn</a></li>
-        <li><a href="#">WhatsApp</a></li>
+        <li><a href="https://wa.me/224628935335?text=Bonjour%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20vos%20services%20BPO" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
       </ul>
     </div>
   </div>
@@ -3878,9 +3945,8 @@
       <span class="ft-africa">Guinée · Afrique de l'Ouest · Le monde</span>
     </div>
     <div class="socials">
-      <a href="#" class="soc">in</a>
-      <a href="#" class="soc">fb</a>
-      <a href="#" class="soc">wa</a>
+      <!-- Ajoutez votre lien réseau social ici quand disponible -->
+      <a href="https://wa.me/224628935335?text=Bonjour%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20vos%20services%20BPO" class="soc" target="_blank" rel="noopener noreferrer" title="WhatsApp">wa</a>
     </div>
   </div>
 </footer>
@@ -4102,7 +4168,7 @@
             "Volume : " + (formData.get('volume')||'') + "\n\n" +
             "Message :\n" + (formData.get('message')||'')
           );
-          window.location.href = `mailto:contact@helpmeprocess.com?subject=${subject}&body=${body}`;
+          window.location.href = `mailto:xprocesssarl@gmail.com?subject=${subject}&body=${body}`;
           ok.innerHTML = "✅ Votre client email s'ouvre — envoyez le message pour finaliser !";
           ok.classList.add('show');
         } else {
@@ -4127,28 +4193,39 @@
   })();
 
   /* 8. LEAD MAGNET — Email capture */
-  window.captureLeadMagnet = function(){
+  window.captureLeadMagnet = async function(){
     const email = document.getElementById('lmEmail')?.value.trim();
     const company = document.getElementById('lmCompany')?.value.trim();
     if(!email || !email.includes('@')){
       alert('Merci de renseigner un email professionnel valide.');
       return;
     }
-    // Stockage local + simulation envoi
-    try {
-      const leads = JSON.parse(localStorage.getItem('hp_leads')||'[]');
-      leads.push({email,company,date:Date.now()});
-      localStorage.setItem('hp_leads', JSON.stringify(leads));
-    } catch(e){}
-    // CTA visuel
     const btn = document.getElementById('lmBtn');
-    if(btn){
-      btn.textContent = '✓ Email envoyé ! Vérifiez votre boîte';
-      btn.disabled = true;
-      btn.style.background = 'linear-gradient(135deg,#1A8A2E,#2ECC71)';
+    if(btn){ btn.disabled = true; btn.textContent = 'Envoi en cours...'; }
+    try {
+      const res = await fetch('https://formspree.io/f/xzdwnple', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          _subject: '📥 Nouveau téléchargement livre blanc BPO',
+          email,
+          company: company || '(non renseigné)',
+          _replyto: email,
+          message: `Demande de livre blanc BPO\n\nEmail : ${email}\nEntreprise : ${company || '(non renseigné)'}`
+        })
+      });
+      if(res.ok){
+        if(btn){
+          btn.textContent = '✓ Demande reçue ! Nous vous contactons sous 24h.';
+          btn.style.background = 'linear-gradient(135deg,#1A8A2E,#2ECC71)';
+        }
+      } else {
+        throw new Error('Formspree error');
+      }
+    } catch(e){
+      if(btn){ btn.disabled = false; btn.textContent = '📥 Recevoir le PDF'; }
+      alert('Une erreur est survenue. Contactez-nous directement au +224 628 93 53 35.');
     }
-    // En prod : fetch vers webhook qui envoie l'email avec le PDF
-    // fetch('/api/lead-magnet', { method:'POST', body: JSON.stringify({email,company}) });
   };
 
   /* 9. ROI Calculator */
@@ -4171,5 +4248,36 @@
 </script>
 
 <script src="chatbot.js"></script>
+
+<!-- ══════════ BANNIÈRE RGPD ══════════ -->
+<div id="cookieBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:99999;background:#0F172A;border-top:2px solid #E85D20;padding:18px 24px;box-shadow:0 -4px 24px rgba(0,0,0,.35)">
+  <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:20px;flex-wrap:wrap;justify-content:space-between">
+    <div style="flex:1;min-width:260px">
+      <p style="color:#fff;font-family:'Inter',sans-serif;font-size:.875rem;line-height:1.6;margin:0">
+        🍪 <strong>Ce site utilise des cookies d'analyse</strong> (Google Analytics) pour mesurer notre audience et améliorer votre expérience. Conformément au RGPD, votre consentement est requis avant tout dépôt de cookie.
+        <a href="mentions-legales.html" style="color:#E85D20;text-decoration:underline;margin-left:4px">En savoir plus</a>
+      </p>
+    </div>
+    <div style="display:flex;gap:10px;flex-shrink:0">
+      <button onclick="cookieDecline()" style="padding:10px 20px;border-radius:8px;border:1.5px solid rgba(255,255,255,.25);background:transparent;color:rgba(255,255,255,.7);font-family:'Inter',sans-serif;font-size:.85rem;font-weight:600;cursor:pointer">Refuser</button>
+      <button onclick="cookieAccept()" style="padding:10px 20px;border-radius:8px;border:none;background:#E85D20;color:#fff;font-family:'Inter',sans-serif;font-size:.85rem;font-weight:700;cursor:pointer">Accepter</button>
+    </div>
+  </div>
+</div>
+<script>
+  (function(){
+    var consent = localStorage.getItem('hp_cookie_consent');
+    if(!consent) document.getElementById('cookieBanner').style.display='block';
+  })();
+  function cookieAccept(){
+    localStorage.setItem('hp_cookie_consent','granted');
+    document.getElementById('cookieBanner').style.display='none';
+    loadGA4();
+  }
+  function cookieDecline(){
+    localStorage.setItem('hp_cookie_consent','denied');
+    document.getElementById('cookieBanner').style.display='none';
+  }
+</script>
 </body>
 </html>
