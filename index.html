@@ -106,7 +106,7 @@
         "name": "Quels sont vos tarifs ?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Les tarifs sont personnalisés selon le volume et les besoins. Help'me Process permet jusqu'à -76% par rapport à une équipe interne en France. Devis gratuit chiffré sous 24 à 48h."
+          "text": "Les tarifs sont personnalisés selon le volume et les besoins. Help'me Process permet jusqu'à -76% par rapport à une équipe interne en France, et jusqu'à -40% par rapport à une équipe interne en Guinée. Devis gratuit chiffré sous 24 à 48h."
         }
       },
       {
@@ -2263,7 +2263,8 @@
 
       <p class="hero-desc">Externalisez votre relation client à Conakry avec une équipe francophone native — outsourcing BPO de qualité européenne, coûts ouest-africains. Voix, chat, WhatsApp, email, IA. Conforme RGPD.</p>
       <div class="hero-promise">
-        <div class="hero-promise-item"><b>-76%</b> vs interne FR</div>
+        <div class="hero-promise-item"><b>-76%</b> vs interne France</div>
+        <div class="hero-promise-item"><b>-40%</b> vs équipe locale</div>
         <div class="hero-promise-item"><b>200+</b> postes équipés</div>
         <div class="hero-promise-item"><b>24/7</b> · multi-shifts</div>
         <div class="hero-promise-item"><b>QS ≥ 90%</b> engagé</div>
@@ -2279,12 +2280,27 @@
         </a>
       </div>
 
+      <!-- AIGUILLAGE DOUBLE CIBLE -->
+      <div class="hero-audience" style="margin-top:22px">
+        <p style="font-size:.82rem;letter-spacing:.04em;text-transform:uppercase;opacity:.75;margin:0 0 10px">Vous êtes…</p>
+        <div style="display:flex;flex-wrap:wrap;gap:12px">
+          <a href="presentation-entreprises.html" style="flex:1 1 240px;display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);text-decoration:none;color:inherit;transition:.2s" onmouseover="this.style.borderColor='#ff7a1a';this.style.background='rgba(255,122,26,.12)'" onmouseout="this.style.borderColor='rgba(255,255,255,.18)';this.style.background='rgba(255,255,255,.06)'">
+            <span style="font-size:1.6rem">🇬🇳</span>
+            <span><b style="display:block">Une entreprise en Guinée</b><span style="font-size:.85rem;opacity:.8">Externalisez votre relation client localement →</span></span>
+          </a>
+          <a href="#kpis" style="flex:1 1 240px;display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);text-decoration:none;color:inherit;transition:.2s" onmouseover="this.style.borderColor='#ff7a1a';this.style.background='rgba(255,122,26,.12)'" onmouseout="this.style.borderColor='rgba(255,255,255,.18)';this.style.background='rgba(255,255,255,.06)'">
+            <span style="font-size:1.6rem">🌍</span>
+            <span><b style="display:block">Une entreprise internationale</b><span style="font-size:.85rem;opacity:.8">Réduisez vos coûts, qualité francophone garantie →</span></span>
+          </a>
+        </div>
+      </div>
+
       <div class="hero-trust">
         <div class="trust-item">
           <div><div class="trust-val">30<sup>+</sup></div><div class="trust-lbl">Agents d'élite</div></div>
         </div>
         <div class="trust-item">
-          <div><div class="trust-val">10<sup>+</sup></div><div class="trust-lbl">Ans d'expertise</div></div>
+          <div><div class="trust-val">10<sup>+</sup></div><div class="trust-lbl">Ans d'expertise managériale</div></div>
         </div>
         <div class="trust-item">
           <div><div class="trust-val">3</div><div class="trust-lbl">Pôles de services</div></div>
@@ -3228,7 +3244,7 @@
         </div>
         <div class="bento-stat">
           <strong>10+</strong>
-          <em>ans d'expérience cumulée</em>
+          <em>ans d'expertise managériale</em>
         </div>
       </div>
 
@@ -3942,7 +3958,7 @@
   </div>
   <div class="ft-bottom">
     <div>
-      <p>Help'me Process © 2025 — Conakry, République de Guinée. Tous droits réservés.</p>
+      <p>Help'me Process © 2026 — Conakry, République de Guinée. Tous droits réservés.</p>
       <span class="ft-africa">Guinée · Afrique de l'Ouest · Le monde</span>
     </div>
     <div class="socials">
@@ -4169,7 +4185,7 @@
             "Volume : " + (formData.get('volume')||'') + "\n\n" +
             "Message :\n" + (formData.get('message')||'')
           );
-          window.location.href = `mailto:xprocesssarl@gmail.com?subject=${subject}&body=${body}`;
+          window.location.href = `mailto:contact@helpmeprocess.com?subject=${subject}&body=${body}`;
           ok.innerHTML = "✅ Votre client email s'ouvre — envoyez le message pour finaliser !";
           ok.classList.add('show');
         } else {
