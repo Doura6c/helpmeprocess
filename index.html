@@ -3742,6 +3742,7 @@
           <p>PDF gratuit · Envoyé sous 24h · Sans engagement</p>
         </div>
       </div>
+      <input class="lead-input" id="lmPrenom" type="text" placeholder="Votre prénom">
       <input class="lead-input" id="lmEmail" type="email" placeholder="Votre email professionnel">
       <input class="lead-input" id="lmCompany" type="text" placeholder="Nom de votre entreprise">
       <button class="lead-btn" id="lmBtn" onclick="captureLeadMagnet()">
@@ -4194,37 +4195,43 @@
 
   /* 8. LEAD MAGNET — Email capture */
   window.captureLeadMagnet = async function(){
-    const email = document.getElementById('lmEmail')?.value.trim();
-    const company = document.getElementById('lmCompany')?.value.trim();
+    const prenom  = document.getElementById('lmPrenom')?.value.trim() || '';
+    const email   = document.getElementById('lmEmail')?.value.trim() || '';
+    const company = document.getElementById('lmCompany')?.value.trim() || '';
     if(!email || !email.includes('@')){
       alert('Merci de renseigner un email professionnel valide.');
       return;
     }
     const btn = document.getElementById('lmBtn');
-    if(btn){ btn.disabled = true; btn.textContent = 'Envoi en cours...'; }
+    const original = btn ? btn.textContent : '';
+    if(btn){ btn.textContent = '⏳ Envoi en cours…'; btn.disabled = true; }
+
     try {
-      const res = await fetch('https://formspree.io/f/xzdwnple', {
+      const resp = await fetch('/api/lead-magnet', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({
-          _subject: '📥 Nouveau téléchargement livre blanc BPO',
-          email,
-          company: company || '(non renseigné)',
-          _replyto: email,
-          message: `Demande de livre blanc BPO\n\nEmail : ${email}\nEntreprise : ${company || '(non renseigné)'}`
-        })
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prenom, email, company })
       });
-      if(res.ok){
-        if(btn){
-          btn.textContent = '✓ Demande reçue ! Nous vous contactons sous 24h.';
-          btn.style.background = 'linear-gradient(135deg,#1A8A2E,#2ECC71)';
-        }
-      } else {
-        throw new Error('Formspree error');
+      if(!resp.ok){ throw new Error('HTTP '+resp.status); }
+
+      // Sauvegarde locale (utile pour mesurer côté navigateur)
+      try {
+        const leads = JSON.parse(localStorage.getItem('hp_leads')||'[]');
+        leads.push({prenom,email,company,date:Date.now()});
+        localStorage.setItem('hp_leads', JSON.stringify(leads));
+      } catch(e){}
+
+      if(btn){
+        btn.textContent = '✓ Email envoyé ! Vérifiez votre boîte';
+        btn.style.background = 'linear-gradient(135deg,#1A8A2E,#2ECC71)';
       }
-    } catch(e){
-      if(btn){ btn.disabled = false; btn.textContent = '📥 Recevoir le PDF'; }
-      alert('Une erreur est survenue. Contactez-nous directement au +224 628 93 53 35.');
+    } catch(err){
+      console.error('Lead magnet error', err);
+      if(btn){
+        btn.textContent = original || '📥 Recevoir le PDF';
+        btn.disabled = false;
+      }
+      alert("Une erreur est survenue. Merci de réessayer dans un instant.");
     }
   };
 
