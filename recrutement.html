@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="Rejoignez Help'me Process — Offres d'emploi en call center à Conakry, Guinée. Postulez en ligne."/>
   <title>Recrutement | Help'me Process</title>
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https://img.youtube.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; frame-src https://www.youtube.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"/>
+  <link rel="canonical" href="https://helpmeprocess.com/recrutement.html"/>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https://img.youtube.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; frame-src https://www.youtube.com; connect-src 'self' https://formspree.io; object-src 'none'; base-uri 'self'; form-action 'self' https://formspree.io; frame-ancestors 'none'; upgrade-insecure-requests"/>
   <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
   <meta name="referrer" content="strict-origin-when-cross-origin"/>
   <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=()"/>
@@ -663,27 +664,29 @@
       </div>
 
       <div id="appForm">
-        <form onsubmit="submitForm(event)">
+        <form id="recruitForm" action="https://formspree.io/f/xzdwnple" method="POST" enctype="multipart/form-data" onsubmit="submitForm(event)">
+          <input type="hidden" name="_subject" value="🧑‍💼 Nouvelle candidature — Recrutement Help'me Process"/>
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off"/>
           <div class="form-grid">
             <div class="form-group">
               <label for="prenom">Prénom *</label>
-              <input type="text" id="prenom" placeholder="Votre prénom" required/>
+              <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" required/>
             </div>
             <div class="form-group">
               <label for="nom">Nom *</label>
-              <input type="text" id="nom" placeholder="Votre nom de famille" required/>
+              <input type="text" id="nom" name="nom" placeholder="Votre nom de famille" required/>
             </div>
             <div class="form-group">
               <label for="email">Adresse e-mail *</label>
-              <input type="email" id="email" placeholder="vous@exemple.com" required/>
+              <input type="email" id="email" name="email" placeholder="vous@exemple.com" required/>
             </div>
             <div class="form-group">
               <label for="phone">Téléphone *</label>
-              <input type="tel" id="phone" placeholder="+224 6XX XX XX XX" required/>
+              <input type="tel" id="phone" name="phone" placeholder="+224 6XX XX XX XX" required/>
             </div>
             <div class="form-group form-full">
               <label for="poste">Poste visé *</label>
-              <select id="poste" required>
+              <select id="poste" name="poste" required>
                 <option value="">— Sélectionnez un poste —</option>
                 <option>Téléconseiller(e) Service Client — Inbound</option>
                 <option>Agent Commercial Outbound (Télévente)</option>
@@ -694,7 +697,7 @@
             </div>
             <div class="form-group">
               <label for="experience">Années d'expérience</label>
-              <select id="experience">
+              <select id="experience" name="experience">
                 <option value="">— Sélectionnez —</option>
                 <option>Aucune (premier emploi)</option>
                 <option>Moins d'1 an</option>
@@ -705,7 +708,7 @@
             </div>
             <div class="form-group">
               <label for="disponibilite">Disponibilité</label>
-              <select id="disponibilite">
+              <select id="disponibilite" name="disponibilite">
                 <option value="">— Sélectionnez —</option>
                 <option>Immédiate</option>
                 <option>Sous 2 semaines</option>
@@ -715,12 +718,12 @@
             </div>
             <div class="form-group form-full">
               <label for="motivation">Lettre de motivation *</label>
-              <textarea id="motivation" placeholder="Dites-nous pourquoi vous souhaitez rejoindre Help'me Process et ce que vous apportez à notre équipe..." required></textarea>
+              <textarea id="motivation" name="motivation" placeholder="Dites-nous pourquoi vous souhaitez rejoindre Help'me Process et ce que vous apportez à notre équipe..." required></textarea>
             </div>
             <div class="form-group form-full">
               <label>CV (PDF ou Word) *</label>
               <div class="file-drop" id="fileDrop">
-                <input type="file" id="cvFile" accept=".pdf,.doc,.docx" onchange="handleFile(this)" required/>
+                <input type="file" id="cvFile" name="cv" accept=".pdf,.doc,.docx" onchange="handleFile(this)" required/>
                 <div class="file-drop-icon">📎</div>
                 <p><strong>Cliquez pour choisir</strong> ou glissez votre CV ici</p>
                 <p style="font-size:.78rem;color:var(--gray2);margin-top:4px">PDF, DOC, DOCX — Max 5 Mo</p>
@@ -729,12 +732,17 @@
             </div>
             <div class="form-full">
               <div class="consent-row">
-                <input type="checkbox" id="consent" required/>
+                <input type="checkbox" id="consent" name="consentement" value="oui" required/>
                 <label for="consent">J'accepte que Help'me Process conserve mes données personnelles pour le traitement de ma candidature. Ces informations ne seront pas partagées avec des tiers et seront supprimées après 12 mois si aucune suite n'est donnée.</label>
               </div>
             </div>
             <div class="form-full" style="margin-top:8px">
-              <button type="submit" class="form-submit">Envoyer ma candidature →</button>
+              <button type="submit" class="form-submit" id="recruitSubmit">Envoyer ma candidature →</button>
+            </div>
+            <div class="form-full">
+              <div id="recruitError" style="display:none;margin-top:14px;padding:12px 16px;border-radius:10px;background:#FEF2F2;border:1px solid #FECACA;color:#B91C1C;font-size:.88rem">
+                ⚠️ L'envoi a échoué. Écrivez-nous directement à <a href="mailto:contact@helpmeprocess.com" style="color:#B91C1C;text-decoration:underline">contact@helpmeprocess.com</a> en joignant votre CV.
+              </div>
             </div>
           </div>
         </form>
@@ -827,14 +835,62 @@
   }
 
   // Form submit
-  function submitForm(e){
+  async function submitForm(e){
     e.preventDefault();
+    const form = document.getElementById('recruitForm');
+    const btn = document.getElementById('recruitSubmit');
+    const errBox = document.getElementById('recruitError');
+    errBox.style.display='none';
+
+    // Validation taille CV (max 5 Mo, conforme à l'annonce)
+    const cv = document.getElementById('cvFile').files[0];
+    if(cv && cv.size > 5*1024*1024){
+      errBox.textContent = '⚠️ Votre CV dépasse 5 Mo. Merci de compresser le fichier.';
+      errBox.style.display='block';
+      errBox.scrollIntoView({behavior:'smooth',block:'center'});
+      return;
+    }
+
     const prenom = document.getElementById('prenom').value;
     const nom = document.getElementById('nom').value;
-    document.getElementById('candidatName').textContent = prenom+' '+nom;
-    document.getElementById('appForm').style.display='none';
-    document.getElementById('successMsg').style.display='block';
-    document.getElementById('successMsg').scrollIntoView({behavior:'smooth',block:'center'});
+    btn.disabled = true;
+    btn.textContent = 'Envoi en cours…';
+
+    const post = (data) => fetch(form.action, {
+      method: 'POST', body: data, headers: { 'Accept': 'application/json' }
+    });
+
+    const showSuccess = (cvNote) => {
+      document.getElementById('candidatName').textContent = prenom+' '+nom;
+      if(cvNote){
+        document.getElementById('successMsg').insertAdjacentHTML('beforeend',
+          '<p style="margin-top:14px;padding:10px 14px;border-radius:8px;background:#FEF9C3;color:#854D0E;font-size:.84rem">📎 Dernière étape : envoyez votre CV à <strong>contact@helpmeprocess.com</strong> en précisant votre nom — nous le rattacherons à votre dossier.</p>');
+      }
+      document.getElementById('appForm').style.display='none';
+      document.getElementById('successMsg').style.display='block';
+      document.getElementById('successMsg').scrollIntoView({behavior:'smooth',block:'center'});
+    };
+
+    try {
+      // 1) Tentative avec le CV joint
+      let res = await post(new FormData(form));
+      if(res.ok){ showSuccess(false); return; }
+
+      // 2) Repli sans pièce jointe (ex. plan Formspree sans upload) — les données ne sont jamais perdues
+      const textOnly = new FormData(form);
+      textOnly.delete('cv');
+      res = await post(textOnly);
+      if(res.ok){ showSuccess(true); return; }
+
+      throw new Error('HTTP '+res.status);
+    } catch(err){
+      console.error('Candidature error', err);
+      errBox.innerHTML = '⚠️ L\'envoi a échoué. Écrivez-nous directement à <a href="mailto:contact@helpmeprocess.com" style="color:#B91C1C;text-decoration:underline">contact@helpmeprocess.com</a> en joignant votre CV.';
+      errBox.style.display='block';
+      errBox.scrollIntoView({behavior:'smooth',block:'center'});
+      btn.disabled = false;
+      btn.textContent = 'Envoyer ma candidature →';
+    }
   }
 
   // Intersection observer (fade-in)
