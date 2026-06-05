@@ -2244,10 +2244,11 @@
 <!-- ══════════ HERO ══════════ -->
 <section class="hero" id="accueil">
   <div class="hero-bg">
-    <video autoplay muted loop playsinline preload="none">
-      <source src="video-boostez.mp4" type="video/mp4"/>
+    <video id="heroVid" autoplay muted loop playsinline preload="none" poster="agents-bleu.jpeg">
+      <source data-src="video-boostez.mp4" type="video/mp4"/>
     </video>
   </div>
+  <script>(function(){var v=document.getElementById('heroVid');if(!v)return;if(window.matchMedia('(min-width:768px)').matches){var s=v.querySelector('source');s.src=s.dataset.src;v.load();}})();</script>
 
   <div class="hero-content">
     <!-- LEFT -->
@@ -3124,6 +3125,9 @@
         <div class="roi-table-foot">
           <b>Help'me Process</b> = <b>-76%</b> vs France interne · Français natif · 0h de décalage · Seul BPO couvrant les diasporas africaines en France
         </div>
+        <p style="font-size:.72rem;line-height:1.5;color:rgba(255,255,255,.45);margin-top:10px;max-width:760px">
+          <sup>*</sup> Estimation indicative : coût complet moyen d'un agent interne en France (salaire chargé, poste de travail, encadrement et charges annexes) comparé à une prestation externalisée équivalente chez Help'me Process. Le gain réel varie selon le volume, le périmètre et la durée de l'engagement ; un devis chiffré personnalisé est fourni sous 24 à 48h.
+        </p>
       </div>
 
       <!-- ROI CALCULATOR -->
@@ -3986,7 +3990,7 @@
   </div>
   <div class="ft-bottom">
     <div>
-      <p>Help'me Process © 2026 — Conakry, République de Guinée. Tous droits réservés.</p>
+      <p>Help'me Process © 2026 — Conakry, République de Guinée. Tous droits réservés. <a href="#" onclick="return cookieReopen()" style="color:rgba(255,255,255,.4);text-decoration:underline">Gérer mes cookies</a></p>
       <span class="ft-africa">Guinée · Afrique de l'Ouest · Le monde</span>
     </div>
     <div class="socials">
@@ -4328,6 +4332,10 @@
   function cookieDecline(){
     localStorage.setItem('hp_cookie_consent','denied');
     document.getElementById('cookieBanner').style.display='none';
+  }
+  function cookieReopen(){
+    document.getElementById('cookieBanner').style.display='block';
+    return false;
   }
 </script>
 </body>
