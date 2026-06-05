@@ -2284,11 +2284,11 @@
       <div class="hero-audience" style="margin-top:24px">
         <p style="font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#ff7a1a;margin:0 0 12px">Vous êtes…</p>
         <div style="display:flex;flex-wrap:wrap;gap:14px">
-          <a class="aud-card" href="presentation-entreprises.html" style="flex:1 1 250px;display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:16px;border:1px solid rgba(255,255,255,.28);border-left:4px solid #1eb53a;background:#0a1733;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 10px 28px rgba(0,0,0,.4);text-decoration:none;color:#fff;transition:transform .2s,border-color .2s,box-shadow .2s" onmouseover="this.style.transform='translateY(-3px)';this.style.borderColor='#ff7a1a';this.style.borderLeftColor='#1eb53a';this.style.boxShadow='0 14px 34px rgba(0,0,0,.5)'" onmouseout="this.style.transform='none';this.style.borderColor='rgba(255,255,255,.28)';this.style.borderLeftColor='#1eb53a';this.style.boxShadow='0 10px 28px rgba(0,0,0,.4)'">
+          <a class="aud-card" href="externalisation-guinee.html" style="flex:1 1 250px;display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:16px;border:1px solid rgba(255,255,255,.28);border-left:4px solid #1eb53a;background:#0a1733;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 10px 28px rgba(0,0,0,.4);text-decoration:none;color:#fff;transition:transform .2s,border-color .2s,box-shadow .2s" onmouseover="this.style.transform='translateY(-3px)';this.style.borderColor='#ff7a1a';this.style.borderLeftColor='#1eb53a';this.style.boxShadow='0 14px 34px rgba(0,0,0,.5)'" onmouseout="this.style.transform='none';this.style.borderColor='rgba(255,255,255,.28)';this.style.borderLeftColor='#1eb53a';this.style.boxShadow='0 10px 28px rgba(0,0,0,.4)'">
             <span style="font-size:1.8rem;line-height:1">🇬🇳</span>
             <span><b style="display:block;font-size:1.02rem;color:#fff;margin-bottom:3px">Une entreprise en Guinée</b><span style="font-size:.88rem;color:rgba(255,255,255,.78)">Externalisez votre relation client localement →</span></span>
           </a>
-          <a class="aud-card" href="#kpis" style="flex:1 1 250px;display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:16px;border:1px solid rgba(255,255,255,.28);border-left:4px solid #2f7bff;background:#0a1733;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 10px 28px rgba(0,0,0,.4);text-decoration:none;color:#fff;transition:transform .2s,border-color .2s,box-shadow .2s" onmouseover="this.style.transform='translateY(-3px)';this.style.borderColor='#ff7a1a';this.style.borderLeftColor='#2f7bff';this.style.boxShadow='0 14px 34px rgba(0,0,0,.5)'" onmouseout="this.style.transform='none';this.style.borderColor='rgba(255,255,255,.28)';this.style.borderLeftColor='#2f7bff';this.style.boxShadow='0 10px 28px rgba(0,0,0,.4)'">
+          <a class="aud-card" href="bpo-nearshore-francophone.html" style="flex:1 1 250px;display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:16px;border:1px solid rgba(255,255,255,.28);border-left:4px solid #2f7bff;background:#0a1733;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 10px 28px rgba(0,0,0,.4);text-decoration:none;color:#fff;transition:transform .2s,border-color .2s,box-shadow .2s" onmouseover="this.style.transform='translateY(-3px)';this.style.borderColor='#ff7a1a';this.style.borderLeftColor='#2f7bff';this.style.boxShadow='0 14px 34px rgba(0,0,0,.5)'" onmouseout="this.style.transform='none';this.style.borderColor='rgba(255,255,255,.28)';this.style.borderLeftColor='#2f7bff';this.style.boxShadow='0 10px 28px rgba(0,0,0,.4)'">
             <span style="font-size:1.8rem;line-height:1">🌍</span>
             <span><b style="display:block;font-size:1.02rem;color:#fff;margin-bottom:3px">Une entreprise internationale</b><span style="font-size:.88rem;color:rgba(255,255,255,.78)">Réduisez vos coûts, qualité francophone garantie →</span></span>
           </a>
@@ -3877,13 +3877,36 @@
           method="POST" novalidate>
       <h3>Demande de devis gratuit</h3>
       <p class="form-note">Réponse sous 24h ouvrées · Devis chiffré sous 48h après brief</p>
+      <div class="fg">
+        <label for="cf-profil">Vous êtes *</label>
+        <select id="cf-profil" name="profil" required onchange="var i=document.getElementById('cf-ind');if(i){i.value=this.value==='Entreprise en Guinée'?'+224':(this.value==='Entreprise internationale'?'+33':i.value)}">
+          <option value="">Sélectionnez votre profil</option>
+          <option value="Entreprise en Guinée">🇬🇳 Une entreprise basée en Guinée</option>
+          <option value="Entreprise internationale">🌍 Une entreprise internationale (Europe, Afrique…)</option>
+        </select>
+      </div>
       <div class="fr">
         <div class="fg"><label for="cf-fn">Prénom *</label><input id="cf-fn" name="firstname" type="text" placeholder="Votre prénom" required/></div>
         <div class="fg"><label for="cf-ln">Nom *</label><input id="cf-ln" name="lastname" type="text" placeholder="Votre nom" required/></div>
       </div>
       <div class="fg"><label for="cf-co">Société</label><input id="cf-co" name="company" type="text" placeholder="Nom de votre entreprise"/></div>
       <div class="fg"><label for="cf-em">Email professionnel *</label><input id="cf-em" name="email" type="email" placeholder="vous@entreprise.com" required/></div>
-      <div class="fg"><label for="cf-ph">Téléphone</label><input id="cf-ph" name="phone" type="tel" placeholder="+33 6 XX XX XX XX"/></div>
+      <div class="fg">
+        <label for="cf-ph">Téléphone</label>
+        <div style="display:flex;gap:8px">
+          <select id="cf-ind" name="indicatif" style="flex:0 0 130px">
+            <option value="+224">🇬🇳 +224</option>
+            <option value="+33">🇫🇷 +33</option>
+            <option value="+32">🇧🇪 +32</option>
+            <option value="+41">🇨🇭 +41</option>
+            <option value="+221">🇸🇳 +221</option>
+            <option value="+225">🇨🇮 +225</option>
+            <option value="+1">🇨🇦 +1</option>
+            <option value="">Autre</option>
+          </select>
+          <input id="cf-ph" name="phone" type="tel" placeholder="6XX XX XX XX" style="flex:1"/>
+        </div>
+      </div>
       <div class="fg">
         <label for="cf-sv">Service souhaité *</label>
         <select id="cf-sv" name="service" required>
@@ -3933,9 +3956,9 @@
       <h4>Entreprise</h4>
       <ul>
         <li><a href="#about">Qui sommes-nous ?</a></li>
-        <li><a href="#services">Nos solutions</a></li>
+        <li><a href="externalisation-guinee.html">Entreprises en Guinée</a></li>
+        <li><a href="bpo-nearshore-francophone.html">Entreprises internationales</a></li>
         <li><a href="#pourquoi">Pourquoi nous</a></li>
-        <li><a href="#temoignages">Témoignages</a></li>
       </ul>
     </div>
     <div class="ft-col">
