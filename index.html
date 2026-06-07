@@ -4271,8 +4271,18 @@
       } catch(e){}
 
       if(btn){
-        btn.textContent = '✓ Email envoyé ! Vérifiez votre boîte';
+        btn.textContent = '✓ Merci ! Votre livre blanc est prêt ↓';
         btn.style.background = 'linear-gradient(135deg,#1A8A2E,#2ECC71)';
+        if(!document.getElementById('lmDownload')){
+          const dl = document.createElement('a');
+          dl.id = 'lmDownload';
+          dl.href = '/livre-blanc.pdf';
+          dl.target = '_blank';
+          dl.rel = 'noopener';
+          dl.textContent = '📥 Télécharger le livre blanc (PDF)';
+          dl.style.cssText = 'display:block;margin-top:12px;text-align:center;background:#E85D20;color:#fff;font-weight:700;padding:13px 20px;border-radius:50px;text-decoration:none';
+          btn.parentNode.appendChild(dl);
+        }
       }
     } catch(err){
       console.error('Lead magnet error', err);
