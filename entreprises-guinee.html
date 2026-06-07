@@ -220,8 +220,8 @@
 <section class="block lead" id="diagnostic">
   <div class="wrap">
     <div class="lead-card">
-      <h2>Recevez la vidéo + un diagnostic gratuit</h2>
-      <p class="sub">Laissez vos coordonnées : on vous envoie la vidéo et on vous rappelle pour un diagnostic offert, sans engagement.</p>
+      <h2>Recevez le livre blanc + la vidéo + un diagnostic gratuit</h2>
+      <p class="sub">Laissez vos coordonnées : on vous envoie le <strong>livre blanc 2026 « Externaliser votre relation client »</strong> et la vidéo, et on vous rappelle pour un diagnostic offert, sans engagement.</p>
 
       <div class="form-row">
         <div class="field"><label for="lcPrenom">Prénom *</label><input id="lcPrenom" type="text" placeholder="Votre prénom"/></div>
@@ -233,7 +233,7 @@
       </div>
 
       <div class="form-actions">
-        <button id="localBtn" class="btn btn-orange" onclick="captureLocalLead()">📩 Recevoir la vidéo + être rappelé</button>
+        <button id="localBtn" class="btn btn-orange" onclick="captureLocalLead()">📩 Recevoir le livre blanc + la vidéo</button>
         <div class="or">— ou directement —</div>
         <div class="lead-or-wa">
           <a href="https://wa.me/224628935335?text=Bonjour%20Help'me%20Process%2C%20je%20veux%20un%20diagnostic%20gratuit%20pour%20mon%20entreprise." class="btn btn-wa" target="_blank" rel="noopener">💬 Écrire sur WhatsApp</a>
@@ -287,7 +287,7 @@
       });
       if(!resp.ok) throw new Error('HTTP '+resp.status);
       msg.className = 'form-msg ok';
-      msg.innerHTML = '✓ C\'est reçu ! La vidéo arrive par email et nous vous rappelons très vite.';
+      msg.innerHTML = '✓ C\'est reçu ! Votre livre blanc est prêt 👇 La vidéo arrive aussi par email et nous vous rappelons très vite.<br><a href="/livre-blanc-guinee.pdf" target="_blank" rel="noopener" style="display:inline-block;margin-top:12px;background:#E85D20;color:#fff;font-weight:700;padding:12px 22px;border-radius:50px;text-decoration:none">📕 Télécharger le livre blanc (PDF)</a>';
       btn.textContent = '✓ Demande envoyée';
     }catch(e){
       console.error('local lead error', e);
