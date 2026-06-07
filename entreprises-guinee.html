@@ -95,13 +95,18 @@
     .lead-card{background:#fff;border:1px solid var(--border);border-radius:20px;padding:40px;max-width:760px;margin:0 auto;box-shadow:0 16px 40px rgba(0,44,110,.07)}
     .lead-card h2{font-size:1.7rem;color:var(--navy);text-align:center;margin-bottom:8px}
     .lead-card .sub{text-align:center;color:var(--gray);margin-bottom:26px}
+    .duo-head{max-width:680px;margin:0 auto 28px;text-align:center}
+    .duo-head h2{color:var(--navy);font-size:1.8rem;margin-bottom:8px}
+    .lead-duo{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:1000px;margin:0 auto;align-items:start}
+    .lead-card.duo{max-width:none;margin:0}
+    .duo-ico{font-size:2rem;text-align:center;margin-bottom:6px}
+    @media(max-width:760px){ .lead-duo{grid-template-columns:1fr} }
     .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
     .field{margin-bottom:14px}
     .field label{display:block;font-size:.82rem;font-weight:600;color:var(--text2);margin-bottom:6px}
     .field input{width:100%;padding:13px 16px;border:1.5px solid var(--border);border-radius:10px;font-size:.95rem;font-family:inherit;transition:border .2s;background:#fff}
     .field input:focus{outline:none;border-color:var(--navy)}
     .form-actions{display:flex;flex-direction:column;gap:12px;margin-top:6px}
-    #localBtn{width:100%;justify-content:center;font-size:1rem;padding:16px}
     .or{text-align:center;color:var(--gray);font-size:.82rem;margin:4px 0}
     .lead-or-wa{display:flex;justify-content:center}
     .disclaimer{font-size:.76rem;color:var(--gray);text-align:center;margin-top:16px}
@@ -216,33 +221,44 @@
   </div>
 </section>
 
-<!-- FORMULAIRE -->
+<!-- FORMULAIRES : 2 blocs (livre blanc / diagnostic) -->
 <section class="block lead" id="diagnostic">
   <div class="wrap">
-    <div class="lead-card">
-      <h2>Recevez le livre blanc + la vidéo + un diagnostic gratuit</h2>
-      <p class="sub">Laissez vos coordonnées : on vous envoie le <strong>livre blanc 2026 « Externaliser votre relation client »</strong> et la vidéo, et on vous rappelle pour un diagnostic offert, sans engagement.</p>
+    <div class="duo-head">
+      <h2>Deux façons d'avancer</h2>
+      <p class="sub">Choisissez ce qui vous correspond — sans engagement.</p>
+    </div>
+    <div class="lead-duo">
 
-      <div class="form-row">
-        <div class="field"><label for="lcPrenom">Prénom *</label><input id="lcPrenom" type="text" placeholder="Votre prénom"/></div>
-        <div class="field"><label for="lcEntreprise">Entreprise</label><input id="lcEntreprise" type="text" placeholder="Nom de votre entreprise"/></div>
-      </div>
-      <div class="form-row">
-        <div class="field"><label for="lcEmail">Email *</label><input id="lcEmail" type="email" placeholder="vous@entreprise.com"/></div>
-        <div class="field"><label for="lcTel">Téléphone / WhatsApp *</label><input id="lcTel" type="tel" placeholder="6XX XX XX XX"/></div>
+      <!-- BLOC 1 : LIVRE BLANC (léger) -->
+      <div class="lead-card duo">
+        <div class="duo-ico">📕</div>
+        <h2>Recevez le livre blanc 2026</h2>
+        <p class="sub">« Externaliser votre relation client en Guinée » — le guide pratique, en téléchargement immédiat.</p>
+        <div class="field"><label for="lbPrenom">Prénom *</label><input id="lbPrenom" type="text" placeholder="Votre prénom"/></div>
+        <div class="field"><label for="lbEmail">Email *</label><input id="lbEmail" type="email" placeholder="vous@entreprise.com"/></div>
+        <button id="lbBtn" class="btn btn-orange" style="width:100%;justify-content:center" onclick="captureGuineeLB()">📕 Recevoir le livre blanc</button>
+        <div id="lbMsg" class="form-msg"></div>
       </div>
 
-      <div class="form-actions">
-        <button id="localBtn" class="btn btn-orange" onclick="captureLocalLead()">📩 Recevoir le livre blanc + la vidéo</button>
+      <!-- BLOC 2 : DIAGNOSTIC (chaud) -->
+      <div class="lead-card duo">
+        <div class="duo-ico">🎯</div>
+        <h2>Diagnostic gratuit</h2>
+        <p class="sub">On vous rappelle pour analyser votre relation client et vous proposer des pistes concrètes.</p>
+        <div class="field"><label for="dgPrenom">Prénom *</label><input id="dgPrenom" type="text" placeholder="Votre prénom"/></div>
+        <div class="field"><label for="dgTel">Téléphone / WhatsApp *</label><input id="dgTel" type="tel" placeholder="6XX XX XX XX"/></div>
+        <div class="field"><label for="dgEmail">Email *</label><input id="dgEmail" type="email" placeholder="vous@entreprise.com"/></div>
+        <button id="dgBtn" class="btn btn-orange" style="width:100%;justify-content:center" onclick="captureGuineeDiag()">🎯 Être rappelé pour mon diagnostic</button>
         <div class="or">— ou directement —</div>
         <div class="lead-or-wa">
           <a href="https://wa.me/224628935335?text=Bonjour%20Help'me%20Process%2C%20je%20veux%20un%20diagnostic%20gratuit%20pour%20mon%20entreprise." class="btn btn-wa" target="_blank" rel="noopener">💬 Écrire sur WhatsApp</a>
         </div>
+        <div id="dgMsg" class="form-msg"></div>
       </div>
 
-      <div id="lcMsg" class="form-msg"></div>
-      <p class="disclaimer">🔒 Vos données restent confidentielles (RGPD). Pas de spam — désinscription à tout moment.</p>
     </div>
+    <p class="disclaimer" style="text-align:center;margin-top:18px">🔒 Vos données restent confidentielles (RGPD). Pas de spam — désinscription à tout moment.</p>
   </div>
 </section>
 
@@ -262,38 +278,57 @@
 <a class="wa-float" href="https://wa.me/224628935335?text=Bonjour%20Help'me%20Process%2C%20je%20veux%20en%20savoir%20plus." target="_blank" rel="noopener">💬 <span>WhatsApp</span></a>
 
 <script>
-  window.captureLocalLead = async function(){
-    var prenom = (document.getElementById('lcPrenom').value||'').trim();
-    var email  = (document.getElementById('lcEmail').value||'').trim();
-    var tel    = (document.getElementById('lcTel').value||'').trim();
-    var company= (document.getElementById('lcEntreprise').value||'').trim();
-    var msg = document.getElementById('lcMsg');
-    var btn = document.getElementById('localBtn');
-    msg.className = 'form-msg';
+  async function postLead(payload){
+    var resp = await fetch('/api/lead-magnet', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(payload)
+    });
+    if(!resp.ok) throw new Error('HTTP '+resp.status);
+    return resp;
+  }
 
-    if(!email || email.indexOf('@')===-1 || !tel || !prenom){
-      msg.className = 'form-msg err';
-      msg.textContent = 'Merci de renseigner votre prénom, un email valide et votre téléphone.';
-      return;
+  // BLOC 1 — Livre blanc (léger : prénom + email)
+  window.captureGuineeLB = async function(){
+    var prenom=(document.getElementById('lbPrenom').value||'').trim();
+    var email =(document.getElementById('lbEmail').value||'').trim();
+    var msg=document.getElementById('lbMsg'); var btn=document.getElementById('lbBtn');
+    msg.className='form-msg';
+    if(!prenom || !email || email.indexOf('@')===-1){
+      msg.className='form-msg err'; msg.textContent='Merci de renseigner votre prénom et un email valide.'; return;
     }
-    var original = btn.textContent;
-    btn.disabled = true; btn.textContent = '⏳ Envoi en cours…';
-
+    var o=btn.textContent; btn.disabled=true; btn.textContent='⏳ Envoi…';
     try{
-      var resp = await fetch('/api/lead-magnet', {
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({ segment:'local', prenom:prenom, email:email, telephone:tel, company:company })
-      });
-      if(!resp.ok) throw new Error('HTTP '+resp.status);
-      msg.className = 'form-msg ok';
-      msg.innerHTML = '✓ C\'est reçu ! Votre livre blanc est prêt 👇 La vidéo arrive aussi par email et nous vous rappelons très vite.<br><a href="/livre-blanc-guinee.pdf" target="_blank" rel="noopener" style="display:inline-block;margin-top:12px;background:#E85D20;color:#fff;font-weight:700;padding:12px 22px;border-radius:50px;text-decoration:none">📕 Télécharger le livre blanc (PDF)</a>';
-      btn.textContent = '✓ Demande envoyée';
+      await postLead({ segment:'local', prenom:prenom, email:email });
+      msg.className='form-msg ok';
+      msg.innerHTML='✓ Votre livre blanc est prêt 👇<br><a href="/livre-blanc-guinee.pdf" target="_blank" rel="noopener" style="display:inline-block;margin-top:12px;background:#E85D20;color:#fff;font-weight:700;padding:12px 22px;border-radius:50px;text-decoration:none">📕 Télécharger le livre blanc (PDF)</a>';
+      btn.textContent='✓ Envoyé';
     }catch(e){
-      console.error('local lead error', e);
-      btn.disabled = false; btn.textContent = original;
-      msg.className = 'form-msg err';
-      msg.innerHTML = 'Une erreur est survenue. Écrivez-nous sur <a href="https://wa.me/224628935335" target="_blank" rel="noopener">WhatsApp</a>.';
+      console.error('LB error', e); btn.disabled=false; btn.textContent=o;
+      msg.className='form-msg err';
+      msg.innerHTML='Une erreur est survenue. Réessayez ou écrivez-nous sur <a href="https://wa.me/224628935335" target="_blank" rel="noopener">WhatsApp</a>.';
+    }
+  };
+
+  // BLOC 2 — Diagnostic (chaud : prénom + téléphone + email)
+  window.captureGuineeDiag = async function(){
+    var prenom=(document.getElementById('dgPrenom').value||'').trim();
+    var tel   =(document.getElementById('dgTel').value||'').trim();
+    var email =(document.getElementById('dgEmail').value||'').trim();
+    var msg=document.getElementById('dgMsg'); var btn=document.getElementById('dgBtn');
+    msg.className='form-msg';
+    if(!prenom || !tel || !email || email.indexOf('@')===-1){
+      msg.className='form-msg err'; msg.textContent='Merci de renseigner prénom, téléphone et un email valide.'; return;
+    }
+    var o=btn.textContent; btn.disabled=true; btn.textContent='⏳ Envoi…';
+    try{
+      await postLead({ segment:'local', prenom:prenom, email:email, telephone:tel });
+      msg.className='form-msg ok';
+      msg.innerHTML='✓ C\'est noté ! On vous rappelle très vite pour votre diagnostic gratuit.';
+      btn.textContent='✓ Demande envoyée';
+    }catch(e){
+      console.error('Diag error', e); btn.disabled=false; btn.textContent=o;
+      msg.className='form-msg err';
+      msg.innerHTML='Une erreur est survenue. Écrivez-nous sur <a href="https://wa.me/224628935335" target="_blank" rel="noopener">WhatsApp</a>.';
     }
   };
 </script>
