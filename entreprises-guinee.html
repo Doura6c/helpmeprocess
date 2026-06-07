@@ -71,6 +71,27 @@
     .btn-yt{display:inline-flex;align-items:center;gap:8px;background:#FF0000;color:#fff;font-weight:600;font-size:.9rem;padding:11px 22px;border-radius:50px;text-decoration:none;transition:all .2s}
     .btn-yt:hover{background:#cc0000;transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,0,0,.3)}
 
+    /* LIVRE BLANC — section mise en avant (style international) */
+    .lbsec{background:linear-gradient(135deg,#001A4A,#002C6E 60%,#003A8C);color:#fff;padding:64px 0}
+    .lbsec-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;max-width:1100px;margin:0 auto;padding:0 24px}
+    .lbsec .eyebrow{background:rgba(232,93,32,.18);color:#FF6D35}
+    .lbsec h2{color:#fff;font-size:2rem;line-height:1.15;margin-bottom:14px}
+    .lbsec h2 span{color:#FF6D35}
+    .lbsec p.intro{color:rgba(255,255,255,.85);margin-bottom:18px}
+    .lbsec ul{list-style:none;margin:0}
+    .lbsec li{padding-left:26px;position:relative;margin-bottom:10px;color:rgba(255,255,255,.92);font-size:.96rem}
+    .lbsec li::before{content:"✓";position:absolute;left:0;color:#FF6D35;font-weight:800}
+    .lbsec-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:18px;padding:30px}
+    .lbsec-card .head{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+    .lbsec-card .head .ico{font-size:1.8rem}
+    .lbsec-card .head b{display:block;color:#fff;font-size:1.05rem}
+    .lbsec-card .head small{color:rgba(255,255,255,.7);font-size:.8rem}
+    .lbsec-card .field label{color:rgba(255,255,255,.85)}
+    .lbsec-card .field input{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.22);color:#fff}
+    .lbsec-card .field input::placeholder{color:rgba(255,255,255,.5)}
+    .lbsec-card .disc{font-size:.74rem;color:rgba(255,255,255,.6);text-align:center;margin-top:12px}
+    @media(max-width:760px){ .lbsec-grid{grid-template-columns:1fr;gap:24px} .lbsec h2{font-size:1.6rem} }
+
     /* SECTIONS */
     section.block{padding:72px 0}
     .sec-head{text-align:center;max-width:680px;margin:0 auto 44px}
@@ -150,7 +171,7 @@
       <h1>Vos clients méritent une <span>réponse pro</span>, à chaque appel.</h1>
       <p class="hero-lead">Standard téléphonique, service client, prospection, WhatsApp : confiez votre relation client à une équipe dédiée à Conakry — sans recruter ni gérer en interne.</p>
       <div class="hero-cta">
-        <a href="#diagnostic" class="btn btn-orange">🎁 Diagnostic gratuit</a>
+        <a href="#livreblanc-local" class="btn btn-orange">📕 Recevoir le livre blanc</a>
         <a id="waHero" href="https://wa.me/224628935335?text=Bonjour%20Help'me%20Process%2C%20je%20dirige%20une%20entreprise%20en%20Guin%C3%A9e%20et%20je%20veux%20en%20savoir%20plus%20sur%20vos%20services." class="btn btn-wa" target="_blank" rel="noopener">💬 Parler sur WhatsApp</a>
       </div>
       <div class="hero-trust">
@@ -173,6 +194,34 @@
     </div>
   </div>
 </header>
+
+<!-- LIVRE BLANC — mise en avant (dès le haut) -->
+<section class="lbsec" id="livreblanc-local">
+  <div class="lbsec-grid">
+    <div>
+      <span class="eyebrow">Ressource gratuite</span>
+      <h2>Le livre blanc 2026 :<br><span>Externaliser votre relation client en Guinée</span></h2>
+      <p class="intro">Le guide pratique pour les entreprises guinéennes qui veulent professionnaliser leur service client — sans recruter ni gérer en interne.</p>
+      <ul>
+        <li>Pourquoi la relation client décide de votre croissance</li>
+        <li>Internaliser ou externaliser : le bon calcul</li>
+        <li>Parler la langue de vos clients (Français, Soussou, Malinké, Poular, Guerzé…)</li>
+        <li>La Guinée, nouvelle destination de l'offshoring francophone</li>
+      </ul>
+    </div>
+    <div class="lbsec-card">
+      <div class="head">
+        <div class="ico">📕</div>
+        <div><b>Recevez le livre blanc</b><small>PDF gratuit · Téléchargement immédiat</small></div>
+      </div>
+      <div class="field"><label for="lbPrenom">Prénom *</label><input id="lbPrenom" type="text" placeholder="Votre prénom"/></div>
+      <div class="field"><label for="lbEmail">Email *</label><input id="lbEmail" type="email" placeholder="vous@entreprise.com"/></div>
+      <button id="lbBtn" class="btn btn-orange" style="width:100%;justify-content:center" onclick="captureGuineeLB()">📕 Recevoir le livre blanc</button>
+      <div id="lbMsg" class="form-msg"></div>
+      <p class="disc">🔒 RGPD · Pas de spam · Désinscription à tout moment.</p>
+    </div>
+  </div>
+</section>
 
 <!-- BANDEAU LANGUES -->
 <section class="langband">
@@ -221,44 +270,26 @@
   </div>
 </section>
 
-<!-- FORMULAIRES : 2 blocs (livre blanc / diagnostic) -->
+<!-- DIAGNOSTIC (un seul, en bas) -->
 <section class="block lead" id="diagnostic">
   <div class="wrap">
-    <div class="duo-head">
-      <h2>Deux façons d'avancer</h2>
-      <p class="sub">Choisissez ce qui vous correspond — sans engagement.</p>
-    </div>
-    <div class="lead-duo">
-
-      <!-- BLOC 1 : LIVRE BLANC (léger) -->
-      <div class="lead-card duo">
-        <div class="duo-ico">📕</div>
-        <h2>Recevez le livre blanc 2026</h2>
-        <p class="sub">« Externaliser votre relation client en Guinée » — le guide pratique, en téléchargement immédiat.</p>
-        <div class="field"><label for="lbPrenom">Prénom *</label><input id="lbPrenom" type="text" placeholder="Votre prénom"/></div>
-        <div class="field"><label for="lbEmail">Email *</label><input id="lbEmail" type="email" placeholder="vous@entreprise.com"/></div>
-        <button id="lbBtn" class="btn btn-orange" style="width:100%;justify-content:center" onclick="captureGuineeLB()">📕 Recevoir le livre blanc</button>
-        <div id="lbMsg" class="form-msg"></div>
-      </div>
-
-      <!-- BLOC 2 : DIAGNOSTIC (chaud) -->
-      <div class="lead-card duo">
-        <div class="duo-ico">🎯</div>
-        <h2>Diagnostic gratuit</h2>
-        <p class="sub">On vous rappelle pour analyser votre relation client et vous proposer des pistes concrètes.</p>
+    <div class="lead-card">
+      <div class="duo-ico">🎯</div>
+      <h2>Diagnostic gratuit</h2>
+      <p class="sub">On vous rappelle pour analyser votre relation client et vous proposer des pistes concrètes — sans engagement.</p>
+      <div class="form-row">
         <div class="field"><label for="dgPrenom">Prénom *</label><input id="dgPrenom" type="text" placeholder="Votre prénom"/></div>
         <div class="field"><label for="dgTel">Téléphone / WhatsApp *</label><input id="dgTel" type="tel" placeholder="6XX XX XX XX"/></div>
-        <div class="field"><label for="dgEmail">Email *</label><input id="dgEmail" type="email" placeholder="vous@entreprise.com"/></div>
-        <button id="dgBtn" class="btn btn-orange" style="width:100%;justify-content:center" onclick="captureGuineeDiag()">🎯 Être rappelé pour mon diagnostic</button>
-        <div class="or">— ou directement —</div>
-        <div class="lead-or-wa">
-          <a href="https://wa.me/224628935335?text=Bonjour%20Help'me%20Process%2C%20je%20veux%20un%20diagnostic%20gratuit%20pour%20mon%20entreprise." class="btn btn-wa" target="_blank" rel="noopener">💬 Écrire sur WhatsApp</a>
-        </div>
-        <div id="dgMsg" class="form-msg"></div>
       </div>
-
+      <div class="field"><label for="dgEmail">Email *</label><input id="dgEmail" type="email" placeholder="vous@entreprise.com"/></div>
+      <button id="dgBtn" class="btn btn-orange" style="width:100%;justify-content:center" onclick="captureGuineeDiag()">🎯 Être rappelé pour mon diagnostic</button>
+      <div class="or">— ou directement —</div>
+      <div class="lead-or-wa">
+        <a href="https://wa.me/224628935335?text=Bonjour%20Help'me%20Process%2C%20je%20veux%20un%20diagnostic%20gratuit%20pour%20mon%20entreprise." class="btn btn-wa" target="_blank" rel="noopener">💬 Écrire sur WhatsApp</a>
+      </div>
+      <div id="dgMsg" class="form-msg"></div>
+      <p class="disclaimer" style="text-align:center;margin-top:16px">🔒 Vos données restent confidentielles (RGPD). Pas de spam.</p>
     </div>
-    <p class="disclaimer" style="text-align:center;margin-top:18px">🔒 Vos données restent confidentielles (RGPD). Pas de spam — désinscription à tout moment.</p>
   </div>
 </section>
 
