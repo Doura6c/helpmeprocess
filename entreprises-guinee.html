@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; media-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"/>
+
+  <title>Externalisez votre relation client à Conakry — Help'me Process</title>
+  <meta name="description" content="Entreprises guinéennes : confiez votre standard téléphonique, votre SAV, votre prospection et votre WhatsApp à une équipe pro à Conakry. Diagnostic gratuit + vidéo."/>
+  <link rel="canonical" href="https://helpme-process.vercel.app/entreprises-guinee"/>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="Confiez votre relation client à des pros — à Conakry"/>
+  <meta property="og:description" content="Standard, SAV, prospection, WhatsApp : une équipe dédiée pour votre entreprise en Guinée. Recevez la vidéo + un diagnostic gratuit."/>
+  <meta property="og:image" content="https://helpme-process.vercel.app/team-headsets.jpeg"/>
+  <meta property="og:url" content="https://helpme-process.vercel.app/entreprises-guinee"/>
+
+  <link rel="icon" href="logo.jpeg"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root{
+      --navy:#002C6E; --navy2:#003A8C; --navy3:#001A4A;
+      --orange:#E85D20; --orange2:#FF6D35;
+      --light:#F5F7FA; --border:#E5E7EB;
+      --text:#1F2937; --text2:#374151; --gray:#6B7280;
+      --green:#1A8A2E; --green2:#25D366;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',system-ui,sans-serif;color:var(--text);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    a{color:inherit}
+    .wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+    .eyebrow{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--orange);background:rgba(232,93,32,.1);padding:6px 14px;border-radius:50px;margin-bottom:18px}
+    .btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:.95rem;padding:14px 26px;border-radius:50px;text-decoration:none;border:none;cursor:pointer;transition:all .2s;white-space:nowrap}
+    .btn-orange{background:var(--orange);color:#fff}
+    .btn-orange:hover{background:var(--orange2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(232,93,32,.32)}
+    .btn-wa{background:var(--green2);color:#fff}
+    .btn-wa:hover{background:#1ebe57;transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,.32)}
+    .btn-ghost{background:#fff;color:var(--navy);border:1.5px solid var(--border)}
+    .btn-ghost:hover{border-color:var(--navy);background:var(--light)}
+
+    /* HERO */
+    .hero{position:relative;padding:128px 0 64px;background:linear-gradient(135deg,#001A4A,#002C6E 60%,#003A8C);color:#fff;overflow:hidden}
+    .hero::after{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;background:radial-gradient(circle,rgba(232,93,32,.25),transparent 70%);border-radius:50%}
+    .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;position:relative;z-index:1}
+    .hero h1{font-size:2.7rem;line-height:1.1;font-weight:800;letter-spacing:-.02em;margin-bottom:18px}
+    .hero h1 span{color:var(--orange2)}
+    .hero p.lead{font-size:1.1rem;color:rgba(255,255,255,.85);margin-bottom:28px;max-width:560px}
+    .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:26px}
+    .hero-trust{display:flex;gap:26px;flex-wrap:wrap}
+    .hero-trust div{display:flex;flex-direction:column}
+    .hero-trust strong{font-size:1.4rem;font-weight:800;color:#fff}
+    .hero-trust span{font-size:.78rem;color:rgba(255,255,255,.7)}
+
+    /* VIDEO */
+    .video-frame{background:#000;border-radius:18px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.12)}
+    .video-frame video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#000}
+    .video-cap{margin-top:12px;font-size:.82rem;color:rgba(255,255,255,.7);text-align:center}
+
+    /* SECTIONS */
+    section.block{padding:72px 0}
+    .sec-head{text-align:center;max-width:680px;margin:0 auto 44px}
+    .sec-head h2{font-size:2rem;font-weight:800;color:var(--navy);letter-spacing:-.02em;margin-bottom:12px}
+    .sec-head p{color:var(--gray);font-size:1.02rem}
+
+    .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+    .card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:26px 22px;transition:all .2s}
+    .card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,44,110,.1);border-color:transparent}
+    .card .ico{font-size:1.8rem;margin-bottom:14px}
+    .card h3{font-size:1.05rem;color:var(--navy);margin-bottom:8px}
+    .card p{font-size:.9rem;color:var(--text2)}
+
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;counter-reset:s}
+    .step{position:relative;padding-left:8px}
+    .step::before{counter-increment:s;content:counter(s);display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:12px;background:var(--orange);color:#fff;font-weight:800;font-size:1.1rem;margin-bottom:14px}
+    .step h3{font-size:1.05rem;color:var(--navy);margin-bottom:6px}
+    .step p{font-size:.92rem;color:var(--text2)}
+
+    /* FORM */
+    .lead{background:var(--light)}
+    .lead-card{background:#fff;border:1px solid var(--border);border-radius:20px;padding:40px;max-width:760px;margin:0 auto;box-shadow:0 16px 40px rgba(0,44,110,.07)}
+    .lead-card h2{font-size:1.7rem;color:var(--navy);text-align:center;margin-bottom:8px}
+    .lead-card .sub{text-align:center;color:var(--gray);margin-bottom:26px}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .field{margin-bottom:14px}
+    .field label{display:block;font-size:.82rem;font-weight:600;color:var(--text2);margin-bottom:6px}
+    .field input{width:100%;padding:13px 16px;border:1.5px solid var(--border);border-radius:10px;font-size:.95rem;font-family:inherit;transition:border .2s;background:#fff}
+    .field input:focus{outline:none;border-color:var(--navy)}
+    .form-actions{display:flex;flex-direction:column;gap:12px;margin-top:6px}
+    #localBtn{width:100%;justify-content:center;font-size:1rem;padding:16px}
+    .or{text-align:center;color:var(--gray);font-size:.82rem;margin:4px 0}
+    .lead-or-wa{display:flex;justify-content:center}
+    .disclaimer{font-size:.76rem;color:var(--gray);text-align:center;margin-top:16px}
+    .form-msg{display:none;text-align:center;padding:16px;border-radius:10px;margin-top:14px;font-weight:600}
+    .form-msg.ok{display:block;background:rgba(26,138,46,.1);color:var(--green)}
+    .form-msg.err{display:block;background:rgba(232,93,32,.1);color:var(--orange)}
+
+    /* FOOTER */
+    footer{background:var(--navy3);color:rgba(255,255,255,.8);padding:40px 0;text-align:center;font-size:.9rem}
+    footer a{color:var(--orange2);text-decoration:none;font-weight:600}
+    footer .ft-links{margin-top:10px;display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+
+    /* WhatsApp flottant */
+    .wa-float{position:fixed;right:20px;bottom:20px;z-index:1001;display:flex;align-items:center;gap:10px;background:var(--green2);color:#fff;padding:13px 20px;border-radius:50px;text-decoration:none;font-weight:700;box-shadow:0 8px 24px rgba(37,211,102,.4);transition:transform .2s}
+    .wa-float:hover{transform:scale(1.05)}
+
+    @media(max-width:880px){
+      .hero-grid{grid-template-columns:1fr;gap:32px}
+      .hero h1{font-size:2.1rem}
+      .cards{grid-template-columns:1fr 1fr}
+      .steps{grid-template-columns:1fr}
+    }
+    @media(max-width:560px){
+      .hero{padding:104px 0 48px}
+      .hero h1{font-size:1.8rem}
+      .cards{grid-template-columns:1fr}
+      .form-row{grid-template-columns:1fr}
+      .lead-card{padding:28px 20px}
+      .wa-float span{display:none}
+    }
+  </style>
+  <link rel="stylesheet" href="/nav.css"/>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Pour les entreprises guinéennes</span>
+      <h1>Vos clients méritent une <span>réponse pro</span>, à chaque appel.</h1>
+      <p class="lead">Standard téléphonique, service client, prospection, WhatsApp : confiez votre relation client à une équipe dédiée à Conakry — sans recruter ni gérer en interne.</p>
+      <div class="hero-cta">
+        <a href="#diagnostic" class="btn btn-orange">🎁 Diagnostic gratuit</a>
+        <a id="waHero" href="https://wa.me/224628935335?text=Bonjour%20Help'me%20Process%2C%20je%20dirige%20une%20entreprise%20en%20Guin%C3%A9e%20et%20je%20veux%20en%20savoir%20plus%20sur%20vos%20services." class="btn btn-wa" target="_blank" rel="noopener">💬 Parler sur WhatsApp</a>
+      </div>
+      <div class="hero-trust">
+        <div><strong>CSAT ≥ 88%</strong><span>Satisfaction client</span></div>
+        <div><strong>FCR ≥ 75%</strong><span>Résolu au 1ᵉʳ contact</span></div>
+        <div><strong>Français natif</strong><span>Équipe formée</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="video-frame">
+        <video controls preload="metadata" poster="team-headsets.jpeg">
+          <source src="video-boostez.mp4" type="video/mp4"/>
+          Votre navigateur ne lit pas la vidéo.
+        </video>
+      </div>
+      <p class="video-cap">🎬 « Boostez votre entreprise » — 2 min pour comprendre</p>
+    </div>
+  </div>
+</header>
+
+<!-- SERVICES -->
+<section class="block">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Tout ce qu'une équipe interne ferait — sans les contraintes</h2>
+      <p>Une équipe formée prend le relais sur votre relation client, aux heures que vous choisissez.</p>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="ico">📞</div><h3>Standard téléphonique</h3><p>Plus aucun appel manqué. Vos clients sont accueillis et orientés professionnellement.</p></div>
+      <div class="card"><div class="ico">🎧</div><h3>Service client & SAV</h3><p>Réclamations, suivi de commandes, assistance : un support fiable qui fidélise.</p></div>
+      <div class="card"><div class="ico">📈</div><h3>Prospection & télévente</h3><p>On appelle vos prospects, on qualifie et on prend les rendez-vous pour vous.</p></div>
+      <div class="card"><div class="ico">💬</div><h3>WhatsApp & réseaux</h3><p>Réponses rapides sur WhatsApp et vos pages — là où sont vraiment vos clients.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ÉTAPES -->
+<section class="block" style="background:var(--light)">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Simple à mettre en place</h2>
+      <p>En quelques jours, votre relation client tourne — vous, vous gérez votre métier.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><h3>1. On échange</h3><p>Un appel court pour comprendre votre activité, vos volumes et vos besoins.</p></div>
+      <div class="step"><h3>2. On installe</h3><p>On forme une équipe à votre image (scripts, ton, process) et on connecte vos canaux.</p></div>
+      <div class="step"><h3>3. On gère</h3><p>Vos appels et messages sont traités. Vous recevez des rapports clairs chaque semaine.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMULAIRE -->
+<section class="block lead" id="diagnostic">
+  <div class="wrap">
+    <div class="lead-card">
+      <h2>Recevez la vidéo + un diagnostic gratuit</h2>
+      <p class="sub">Laissez vos coordonnées : on vous envoie la vidéo et on vous rappelle pour un diagnostic offert, sans engagement.</p>
+
+      <div class="form-row">
+        <div class="field"><label for="lcPrenom">Prénom *</label><input id="lcPrenom" type="text" placeholder="Votre prénom"/></div>
+        <div class="field"><label for="lcEntreprise">Entreprise</label><input id="lcEntreprise" type="text" placeholder="Nom de votre entreprise"/></div>
+      </div>
+      <div class="form-row">
+        <div class="field"><label for="lcEmail">Email *</label><input id="lcEmail" type="email" placeholder="vous@entreprise.com"/></div>
+        <div class="field"><label for="lcTel">Téléphone / WhatsApp *</label><input id="lcTel" type="tel" placeholder="6XX XX XX XX"/></div>
+      </div>
+
+      <div class="form-actions">
+        <button id="localBtn" class="btn btn-orange" onclick="captureLocalLead()">📩 Recevoir la vidéo + être rappelé</button>
+        <div class="or">— ou directement —</div>
+        <div class="lead-or-wa">
+          <a href="https://wa.me/224628935335?text=Bonjour%20Help'me%20Process%2C%20je%20veux%20un%20diagnostic%20gratuit%20pour%20mon%20entreprise." class="btn btn-wa" target="_blank" rel="noopener">💬 Écrire sur WhatsApp</a>
+        </div>
+      </div>
+
+      <div id="lcMsg" class="form-msg"></div>
+      <p class="disclaimer">🔒 Vos données restent confidentielles (RGPD). Pas de spam — désinscription à tout moment.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <strong>Help'me Process</strong> — Centre de relation client, Conakry (Guinée)<br/>
+    📞 +224 628 93 53 35 · ✉️ contact@helpmeprocess.com
+    <div class="ft-links">
+      <a href="index.html">Accueil</a>
+      <a href="presentation-entreprises.html">Nos services</a>
+      <a href="mentions-legales.html">Mentions légales</a>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/224628935335?text=Bonjour%20Help'me%20Process%2C%20je%20veux%20en%20savoir%20plus." target="_blank" rel="noopener">💬 <span>WhatsApp</span></a>
+
+<script>
+  window.captureLocalLead = async function(){
+    var prenom = (document.getElementById('lcPrenom').value||'').trim();
+    var email  = (document.getElementById('lcEmail').value||'').trim();
+    var tel    = (document.getElementById('lcTel').value||'').trim();
+    var company= (document.getElementById('lcEntreprise').value||'').trim();
+    var msg = document.getElementById('lcMsg');
+    var btn = document.getElementById('localBtn');
+    msg.className = 'form-msg';
+
+    if(!email || email.indexOf('@')===-1 || !tel || !prenom){
+      msg.className = 'form-msg err';
+      msg.textContent = 'Merci de renseigner votre prénom, un email valide et votre téléphone.';
+      return;
+    }
+    var original = btn.textContent;
+    btn.disabled = true; btn.textContent = '⏳ Envoi en cours…';
+
+    try{
+      var resp = await fetch('/api/lead-magnet', {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({ segment:'local', prenom:prenom, email:email, telephone:tel, company:company })
+      });
+      if(!resp.ok) throw new Error('HTTP '+resp.status);
+      msg.className = 'form-msg ok';
+      msg.innerHTML = '✓ C\'est reçu ! La vidéo arrive par email et nous vous rappelons très vite.';
+      btn.textContent = '✓ Demande envoyée';
+    }catch(e){
+      console.error('local lead error', e);
+      btn.disabled = false; btn.textContent = original;
+      msg.className = 'form-msg err';
+      msg.innerHTML = 'Une erreur est survenue. Écrivez-nous sur <a href="https://wa.me/224628935335" target="_blank" rel="noopener">WhatsApp</a>.';
+    }
+  };
+</script>
+<script src="/nav.js" defer></script>
+</body>
+</html>
