@@ -20,8 +20,7 @@
     { href: home + "#fondateur",  label: "Co-fondateur" },
     { href: "actualites.html",                label: "Actualités",   match: "actualites.html" },
     { href: "recrutement.html",               label: "Recrutement",  match: "recrutement.html" },
-    { href: "presentation-entreprises.html",  label: "Entreprises",  match: "presentation-entreprises.html" },
-    { href: "entreprises-guinee.html",         label: "🇬🇳 Offre Guinée", match: "entreprises-guinee.html" }
+    { href: "presentation-entreprises.html",  label: "Entreprises",  match: "presentation-entreprises.html" }
   ];
 
   function isActive(l) { return l.match && page === l.match; }
