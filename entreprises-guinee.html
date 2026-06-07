@@ -60,6 +60,13 @@
     .video-frame{background:#000;border-radius:18px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.12)}
     .video-frame video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#000}
     .video-cap{margin-top:12px;font-size:.82rem;color:rgba(255,255,255,.7);text-align:center}
+    /* BANDEAU LANGUES */
+    .langband{background:linear-gradient(135deg,#FFF4EE,#F5F7FA);padding:52px 0;text-align:center;border-bottom:1px solid var(--border)}
+    .langband h2{font-size:1.55rem;color:var(--navy);margin-bottom:10px;letter-spacing:-.01em}
+    .langband p{color:var(--gray);max-width:640px;margin:0 auto 22px;font-size:1rem}
+    .lang-chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+    .lang-chips span{background:var(--navy);color:#fff;font-weight:600;font-size:.88rem;padding:9px 18px;border-radius:50px}
+    .lang-chips span.more{background:var(--orange)}
     .video-yt{text-align:center;margin-top:14px}
     .btn-yt{display:inline-flex;align-items:center;gap:8px;background:#FF0000;color:#fff;font-weight:600;font-size:.9rem;padding:11px 22px;border-radius:50px;text-decoration:none;transition:all .2s}
     .btn-yt:hover{background:#cc0000;transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,0,0,.3)}
@@ -144,7 +151,7 @@
       <div class="hero-trust">
         <div><strong>CSAT ≥ 88%</strong><span>Satisfaction client</span></div>
         <div><strong>FCR ≥ 75%</strong><span>Résolu au 1ᵉʳ contact</span></div>
-        <div><strong>Français natif</strong><span>Équipe formée</span></div>
+        <div><strong>Multilingue</strong><span>Français, Soussou, Malinké…</span></div>
       </div>
     </div>
     <div>
@@ -161,6 +168,22 @@
     </div>
   </div>
 </header>
+
+<!-- BANDEAU LANGUES -->
+<section class="langband">
+  <div class="wrap">
+    <h2>🗣️ Nous parlons la langue de vos clients</h2>
+    <p>C'est la base d'une vraie relation client : répondre à chacun dans <strong>sa</strong> langue. Vos clients se sentent compris, écoutés — et restent fidèles.</p>
+    <div class="lang-chips">
+      <span>Français</span>
+      <span>Soussou</span>
+      <span>Malinké</span>
+      <span>Poular</span>
+      <span>Guerzé</span>
+      <span class="more">…et plus</span>
+    </div>
+  </div>
+</section>
 
 <!-- SERVICES -->
 <section class="block">
