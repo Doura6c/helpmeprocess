@@ -1,0 +1,115 @@
+/* ============================================================
+   Formulaire unique adaptatif Help'me Process
+   Composant réutilisable injecté par /lead-form.js dans tout
+   conteneur [data-hp-leadform]. Couleurs en dur (comme nav.css)
+   pour rester cohérent quelle que soit la page hôte.
+   ============================================================ */
+
+.hpf{
+  font-family:'Inter',system-ui,sans-serif;
+  background:#fff;border:1px solid #E5E7EB;border-radius:20px;
+  padding:34px 32px;max-width:720px;margin:0 auto;
+  box-shadow:0 16px 44px rgba(0,44,110,.08);
+  color:#1F2937;text-align:left;
+}
+.hpf *{box-sizing:border-box}
+.hpf-head{margin-bottom:22px}
+.hpf-head h3{font-size:1.4rem;font-weight:900;color:#002C6E;letter-spacing:-.02em;margin:0 0 6px}
+.hpf-note{font-size:.86rem;color:#6B7280;margin:0;line-height:1.5}
+
+/* progression */
+.hpf-progress{display:flex;align-items:center;gap:8px;margin-bottom:22px}
+.hpf-dot{width:9px;height:9px;border-radius:50%;background:#E5E7EB;transition:background .3s}
+.hpf-dot.on{background:#E85D20}
+.hpf-progress small{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#9CA3AF;margin-left:4px}
+
+/* étape 1 : orientation */
+.hpf-q{font-size:.92rem;font-weight:700;color:#002C6E;margin:0 0 14px}
+.hpf-choices{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.hpf-choice{
+  position:relative;display:flex;align-items:center;gap:12px;
+  border:1.5px solid #E5E7EB;border-radius:14px;padding:18px 18px;
+  cursor:pointer;transition:all .2s;background:#fff;
+}
+.hpf-choice:hover{border-color:#002C6E;background:#F8FAFF}
+.hpf-choice input{position:absolute;opacity:0;pointer-events:none}
+.hpf-choice .hpf-choice-flag{font-size:1.6rem;line-height:1;flex-shrink:0}
+.hpf-choice .hpf-choice-txt{font-size:.9rem;font-weight:600;color:#1F2937;line-height:1.35}
+.hpf-choice.sel{border-color:#E85D20;background:rgba(232,93,32,.06);box-shadow:0 4px 18px rgba(232,93,32,.14)}
+.hpf-choice.sel::after{content:'✓';position:absolute;top:10px;right:12px;color:#E85D20;font-weight:900;font-size:.95rem}
+
+/* étape 2 : champs */
+.hpf-step2{margin-top:24px}
+.hpf-step2[hidden]{display:none}
+.hpf-fg{margin-bottom:15px}
+.hpf-fg label{display:block;font-size:.8rem;font-weight:600;color:#374151;margin-bottom:6px}
+.hpf-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.hpf input,.hpf select,.hpf textarea{
+  width:100%;padding:13px 15px;border:1.5px solid #E5E7EB;border-radius:10px;
+  font-size:.95rem;font-family:inherit;color:#1F2937;background:#fff;transition:border .2s;
+}
+.hpf input:focus,.hpf select:focus,.hpf textarea:focus{outline:none;border-color:#002C6E}
+.hpf textarea{resize:vertical;min-height:88px}
+.hpf select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B7280' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+.hpf-tel{display:flex;gap:8px}
+.hpf-tel select{flex:0 0 124px}
+.hpf-tel input{flex:1}
+.hpf .hpf-err-field{border-color:#DC2626}
+.hpf-hp{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;opacity:0}
+
+/* bouton */
+.hpf-submit{
+  width:100%;margin-top:6px;padding:15px;border:none;border-radius:50px;cursor:pointer;
+  background:#E85D20;color:#fff;font-family:inherit;font-size:.98rem;font-weight:700;
+  transition:all .2s;display:inline-flex;align-items:center;justify-content:center;gap:8px;
+}
+.hpf-submit:hover{background:#FF6D35;transform:translateY(-2px);box-shadow:0 8px 24px rgba(232,93,32,.32)}
+.hpf-submit:disabled{opacity:.6;cursor:default;transform:none;box-shadow:none}
+.hpf-rgpd{font-size:.74rem;color:#6B7280;text-align:center;margin:14px 0 0;line-height:1.5}
+
+/* messages */
+.hpf-msg{margin-top:14px;padding:13px 16px;border-radius:10px;font-size:.88rem;font-weight:600;line-height:1.55}
+.hpf-msg[hidden]{display:none}
+.hpf-msg.err{background:rgba(220,38,38,.08);color:#B91C1C}
+.hpf-msg.err a{color:#B91C1C;font-weight:700}
+
+/* écran succès + livre blanc */
+.hpf-success{text-align:center;padding:12px 4px}
+.hpf-success[hidden]{display:none}
+.hpf-success-ico{font-size:2.6rem;line-height:1;margin-bottom:12px}
+.hpf-success h4{font-size:1.35rem;font-weight:900;color:#002C6E;margin:0 0 8px}
+.hpf-success>p{font-size:.95rem;color:#374151;line-height:1.6;margin:0 auto 22px;max-width:420px}
+.hpf-wp{background:linear-gradient(135deg,#FFF8EE,#FFFDF8);border:1px solid rgba(200,150,14,.4);border-radius:16px;padding:24px 22px}
+.hpf-wp p{font-size:.9rem;color:#374151;margin:0 0 14px;font-weight:600}
+.hpf-wp-btn{
+  display:inline-flex;align-items:center;gap:8px;background:#E85D20;color:#fff;
+  font-weight:700;font-size:.92rem;padding:13px 26px;border-radius:50px;
+  text-decoration:none;transition:all .2s;
+}
+.hpf-wp-btn:hover{background:#FF6D35;transform:translateY(-2px);box-shadow:0 8px 24px rgba(232,93,32,.32)}
+.hpf-success .hpf-alt{margin-top:18px;font-size:.82rem;color:#6B7280}
+.hpf-success .hpf-alt a{color:#002C6E;font-weight:700;text-decoration:none}
+
+/* contact secondaire sous le formulaire */
+.hpf-secondary{display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;margin-top:18px;font-size:.84rem;color:#6B7280}
+.hpf-secondary a{color:#002C6E;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.hpf-secondary a:hover{color:#E85D20}
+.hpf-secondary .hpf-wa{color:#1DA851}
+
+@media(max-width:560px){
+  .hpf{padding:26px 20px}
+  .hpf-choices,.hpf-row{grid-template-columns:1fr}
+  .hpf-head h3{font-size:1.2rem}
+}
+
+/* Renforcement de spécificité : empêche la typographie de la page hôte
+   (ex. .final-cta p, .contact p…) d'écraser les couleurs/tailles du
+   composant et de rendre du texte invisible sur la carte blanche. */
+.hpf .hpf-head h3,.hpf .hpf-success h4{color:#002C6E;margin:0 0 6px}
+.hpf .hpf-note{color:#6B7280;font-size:.86rem;line-height:1.5;margin:0}
+.hpf .hpf-q{color:#002C6E;font-size:.92rem;line-height:1.4;margin:0 0 14px}
+.hpf .hpf-rgpd{color:#6B7280;font-size:.74rem;line-height:1.5;margin:14px 0 0}
+.hpf .hpf-success>p{color:#374151;font-size:.95rem;line-height:1.6;margin:0 auto 22px}
+.hpf .hpf-wp p{color:#374151;font-size:.9rem;margin:0 0 14px}
+.hpf .hpf-alt{color:#6B7280;font-size:.82rem;margin:18px 0 0}
+.hpf .hpf-fg label{color:#374151;font-size:.8rem;margin:0 0 6px}

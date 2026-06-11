@@ -1,17 +1,26 @@
 // Vercel Serverless Function — capture de leads -> Brevo (multi-segments)
 //
-// Reçoit { prenom, email, company, telephone, segment } depuis un formulaire
-// du site, ajoute / met à jour le contact dans la bonne liste Brevo, ce qui
-// déclenche l'automatisation correspondante (séquence de nurturing).
+// Reçoit { prenom, nom, email, company, telephone, segment,
+//          secteur, pays, besoin, volume, message } depuis le
+// formulaire unique du site, ajoute / met à jour le contact dans la
+// bonne liste Brevo, ce qui déclenche l'automatisation correspondante
+// (séquence de nurturing) + le téléchargement du livre blanc côté front.
 //
 // Segments :
-//   (défaut)  -> livre blanc  -> liste BREVO_LIST_ID
-//   "local"   -> entreprises locales (vidéo) -> liste BREVO_LIST_ID_LOCAL
+//   "local"          -> entreprises Guinée/Afrique -> BREVO_LIST_ID_LOCAL
+//   "international"   -> entreprises Europe/intl    -> BREVO_LIST_ID_INTL
+//   (défaut / autre)  -> livre blanc                -> BREVO_LIST_ID
 //
 // Variables d'environnement Vercel (jamais dans le code) :
 //   BREVO_API_KEY        -> la clé API Brevo
-//   BREVO_LIST_ID        -> liste « Leads – Livre blanc 2026 »
+//   BREVO_LIST_ID        -> liste « Leads – Livre blanc 2026 » (défaut)
 //   BREVO_LIST_ID_LOCAL  -> liste « Leads – Entreprises locales »
+//   BREVO_LIST_ID_INTL   -> liste « Leads – International » (sinon retombe sur BREVO_LIST_ID)
+//
+// Attributs Brevo utilisés : PRENOM, ENTREPRISE, SMS (existants) +
+//   NOM, SECTEUR, PAYS, BESOIN, VOLUME, MESSAGE (à créer dans Brevo).
+// Si un attribut ou une liste n'existe pas encore, on dégrade
+// gracieusement : le lead est TOUJOURS enregistré (jamais perdu).
 
 // Normalise un numéro guinéen vers le format international +224XXXXXXXXX
 function normalizePhone(raw) {
@@ -41,9 +50,15 @@ export default async function handler(req, res) {
 
   const email = (body.email || '').trim();
   const prenom = (body.prenom || '').trim();
+  const nom = (body.nom || '').trim();
   const company = (body.company || '').trim();
   const phone = normalizePhone(body.telephone || body.phone || '');
   const segment = (body.segment || '').trim().toLowerCase();
+  const secteur = (body.secteur || '').trim();
+  const pays = (body.pays || '').trim();
+  const besoin = (body.besoin || '').trim();
+  const volume = (body.volume || '').trim();
+  const message = (body.message || '').trim();
 
   // Validation email minimale
   const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -53,22 +68,29 @@ export default async function handler(req, res) {
 
   const apiKey = process.env.BREVO_API_KEY;
   // Choix de la liste selon le segment
-  const listId = segment === 'local'
-    ? process.env.BREVO_LIST_ID_LOCAL
-    : process.env.BREVO_LIST_ID;
+  let listId;
+  if (segment === 'local') listId = process.env.BREVO_LIST_ID_LOCAL;
+  else if (segment === 'international') listId = process.env.BREVO_LIST_ID_INTL || process.env.BREVO_LIST_ID;
+  else listId = process.env.BREVO_LIST_ID;
 
   if (!apiKey || !listId) {
     console.error('Config manquante : BREVO_API_KEY ou liste absente (segment=' + segment + ')');
     return res.status(500).json({ ok: false, error: 'Configuration serveur manquante' });
   }
 
-  // Attributs du contact
-  const attributes = { PRENOM: prenom, ENTREPRISE: company };
-  if (phone) attributes.SMS = phone; // champ SMS/WhatsApp Brevo
+  // Jeu d'attributs complet (nécessite que les attributs existent dans Brevo)
+  const fullAttributes = { PRENOM: prenom, NOM: nom, ENTREPRISE: company };
+  if (secteur) fullAttributes.SECTEUR = secteur;
+  if (pays) fullAttributes.PAYS = pays;
+  if (besoin) fullAttributes.BESOIN = besoin;
+  if (volume) fullAttributes.VOLUME = volume;
+  if (message) fullAttributes.MESSAGE = message;
+  if (phone) fullAttributes.SMS = phone; // champ SMS/WhatsApp Brevo
 
-  async function createContact(withPhone) {
-    const attrs = Object.assign({}, attributes);
-    if (!withPhone) delete attrs.SMS;
+  // Jeu d'attributs minimal et sûr (uniquement des attributs Brevo standards)
+  const safeAttributes = { PRENOM: prenom, ENTREPRISE: company };
+
+  function createContact(attrs) {
     return fetch('https://api.brevo.com/v3/contacts', {
       method: 'POST',
       headers: {
@@ -85,31 +107,31 @@ export default async function handler(req, res) {
     });
   }
 
-  try {
-    let brevoRes = await createContact(true);
+  function isSuccess(r) { return r.ok || r.status === 204; }
 
-    // Brevo : 201 (créé) ou 204 (mis à jour) = succès
-    if (brevoRes.ok || brevoRes.status === 204) {
+  try {
+    // Tentative 1 — attributs complets (secteur, pays, besoin, etc.)
+    let brevoRes = await createContact(fullAttributes);
+    if (isSuccess(brevoRes)) {
       return res.status(200).json({ ok: true });
     }
 
     let data = await brevoRes.json().catch(() => ({}));
-
-    // Contact déjà présent : pas bloquant
     if (data && data.code === 'duplicate_parameter') {
       return res.status(200).json({ ok: true });
     }
 
-    // Numéro invalide refusé par Brevo : on réessaie sans le téléphone
-    // pour ne jamais perdre le lead (il est quand même ajouté à la liste).
-    if (phone && brevoRes.status === 400) {
-      brevoRes = await createContact(false);
-      if (brevoRes.ok || brevoRes.status === 204) {
-        return res.status(200).json({ ok: true, note: 'phone_skipped' });
+    // Tentative 2 — un attribut/liste a été refusé (souvent : attribut Brevo
+    // pas encore créé, ou numéro invalide). On rejoue avec le jeu minimal
+    // pour ne JAMAIS perdre le lead (il est quand même ajouté à la liste).
+    if (brevoRes.status === 400) {
+      brevoRes = await createContact(safeAttributes);
+      if (isSuccess(brevoRes)) {
+        return res.status(200).json({ ok: true, note: 'attributes_reduced' });
       }
       data = await brevoRes.json().catch(() => ({}));
       if (data && data.code === 'duplicate_parameter') {
-        return res.status(200).json({ ok: true, note: 'phone_skipped' });
+        return res.status(200).json({ ok: true, note: 'attributes_reduced' });
       }
     }
 

@@ -2199,6 +2199,7 @@
     @media(max-width:600px){.trust-badges{grid-template-columns:1fr;}}
   </style>
   <link rel="stylesheet" href="/nav.css"/>
+  <link rel="stylesheet" href="/lead-form.css"/>
 </head>
 <body>
 
@@ -3766,16 +3767,12 @@
         <div class="lead-form-ico">📕</div>
         <div>
           <h4>Demandez le livre blanc</h4>
-          <p>PDF gratuit · Envoyé sous 24h · Sans engagement</p>
+          <p>PDF gratuit · Téléchargement immédiat · Sans engagement</p>
         </div>
       </div>
-      <input class="lead-input" id="lmPrenom" type="text" placeholder="Votre prénom">
-      <input class="lead-input" id="lmEmail" type="email" placeholder="Votre email professionnel">
-      <input class="lead-input" id="lmCompany" type="text" placeholder="Nom de votre entreprise">
-      <button class="lead-btn" id="lmBtn" onclick="captureLeadMagnet()">
-        📥 Recevoir le PDF
-      </button>
-      <p class="lead-disclaimer">🔒 Réponse sous 24h · RGPD · Pas de spam · Vous pouvez vous désinscrire à tout moment.</p>
+      <p style="color:var(--gray);font-size:.92rem;line-height:1.6;margin:8px 0 18px">Le livre blanc vous est remis <strong>immédiatement</strong> après l'envoi du formulaire ci-dessous — adapté à votre profil (Guinée/Afrique ou international).</p>
+      <a class="lead-btn" href="#devis" style="display:block;text-align:center;text-decoration:none">📥 Recevoir le livre blanc →</a>
+      <p class="lead-disclaimer">🔒 RGPD · Pas de spam · Vous pouvez vous désinscrire à tout moment.</p>
     </div>
   </div>
 </section>
@@ -3883,76 +3880,10 @@
       </div>
     </div>
 
-    <form class="form-box fi fi-d1" id="contactForm"
-          action="https://formspree.io/f/xzdwnple"
-          method="POST">
-      <h3>Demande de devis gratuit</h3>
-      <p class="form-note">Réponse sous 24h ouvrées · Devis chiffré sous 48h après brief</p>
-      <div class="fg">
-        <label for="cf-profil">Vous êtes *</label>
-        <select id="cf-profil" name="profil" required onchange="var i=document.getElementById('cf-ind');if(i){i.value=this.value==='Entreprise en Guinée'?'+224':(this.value==='Entreprise internationale'?'+33':i.value)}">
-          <option value="">Sélectionnez votre profil</option>
-          <option value="Entreprise en Guinée">🇬🇳 Une entreprise basée en Guinée</option>
-          <option value="Entreprise internationale">🌍 Une entreprise internationale (Europe, Afrique…)</option>
-        </select>
-      </div>
-      <div class="fr">
-        <div class="fg"><label for="cf-fn">Prénom *</label><input id="cf-fn" name="firstname" type="text" placeholder="Votre prénom" required/></div>
-        <div class="fg"><label for="cf-ln">Nom *</label><input id="cf-ln" name="lastname" type="text" placeholder="Votre nom" required/></div>
-      </div>
-      <div class="fg"><label for="cf-co">Société</label><input id="cf-co" name="company" type="text" placeholder="Nom de votre entreprise"/></div>
-      <div class="fg"><label for="cf-em">Email professionnel *</label><input id="cf-em" name="email" type="email" placeholder="vous@entreprise.com" required/></div>
-      <div class="fg">
-        <label for="cf-ph">Téléphone</label>
-        <div style="display:flex;gap:8px">
-          <select id="cf-ind" name="indicatif" style="flex:0 0 130px">
-            <option value="+224">🇬🇳 +224</option>
-            <option value="+33">🇫🇷 +33</option>
-            <option value="+32">🇧🇪 +32</option>
-            <option value="+41">🇨🇭 +41</option>
-            <option value="+221">🇸🇳 +221</option>
-            <option value="+225">🇨🇮 +225</option>
-            <option value="+1">🇨🇦 +1</option>
-            <option value="">Autre</option>
-          </select>
-          <input id="cf-ph" name="phone" type="tel" placeholder="6XX XX XX XX" style="flex:1"/>
-        </div>
-      </div>
-      <div class="fg">
-        <label for="cf-sv">Service souhaité *</label>
-        <select id="cf-sv" name="service" required>
-          <option value="">Sélectionnez un service</option>
-          <option>Inbound — Réception d'appels (service client / SAV)</option>
-          <option>Outbound — Téléprospection / RDV qualifiés</option>
-          <option>Back Office — Traitement de données / KYC</option>
-          <option>Solutions IA — Voicebot / Chatbot</option>
-          <option>Offre mixte / sur mesure</option>
-        </select>
-      </div>
-      <div class="fg">
-        <label for="cf-vol">Volumétrie estimée</label>
-        <select id="cf-vol" name="volume">
-          <option value="">Sélectionnez (optionnel)</option>
-          <option>Moins de 10 agents</option>
-          <option>10 à 30 agents</option>
-          <option>30 à 80 agents</option>
-          <option>Plus de 80 agents</option>
-          <option>Je ne sais pas encore</option>
-        </select>
-      </div>
-      <div class="fg"><label for="cf-msg">Votre besoin</label><textarea id="cf-msg" name="message" placeholder="Décrivez votre projet : volume d'appels, horaires souhaités, langues, deadline…" rows="4"></textarea></div>
-      <!-- Honeypot antispam -->
-      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-      <input type="hidden" name="_subject" value="🚀 Nouvelle demande de devis Help'me Process">
-      <button class="form-btn" type="submit" id="cfSubmit">Envoyer ma demande →</button>
-      <div class="form-success" id="cfSuccess">
-        ✅ Demande envoyée ! Notre équipe vous recontacte dans les 24h.
-      </div>
-      <div class="form-error" id="cfError">
-        ⚠️ Une erreur s'est produite. Contactez-nous directement au <a href="tel:+224628935335">+224 628 93 53 35</a>.
-      </div>
-      <p class="form-rgpd">🔒 Vos données sont traitées conformément au RGPD. Aucune transmission à des tiers.</p>
-    </form>
+    <div class="fi fi-d1" style="flex:1;min-width:0" id="devis"
+         data-hp-leadform
+         data-title="Demande de devis / diagnostic gratuit"
+         data-note="Un seul formulaire : indiquez votre profil, on adapte le reste. Réponse sous 24h ouvrées, devis chiffré sous 48h — et votre livre blanc en téléchargement immédiat."></div>
   </div>
 </section>
 
@@ -4243,57 +4174,7 @@
     });
   })();
 
-  /* 8. LEAD MAGNET — Email capture */
-  window.captureLeadMagnet = async function(){
-    const prenom  = document.getElementById('lmPrenom')?.value.trim() || '';
-    const email   = document.getElementById('lmEmail')?.value.trim() || '';
-    const company = document.getElementById('lmCompany')?.value.trim() || '';
-    if(!email || !email.includes('@')){
-      alert('Merci de renseigner un email professionnel valide.');
-      return;
-    }
-    const btn = document.getElementById('lmBtn');
-    const original = btn ? btn.textContent : '';
-    if(btn){ btn.textContent = '⏳ Envoi en cours…'; btn.disabled = true; }
-
-    try {
-      const resp = await fetch('/api/lead-magnet', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ prenom, email, company })
-      });
-      if(!resp.ok){ throw new Error('HTTP '+resp.status); }
-
-      // Sauvegarde locale (utile pour mesurer côté navigateur)
-      try {
-        const leads = JSON.parse(localStorage.getItem('hp_leads')||'[]');
-        leads.push({prenom,email,company,date:Date.now()});
-        localStorage.setItem('hp_leads', JSON.stringify(leads));
-      } catch(e){}
-
-      if(btn){
-        btn.textContent = '✓ Merci ! Votre livre blanc est prêt ↓';
-        btn.style.background = 'linear-gradient(135deg,#1A8A2E,#2ECC71)';
-        if(!document.getElementById('lmDownload')){
-          const dl = document.createElement('a');
-          dl.id = 'lmDownload';
-          dl.href = '/livre-blanc.pdf';
-          dl.target = '_blank';
-          dl.rel = 'noopener';
-          dl.textContent = '📥 Télécharger le livre blanc (PDF)';
-          dl.style.cssText = 'display:block;margin-top:12px;text-align:center;background:#E85D20;color:#fff;font-weight:700;padding:13px 20px;border-radius:50px;text-decoration:none';
-          btn.parentNode.appendChild(dl);
-        }
-      }
-    } catch(err){
-      console.error('Lead magnet error', err);
-      if(btn){
-        btn.textContent = original || '📥 Recevoir le PDF';
-        btn.disabled = false;
-      }
-      alert("Une erreur est survenue. Merci de réessayer dans un instant.");
-    }
-  };
+  /* 8. Formulaire unique adaptatif + livre blanc → géré par /lead-form.js */
 
   /* 9. ROI Calculator */
   window.calcROI = function(){
@@ -4350,6 +4231,7 @@
     return false;
   }
 </script>
+  <script src="/lead-form.js" defer></script>
   <script src="/nav.js" defer></script>
 </body>
 </html>
