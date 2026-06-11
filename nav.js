@@ -17,9 +17,9 @@
     { href: home + "#about",      label: "Qui sommes-nous ?" },
     { href: home + "#services",   label: "Nos solutions" },
     { href: home + "#pourquoi",   label: "Nos différences" },
-    { href: home + "#fondateur",  label: "Co-fondateur" },
     { href: "actualites.html",                label: "Actualités",   match: "actualites.html" },
     { href: "recrutement.html",               label: "Recrutement",  match: "recrutement.html" },
+    { href: "solutions-secteurs.html",        label: "Secteurs",     match: "solutions-secteurs.html" },
     { href: "presentation-entreprises.html",  label: "Entreprises",  match: "presentation-entreprises.html" }
   ];
 
