@@ -2244,6 +2244,21 @@
 </div>
 
 <!-- ══════════ HERO ══════════ -->
+<style>
+  .hero-audience{margin:22px 0 10px}
+  .hero-aud-label{font-size:.78rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#FF7A1A;margin:0 0 12px}
+  .hero-aud-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .hero-audience .aud-card{display:flex;align-items:flex-start;gap:14px;padding:18px;border-radius:16px;background:rgba(10,23,51,.72);border:1px solid rgba(255,255,255,.16);text-decoration:none;color:#fff;transition:transform .2s,border-color .2s,box-shadow .2s;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+  .hero-audience .aud-card-gn{border-left:4px solid #1eb53a}
+  .hero-audience .aud-card-int{border-left:4px solid #FF7A1A}
+  .hero-audience .aud-card:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.42);box-shadow:0 16px 38px rgba(0,0,0,.45)}
+  .hero-audience .aud-flag{font-size:1.9rem;line-height:1;flex-shrink:0}
+  .hero-audience .aud-body{display:flex;flex-direction:column;min-width:0}
+  .hero-audience .aud-body b{font-size:1.05rem;font-weight:800;margin-bottom:4px;color:#fff}
+  .hero-audience .aud-sub{font-size:.86rem;line-height:1.45;color:rgba(255,255,255,.8);margin-bottom:8px}
+  .hero-audience .aud-cta{font-size:.85rem;font-weight:800;color:#FF7A1A}
+  @media(max-width:600px){.hero-aud-grid{grid-template-columns:1fr}}
+</style>
 <section class="hero" id="accueil">
   <div class="hero-bg">
     <video id="heroVid" autoplay muted loop playsinline preload="none" poster="agents-bleu.jpeg">
@@ -2257,6 +2272,29 @@
     <div class="hero-left">
       <div class="hero-tag"><span class="dot"></span>Conakry, Guinée — Opérationnel 6j/7</div>
 
+      <!-- AIGUILLAGE DOUBLE CIBLE (visible sans scroll) -->
+      <div class="hero-audience">
+        <p class="hero-aud-label">Vous êtes…</p>
+        <div class="hero-aud-grid">
+          <a class="aud-card aud-card-gn" href="presentation-entreprises.html#cible-guinee">
+            <span class="aud-flag">🇬🇳</span>
+            <span class="aud-body">
+              <b>Entreprises Guinée &amp; Afrique</b>
+              <span class="aud-sub">Votre service client, ancré dans les réalités africaines.</span>
+              <span class="aud-cta">Découvrir nos solutions →</span>
+            </span>
+          </a>
+          <a class="aud-card aud-card-int" href="presentation-entreprises.html#cible-international">
+            <span class="aud-flag">🤝</span>
+            <span class="aud-body">
+              <b>Partenaires Internationaux</b>
+              <span class="aud-sub">Un BPO francophone africain aux standards internationaux.</span>
+              <span class="aud-cta">Explorer le partenariat →</span>
+            </span>
+          </a>
+        </div>
+      </div>
+
       <h1>Centre d'appel BPO francophone à Conakry —<br/><span style="font-size:72%;font-weight:800;opacity:.85;letter-spacing:-.01em">Quand la Guinée parle, le monde écoute.</span></h1>
       <div class="hero-rotating-wrap">
         <span class="hero-static">Une relation client</span>
@@ -2269,7 +2307,7 @@
         </span>
       </div>
 
-      <p class="hero-desc">Externalisez votre relation client à Conakry avec une équipe francophone native — outsourcing BPO de qualité européenne, coûts ouest-africains. Voix, chat, WhatsApp, email, IA. Conforme RGPD.</p>
+      <p class="hero-desc">On gère votre service client depuis Conakry — téléphone, WhatsApp, email, chat — dans la langue de vos clients et au rythme de votre activité. Une équipe francophone formée aux standards internationaux, à un coût qui change tout.</p>
       <div class="hero-promise">
         <div class="hero-promise-item"><b>-76%</b> vs interne France</div>
         <div class="hero-promise-item"><b>-40%</b> vs équipe locale</div>
@@ -2286,21 +2324,6 @@
         <a href="https://wa.me/224628935335?text=Bonjour%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20vos%20services%20BPO" target="_blank" rel="noopener noreferrer" class="btn-ghost">
           💬 WhatsApp Business
         </a>
-      </div>
-
-      <!-- AIGUILLAGE DOUBLE CIBLE -->
-      <div class="hero-audience" style="margin-top:24px">
-        <p style="font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#ff7a1a;margin:0 0 12px">Vous êtes…</p>
-        <div style="display:flex;flex-wrap:wrap;gap:14px">
-          <a class="aud-card" href="entreprises-guinee.html" style="flex:1 1 250px;display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:16px;border:1px solid rgba(255,255,255,.28);border-left:4px solid #1eb53a;background:#0a1733;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 10px 28px rgba(0,0,0,.4);text-decoration:none;color:#fff;transition:transform .2s,border-color .2s,box-shadow .2s" onmouseover="this.style.transform='translateY(-3px)';this.style.borderColor='#ff7a1a';this.style.borderLeftColor='#1eb53a';this.style.boxShadow='0 14px 34px rgba(0,0,0,.5)'" onmouseout="this.style.transform='none';this.style.borderColor='rgba(255,255,255,.28)';this.style.borderLeftColor='#1eb53a';this.style.boxShadow='0 10px 28px rgba(0,0,0,.4)'">
-            <span style="font-size:1.8rem;line-height:1">🇬🇳</span>
-            <span><b style="display:block;font-size:1.02rem;color:#fff;margin-bottom:3px">Une entreprise en Guinée</b><span style="font-size:.88rem;color:rgba(255,255,255,.78)">Vidéo + diagnostic gratuit, dans votre langue →</span></span>
-          </a>
-          <a class="aud-card" href="#livreblanc" style="flex:1 1 250px;display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:16px;border:1px solid rgba(255,255,255,.28);border-left:4px solid #2f7bff;background:#0a1733;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 10px 28px rgba(0,0,0,.4);text-decoration:none;color:#fff;transition:transform .2s,border-color .2s,box-shadow .2s" onmouseover="this.style.transform='translateY(-3px)';this.style.borderColor='#ff7a1a';this.style.borderLeftColor='#2f7bff';this.style.boxShadow='0 14px 34px rgba(0,0,0,.5)'" onmouseout="this.style.transform='none';this.style.borderColor='rgba(255,255,255,.28)';this.style.borderLeftColor='#2f7bff';this.style.boxShadow='0 10px 28px rgba(0,0,0,.4)'">
-            <span style="font-size:1.8rem;line-height:1">🌍</span>
-            <span><b style="display:block;font-size:1.02rem;color:#fff;margin-bottom:3px">Une entreprise internationale</b><span style="font-size:.88rem;color:rgba(255,255,255,.78)">Recevez le livre blanc 2026 →</span></span>
-          </a>
-        </div>
       </div>
 
       <div class="hero-trust">
@@ -2637,7 +2660,7 @@
     <div class="hd c fi">
       <span class="eyebrow">Nos solutions BPO</span>
       <h2 class="ttl">Une plateforme complète pour <span class="grad">externaliser</span> votre relation client</h2>
-      <p class="sub">5 piliers d'expertise · Omnicanal natif · Powered by IA · Conforme aux standards internationaux</p>
+      <p class="sub">Du standard téléphonique à la confirmation de commandes : on prend en charge chaque contact comme si c'était le vôtre — en Guinée comme à l'international.</p>
     </div>
 
     <!-- OMNICHANNEL BANNER -->
@@ -4233,5 +4256,6 @@
 </script>
   <script src="/lead-form.js" defer></script>
   <script src="/nav.js" defer></script>
+  <script src="/back-to-top.js" defer></script>
 </body>
 </html>
