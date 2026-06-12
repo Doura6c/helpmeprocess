@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; media-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"/>
 
-  <title>Externalisez votre relation client à Conakry — Help'me Process</title>
-  <meta name="description" content="Entreprises guinéennes : confiez votre standard téléphonique, votre SAV, votre prospection et votre WhatsApp à une équipe pro à Conakry. Diagnostic gratuit + vidéo."/>
+  <title>Service Client Externalisé en Guinée | Helpmeprocess Conakry</title>
+  <meta name="description" content="Helpmeprocess gère votre service client à Conakry. Call center guinéen pour télécom, banques, assurances et e-commerce COD."/>
   <link rel="canonical" href="https://helpme-process.vercel.app/entreprises-guinee"/>
 
   <!-- Open Graph -->
@@ -158,6 +158,33 @@
       .lead-card{padding:28px 20px}
       .wa-float span{display:none}
     }
+
+    /* DOULEURS (réutilise .cards/.card) */
+    .pain-card{background:#FFFAF7;border-color:#F3DECF}
+    .pain-card .ico{color:var(--orange)}
+    /* POURQUOI NOUS */
+    .why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;max-width:940px;margin:0 auto}
+    .why-item{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--border);border-radius:14px;padding:20px 22px;transition:all .2s}
+    .why-item:hover{box-shadow:0 12px 30px rgba(0,44,110,.08);border-color:transparent}
+    .why-item .wico{flex:0 0 auto;width:44px;height:44px;border-radius:12px;background:rgba(0,44,110,.07);display:flex;align-items:center;justify-content:center;font-size:1.35rem}
+    .why-item h3{font-size:1rem;color:var(--navy);margin-bottom:4px}
+    .why-item p{font-size:.9rem;color:var(--text2)}
+    /* PREUVES */
+    .proof{background:var(--light)}
+    .clients{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:32px}
+    .client{display:flex;flex-direction:column;background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px 24px;min-width:150px;text-align:center}
+    .client b{color:var(--navy);font-size:1rem}
+    .client span{font-size:.76rem;color:var(--gray);margin-top:3px}
+    .distinction{display:flex;align-items:center;gap:22px;max-width:760px;margin:0 auto;background:linear-gradient(135deg,#001A4A,#003A8C);color:#fff;border-radius:18px;padding:28px 32px}
+    .distinction .award{font-size:2.8rem;flex:0 0 auto;line-height:1}
+    .distinction h3{color:#fff;font-size:1.15rem;margin-bottom:6px}
+    .distinction p{color:rgba(255,255,255,.84);font-size:.92rem}
+    .proof-stats{display:flex;flex-wrap:wrap;gap:34px;justify-content:center;margin-top:34px}
+    .proof-stats div{text-align:center}
+    .proof-stats strong{display:block;font-size:1.7rem;font-weight:800;color:var(--navy)}
+    .proof-stats span{font-size:.78rem;color:var(--gray)}
+    @media(max-width:760px){ .why-grid{grid-template-columns:1fr} }
+    @media(max-width:560px){ .distinction{flex-direction:column;text-align:center;gap:14px} }
   </style>
   <link rel="stylesheet" href="/nav.css"/>
   <link rel="stylesheet" href="/lead-form.css"/>
@@ -196,28 +223,21 @@
   </div>
 </header>
 
-<!-- LIVRE BLANC — mise en avant (dès le haut) -->
-<section class="lbsec" id="livreblanc-local">
-  <div class="lbsec-grid">
-    <div>
-      <span class="eyebrow">Ressource gratuite</span>
-      <h2>Le livre blanc 2026 :<br><span>Externaliser votre relation client en Guinée</span></h2>
-      <p class="intro">Le guide pratique pour les entreprises guinéennes qui veulent professionnaliser leur service client — sans recruter ni gérer en interne.</p>
-      <ul>
-        <li>Pourquoi la relation client décide de votre croissance</li>
-        <li>Internaliser ou externaliser : le bon calcul</li>
-        <li>Parler la langue de vos clients (Français, Soussou, Malinké, Poular, Guerzé…)</li>
-        <li>La Guinée, nouvelle destination de l'offshoring francophone</li>
-      </ul>
+<main>
+
+<!-- DOULEURS -->
+<section class="block" id="douleurs">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Le constat</span>
+      <h2>Vous reconnaissez ces situations&nbsp;?</h2>
+      <p>Chaque appel manqué, chaque message sans réponse, c'est un client — et du chiffre d'affaires — qui s'en va.</p>
     </div>
-    <div class="lbsec-card">
-      <div class="head">
-        <div class="ico">📕</div>
-        <div><b>Recevez le livre blanc</b><small>PDF gratuit · Téléchargement immédiat</small></div>
-      </div>
-      <p style="color:rgba(255,255,255,.9);font-size:.95rem;line-height:1.6;margin-bottom:18px">Le livre blanc vous est remis <strong>immédiatement</strong> après l'envoi du formulaire — indiquez simplement votre profil.</p>
-      <a href="#diagnostic" class="btn btn-orange" style="width:100%;justify-content:center">📕 Recevoir le livre blanc →</a>
-      <p class="disc">🔒 RGPD · Pas de spam · Désinscription à tout moment.</p>
+    <div class="cards">
+      <article class="card pain-card"><div class="ico">📵</div><h3>Des appels qui sonnent dans le vide</h3><p>Vous êtes en réunion, en déplacement, débordé. Pendant ce temps, vos clients appellent… et personne ne répond.</p></article>
+      <article class="card pain-card"><div class="ico">⏳</div><h3>Le SAV vous mange tout votre temps</h3><p>Réclamations, suivis, WhatsApp qui déborde : vous gérez l'urgence au lieu de développer votre activité.</p></article>
+      <article class="card pain-card"><div class="ico">💸</div><h3>Recruter en interne coûte cher</h3><p>Embaucher, former, équiper et manager une équipe support : long, coûteux et risqué pour une PME.</p></article>
+      <article class="card pain-card"><div class="ico">📉</div><h3>Une image qui se dégrade</h3><p>Un client mal accueilli ou jamais rappelé ne revient pas — et le dit autour de lui.</p></article>
     </div>
   </div>
 </section>
@@ -269,6 +289,79 @@
   </div>
 </section>
 
+<!-- POURQUOI NOUS -->
+<section class="block" id="pourquoi-nous">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Pourquoi Helpmeprocess</span>
+      <h2>Le seul BPO guinéen aux standards internationaux</h2>
+      <p>L'exigence d'un grand centre d'appel international, au service des entreprises guinéennes.</p>
+    </div>
+    <div class="why-grid">
+      <article class="why-item"><div class="wico">🚀</div><div><h3>Opérationnel en moins de 2 semaines</h3><p>Aucune infrastructure à construire de votre côté : on apporte les équipes, les outils et les process.</p></div></article>
+      <article class="why-item"><div class="wico">🏆</div><div><h3>Une expertise primée</h3><p>Fondé par Abdourahamane Cissé, 10+ ans en relation client &amp; BPO international, lauréat ESCDA Best B2B Customer Service 2023 (ADM Value).</p></div></article>
+      <article class="why-item"><div class="wico">🗣️</div><div><h3>Multilingue, ancré localement</h3><p>Français, Soussou, Malinké, Poular, Guerzé… vos clients sont compris dans leur langue, à Conakry.</p></div></article>
+      <article class="why-item"><div class="wico">📊</div><div><h3>Pilotage transparent</h3><p>Des indicateurs clairs (CSAT, FCR, SLA) et des rapports réguliers : vous gardez le contrôle.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- PREUVES -->
+<section class="block proof" id="preuves">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Ils nous font confiance</span>
+      <h2>Des entreprises guinéennes nous confient déjà leurs clients</h2>
+      <p>De l'assurance à l'e-commerce, des équipes comme la vôtre nous ont délégué leur relation client.</p>
+    </div>
+    <div class="clients">
+      <div class="client"><b>Sunu Assurance</b><span>Assurance · relation client</span></div>
+      <div class="client"><b>Afrishop</b><span>E-commerce · confirmation COD</span></div>
+      <div class="client"><b>Lanalah</b><span>Relation client</span></div>
+      <div class="client"><b>Rapido Guinée</b><span>Livraison &amp; logistique</span></div>
+    </div>
+    <div class="distinction">
+      <div class="award">🏆</div>
+      <div>
+        <h3>Lauréat ESCDA — Best B2B Customer Service 2023</h3>
+        <p>Une distinction internationale (ADM Value) qui valide notre exigence de qualité — désormais au service de la Guinée.</p>
+      </div>
+    </div>
+    <div class="proof-stats">
+      <div><strong>CSAT ≥ 88%</strong><span>Satisfaction client</span></div>
+      <div><strong>FCR ≥ 75%</strong><span>Résolu au 1ᵉʳ contact</span></div>
+      <div><strong>&lt; 2 sem.</strong><span>Mise en place</span></div>
+      <div><strong>6j/7</strong><span>Disponibilité</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- LIVRE BLANC — ressource gratuite (juste avant le formulaire) -->
+<section class="lbsec" id="livreblanc-local">
+  <div class="lbsec-grid">
+    <div>
+      <span class="eyebrow">Ressource gratuite</span>
+      <h2>Le livre blanc 2026 :<br><span>Externaliser votre relation client en Guinée</span></h2>
+      <p class="intro">Le guide pratique pour les entreprises guinéennes qui veulent professionnaliser leur service client — sans recruter ni gérer en interne.</p>
+      <ul>
+        <li>Pourquoi la relation client décide de votre croissance</li>
+        <li>Internaliser ou externaliser : le bon calcul</li>
+        <li>Parler la langue de vos clients (Français, Soussou, Malinké, Poular, Guerzé…)</li>
+        <li>La Guinée, nouvelle destination de l'offshoring francophone</li>
+      </ul>
+    </div>
+    <div class="lbsec-card">
+      <div class="head">
+        <div class="ico">📕</div>
+        <div><b>Recevez le livre blanc</b><small>PDF gratuit · Téléchargement immédiat</small></div>
+      </div>
+      <p style="color:rgba(255,255,255,.9);font-size:.95rem;line-height:1.6;margin-bottom:18px">Le livre blanc vous est remis <strong>immédiatement</strong> après l'envoi du formulaire — indiquez simplement votre profil.</p>
+      <a href="#diagnostic" class="btn btn-orange" style="width:100%;justify-content:center">📕 Recevoir le livre blanc →</a>
+      <p class="disc">🔒 RGPD · Pas de spam · Désinscription à tout moment.</p>
+    </div>
+  </div>
+</section>
+
 <!-- DIAGNOSTIC (un seul, en bas) -->
 <section class="block lead" id="diagnostic">
   <div class="wrap">
@@ -277,6 +370,8 @@
          data-note="Indiquez votre profil : on analyse votre relation client, on vous propose des pistes concrètes et vous recevez le livre blanc immédiatement. Sans engagement."></div>
   </div>
 </section>
+
+</main>
 
 <!-- FOOTER -->
 <footer>

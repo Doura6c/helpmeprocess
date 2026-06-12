@@ -20,7 +20,8 @@
     { href: "actualites.html",                label: "Actualités",   match: "actualites.html" },
     { href: "recrutement.html",               label: "Recrutement",  match: "recrutement.html" },
     { href: "solutions-secteurs.html",        label: "Secteurs",     match: "solutions-secteurs.html" },
-    { href: "presentation-entreprises.html",  label: "Entreprises",  match: "presentation-entreprises.html" }
+    { href: "presentation-entreprises.html",  label: "Entreprises",  match: "presentation-entreprises.html" },
+    { href: "entreprises-guinee.html",        label: "Entreprises Guinée", match: "entreprises-guinee.html" }
   ];
 
   function isActive(l) { return l.match && page === l.match; }
