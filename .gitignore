@@ -32,3 +32,6 @@ images.png
 # Source de génération du livre blanc (local, non déployé)
 _lb_build.html
 _lb_build_guinee.html
+
+# Rapport d'audit interne (ne pas déployer publiquement)
+AUDIT_HELPMEPROCESS.md

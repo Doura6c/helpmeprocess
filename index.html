@@ -1192,6 +1192,29 @@
     }
     .tcard-name{font-weight:700;font-size:.88rem;color:var(--navy)}
     .tcard-role{font-size:.78rem;color:var(--gray)}
+    /* avatars différenciés par client (lisibilité du social proof) */
+    .tcard:nth-child(2) .tcard-ava{background:linear-gradient(135deg,var(--orange),var(--orange2))}
+    .tcard:nth-child(3) .tcard-ava{background:linear-gradient(135deg,#0E7C66,#16A34A)}
+
+    /* ────────────────── LOGO WALL CLIENTS ────────────────── */
+    .logowall{background:#fff;padding:64px 64px 0}
+    .logowall-inner{max-width:1180px;margin:0 auto;text-align:center}
+    .logowall-kicker{font-size:.8rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--gray);margin-bottom:28px}
+    .logowall-grid{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:14px}
+    .lw-logo{
+      display:inline-flex;align-items:center;gap:7px;
+      padding:12px 20px;border:1px solid var(--border);border-radius:12px;
+      background:var(--light);color:#94A3B8;font-weight:800;font-size:1rem;
+      letter-spacing:-.01em;filter:grayscale(1);opacity:.85;
+      transition:all .25s ease;white-space:nowrap;
+    }
+    .lw-logo .lw-mark{font-size:1.1rem}
+    .lw-logo:hover{filter:grayscale(0);opacity:1;color:var(--navy);background:#fff;border-color:var(--navy);box-shadow:0 6px 20px rgba(0,44,110,.1);transform:translateY(-2px)}
+    .lw-logo small{font-size:.66rem;font-weight:600;color:#B6C0CE;letter-spacing:.02em}
+    @media(max-width:600px){
+      .logowall{padding:48px 24px 0}
+      .lw-logo{padding:10px 14px;font-size:.86rem}
+    }
 
     /* ────────────────── CTA SECTION ────────────────── */
     .cta-section{
@@ -3556,6 +3579,24 @@
   </div>
 </section>
 
+<!-- ══════════ LOGO WALL CLIENTS ══════════ -->
+<!-- Bandeau de réassurance : marques clientes (Guinée, Afrique, international).
+     Logos stylisés en typo (pas d'images officielles) — grisés, colorés au survol. -->
+<section class="logowall" aria-label="Clients et partenaires">
+  <div class="logowall-inner fi">
+    <p class="logowall-kicker">Des entreprises qui nous font confiance — en Guinée, en Afrique et à l'international</p>
+    <div class="logowall-grid">
+      <span class="lw-logo"><span class="lw-mark">🛍️</span>Afrishop</span>
+      <span class="lw-logo"><span class="lw-mark">🛵</span>Rapido</span>
+      <span class="lw-logo"><span class="lw-mark">🛡️</span>Sunu Assurance</span>
+      <span class="lw-logo"><span class="lw-mark">🏬</span>Lanalah</span>
+      <span class="lw-logo"><span class="lw-mark">📊</span>Fondation Perceptis</span>
+      <span class="lw-logo"><span class="lw-mark">🇨🇦</span>UniMarketing&nbsp;<small>Canada</small></span>
+      <span class="lw-logo"><span class="lw-mark">🏆</span>Total Energies&nbsp;<small>Distinction 2023</small></span>
+    </div>
+  </div>
+</section>
+
 <!-- ══════════ TÉMOIGNAGES ══════════ -->
 <section class="testi" id="temoignages">
   <div class="wrap">
@@ -4257,5 +4298,6 @@
   <script src="/lead-form.js" defer></script>
   <script src="/nav.js" defer></script>
   <script src="/back-to-top.js" defer></script>
+  <script src="/sticky-cta.js" defer></script>
 </body>
 </html>
